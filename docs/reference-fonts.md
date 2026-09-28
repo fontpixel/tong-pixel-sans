@@ -1,0 +1,32 @@
+# 参考字体
+
+字形由下列 OFL 字体点阵化后修整而来。构建字体**不需要**它们；只有编辑器的参考轮廓和相位底稿、以后生成新字的底稿，以及重新量取 `build-data/` 的数据时才需要。
+
+字体放在仓库根目录的 `reference-fonts/`（已在 `.gitignore` 中，不入库，约 120 MB），文件名必须与下表一致。放好后校验：
+
+```bash
+cd reference-fonts && sha256sum -c ../build-data/reference-fonts.sha256
+```
+
+| 文件名 | 字体与版本 | 用途 | 来源 |
+|---|---|---|---|
+| `SourceHanSansSC-VF.otf` | Source Han Sans SC VF 2.004 | 简体字形 | Adobe [source-han-sans](https://github.com/adobe-fonts/source-han-sans) 2.004R，`Variable/OTF/SourceHanSansSC-VF.otf`（最初取自本机旧实验，校验值与发布版一致与否未另行核对） |
+| `SourceHanSansTC-VF.otf` | Source Han Sans TC VF 2.004 | 繁体字形 | [2.004R，提交 a8b073b 的 `Variable/OTF/SourceHanSansTC-VF.otf`](https://raw.githubusercontent.com/adobe-fonts/source-han-sans/a8b073bbf80f7226af03abeeb31e27017d5e3f67/Variable/OTF/SourceHanSansTC-VF.otf) |
+| `SourceHanSansJP-VF.otf` | Source Han Sans VF 2.004（日文默认） | 日文字形、半角假名、部分西文 | [同一提交的 `Variable/OTF/SourceHanSans-VF.otf`](https://raw.githubusercontent.com/adobe-fonts/source-han-sans/a8b073bbf80f7226af03abeeb31e27017d5e3f67/Variable/OTF/SourceHanSans-VF.otf)，改名 |
+| `SourceHanSansKR-VF.otf` | Source Han Sans K VF 2.004（韩文默认） | 韩文字形 | [同一提交的 `Variable/OTF/SourceHanSansK-VF.otf`](https://raw.githubusercontent.com/adobe-fonts/source-han-sans/a8b073bbf80f7226af03abeeb31e27017d5e3f67/Variable/OTF/SourceHanSansK-VF.otf)，改名 |
+| `SourceSans3-VF.otf` | Source Sans 3 VF 3.052 | 西文 | Adobe [source-sans](https://github.com/adobe-fonts/source-sans) 3.052 可变字体（直立），改名 |
+| `NotoSans-VF.ttf` | Noto Sans 2.015 | Source Sans 3 没有的西文 | [notofonts](https://github.com/notofonts/latin-greek-cyrillic) / Google Fonts 可变字体，改名 |
+| `NotoSansThai-VF.ttf` | Noto Sans Thai 2.001 | 泰文 | [notofonts/thai](https://github.com/notofonts/thai) 可变字体，改名 |
+| `NotoSansArabic-VF.ttf` | Noto Sans Arabic 2.013 | 阿拉伯文 | [notofonts/arabic](https://github.com/notofonts/arabic) 可变字体，改名 |
+
+各字体的精确 SHA-256 见 `build-data/reference-fonts.sha256`。表中只有思源黑体 TC / JP / KR 的下载地址有原始记录；其余字体以版本号和校验值为准，重新下载后请核对校验值。
+
+许可原文：`licenses/OFL-SourceHanSans.txt`、`licenses/OFL-SourceSans3.md`、`licenses/OFL-Noto.txt`。
+
+## 用到的参数
+
+- **汉字、全角字形的底稿**：WorkBench（FreeType 单色渲染，`FT_LOAD_TARGET_MONO`，FreeType 2.13.2，关闭 stem darkening），wght 320，字面 14×13（“囗”全包围字与独体“口”13×13）。见 `archive/tong/docs/DESIGN.md`。
+- **全角符号和西文底稿**：同样的渲染，另加 1/16 像素横向相位搜索：每字试 16 种亚像素平移，选对称、少黑块、不断笔的一种（`archive/tong-ext-v5/scripts/phase.py`、`varraster.py`）。
+- **参考图 / 叠加轮廓**：汉字用该地区思源黑体 wght 400，em = 14 像素，基线在字格顶下 12 像素；西文用底稿所用字体（wght 320）和底稿字号，水平对齐底稿的最左墨迹列（`tools/editor/data/reference-western.txt`）。
+- `build-data/narrow-width.txt`：各地区思源黑体中步进 ≤ 700/1000 的码位。
+- `build-data/constants.txt`：比例版空格 = max(3, round(Source Sans 3 空格步进 × 13 / 1000))。

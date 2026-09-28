@@ -1,0 +1,1277 @@
+# Letter families of the .HW/.PR glyphs (tab-separated): code point, character, script group
+# (western / kana / thai / arabic), family name, base letter, Unicode names of its separable marks.
+# A family is a base letter and every letter built on it (A À Á Â …); the editor lists the base
+# and each diacritic as the letter's parts, and tools/western/ keeps a family consistent.
+U+0021	!	western	symbol	!	
+U+0022	"	western	symbol	"	
+U+0023	#	western	symbol	#	
+U+0024	$	western	symbol	$	
+U+0025	%	western	symbol	%	
+U+0026	&	western	symbol	&	
+U+0027	'	western	symbol	'	
+U+0028	(	western	symbol	(	
+U+0029	)	western	symbol	)	
+U+002A	*	western	symbol	*	
+U+002B	+	western	symbol	+	
+U+002C	,	western	symbol	,	
+U+002D	-	western	symbol	-	
+U+002E	.	western	symbol	.	
+U+002F	/	western	symbol	/	
+U+0030	0	western	symbol	0	
+U+0031	1	western	symbol	1	
+U+0032	2	western	symbol	2	
+U+0033	3	western	symbol	3	
+U+0034	4	western	symbol	4	
+U+0035	5	western	symbol	5	
+U+0036	6	western	symbol	6	
+U+0037	7	western	symbol	7	
+U+0038	8	western	symbol	8	
+U+0039	9	western	symbol	9	
+U+003A	:	western	symbol	:	
+U+003B	;	western	symbol	;	
+U+003C	<	western	symbol	<	
+U+003D	=	western	symbol	=	
+U+003E	>	western	symbol	>	
+U+003F	?	western	symbol	?	
+U+0040	@	western	symbol	@	
+U+0041	A	western	latin-a	A	
+U+0042	B	western	latin-b	B	
+U+0043	C	western	latin-c	C	
+U+0044	D	western	latin-d	D	
+U+0045	E	western	latin-e	E	
+U+0046	F	western	latin-f	F	
+U+0047	G	western	latin-g	G	
+U+0048	H	western	latin-h	H	
+U+0049	I	western	latin-i	I	
+U+004A	J	western	latin-j	J	
+U+004B	K	western	latin-k	K	
+U+004C	L	western	latin-l	L	
+U+004D	M	western	latin-m	M	
+U+004E	N	western	latin-n	N	
+U+004F	O	western	latin-o	O	
+U+0050	P	western	latin-p	P	
+U+0051	Q	western	latin-q	Q	
+U+0052	R	western	latin-r	R	
+U+0053	S	western	latin-s	S	
+U+0054	T	western	latin-t	T	
+U+0055	U	western	latin-u	U	
+U+0056	V	western	latin-v	V	
+U+0057	W	western	latin-w	W	
+U+0058	X	western	latin-x	X	
+U+0059	Y	western	latin-y	Y	
+U+005A	Z	western	latin-z	Z	
+U+005B	[	western	symbol	[	
+U+005C	\	western	symbol	\	
+U+005D	]	western	symbol	]	
+U+005E	^	western	symbol	^	
+U+005F	_	western	symbol	_	
+U+0060	`	western	symbol	`	
+U+0061	a	western	latin-a	a	
+U+0062	b	western	latin-b	b	
+U+0063	c	western	latin-c	c	
+U+0064	d	western	latin-d	d	
+U+0065	e	western	latin-e	e	
+U+0066	f	western	latin-f	f	
+U+0067	g	western	latin-g	g	
+U+0068	h	western	latin-h	h	
+U+0069	i	western	latin-i	i	
+U+006A	j	western	latin-j	j	
+U+006B	k	western	latin-k	k	
+U+006C	l	western	latin-l	l	
+U+006D	m	western	latin-m	m	
+U+006E	n	western	latin-n	n	
+U+006F	o	western	latin-o	o	
+U+0070	p	western	latin-p	p	
+U+0071	q	western	latin-q	q	
+U+0072	r	western	latin-r	r	
+U+0073	s	western	latin-s	s	
+U+0074	t	western	latin-t	t	
+U+0075	u	western	latin-u	u	
+U+0076	v	western	latin-v	v	
+U+0077	w	western	latin-w	w	
+U+0078	x	western	latin-x	x	
+U+0079	y	western	latin-y	y	
+U+007A	z	western	latin-z	z	
+U+007B	{	western	symbol	{	
+U+007C	|	western	symbol	|	
+U+007D	}	western	symbol	}	
+U+007E	~	western	symbol	~	
+U+00A1	¡	western	symbol	¡	
+U+00A2	¢	western	symbol	¢	
+U+00A3	£	western	symbol	£	
+U+00A4	¤	western	symbol	¤	
+U+00A5	¥	western	symbol	¥	
+U+00A6	¦	western	symbol	¦	
+U+00A7	§	western	symbol	§	
+U+00A8	¨	western	symbol	¨	
+U+00A9	©	western	symbol	©	
+U+00AA	ª	western	symbol	ª	
+U+00AB	«	western	symbol	«	
+U+00AC	¬	western	symbol	¬	
+U+00AE	®	western	symbol	®	
+U+00AF	¯	western	symbol	¯	
+U+00B0	°	western	symbol	°	
+U+00B1	±	western	symbol	±	
+U+00B2	²	western	symbol	²	
+U+00B3	³	western	symbol	³	
+U+00B4	´	western	symbol	´	
+U+00B5	µ	western	symbol	µ	
+U+00B6	¶	western	symbol	¶	
+U+00B7	·	western	symbol	·	
+U+00B8	¸	western	symbol	¸	
+U+00B9	¹	western	symbol	¹	
+U+00BA	º	western	symbol	º	
+U+00BB	»	western	symbol	»	
+U+00BC	¼	western	symbol	¼	
+U+00BD	½	western	symbol	½	
+U+00BE	¾	western	symbol	¾	
+U+00BF	¿	western	symbol	¿	
+U+00C0	À	western	latin-a	A	GRAVE ACCENT
+U+00C1	Á	western	latin-a	A	ACUTE ACCENT
+U+00C2	Â	western	latin-a	A	CIRCUMFLEX ACCENT
+U+00C3	Ã	western	latin-a	A	TILDE
+U+00C4	Ä	western	latin-a	A	DIAERESIS
+U+00C5	Å	western	latin-a	A	RING ABOVE
+U+00C6	Æ	western	latin-æ	Æ	
+U+00C7	Ç	western	latin-c	C	CEDILLA
+U+00C8	È	western	latin-e	E	GRAVE ACCENT
+U+00C9	É	western	latin-e	E	ACUTE ACCENT
+U+00CA	Ê	western	latin-e	E	CIRCUMFLEX ACCENT
+U+00CB	Ë	western	latin-e	E	DIAERESIS
+U+00CC	Ì	western	latin-i	I	GRAVE ACCENT
+U+00CD	Í	western	latin-i	I	ACUTE ACCENT
+U+00CE	Î	western	latin-i	I	CIRCUMFLEX ACCENT
+U+00CF	Ï	western	latin-i	I	DIAERESIS
+U+00D0	Ð	western	latin-ð	Ð	
+U+00D1	Ñ	western	latin-n	N	TILDE
+U+00D2	Ò	western	latin-o	O	GRAVE ACCENT
+U+00D3	Ó	western	latin-o	O	ACUTE ACCENT
+U+00D4	Ô	western	latin-o	O	CIRCUMFLEX ACCENT
+U+00D5	Õ	western	latin-o	O	TILDE
+U+00D6	Ö	western	latin-o	O	DIAERESIS
+U+00D7	×	western	symbol	×	
+U+00D8	Ø	western	latin-o	O	STROKE
+U+00D9	Ù	western	latin-u	U	GRAVE ACCENT
+U+00DA	Ú	western	latin-u	U	ACUTE ACCENT
+U+00DB	Û	western	latin-u	U	CIRCUMFLEX ACCENT
+U+00DC	Ü	western	latin-u	U	DIAERESIS
+U+00DD	Ý	western	latin-y	Y	ACUTE ACCENT
+U+00DE	Þ	western	latin-þ	Þ	
+U+00DF	ß	western	latin-ss	ß	
+U+00E0	à	western	latin-a	a	GRAVE ACCENT
+U+00E1	á	western	latin-a	a	ACUTE ACCENT
+U+00E2	â	western	latin-a	a	CIRCUMFLEX ACCENT
+U+00E3	ã	western	latin-a	a	TILDE
+U+00E4	ä	western	latin-a	a	DIAERESIS
+U+00E5	å	western	latin-a	a	RING ABOVE
+U+00E6	æ	western	latin-æ	æ	
+U+00E7	ç	western	latin-c	c	CEDILLA
+U+00E8	è	western	latin-e	e	GRAVE ACCENT
+U+00E9	é	western	latin-e	e	ACUTE ACCENT
+U+00EA	ê	western	latin-e	e	CIRCUMFLEX ACCENT
+U+00EB	ë	western	latin-e	e	DIAERESIS
+U+00EC	ì	western	latin-i	i	GRAVE ACCENT
+U+00ED	í	western	latin-i	i	ACUTE ACCENT
+U+00EE	î	western	latin-i	i	CIRCUMFLEX ACCENT
+U+00EF	ï	western	latin-i	i	DIAERESIS
+U+00F0	ð	western	latin-ð	ð	
+U+00F1	ñ	western	latin-n	n	TILDE
+U+00F2	ò	western	latin-o	o	GRAVE ACCENT
+U+00F3	ó	western	latin-o	o	ACUTE ACCENT
+U+00F4	ô	western	latin-o	o	CIRCUMFLEX ACCENT
+U+00F5	õ	western	latin-o	o	TILDE
+U+00F6	ö	western	latin-o	o	DIAERESIS
+U+00F7	÷	western	symbol	÷	
+U+00F8	ø	western	latin-o	o	STROKE
+U+00F9	ù	western	latin-u	u	GRAVE ACCENT
+U+00FA	ú	western	latin-u	u	ACUTE ACCENT
+U+00FB	û	western	latin-u	u	CIRCUMFLEX ACCENT
+U+00FC	ü	western	latin-u	u	DIAERESIS
+U+00FD	ý	western	latin-y	y	ACUTE ACCENT
+U+00FE	þ	western	latin-þ	þ	
+U+00FF	ÿ	western	latin-y	y	DIAERESIS
+U+0100	Ā	western	latin-a	A	MACRON
+U+0101	ā	western	latin-a	a	MACRON
+U+0102	Ă	western	latin-a	A	BREVE
+U+0103	ă	western	latin-a	a	BREVE
+U+0104	Ą	western	latin-a	A	OGONEK
+U+0105	ą	western	latin-a	a	OGONEK
+U+0106	Ć	western	latin-c	C	ACUTE ACCENT
+U+0107	ć	western	latin-c	c	ACUTE ACCENT
+U+0108	Ĉ	western	latin-c	C	CIRCUMFLEX ACCENT
+U+0109	ĉ	western	latin-c	c	CIRCUMFLEX ACCENT
+U+010A	Ċ	western	latin-c	C	DOT ABOVE
+U+010B	ċ	western	latin-c	c	DOT ABOVE
+U+010C	Č	western	latin-c	C	CARON
+U+010D	č	western	latin-c	c	CARON
+U+010E	Ď	western	latin-d	D	CARON
+U+010F	ď	western	latin-d	d	CARON
+U+0110	Đ	western	latin-d	D	STROKE
+U+0111	đ	western	latin-d	d	STROKE
+U+0112	Ē	western	latin-e	E	MACRON
+U+0113	ē	western	latin-e	e	MACRON
+U+0114	Ĕ	western	latin-e	E	BREVE
+U+0115	ĕ	western	latin-e	e	BREVE
+U+0116	Ė	western	latin-e	E	DOT ABOVE
+U+0117	ė	western	latin-e	e	DOT ABOVE
+U+0118	Ę	western	latin-e	E	OGONEK
+U+0119	ę	western	latin-e	e	OGONEK
+U+011A	Ě	western	latin-e	E	CARON
+U+011B	ě	western	latin-e	e	CARON
+U+011C	Ĝ	western	latin-g	G	CIRCUMFLEX ACCENT
+U+011D	ĝ	western	latin-g	g	CIRCUMFLEX ACCENT
+U+011E	Ğ	western	latin-g	G	BREVE
+U+011F	ğ	western	latin-g	g	BREVE
+U+0120	Ġ	western	latin-g	G	DOT ABOVE
+U+0121	ġ	western	latin-g	g	DOT ABOVE
+U+0122	Ģ	western	latin-g	G	CEDILLA
+U+0123	ģ	western	latin-g	g	CEDILLA
+U+0124	Ĥ	western	latin-h	H	CIRCUMFLEX ACCENT
+U+0125	ĥ	western	latin-h	h	CIRCUMFLEX ACCENT
+U+0126	Ħ	western	latin-h	H	STROKE
+U+0127	ħ	western	latin-h	h	STROKE
+U+0128	Ĩ	western	latin-i	I	TILDE
+U+0129	ĩ	western	latin-i	i	TILDE
+U+012A	Ī	western	latin-i	I	MACRON
+U+012B	ī	western	latin-i	i	MACRON
+U+012C	Ĭ	western	latin-i	I	BREVE
+U+012D	ĭ	western	latin-i	i	BREVE
+U+012E	Į	western	latin-i	I	OGONEK
+U+012F	į	western	latin-i	i	OGONEK
+U+0130	İ	western	latin-i	I	DOT ABOVE
+U+0131	ı	western	latin-ı	ı	
+U+0132	Ĳ	western	symbol	Ĳ	
+U+0133	ĳ	western	symbol	ĳ	
+U+0134	Ĵ	western	latin-j	J	CIRCUMFLEX ACCENT
+U+0135	ĵ	western	latin-j	j	CIRCUMFLEX ACCENT
+U+0136	Ķ	western	latin-k	K	CEDILLA
+U+0137	ķ	western	latin-k	k	CEDILLA
+U+0138	ĸ	western	latin-ĸ	ĸ	
+U+0139	Ĺ	western	latin-l	L	ACUTE ACCENT
+U+013A	ĺ	western	latin-l	l	ACUTE ACCENT
+U+013B	Ļ	western	latin-l	L	CEDILLA
+U+013C	ļ	western	latin-l	l	CEDILLA
+U+013D	Ľ	western	latin-l	L	CARON
+U+013E	ľ	western	latin-l	l	CARON
+U+013F	Ŀ	western	latin-l	L	MIDDLE DOT
+U+0140	ŀ	western	latin-l	l	MIDDLE DOT
+U+0141	Ł	western	latin-l	L	STROKE
+U+0142	ł	western	latin-l	l	STROKE
+U+0143	Ń	western	latin-n	N	ACUTE ACCENT
+U+0144	ń	western	latin-n	n	ACUTE ACCENT
+U+0145	Ņ	western	latin-n	N	CEDILLA
+U+0146	ņ	western	latin-n	n	CEDILLA
+U+0147	Ň	western	latin-n	N	CARON
+U+0148	ň	western	latin-n	n	CARON
+U+0149	ŉ	western	latin-ʼn	ŉ	
+U+014A	Ŋ	western	latin-ŋ	Ŋ	
+U+014B	ŋ	western	latin-ŋ	ŋ	
+U+014C	Ō	western	latin-o	O	MACRON
+U+014D	ō	western	latin-o	o	MACRON
+U+014E	Ŏ	western	latin-o	O	BREVE
+U+014F	ŏ	western	latin-o	o	BREVE
+U+0150	Ő	western	latin-o	O	DOUBLE ACUTE ACCENT
+U+0151	ő	western	latin-o	o	DOUBLE ACUTE ACCENT
+U+0152	Œ	western	symbol	Œ	
+U+0153	œ	western	symbol	œ	
+U+0154	Ŕ	western	latin-r	R	ACUTE ACCENT
+U+0155	ŕ	western	latin-r	r	ACUTE ACCENT
+U+0156	Ŗ	western	latin-r	R	CEDILLA
+U+0157	ŗ	western	latin-r	r	CEDILLA
+U+0158	Ř	western	latin-r	R	CARON
+U+0159	ř	western	latin-r	r	CARON
+U+015A	Ś	western	latin-s	S	ACUTE ACCENT
+U+015B	ś	western	latin-s	s	ACUTE ACCENT
+U+015C	Ŝ	western	latin-s	S	CIRCUMFLEX ACCENT
+U+015D	ŝ	western	latin-s	s	CIRCUMFLEX ACCENT
+U+015E	Ş	western	latin-s	S	CEDILLA
+U+015F	ş	western	latin-s	s	CEDILLA
+U+0160	Š	western	latin-s	S	CARON
+U+0161	š	western	latin-s	s	CARON
+U+0162	Ţ	western	latin-t	T	CEDILLA
+U+0163	ţ	western	latin-t	t	CEDILLA
+U+0164	Ť	western	latin-t	T	CARON
+U+0165	ť	western	latin-t	t	CARON
+U+0166	Ŧ	western	latin-t	T	STROKE
+U+0167	ŧ	western	latin-t	t	STROKE
+U+0168	Ũ	western	latin-u	U	TILDE
+U+0169	ũ	western	latin-u	u	TILDE
+U+016A	Ū	western	latin-u	U	MACRON
+U+016B	ū	western	latin-u	u	MACRON
+U+016C	Ŭ	western	latin-u	U	BREVE
+U+016D	ŭ	western	latin-u	u	BREVE
+U+016E	Ů	western	latin-u	U	RING ABOVE
+U+016F	ů	western	latin-u	u	RING ABOVE
+U+0170	Ű	western	latin-u	U	DOUBLE ACUTE ACCENT
+U+0171	ű	western	latin-u	u	DOUBLE ACUTE ACCENT
+U+0172	Ų	western	latin-u	U	OGONEK
+U+0173	ų	western	latin-u	u	OGONEK
+U+0174	Ŵ	western	latin-w	W	CIRCUMFLEX ACCENT
+U+0175	ŵ	western	latin-w	w	CIRCUMFLEX ACCENT
+U+0176	Ŷ	western	latin-y	Y	CIRCUMFLEX ACCENT
+U+0177	ŷ	western	latin-y	y	CIRCUMFLEX ACCENT
+U+0178	Ÿ	western	latin-y	Y	DIAERESIS
+U+0179	Ź	western	latin-z	Z	ACUTE ACCENT
+U+017A	ź	western	latin-z	z	ACUTE ACCENT
+U+017B	Ż	western	latin-z	Z	DOT ABOVE
+U+017C	ż	western	latin-z	z	DOT ABOVE
+U+017D	Ž	western	latin-z	Z	CARON
+U+017E	ž	western	latin-z	z	CARON
+U+017F	ſ	western	latin-s	ſ	
+U+0180	ƀ	western	latin-b	b	STROKE
+U+0181	Ɓ	western	latin-b	B	HOOK
+U+0182	Ƃ	western	latin-b	B	TOPBAR
+U+0183	ƃ	western	latin-b	b	TOPBAR
+U+0184	Ƅ	western	latin-ƅ	Ƅ	
+U+0185	ƅ	western	latin-ƅ	ƅ	
+U+0186	Ɔ	western	latin-ɔ	Ɔ	
+U+0187	Ƈ	western	latin-c	C	HOOK
+U+0188	ƈ	western	latin-c	c	HOOK
+U+0189	Ɖ	western	latin-ɖ	Ɖ	
+U+018A	Ɗ	western	latin-d	D	HOOK
+U+018B	Ƌ	western	latin-d	D	TOPBAR
+U+018C	ƌ	western	latin-d	d	TOPBAR
+U+018D	ƍ	western	latin-ƍ	ƍ	
+U+018E	Ǝ	western	latin-ǝ	Ǝ	
+U+018F	Ə	western	latin-ə	Ə	
+U+0190	Ɛ	western	latin-ɛ	Ɛ	
+U+0191	Ƒ	western	latin-f	F	HOOK
+U+0192	ƒ	western	latin-f	f	HOOK
+U+0193	Ɠ	western	latin-g	G	HOOK
+U+0194	Ɣ	western	latin-ɣ	Ɣ	
+U+0195	ƕ	western	latin-ƕ	ƕ	
+U+0196	Ɩ	western	latin-ɩ	Ɩ	
+U+0197	Ɨ	western	latin-i	I	STROKE
+U+0198	Ƙ	western	latin-k	K	HOOK
+U+0199	ƙ	western	latin-k	k	HOOK
+U+019A	ƚ	western	latin-l	l	BAR
+U+019B	ƛ	western	latin-ƛ	ƛ	STROKE
+U+019C	Ɯ	western	latin-ɯ	Ɯ	
+U+019D	Ɲ	western	latin-n	N	LEFT HOOK
+U+019E	ƞ	western	latin-n	n	LONG RIGHT LEG
+U+019F	Ɵ	western	latin-o	O	MIDDLE TILDE
+U+01A0	Ơ	western	latin-o	O	HORN
+U+01A1	ơ	western	latin-o	o	HORN
+U+01A2	Ƣ	western	latin-ƣ	Ƣ	
+U+01A3	ƣ	western	latin-ƣ	ƣ	
+U+01A4	Ƥ	western	latin-p	P	HOOK
+U+01A5	ƥ	western	latin-p	p	HOOK
+U+01A6	Ʀ	western	symbol	Ʀ	
+U+01A7	Ƨ	western	latin-ƨ	Ƨ	
+U+01A8	ƨ	western	latin-ƨ	ƨ	
+U+01A9	Ʃ	western	latin-ʃ	Ʃ	
+U+01AA	ƪ	western	symbol	ƪ	
+U+01AB	ƫ	western	latin-t	t	PALATAL HOOK
+U+01AC	Ƭ	western	latin-t	T	HOOK
+U+01AD	ƭ	western	latin-t	t	HOOK
+U+01AE	Ʈ	western	latin-t	T	RETROFLEX HOOK
+U+01AF	Ư	western	latin-u	U	HORN
+U+01B0	ư	western	latin-u	u	HORN
+U+01B1	Ʊ	western	latin-ʊ	Ʊ	
+U+01B2	Ʋ	western	latin-v	V	HOOK
+U+01B3	Ƴ	western	latin-y	Y	HOOK
+U+01B4	ƴ	western	latin-y	y	HOOK
+U+01B5	Ƶ	western	latin-z	Z	STROKE
+U+01B6	ƶ	western	latin-z	z	STROKE
+U+01B7	Ʒ	western	latin-ʒ	Ʒ	
+U+01B8	Ƹ	western	latin-ƹ	Ƹ	
+U+01B9	ƹ	western	latin-ƹ	ƹ	
+U+01BA	ƺ	western	latin-ʒ	ʒ	TAIL
+U+01BB	ƻ	western	symbol	ƻ	
+U+01BC	Ƽ	western	latin-ƽ	Ƽ	
+U+01BD	ƽ	western	latin-ƽ	ƽ	
+U+01BE	ƾ	western	symbol	ƾ	
+U+01BF	ƿ	western	symbol	ƿ	
+U+01C0	ǀ	western	symbol	ǀ	
+U+01C1	ǁ	western	symbol	ǁ	
+U+01C2	ǂ	western	symbol	ǂ	
+U+01C3	ǃ	western	symbol	ǃ	
+U+01C4	Ǆ	western	latin-ǳ	Ǳ	CARON
+U+01C5	ǅ	western	latin-d	D	SMALL LETTER Z WITH CARON
+U+01C6	ǆ	western	latin-ǳ	ǳ	CARON
+U+01C7	Ǉ	western	latin-ǉ	Ǉ	
+U+01C8	ǈ	western	latin-l	L	SMALL LETTER J
+U+01C9	ǉ	western	latin-ǉ	ǉ	
+U+01CA	Ǌ	western	latin-ǌ	Ǌ	
+U+01CB	ǋ	western	latin-n	N	SMALL LETTER J
+U+01CC	ǌ	western	latin-ǌ	ǌ	
+U+01CD	Ǎ	western	latin-a	A	CARON
+U+01CE	ǎ	western	latin-a	a	CARON
+U+01CF	Ǐ	western	latin-i	I	CARON
+U+01D0	ǐ	western	latin-i	i	CARON
+U+01D1	Ǒ	western	latin-o	O	CARON
+U+01D2	ǒ	western	latin-o	o	CARON
+U+01D3	Ǔ	western	latin-u	U	CARON
+U+01D4	ǔ	western	latin-u	u	CARON
+U+01D5	Ǖ	western	latin-u	U	DIAERESIS,MACRON
+U+01D6	ǖ	western	latin-u	u	DIAERESIS,MACRON
+U+01D7	Ǘ	western	latin-u	U	DIAERESIS,ACUTE ACCENT
+U+01D8	ǘ	western	latin-u	u	DIAERESIS,ACUTE ACCENT
+U+01D9	Ǚ	western	latin-u	U	DIAERESIS,CARON
+U+01DA	ǚ	western	latin-u	u	DIAERESIS,CARON
+U+01DB	Ǜ	western	latin-u	U	DIAERESIS,GRAVE ACCENT
+U+01DC	ǜ	western	latin-u	u	DIAERESIS,GRAVE ACCENT
+U+01DD	ǝ	western	latin-ǝ	ǝ	
+U+01DE	Ǟ	western	latin-a	A	DIAERESIS,MACRON
+U+01DF	ǟ	western	latin-a	a	DIAERESIS,MACRON
+U+01E0	Ǡ	western	latin-a	A	DOT ABOVE,MACRON
+U+01E1	ǡ	western	latin-a	a	DOT ABOVE,MACRON
+U+01E2	Ǣ	western	latin-æ	Æ	MACRON
+U+01E3	ǣ	western	latin-æ	æ	MACRON
+U+01E4	Ǥ	western	latin-g	G	STROKE
+U+01E5	ǥ	western	latin-g	g	STROKE
+U+01E6	Ǧ	western	latin-g	G	CARON
+U+01E7	ǧ	western	latin-g	g	CARON
+U+01E8	Ǩ	western	latin-k	K	CARON
+U+01E9	ǩ	western	latin-k	k	CARON
+U+01EA	Ǫ	western	latin-o	O	OGONEK
+U+01EB	ǫ	western	latin-o	o	OGONEK
+U+01EC	Ǭ	western	latin-o	O	OGONEK,MACRON
+U+01ED	ǭ	western	latin-o	o	OGONEK,MACRON
+U+01EE	Ǯ	western	latin-ʒ	Ʒ	CARON
+U+01EF	ǯ	western	latin-ʒ	ʒ	CARON
+U+01F0	ǰ	western	latin-j	j	CARON
+U+01F1	Ǳ	western	latin-ǳ	Ǳ	
+U+01F2	ǲ	western	latin-d	D	SMALL LETTER Z
+U+01F3	ǳ	western	latin-ǳ	ǳ	
+U+01F4	Ǵ	western	latin-g	G	ACUTE ACCENT
+U+01F5	ǵ	western	latin-g	g	ACUTE ACCENT
+U+01F6	Ƕ	western	latin-ƕ	Ƕ	
+U+01F7	Ƿ	western	latin-ƿ	Ƿ	
+U+01F8	Ǹ	western	latin-n	N	GRAVE ACCENT
+U+01F9	ǹ	western	latin-n	n	GRAVE ACCENT
+U+01FA	Ǻ	western	latin-a	A	RING ABOVE,ACUTE ACCENT
+U+01FB	ǻ	western	latin-a	a	RING ABOVE,ACUTE ACCENT
+U+01FC	Ǽ	western	latin-æ	Æ	ACUTE ACCENT
+U+01FD	ǽ	western	latin-æ	æ	ACUTE ACCENT
+U+01FE	Ǿ	western	latin-ø	Ø	ACUTE ACCENT
+U+01FF	ǿ	western	latin-ø	ø	ACUTE ACCENT
+U+0200	Ȁ	western	latin-a	A	DOUBLE GRAVE ACCENT
+U+0201	ȁ	western	latin-a	a	DOUBLE GRAVE ACCENT
+U+0202	Ȃ	western	latin-a	A	INVERTED BREVE
+U+0203	ȃ	western	latin-a	a	INVERTED BREVE
+U+0204	Ȅ	western	latin-e	E	DOUBLE GRAVE ACCENT
+U+0205	ȅ	western	latin-e	e	DOUBLE GRAVE ACCENT
+U+0206	Ȇ	western	latin-e	E	INVERTED BREVE
+U+0207	ȇ	western	latin-e	e	INVERTED BREVE
+U+0208	Ȉ	western	latin-i	I	DOUBLE GRAVE ACCENT
+U+0209	ȉ	western	latin-i	i	DOUBLE GRAVE ACCENT
+U+020A	Ȋ	western	latin-i	I	INVERTED BREVE
+U+020B	ȋ	western	latin-i	i	INVERTED BREVE
+U+020C	Ȍ	western	latin-o	O	DOUBLE GRAVE ACCENT
+U+020D	ȍ	western	latin-o	o	DOUBLE GRAVE ACCENT
+U+020E	Ȏ	western	latin-o	O	INVERTED BREVE
+U+020F	ȏ	western	latin-o	o	INVERTED BREVE
+U+0210	Ȑ	western	latin-r	R	DOUBLE GRAVE ACCENT
+U+0211	ȑ	western	latin-r	r	DOUBLE GRAVE ACCENT
+U+0212	Ȓ	western	latin-r	R	INVERTED BREVE
+U+0213	ȓ	western	latin-r	r	INVERTED BREVE
+U+0214	Ȕ	western	latin-u	U	DOUBLE GRAVE ACCENT
+U+0215	ȕ	western	latin-u	u	DOUBLE GRAVE ACCENT
+U+0216	Ȗ	western	latin-u	U	INVERTED BREVE
+U+0217	ȗ	western	latin-u	u	INVERTED BREVE
+U+0218	Ș	western	latin-s	S	COMMA BELOW
+U+0219	ș	western	latin-s	s	COMMA BELOW
+U+021A	Ț	western	latin-t	T	COMMA BELOW
+U+021B	ț	western	latin-t	t	COMMA BELOW
+U+021C	Ȝ	western	latin-ȝ	Ȝ	
+U+021D	ȝ	western	latin-ȝ	ȝ	
+U+021E	Ȟ	western	latin-h	H	CARON
+U+021F	ȟ	western	latin-h	h	CARON
+U+0220	Ƞ	western	latin-n	N	LONG RIGHT LEG
+U+0221	ȡ	western	latin-d	d	CURL
+U+0222	Ȣ	western	latin-ȣ	Ȣ	
+U+0223	ȣ	western	latin-ȣ	ȣ	
+U+0224	Ȥ	western	latin-z	Z	HOOK
+U+0225	ȥ	western	latin-z	z	HOOK
+U+0226	Ȧ	western	latin-a	A	DOT ABOVE
+U+0227	ȧ	western	latin-a	a	DOT ABOVE
+U+0228	Ȩ	western	latin-e	E	CEDILLA
+U+0229	ȩ	western	latin-e	e	CEDILLA
+U+022A	Ȫ	western	latin-o	O	DIAERESIS,MACRON
+U+022B	ȫ	western	latin-o	o	DIAERESIS,MACRON
+U+022C	Ȭ	western	latin-o	O	TILDE,MACRON
+U+022D	ȭ	western	latin-o	o	TILDE,MACRON
+U+022E	Ȯ	western	latin-o	O	DOT ABOVE
+U+022F	ȯ	western	latin-o	o	DOT ABOVE
+U+0230	Ȱ	western	latin-o	O	DOT ABOVE,MACRON
+U+0231	ȱ	western	latin-o	o	DOT ABOVE,MACRON
+U+0232	Ȳ	western	latin-y	Y	MACRON
+U+0233	ȳ	western	latin-y	y	MACRON
+U+0234	ȴ	western	latin-l	l	CURL
+U+0235	ȵ	western	latin-n	n	CURL
+U+0236	ȶ	western	latin-t	t	CURL
+U+0237	ȷ	western	latin-ȷ	ȷ	
+U+0238	ȸ	western	latin-ȸ	ȸ	
+U+0239	ȹ	western	latin-ȹ	ȹ	
+U+023A	Ⱥ	western	latin-a	A	STROKE
+U+023B	Ȼ	western	latin-c	C	STROKE
+U+023C	ȼ	western	latin-c	c	STROKE
+U+023D	Ƚ	western	latin-l	L	BAR
+U+023E	Ⱦ	western	latin-t	T	DIAGONAL STROKE
+U+023F	ȿ	western	latin-s	s	SWASH TAIL
+U+0240	ɀ	western	latin-z	z	SWASH TAIL
+U+0241	Ɂ	western	latin-ɂ	Ɂ	
+U+0242	ɂ	western	latin-ɂ	ɂ	
+U+0243	Ƀ	western	latin-b	B	STROKE
+U+0244	Ʉ	western	latin-ʉ	Ʉ	
+U+0245	Ʌ	western	latin-ʌ	Ʌ	
+U+0246	Ɇ	western	latin-e	E	STROKE
+U+0247	ɇ	western	latin-e	e	STROKE
+U+0248	Ɉ	western	latin-j	J	STROKE
+U+0249	ɉ	western	latin-j	j	STROKE
+U+024A	Ɋ	western	latin-ɋ	Ɋ	HOOK TAIL
+U+024B	ɋ	western	latin-q	q	HOOK TAIL
+U+024C	Ɍ	western	latin-r	R	STROKE
+U+024D	ɍ	western	latin-r	r	STROKE
+U+024E	Ɏ	western	latin-y	Y	STROKE
+U+024F	ɏ	western	latin-y	y	STROKE
+U+02C6	ˆ	western	symbol	ˆ	
+U+02C7	ˇ	western	symbol	ˇ	
+U+02C9	ˉ	western	symbol	ˉ	
+U+02D8	˘	western	symbol	˘	
+U+02D9	˙	western	symbol	˙	
+U+02DA	˚	western	symbol	˚	
+U+02DB	˛	western	symbol	˛	
+U+02DD	˝	western	symbol	˝	
+U+0384	΄	western	symbol	΄	
+U+0385	΅	western	symbol	¨	ACUTE ACCENT
+U+0386	Ά	western	greek-α	Α	ACUTE ACCENT
+U+0387	·	western	symbol	·	
+U+0388	Έ	western	greek-ε	Ε	ACUTE ACCENT
+U+0389	Ή	western	greek-η	Η	ACUTE ACCENT
+U+038A	Ί	western	greek-ι	Ι	ACUTE ACCENT
+U+038C	Ό	western	greek-ο	Ο	ACUTE ACCENT
+U+038E	Ύ	western	greek-υ	Υ	ACUTE ACCENT
+U+038F	Ώ	western	greek-ω	Ω	ACUTE ACCENT
+U+0390	ΐ	western	greek-ι	ι	DIAERESIS,ACUTE ACCENT
+U+0391	Α	western	greek-α	Α	
+U+0392	Β	western	greek-β	Β	
+U+0393	Γ	western	greek-γ	Γ	
+U+0394	Δ	western	greek-δ	Δ	
+U+0395	Ε	western	greek-ε	Ε	
+U+0396	Ζ	western	greek-ζ	Ζ	
+U+0397	Η	western	greek-η	Η	
+U+0398	Θ	western	greek-θ	Θ	
+U+0399	Ι	western	greek-ι	Ι	
+U+039A	Κ	western	greek-κ	Κ	
+U+039B	Λ	western	greek-λ	Λ	
+U+039C	Μ	western	greek-μ	Μ	
+U+039D	Ν	western	greek-ν	Ν	
+U+039E	Ξ	western	greek-ξ	Ξ	
+U+039F	Ο	western	greek-ο	Ο	
+U+03A0	Π	western	greek-π	Π	
+U+03A1	Ρ	western	greek-ρ	Ρ	
+U+03A3	Σ	western	greek-σ	Σ	
+U+03A4	Τ	western	greek-τ	Τ	
+U+03A5	Υ	western	greek-υ	Υ	
+U+03A6	Φ	western	greek-φ	Φ	
+U+03A7	Χ	western	greek-χ	Χ	
+U+03A8	Ψ	western	greek-ψ	Ψ	
+U+03A9	Ω	western	greek-ω	Ω	
+U+03AA	Ϊ	western	greek-ι	Ι	DIAERESIS
+U+03AB	Ϋ	western	greek-υ	Υ	DIAERESIS
+U+03AC	ά	western	greek-α	α	ACUTE ACCENT
+U+03AD	έ	western	greek-ε	ε	ACUTE ACCENT
+U+03AE	ή	western	greek-η	η	ACUTE ACCENT
+U+03AF	ί	western	greek-ι	ι	ACUTE ACCENT
+U+03B0	ΰ	western	greek-υ	υ	DIAERESIS,ACUTE ACCENT
+U+03B1	α	western	greek-α	α	
+U+03B2	β	western	greek-β	β	
+U+03B3	γ	western	greek-γ	γ	
+U+03B4	δ	western	greek-δ	δ	
+U+03B5	ε	western	greek-ε	ε	
+U+03B6	ζ	western	greek-ζ	ζ	
+U+03B7	η	western	greek-η	η	
+U+03B8	θ	western	greek-θ	θ	
+U+03B9	ι	western	greek-ι	ι	
+U+03BA	κ	western	greek-κ	κ	
+U+03BB	λ	western	greek-λ	λ	
+U+03BC	μ	western	greek-μ	μ	
+U+03BD	ν	western	greek-ν	ν	
+U+03BE	ξ	western	greek-ξ	ξ	
+U+03BF	ο	western	greek-ο	ο	
+U+03C0	π	western	greek-π	π	
+U+03C1	ρ	western	greek-ρ	ρ	
+U+03C2	ς	western	greek-σ	ς	
+U+03C3	σ	western	greek-σ	σ	
+U+03C4	τ	western	greek-τ	τ	
+U+03C5	υ	western	greek-υ	υ	
+U+03C6	φ	western	greek-φ	φ	
+U+03C7	χ	western	greek-χ	χ	
+U+03C8	ψ	western	greek-ψ	ψ	
+U+03C9	ω	western	greek-ω	ω	
+U+03CA	ϊ	western	greek-ι	ι	DIAERESIS
+U+03CB	ϋ	western	greek-υ	υ	DIAERESIS
+U+03CC	ό	western	greek-ο	ο	ACUTE ACCENT
+U+03CD	ύ	western	greek-υ	υ	ACUTE ACCENT
+U+03CE	ώ	western	greek-ω	ω	ACUTE ACCENT
+U+0401	Ё	western	cyrillic-е	Е	DIAERESIS
+U+0402	Ђ	western	cyrillic-ђ	Ђ	
+U+0403	Ѓ	western	cyrillic-г	Г	ACUTE ACCENT
+U+0404	Є	western	cyrillic-є	Є	
+U+0405	Ѕ	western	cyrillic-ѕ	Ѕ	
+U+0406	І	western	cyrillic-і	І	
+U+0407	Ї	western	cyrillic-і	І	DIAERESIS
+U+0408	Ј	western	cyrillic-ј	Ј	
+U+0409	Љ	western	cyrillic-љ	Љ	
+U+040A	Њ	western	cyrillic-њ	Њ	
+U+040B	Ћ	western	cyrillic-ћ	Ћ	
+U+040C	Ќ	western	cyrillic-к	К	ACUTE ACCENT
+U+040D	Ѝ	western	cyrillic-и	И	GRAVE ACCENT
+U+040E	Ў	western	cyrillic-у	У	BREVE
+U+040F	Џ	western	cyrillic-џ	Џ	
+U+0410	А	western	cyrillic-а	А	
+U+0411	Б	western	cyrillic-б	Б	
+U+0412	В	western	cyrillic-в	В	
+U+0413	Г	western	cyrillic-г	Г	
+U+0414	Д	western	cyrillic-д	Д	
+U+0415	Е	western	cyrillic-е	Е	
+U+0416	Ж	western	cyrillic-ж	Ж	
+U+0417	З	western	cyrillic-з	З	
+U+0418	И	western	cyrillic-и	И	
+U+0419	Й	western	cyrillic-и	И	BREVE
+U+041A	К	western	cyrillic-к	К	
+U+041B	Л	western	cyrillic-л	Л	
+U+041C	М	western	cyrillic-м	М	
+U+041D	Н	western	cyrillic-н	Н	
+U+041E	О	western	cyrillic-о	О	
+U+041F	П	western	cyrillic-п	П	
+U+0420	Р	western	cyrillic-р	Р	
+U+0421	С	western	cyrillic-с	С	
+U+0422	Т	western	cyrillic-т	Т	
+U+0423	У	western	cyrillic-у	У	
+U+0424	Ф	western	cyrillic-ф	Ф	
+U+0425	Х	western	cyrillic-х	Х	
+U+0426	Ц	western	cyrillic-ц	Ц	
+U+0427	Ч	western	cyrillic-ч	Ч	
+U+0428	Ш	western	cyrillic-ш	Ш	
+U+0429	Щ	western	cyrillic-щ	Щ	
+U+042A	Ъ	western	cyrillic-ъ	Ъ	
+U+042B	Ы	western	cyrillic-ы	Ы	
+U+042C	Ь	western	cyrillic-ь	Ь	
+U+042D	Э	western	cyrillic-э	Э	
+U+042E	Ю	western	cyrillic-ю	Ю	
+U+042F	Я	western	cyrillic-я	Я	
+U+0430	а	western	cyrillic-а	а	
+U+0431	б	western	cyrillic-б	б	
+U+0432	в	western	cyrillic-в	в	
+U+0433	г	western	cyrillic-г	г	
+U+0434	д	western	cyrillic-д	д	
+U+0435	е	western	cyrillic-е	е	
+U+0436	ж	western	cyrillic-ж	ж	
+U+0437	з	western	cyrillic-з	з	
+U+0438	и	western	cyrillic-и	и	
+U+0439	й	western	cyrillic-и	и	BREVE
+U+043A	к	western	cyrillic-к	к	
+U+043B	л	western	cyrillic-л	л	
+U+043C	м	western	cyrillic-м	м	
+U+043D	н	western	cyrillic-н	н	
+U+043E	о	western	cyrillic-о	о	
+U+043F	п	western	cyrillic-п	п	
+U+0440	р	western	cyrillic-р	р	
+U+0441	с	western	cyrillic-с	с	
+U+0442	т	western	cyrillic-т	т	
+U+0443	у	western	cyrillic-у	у	
+U+0444	ф	western	cyrillic-ф	ф	
+U+0445	х	western	cyrillic-х	х	
+U+0446	ц	western	cyrillic-ц	ц	
+U+0447	ч	western	cyrillic-ч	ч	
+U+0448	ш	western	cyrillic-ш	ш	
+U+0449	щ	western	cyrillic-щ	щ	
+U+044A	ъ	western	cyrillic-ъ	ъ	
+U+044B	ы	western	cyrillic-ы	ы	
+U+044C	ь	western	cyrillic-ь	ь	
+U+044D	э	western	cyrillic-э	э	
+U+044E	ю	western	cyrillic-ю	ю	
+U+044F	я	western	cyrillic-я	я	
+U+0450	ѐ	western	cyrillic-е	е	GRAVE ACCENT
+U+0451	ё	western	cyrillic-е	е	DIAERESIS
+U+0452	ђ	western	cyrillic-ђ	ђ	
+U+0453	ѓ	western	cyrillic-г	г	ACUTE ACCENT
+U+0454	є	western	cyrillic-є	є	
+U+0455	ѕ	western	cyrillic-ѕ	ѕ	
+U+0456	і	western	cyrillic-і	і	
+U+0457	ї	western	cyrillic-і	і	DIAERESIS
+U+0458	ј	western	cyrillic-ј	ј	
+U+0459	љ	western	cyrillic-љ	љ	
+U+045A	њ	western	cyrillic-њ	њ	
+U+045B	ћ	western	cyrillic-ћ	ћ	
+U+045C	ќ	western	cyrillic-к	к	ACUTE ACCENT
+U+045D	ѝ	western	cyrillic-и	и	GRAVE ACCENT
+U+045E	ў	western	cyrillic-у	у	BREVE
+U+045F	џ	western	cyrillic-џ	џ	
+U+0490	Ґ	western	cyrillic-г	Г	UPTURN
+U+0491	ґ	western	cyrillic-г	г	UPTURN
+U+060C	،	arabic	arabic-060C	،	
+U+061B	؛	arabic	arabic-061B	؛	
+U+061F	؟	arabic	arabic-061F	؟	
+U+0621	ء	arabic	arabic-0621	ء	
+U+0622	آ	arabic	arabic-0622	آ	
+U+0623	أ	arabic	arabic-0623	أ	
+U+0624	ؤ	arabic	arabic-0624	ؤ	
+U+0625	إ	arabic	arabic-0625	إ	
+U+0626	ئ	arabic	arabic-0626	ئ	
+U+0627	ا	arabic	arabic-0627	ا	
+U+0628	ب	arabic	arabic-0628	ب	
+U+0629	ة	arabic	arabic-0629	ة	
+U+062A	ت	arabic	arabic-062A	ت	
+U+062B	ث	arabic	arabic-062B	ث	
+U+062C	ج	arabic	arabic-062C	ج	
+U+062D	ح	arabic	arabic-062D	ح	
+U+062E	خ	arabic	arabic-062E	خ	
+U+062F	د	arabic	arabic-062F	د	
+U+0630	ذ	arabic	arabic-0630	ذ	
+U+0631	ر	arabic	arabic-0631	ر	
+U+0632	ز	arabic	arabic-0632	ز	
+U+0633	س	arabic	arabic-0633	س	
+U+0634	ش	arabic	arabic-0634	ش	
+U+0635	ص	arabic	arabic-0635	ص	
+U+0636	ض	arabic	arabic-0636	ض	
+U+0637	ط	arabic	arabic-0637	ط	
+U+0638	ظ	arabic	arabic-0638	ظ	
+U+0639	ع	arabic	arabic-0639	ع	
+U+063A	غ	arabic	arabic-063A	غ	
+U+0640	ـ	arabic	arabic-0640	ـ	
+U+0641	ف	arabic	arabic-0641	ف	
+U+0642	ق	arabic	arabic-0642	ق	
+U+0643	ك	arabic	arabic-0643	ك	
+U+0644	ل	arabic	arabic-0644	ل	
+U+0645	م	arabic	arabic-0645	م	
+U+0646	ن	arabic	arabic-0646	ن	
+U+0647	ه	arabic	arabic-0647	ه	
+U+0648	و	arabic	arabic-0648	و	
+U+0649	ى	arabic	arabic-0649	ى	
+U+064A	ي	arabic	arabic-064A	ي	
+U+064B	ً	arabic	arabic-064B	ً	
+U+064C	ٌ	arabic	arabic-064C	ٌ	
+U+064D	ٍ	arabic	arabic-064D	ٍ	
+U+064E	َ	arabic	arabic-064E	َ	
+U+064F	ُ	arabic	arabic-064F	ُ	
+U+0650	ِ	arabic	arabic-0650	ِ	
+U+0651	ّ	arabic	arabic-0651	ّ	
+U+0652	ْ	arabic	arabic-0652	ْ	
+U+0653	ٓ	arabic	arabic-0653	ٓ	
+U+0654	ٔ	arabic	arabic-0654	ٔ	
+U+0655	ٕ	arabic	arabic-0655	ٕ	
+U+0660	٠	arabic	arabic-0660	٠	
+U+0661	١	arabic	arabic-0661	١	
+U+0662	٢	arabic	arabic-0662	٢	
+U+0663	٣	arabic	arabic-0663	٣	
+U+0664	٤	arabic	arabic-0664	٤	
+U+0665	٥	arabic	arabic-0665	٥	
+U+0666	٦	arabic	arabic-0666	٦	
+U+0667	٧	arabic	arabic-0667	٧	
+U+0668	٨	arabic	arabic-0668	٨	
+U+0669	٩	arabic	arabic-0669	٩	
+U+066A	٪	arabic	arabic-066A	٪	
+U+066B	٫	arabic	arabic-066B	٫	
+U+066C	٬	arabic	arabic-066C	٬	
+U+066D	٭	arabic	arabic-066D	٭	
+U+0679	ٹ	arabic	arabic-0679	ٹ	
+U+067E	پ	arabic	arabic-067E	پ	
+U+0686	چ	arabic	arabic-0686	چ	
+U+0688	ڈ	arabic	arabic-0688	ڈ	
+U+0691	ڑ	arabic	arabic-0691	ڑ	
+U+0698	ژ	arabic	arabic-0698	ژ	
+U+06A9	ک	arabic	arabic-06A9	ک	
+U+06AF	گ	arabic	arabic-06AF	گ	
+U+06BA	ں	arabic	arabic-06BA	ں	
+U+06BE	ھ	arabic	arabic-06BE	ھ	
+U+06C1	ہ	arabic	arabic-06C1	ہ	
+U+06C2	ۂ	arabic	arabic-06C2	ۂ	
+U+06C3	ۃ	arabic	arabic-06C3	ۃ	
+U+06CC	ی	arabic	arabic-06CC	ی	
+U+06D2	ے	arabic	arabic-06D2	ے	
+U+06D3	ۓ	arabic	arabic-06D3	ۓ	
+U+06D4	۔	arabic	arabic-06D4	۔	
+U+06F0	۰	arabic	arabic-06F0	۰	
+U+06F1	۱	arabic	arabic-06F1	۱	
+U+06F2	۲	arabic	arabic-06F2	۲	
+U+06F3	۳	arabic	arabic-06F3	۳	
+U+06F4	۴	arabic	arabic-06F4	۴	
+U+06F5	۵	arabic	arabic-06F5	۵	
+U+06F6	۶	arabic	arabic-06F6	۶	
+U+06F7	۷	arabic	arabic-06F7	۷	
+U+06F8	۸	arabic	arabic-06F8	۸	
+U+06F9	۹	arabic	arabic-06F9	۹	
+U+0E01	ก	thai	thai-consonant	ก	
+U+0E02	ข	thai	thai-consonant	ข	
+U+0E03	ฃ	thai	thai-consonant	ฃ	
+U+0E04	ค	thai	thai-consonant	ค	
+U+0E05	ฅ	thai	thai-consonant	ฅ	
+U+0E06	ฆ	thai	thai-consonant	ฆ	
+U+0E07	ง	thai	thai-consonant	ง	
+U+0E08	จ	thai	thai-consonant	จ	
+U+0E09	ฉ	thai	thai-consonant	ฉ	
+U+0E0A	ช	thai	thai-consonant	ช	
+U+0E0B	ซ	thai	thai-consonant	ซ	
+U+0E0C	ฌ	thai	thai-consonant	ฌ	
+U+0E0D	ญ	thai	thai-consonant	ญ	
+U+0E0E	ฎ	thai	thai-consonant	ฎ	
+U+0E0F	ฏ	thai	thai-consonant	ฏ	
+U+0E10	ฐ	thai	thai-consonant	ฐ	
+U+0E11	ฑ	thai	thai-consonant	ฑ	
+U+0E12	ฒ	thai	thai-consonant	ฒ	
+U+0E13	ณ	thai	thai-consonant	ณ	
+U+0E14	ด	thai	thai-consonant	ด	
+U+0E15	ต	thai	thai-consonant	ต	
+U+0E16	ถ	thai	thai-consonant	ถ	
+U+0E17	ท	thai	thai-consonant	ท	
+U+0E18	ธ	thai	thai-consonant	ธ	
+U+0E19	น	thai	thai-consonant	น	
+U+0E1A	บ	thai	thai-consonant	บ	
+U+0E1B	ป	thai	thai-consonant	ป	
+U+0E1C	ผ	thai	thai-consonant	ผ	
+U+0E1D	ฝ	thai	thai-consonant	ฝ	
+U+0E1E	พ	thai	thai-consonant	พ	
+U+0E1F	ฟ	thai	thai-consonant	ฟ	
+U+0E20	ภ	thai	thai-consonant	ภ	
+U+0E21	ม	thai	thai-consonant	ม	
+U+0E22	ย	thai	thai-consonant	ย	
+U+0E23	ร	thai	thai-consonant	ร	
+U+0E24	ฤ	thai	thai-consonant	ฤ	
+U+0E25	ล	thai	thai-consonant	ล	
+U+0E26	ฦ	thai	thai-consonant	ฦ	
+U+0E27	ว	thai	thai-consonant	ว	
+U+0E28	ศ	thai	thai-consonant	ศ	
+U+0E29	ษ	thai	thai-consonant	ษ	
+U+0E2A	ส	thai	thai-consonant	ส	
+U+0E2B	ห	thai	thai-consonant	ห	
+U+0E2C	ฬ	thai	thai-consonant	ฬ	
+U+0E2D	อ	thai	thai-consonant	อ	
+U+0E2E	ฮ	thai	thai-consonant	ฮ	
+U+0E2F	ฯ	thai	thai-other	ฯ	
+U+0E30	ะ	thai	thai-other	ะ	
+U+0E31	ั	thai	thai-other	ั	
+U+0E32	า	thai	thai-other	า	
+U+0E33	ำ	thai	thai-other	ำ	
+U+0E34	ิ	thai	thai-other	ิ	
+U+0E35	ี	thai	thai-other	ี	
+U+0E36	ึ	thai	thai-other	ึ	
+U+0E37	ื	thai	thai-other	ื	
+U+0E38	ุ	thai	thai-other	ุ	
+U+0E39	ู	thai	thai-other	ู	
+U+0E3A	ฺ	thai	thai-other	ฺ	
+U+0E3F	฿	thai	thai-other	฿	
+U+0E40	เ	thai	thai-other	เ	
+U+0E41	แ	thai	thai-other	แ	
+U+0E42	โ	thai	thai-other	โ	
+U+0E43	ใ	thai	thai-other	ใ	
+U+0E44	ไ	thai	thai-other	ไ	
+U+0E45	ๅ	thai	thai-other	ๅ	
+U+0E46	ๆ	thai	thai-other	ๆ	
+U+0E47	็	thai	thai-other	็	
+U+0E48	่	thai	thai-other	่	
+U+0E49	้	thai	thai-other	้	
+U+0E4A	๊	thai	thai-other	๊	
+U+0E4B	๋	thai	thai-other	๋	
+U+0E4C	์	thai	thai-other	์	
+U+0E4D	ํ	thai	thai-other	ํ	
+U+0E4E	๎	thai	thai-other	๎	
+U+0E4F	๏	thai	thai-other	๏	
+U+0E50	๐	thai	thai-other	๐	
+U+0E51	๑	thai	thai-other	๑	
+U+0E52	๒	thai	thai-other	๒	
+U+0E53	๓	thai	thai-other	๓	
+U+0E54	๔	thai	thai-other	๔	
+U+0E55	๕	thai	thai-other	๕	
+U+0E56	๖	thai	thai-other	๖	
+U+0E57	๗	thai	thai-other	๗	
+U+0E58	๘	thai	thai-other	๘	
+U+0E59	๙	thai	thai-other	๙	
+U+0E5A	๚	thai	thai-other	๚	
+U+0E5B	๛	thai	thai-other	๛	
+U+1E80	Ẁ	western	latin-w	W	GRAVE ACCENT
+U+1E81	ẁ	western	latin-w	w	GRAVE ACCENT
+U+1E82	Ẃ	western	latin-w	W	ACUTE ACCENT
+U+1E83	ẃ	western	latin-w	w	ACUTE ACCENT
+U+1E84	Ẅ	western	latin-w	W	DIAERESIS
+U+1E85	ẅ	western	latin-w	w	DIAERESIS
+U+1EA0	Ạ	western	latin-a	A	DOT BELOW
+U+1EA1	ạ	western	latin-a	a	DOT BELOW
+U+1EA2	Ả	western	latin-a	A	HOOK ABOVE
+U+1EA3	ả	western	latin-a	a	HOOK ABOVE
+U+1EA4	Ấ	western	latin-a	A	CIRCUMFLEX ACCENT,ACUTE ACCENT
+U+1EA5	ấ	western	latin-a	a	CIRCUMFLEX ACCENT,ACUTE ACCENT
+U+1EA6	Ầ	western	latin-a	A	CIRCUMFLEX ACCENT,GRAVE ACCENT
+U+1EA7	ầ	western	latin-a	a	CIRCUMFLEX ACCENT,GRAVE ACCENT
+U+1EA8	Ẩ	western	latin-a	A	CIRCUMFLEX ACCENT,HOOK ABOVE
+U+1EA9	ẩ	western	latin-a	a	CIRCUMFLEX ACCENT,HOOK ABOVE
+U+1EAA	Ẫ	western	latin-a	A	CIRCUMFLEX ACCENT,TILDE
+U+1EAB	ẫ	western	latin-a	a	CIRCUMFLEX ACCENT,TILDE
+U+1EAC	Ậ	western	latin-a	A	DOT BELOW,CIRCUMFLEX ACCENT
+U+1EAD	ậ	western	latin-a	a	DOT BELOW,CIRCUMFLEX ACCENT
+U+1EAE	Ắ	western	latin-a	A	BREVE,ACUTE ACCENT
+U+1EAF	ắ	western	latin-a	a	BREVE,ACUTE ACCENT
+U+1EB0	Ằ	western	latin-a	A	BREVE,GRAVE ACCENT
+U+1EB1	ằ	western	latin-a	a	BREVE,GRAVE ACCENT
+U+1EB2	Ẳ	western	latin-a	A	BREVE,HOOK ABOVE
+U+1EB3	ẳ	western	latin-a	a	BREVE,HOOK ABOVE
+U+1EB4	Ẵ	western	latin-a	A	BREVE,TILDE
+U+1EB5	ẵ	western	latin-a	a	BREVE,TILDE
+U+1EB6	Ặ	western	latin-a	A	DOT BELOW,BREVE
+U+1EB7	ặ	western	latin-a	a	DOT BELOW,BREVE
+U+1EB8	Ẹ	western	latin-e	E	DOT BELOW
+U+1EB9	ẹ	western	latin-e	e	DOT BELOW
+U+1EBA	Ẻ	western	latin-e	E	HOOK ABOVE
+U+1EBB	ẻ	western	latin-e	e	HOOK ABOVE
+U+1EBC	Ẽ	western	latin-e	E	TILDE
+U+1EBD	ẽ	western	latin-e	e	TILDE
+U+1EBE	Ế	western	latin-e	E	CIRCUMFLEX ACCENT,ACUTE ACCENT
+U+1EBF	ế	western	latin-e	e	CIRCUMFLEX ACCENT,ACUTE ACCENT
+U+1EC0	Ề	western	latin-e	E	CIRCUMFLEX ACCENT,GRAVE ACCENT
+U+1EC1	ề	western	latin-e	e	CIRCUMFLEX ACCENT,GRAVE ACCENT
+U+1EC2	Ể	western	latin-e	E	CIRCUMFLEX ACCENT,HOOK ABOVE
+U+1EC3	ể	western	latin-e	e	CIRCUMFLEX ACCENT,HOOK ABOVE
+U+1EC4	Ễ	western	latin-e	E	CIRCUMFLEX ACCENT,TILDE
+U+1EC5	ễ	western	latin-e	e	CIRCUMFLEX ACCENT,TILDE
+U+1EC6	Ệ	western	latin-e	E	DOT BELOW,CIRCUMFLEX ACCENT
+U+1EC7	ệ	western	latin-e	e	DOT BELOW,CIRCUMFLEX ACCENT
+U+1EC8	Ỉ	western	latin-i	I	HOOK ABOVE
+U+1EC9	ỉ	western	latin-i	i	HOOK ABOVE
+U+1ECA	Ị	western	latin-i	I	DOT BELOW
+U+1ECB	ị	western	latin-i	i	DOT BELOW
+U+1ECC	Ọ	western	latin-o	O	DOT BELOW
+U+1ECD	ọ	western	latin-o	o	DOT BELOW
+U+1ECE	Ỏ	western	latin-o	O	HOOK ABOVE
+U+1ECF	ỏ	western	latin-o	o	HOOK ABOVE
+U+1ED0	Ố	western	latin-o	O	CIRCUMFLEX ACCENT,ACUTE ACCENT
+U+1ED1	ố	western	latin-o	o	CIRCUMFLEX ACCENT,ACUTE ACCENT
+U+1ED2	Ồ	western	latin-o	O	CIRCUMFLEX ACCENT,GRAVE ACCENT
+U+1ED3	ồ	western	latin-o	o	CIRCUMFLEX ACCENT,GRAVE ACCENT
+U+1ED4	Ổ	western	latin-o	O	CIRCUMFLEX ACCENT,HOOK ABOVE
+U+1ED5	ổ	western	latin-o	o	CIRCUMFLEX ACCENT,HOOK ABOVE
+U+1ED6	Ỗ	western	latin-o	O	CIRCUMFLEX ACCENT,TILDE
+U+1ED7	ỗ	western	latin-o	o	CIRCUMFLEX ACCENT,TILDE
+U+1ED8	Ộ	western	latin-o	O	DOT BELOW,CIRCUMFLEX ACCENT
+U+1ED9	ộ	western	latin-o	o	DOT BELOW,CIRCUMFLEX ACCENT
+U+1EDA	Ớ	western	latin-o	O	HORN,ACUTE ACCENT
+U+1EDB	ớ	western	latin-o	o	HORN,ACUTE ACCENT
+U+1EDC	Ờ	western	latin-o	O	HORN,GRAVE ACCENT
+U+1EDD	ờ	western	latin-o	o	HORN,GRAVE ACCENT
+U+1EDE	Ở	western	latin-o	O	HORN,HOOK ABOVE
+U+1EDF	ở	western	latin-o	o	HORN,HOOK ABOVE
+U+1EE0	Ỡ	western	latin-o	O	HORN,TILDE
+U+1EE1	ỡ	western	latin-o	o	HORN,TILDE
+U+1EE2	Ợ	western	latin-o	O	HORN,DOT BELOW
+U+1EE3	ợ	western	latin-o	o	HORN,DOT BELOW
+U+1EE4	Ụ	western	latin-u	U	DOT BELOW
+U+1EE5	ụ	western	latin-u	u	DOT BELOW
+U+1EE6	Ủ	western	latin-u	U	HOOK ABOVE
+U+1EE7	ủ	western	latin-u	u	HOOK ABOVE
+U+1EE8	Ứ	western	latin-u	U	HORN,ACUTE ACCENT
+U+1EE9	ứ	western	latin-u	u	HORN,ACUTE ACCENT
+U+1EEA	Ừ	western	latin-u	U	HORN,GRAVE ACCENT
+U+1EEB	ừ	western	latin-u	u	HORN,GRAVE ACCENT
+U+1EEC	Ử	western	latin-u	U	HORN,HOOK ABOVE
+U+1EED	ử	western	latin-u	u	HORN,HOOK ABOVE
+U+1EEE	Ữ	western	latin-u	U	HORN,TILDE
+U+1EEF	ữ	western	latin-u	u	HORN,TILDE
+U+1EF0	Ự	western	latin-u	U	HORN,DOT BELOW
+U+1EF1	ự	western	latin-u	u	HORN,DOT BELOW
+U+1EF2	Ỳ	western	latin-y	Y	GRAVE ACCENT
+U+1EF3	ỳ	western	latin-y	y	GRAVE ACCENT
+U+1EF4	Ỵ	western	latin-y	Y	DOT BELOW
+U+1EF5	ỵ	western	latin-y	y	DOT BELOW
+U+1EF6	Ỷ	western	latin-y	Y	HOOK ABOVE
+U+1EF7	ỷ	western	latin-y	y	HOOK ABOVE
+U+1EF8	Ỹ	western	latin-y	Y	TILDE
+U+1EF9	ỹ	western	latin-y	y	TILDE
+U+2013	–	western	symbol	–	
+U+2014	—	western	symbol	—	
+U+2015	―	western	symbol	―	
+U+2017	‗	western	symbol	‗	
+U+2018	‘	western	symbol	‘	
+U+2019	’	western	symbol	’	
+U+201A	‚	western	symbol	‚	
+U+201B	‛	western	symbol	‛	
+U+201C	“	western	symbol	“	
+U+201D	”	western	symbol	”	
+U+201E	„	western	symbol	„	
+U+2020	†	western	symbol	†	
+U+2021	‡	western	symbol	‡	
+U+2022	•	western	symbol	•	
+U+2026	…	western	symbol	…	
+U+2030	‰	western	symbol	‰	
+U+2032	′	western	symbol	′	
+U+2033	″	western	symbol	″	
+U+2039	‹	western	symbol	‹	
+U+203A	›	western	symbol	›	
+U+203C	‼	western	symbol	‼	
+U+203E	‾	western	symbol	‾	
+U+2044	⁄	western	symbol	⁄	
+U+207F	ⁿ	western	symbol	ⁿ	
+U+20A3	₣	western	symbol	₣	
+U+20A4	₤	western	symbol	₤	
+U+20A7	₧	western	symbol	₧	
+U+20AC	€	western	symbol	€	
+U+2105	℅	western	symbol	℅	
+U+2113	ℓ	western	symbol	ℓ	
+U+2116	№	western	symbol	№	
+U+2122	™	western	symbol	™	
+U+2126	Ω	western	symbol	Ω	
+U+212E	℮	western	symbol	℮	
+U+215B	⅛	western	symbol	⅛	
+U+215C	⅜	western	symbol	⅜	
+U+215D	⅝	western	symbol	⅝	
+U+215E	⅞	western	symbol	⅞	
+U+2190	←	western	symbol	←	
+U+2191	↑	western	symbol	↑	
+U+2192	→	western	symbol	→	
+U+2193	↓	western	symbol	↓	
+U+2194	↔	western	symbol	↔	
+U+2195	↕	western	symbol	↕	
+U+21A8	↨	western	symbol	↨	
+U+2202	∂	western	symbol	∂	
+U+2206	∆	western	symbol	∆	
+U+220F	∏	western	symbol	∏	
+U+2211	∑	western	symbol	∑	
+U+2212	−	western	symbol	−	
+U+2215	∕	western	symbol	∕	
+U+2219	∙	western	symbol	∙	
+U+221A	√	western	symbol	√	
+U+221E	∞	western	symbol	∞	
+U+221F	∟	western	symbol	∟	
+U+2229	∩	western	symbol	∩	
+U+222B	∫	western	symbol	∫	
+U+2248	≈	western	symbol	≈	
+U+2260	≠	western	symbol	=	LONG SOLIDUS OVERLAY
+U+2261	≡	western	symbol	≡	
+U+2264	≤	western	symbol	≤	
+U+2265	≥	western	symbol	≥	
+U+2302	⌂	western	symbol	⌂	
+U+2310	⌐	western	symbol	⌐	
+U+2320	⌠	western	symbol	⌠	
+U+2321	⌡	western	symbol	⌡	
+U+25A0	■	western	symbol	■	
+U+25A1	□	western	symbol	□	
+U+25AA	▪	western	symbol	▪	
+U+25AB	▫	western	symbol	▫	
+U+25AC	▬	western	symbol	▬	
+U+25B2	▲	western	symbol	▲	
+U+25BA	►	western	symbol	►	
+U+25BC	▼	western	symbol	▼	
+U+25C4	◄	western	symbol	◄	
+U+25CA	◊	western	symbol	◊	
+U+25CB	○	western	symbol	○	
+U+25CF	●	western	symbol	●	
+U+25D8	◘	western	symbol	◘	
+U+25D9	◙	western	symbol	◙	
+U+25E6	◦	western	symbol	◦	
+U+263A	☺	western	symbol	☺	
+U+263B	☻	western	symbol	☻	
+U+263C	☼	western	symbol	☼	
+U+2640	♀	western	symbol	♀	
+U+2642	♂	western	symbol	♂	
+U+2660	♠	western	symbol	♠	
+U+2663	♣	western	symbol	♣	
+U+2665	♥	western	symbol	♥	
+U+2666	♦	western	symbol	♦	
+U+266A	♪	western	symbol	♪	
+U+266B	♫	western	symbol	♫	
+U+FB01	ﬁ	western	symbol	ﬁ	
+U+FB02	ﬂ	western	symbol	ﬂ	
+U+FE70	ﹰ	arabic	arabic-FE70	ﹰ	
+U+FE71	ﹱ	arabic	arabic-FE71	ﹱ	
+U+FE72	ﹲ	arabic	arabic-FE72	ﹲ	
+U+FE73	ﹳ	arabic	arabic-FE73	ﹳ	
+U+FE74	ﹴ	arabic	arabic-FE74	ﹴ	
+U+FE76	ﹶ	arabic	arabic-FE76	ﹶ	
+U+FE77	ﹷ	arabic	arabic-FE77	ﹷ	
+U+FE78	ﹸ	arabic	arabic-FE78	ﹸ	
+U+FE79	ﹹ	arabic	arabic-FE79	ﹹ	
+U+FE7A	ﹺ	arabic	arabic-FE7A	ﹺ	
+U+FE7B	ﹻ	arabic	arabic-FE7B	ﹻ	
+U+FE7C	ﹼ	arabic	arabic-FE7C	ﹼ	
+U+FE7D	ﹽ	arabic	arabic-FE7D	ﹽ	
+U+FE7E	ﹾ	arabic	arabic-FE7E	ﹾ	
+U+FE7F	ﹿ	arabic	arabic-FE7F	ﹿ	
+U+FE80	ﺀ	arabic	arabic-0621	ء	
+U+FE81	ﺁ	arabic	arabic-0622	آ	
+U+FE82	ﺂ	arabic	arabic-0622	آ	
+U+FE83	ﺃ	arabic	arabic-0623	أ	
+U+FE84	ﺄ	arabic	arabic-0623	أ	
+U+FE85	ﺅ	arabic	arabic-0624	ؤ	
+U+FE86	ﺆ	arabic	arabic-0624	ؤ	
+U+FE87	ﺇ	arabic	arabic-0625	إ	
+U+FE88	ﺈ	arabic	arabic-0625	إ	
+U+FE89	ﺉ	arabic	arabic-0626	ئ	
+U+FE8A	ﺊ	arabic	arabic-0626	ئ	
+U+FE8B	ﺋ	arabic	arabic-0626	ئ	
+U+FE8C	ﺌ	arabic	arabic-0626	ئ	
+U+FE8D	ﺍ	arabic	arabic-0627	ا	
+U+FE8E	ﺎ	arabic	arabic-0627	ا	
+U+FE8F	ﺏ	arabic	arabic-0628	ب	
+U+FE90	ﺐ	arabic	arabic-0628	ب	
+U+FE91	ﺑ	arabic	arabic-0628	ب	
+U+FE92	ﺒ	arabic	arabic-0628	ب	
+U+FE93	ﺓ	arabic	arabic-0629	ة	
+U+FE94	ﺔ	arabic	arabic-0629	ة	
+U+FE95	ﺕ	arabic	arabic-062A	ت	
+U+FE96	ﺖ	arabic	arabic-062A	ت	
+U+FE97	ﺗ	arabic	arabic-062A	ت	
+U+FE98	ﺘ	arabic	arabic-062A	ت	
+U+FE99	ﺙ	arabic	arabic-062B	ث	
+U+FE9A	ﺚ	arabic	arabic-062B	ث	
+U+FE9B	ﺛ	arabic	arabic-062B	ث	
+U+FE9C	ﺜ	arabic	arabic-062B	ث	
+U+FE9D	ﺝ	arabic	arabic-062C	ج	
+U+FE9E	ﺞ	arabic	arabic-062C	ج	
+U+FE9F	ﺟ	arabic	arabic-062C	ج	
+U+FEA0	ﺠ	arabic	arabic-062C	ج	
+U+FEA1	ﺡ	arabic	arabic-062D	ح	
+U+FEA2	ﺢ	arabic	arabic-062D	ح	
+U+FEA3	ﺣ	arabic	arabic-062D	ح	
+U+FEA4	ﺤ	arabic	arabic-062D	ح	
+U+FEA5	ﺥ	arabic	arabic-062E	خ	
+U+FEA6	ﺦ	arabic	arabic-062E	خ	
+U+FEA7	ﺧ	arabic	arabic-062E	خ	
+U+FEA8	ﺨ	arabic	arabic-062E	خ	
+U+FEA9	ﺩ	arabic	arabic-062F	د	
+U+FEAA	ﺪ	arabic	arabic-062F	د	
+U+FEAB	ﺫ	arabic	arabic-0630	ذ	
+U+FEAC	ﺬ	arabic	arabic-0630	ذ	
+U+FEAD	ﺭ	arabic	arabic-0631	ر	
+U+FEAE	ﺮ	arabic	arabic-0631	ر	
+U+FEAF	ﺯ	arabic	arabic-0632	ز	
+U+FEB0	ﺰ	arabic	arabic-0632	ز	
+U+FEB1	ﺱ	arabic	arabic-0633	س	
+U+FEB2	ﺲ	arabic	arabic-0633	س	
+U+FEB3	ﺳ	arabic	arabic-0633	س	
+U+FEB4	ﺴ	arabic	arabic-0633	س	
+U+FEB5	ﺵ	arabic	arabic-0634	ش	
+U+FEB6	ﺶ	arabic	arabic-0634	ش	
+U+FEB7	ﺷ	arabic	arabic-0634	ش	
+U+FEB8	ﺸ	arabic	arabic-0634	ش	
+U+FEB9	ﺹ	arabic	arabic-0635	ص	
+U+FEBA	ﺺ	arabic	arabic-0635	ص	
+U+FEBB	ﺻ	arabic	arabic-0635	ص	
+U+FEBC	ﺼ	arabic	arabic-0635	ص	
+U+FEBD	ﺽ	arabic	arabic-0636	ض	
+U+FEBE	ﺾ	arabic	arabic-0636	ض	
+U+FEBF	ﺿ	arabic	arabic-0636	ض	
+U+FEC0	ﻀ	arabic	arabic-0636	ض	
+U+FEC1	ﻁ	arabic	arabic-0637	ط	
+U+FEC2	ﻂ	arabic	arabic-0637	ط	
+U+FEC3	ﻃ	arabic	arabic-0637	ط	
+U+FEC4	ﻄ	arabic	arabic-0637	ط	
+U+FEC5	ﻅ	arabic	arabic-0638	ظ	
+U+FEC6	ﻆ	arabic	arabic-0638	ظ	
+U+FEC7	ﻇ	arabic	arabic-0638	ظ	
+U+FEC8	ﻈ	arabic	arabic-0638	ظ	
+U+FEC9	ﻉ	arabic	arabic-0639	ع	
+U+FECA	ﻊ	arabic	arabic-0639	ع	
+U+FECB	ﻋ	arabic	arabic-0639	ع	
+U+FECC	ﻌ	arabic	arabic-0639	ع	
+U+FECD	ﻍ	arabic	arabic-063A	غ	
+U+FECE	ﻎ	arabic	arabic-063A	غ	
+U+FECF	ﻏ	arabic	arabic-063A	غ	
+U+FED0	ﻐ	arabic	arabic-063A	غ	
+U+FED1	ﻑ	arabic	arabic-0641	ف	
+U+FED2	ﻒ	arabic	arabic-0641	ف	
+U+FED3	ﻓ	arabic	arabic-0641	ف	
+U+FED4	ﻔ	arabic	arabic-0641	ف	
+U+FED5	ﻕ	arabic	arabic-0642	ق	
+U+FED6	ﻖ	arabic	arabic-0642	ق	
+U+FED7	ﻗ	arabic	arabic-0642	ق	
+U+FED8	ﻘ	arabic	arabic-0642	ق	
+U+FED9	ﻙ	arabic	arabic-0643	ك	
+U+FEDA	ﻚ	arabic	arabic-0643	ك	
+U+FEDB	ﻛ	arabic	arabic-0643	ك	
+U+FEDC	ﻜ	arabic	arabic-0643	ك	
+U+FEDD	ﻝ	arabic	arabic-0644	ل	
+U+FEDE	ﻞ	arabic	arabic-0644	ل	
+U+FEDF	ﻟ	arabic	arabic-0644	ل	
+U+FEE0	ﻠ	arabic	arabic-0644	ل	
+U+FEE1	ﻡ	arabic	arabic-0645	م	
+U+FEE2	ﻢ	arabic	arabic-0645	م	
+U+FEE3	ﻣ	arabic	arabic-0645	م	
+U+FEE4	ﻤ	arabic	arabic-0645	م	
+U+FEE5	ﻥ	arabic	arabic-0646	ن	
+U+FEE6	ﻦ	arabic	arabic-0646	ن	
+U+FEE7	ﻧ	arabic	arabic-0646	ن	
+U+FEE8	ﻨ	arabic	arabic-0646	ن	
+U+FEE9	ﻩ	arabic	arabic-0647	ه	
+U+FEEA	ﻪ	arabic	arabic-0647	ه	
+U+FEEB	ﻫ	arabic	arabic-0647	ه	
+U+FEEC	ﻬ	arabic	arabic-0647	ه	
+U+FEED	ﻭ	arabic	arabic-0648	و	
+U+FEEE	ﻮ	arabic	arabic-0648	و	
+U+FEEF	ﻯ	arabic	arabic-0649	ى	
+U+FEF0	ﻰ	arabic	arabic-0649	ى	
+U+FEF1	ﻱ	arabic	arabic-064A	ي	
+U+FEF2	ﻲ	arabic	arabic-064A	ي	
+U+FEF3	ﻳ	arabic	arabic-064A	ي	
+U+FEF4	ﻴ	arabic	arabic-064A	ي	
+U+FEF5	ﻵ	arabic	arabic-FEF5	ﻵ	
+U+FEF6	ﻶ	arabic	arabic-FEF6	ﻶ	
+U+FEF7	ﻷ	arabic	arabic-FEF7	ﻷ	
+U+FEF8	ﻸ	arabic	arabic-FEF8	ﻸ	
+U+FEF9	ﻹ	arabic	arabic-FEF9	ﻹ	
+U+FEFA	ﻺ	arabic	arabic-FEFA	ﻺ	
+U+FEFB	ﻻ	arabic	arabic-FEFB	ﻻ	
+U+FEFC	ﻼ	arabic	arabic-FEFC	ﻼ	
+U+FF61	｡	kana	halfwidth-kana	｡	
+U+FF62	｢	kana	halfwidth-kana	｢	
+U+FF63	｣	kana	halfwidth-kana	｣	
+U+FF64	､	kana	halfwidth-kana	､	
+U+FF65	･	kana	halfwidth-kana	･	
+U+FF66	ｦ	kana	halfwidth-kana	ｦ	
+U+FF67	ｧ	kana	halfwidth-kana	ｧ	
+U+FF68	ｨ	kana	halfwidth-kana	ｨ	
+U+FF69	ｩ	kana	halfwidth-kana	ｩ	
+U+FF6A	ｪ	kana	halfwidth-kana	ｪ	
+U+FF6B	ｫ	kana	halfwidth-kana	ｫ	
+U+FF6C	ｬ	kana	halfwidth-kana	ｬ	
+U+FF6D	ｭ	kana	halfwidth-kana	ｭ	
+U+FF6E	ｮ	kana	halfwidth-kana	ｮ	
+U+FF6F	ｯ	kana	halfwidth-kana	ｯ	
+U+FF70	ｰ	kana	halfwidth-kana	ｰ	
+U+FF71	ｱ	kana	halfwidth-kana	ｱ	
+U+FF72	ｲ	kana	halfwidth-kana	ｲ	
+U+FF73	ｳ	kana	halfwidth-kana	ｳ	
+U+FF74	ｴ	kana	halfwidth-kana	ｴ	
+U+FF75	ｵ	kana	halfwidth-kana	ｵ	
+U+FF76	ｶ	kana	halfwidth-kana	ｶ	
+U+FF77	ｷ	kana	halfwidth-kana	ｷ	
+U+FF78	ｸ	kana	halfwidth-kana	ｸ	
+U+FF79	ｹ	kana	halfwidth-kana	ｹ	
+U+FF7A	ｺ	kana	halfwidth-kana	ｺ	
+U+FF7B	ｻ	kana	halfwidth-kana	ｻ	
+U+FF7C	ｼ	kana	halfwidth-kana	ｼ	
+U+FF7D	ｽ	kana	halfwidth-kana	ｽ	
+U+FF7E	ｾ	kana	halfwidth-kana	ｾ	
+U+FF7F	ｿ	kana	halfwidth-kana	ｿ	
+U+FF80	ﾀ	kana	halfwidth-kana	ﾀ	
+U+FF81	ﾁ	kana	halfwidth-kana	ﾁ	
+U+FF82	ﾂ	kana	halfwidth-kana	ﾂ	
+U+FF83	ﾃ	kana	halfwidth-kana	ﾃ	
+U+FF84	ﾄ	kana	halfwidth-kana	ﾄ	
+U+FF85	ﾅ	kana	halfwidth-kana	ﾅ	
+U+FF86	ﾆ	kana	halfwidth-kana	ﾆ	
+U+FF87	ﾇ	kana	halfwidth-kana	ﾇ	
+U+FF88	ﾈ	kana	halfwidth-kana	ﾈ	
+U+FF89	ﾉ	kana	halfwidth-kana	ﾉ	
+U+FF8A	ﾊ	kana	halfwidth-kana	ﾊ	
+U+FF8B	ﾋ	kana	halfwidth-kana	ﾋ	
+U+FF8C	ﾌ	kana	halfwidth-kana	ﾌ	
+U+FF8D	ﾍ	kana	halfwidth-kana	ﾍ	
+U+FF8E	ﾎ	kana	halfwidth-kana	ﾎ	
+U+FF8F	ﾏ	kana	halfwidth-kana	ﾏ	
+U+FF90	ﾐ	kana	halfwidth-kana	ﾐ	
+U+FF91	ﾑ	kana	halfwidth-kana	ﾑ	
+U+FF92	ﾒ	kana	halfwidth-kana	ﾒ	
+U+FF93	ﾓ	kana	halfwidth-kana	ﾓ	
+U+FF94	ﾔ	kana	halfwidth-kana	ﾔ	
+U+FF95	ﾕ	kana	halfwidth-kana	ﾕ	
+U+FF96	ﾖ	kana	halfwidth-kana	ﾖ	
+U+FF97	ﾗ	kana	halfwidth-kana	ﾗ	
+U+FF98	ﾘ	kana	halfwidth-kana	ﾘ	
+U+FF99	ﾙ	kana	halfwidth-kana	ﾙ	
+U+FF9A	ﾚ	kana	halfwidth-kana	ﾚ	
+U+FF9B	ﾛ	kana	halfwidth-kana	ﾛ	
+U+FF9C	ﾜ	kana	halfwidth-kana	ﾜ	
+U+FF9D	ﾝ	kana	halfwidth-kana	ﾝ	
+U+FF9E	ﾞ	kana	halfwidth-kana	ﾞ	
+U+FF9F	ﾟ	kana	halfwidth-kana	ﾟ	

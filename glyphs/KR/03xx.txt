@@ -1,0 +1,95 @@
+U+0391 Α = U+0391.SC
+
+U+0392 Β = U+0392.SC
+
+U+0393 Γ = U+0393.SC
+
+U+0394 Δ = U+0394.SC
+
+U+0395 Ε = U+0395.SC
+
+U+0396 Ζ = U+0396.SC
+
+U+0397 Η = U+0397.SC
+
+U+0398 Θ = U+0398.SC
+
+U+0399 Ι = U+0399.SC
+
+U+039A Κ = U+039A.SC
+
+U+039B Λ = U+039B.SC
+
+U+039C Μ = U+039C.SC
+
+U+039D Ν = U+039D.SC
+
+U+039E Ξ = U+039E.SC
+
+U+039F Ο = U+039F.SC
+
+U+03A0 Π = U+03A0.SC
+
+U+03A1 Ρ = U+03A1.SC
+
+U+03A3 Σ = U+03A3.SC
+
+U+03A4 Τ = U+03A4.SC
+
+U+03A5 Υ = U+03A5.SC
+
+U+03A6 Φ = U+03A6.SC
+
+U+03A7 Χ = U+03A7.SC
+
+U+03A8 Ψ = U+03A8.SC
+
+U+03A9 Ω = U+03A9.SC
+
+U+03B1 α = U+03B1.SC
+
+U+03B2 β = U+03B2.SC
+
+U+03B3 γ = U+03B3.SC
+
+U+03B4 δ = U+03B4.SC
+
+U+03B5 ε = U+03B5.SC
+
+U+03B6 ζ = U+03B6.SC
+
+U+03B7 η = U+03B7.SC
+
+U+03B8 θ = U+03B8.SC
+
+U+03B9 ι = U+03B9.SC
+
+U+03BA κ = U+03BA.SC
+
+U+03BB λ = U+03BB.SC
+
+U+03BC μ = U+03BC.SC
+
+U+03BD ν = U+03BD.SC
+
+U+03BE ξ = U+03BE.SC
+
+U+03BF ο = U+03BF.SC
+
+U+03C0 π = U+03C0.SC
+
+U+03C1 ρ = U+03C1.SC
+
+U+03C3 σ = U+03C3.SC
+
+U+03C4 τ = U+03C4.SC
+
+U+03C5 υ = U+03C5.SC
+
+U+03C6 φ = U+03C6.SC
+
+U+03C7 χ = U+03C7.SC
+
+U+03C8 ψ = U+03C8.SC
+
+U+03C9 ω = U+03C9.SC

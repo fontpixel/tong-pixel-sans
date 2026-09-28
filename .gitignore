@@ -1,0 +1,8 @@
+build/
+reports/
+reference-fonts/
+__pycache__/
+*.pyc
+.editor.lock
+.tmp-*
+.venv/

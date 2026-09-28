@@ -1,0 +1,2 @@
+# Measured once from the reference fonts, so the build needs no font files.
+space_advance_proportional 3

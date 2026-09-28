@@ -1,0 +1,183 @@
+U+FF01 ！ = U+FF01.TC
+
+U+FF03 ＃ = U+FF03.SC
+
+U+FF04 ＄ = U+FF04.SC
+
+U+FF05 ％ = U+FF05.SC
+
+U+FF06 ＆ = U+FF06.SC
+
+U+FF08 （ = U+FF08.SC
+
+U+FF09 ） = U+FF09.SC
+
+U+FF0A ＊ = U+FF0A.SC
+
+U+FF0B ＋ = U+FF0B.SC
+
+U+FF0C ， = U+FF0C.SC
+
+U+FF0E ． = U+FF0E.SC
+
+U+FF0F ／ = U+FF0F.SC
+
+U+FF10 ０ = U+FF10.SC
+
+U+FF11 １ = U+FF11.SC
+
+U+FF12 ２ = U+FF12.SC
+
+U+FF13 ３ = U+FF13.SC
+
+U+FF14 ４ = U+FF14.SC
+
+U+FF15 ５ = U+FF15.SC
+
+U+FF16 ６ = U+FF16.SC
+
+U+FF17 ７ = U+FF17.SC
+
+U+FF18 ８ = U+FF18.SC
+
+U+FF19 ９ = U+FF19.SC
+
+U+FF1A ： = U+FF1A.TC
+
+U+FF1B ； = U+FF1B.TC
+
+U+FF1C ＜ = U+FF1C.SC
+
+U+FF1D ＝ = U+FF1D.SC
+
+U+FF1E ＞ = U+FF1E.SC
+
+U+FF1F ？ = U+FF1F.TC
+
+U+FF20 ＠ = U+FF20.SC
+
+U+FF21 Ａ = U+FF21.SC
+
+U+FF22 Ｂ = U+FF22.SC
+
+U+FF23 Ｃ = U+FF23.SC
+
+U+FF24 Ｄ = U+FF24.SC
+
+U+FF25 Ｅ = U+FF25.SC
+
+U+FF26 Ｆ = U+FF26.SC
+
+U+FF27 Ｇ = U+FF27.SC
+
+U+FF28 Ｈ = U+FF28.SC
+
+U+FF29 Ｉ = U+FF29.SC
+
+U+FF2A Ｊ = U+FF2A.SC
+
+U+FF2B Ｋ = U+FF2B.SC
+
+U+FF2C Ｌ = U+FF2C.SC
+
+U+FF2D Ｍ = U+FF2D.SC
+
+U+FF2E Ｎ = U+FF2E.SC
+
+U+FF2F Ｏ = U+FF2F.SC
+
+U+FF30 Ｐ = U+FF30.SC
+
+U+FF31 Ｑ = U+FF31.SC
+
+U+FF32 Ｒ = U+FF32.SC
+
+U+FF33 Ｓ = U+FF33.SC
+
+U+FF34 Ｔ = U+FF34.SC
+
+U+FF35 Ｕ = U+FF35.SC
+
+U+FF36 Ｖ = U+FF36.SC
+
+U+FF37 Ｗ = U+FF37.SC
+
+U+FF38 Ｘ = U+FF38.SC
+
+U+FF39 Ｙ = U+FF39.SC
+
+U+FF3A Ｚ = U+FF3A.SC
+
+U+FF3B ［ = U+FF3B.SC
+
+U+FF3C ＼ = U+FF3C.SC
+
+U+FF3D ］ = U+FF3D.SC
+
+U+FF3E ＾ = U+FF3E.SC
+
+U+FF3F ＿ = U+FF3F.SC
+
+U+FF40 ｀ = U+FF40.SC
+
+U+FF41 ａ = U+FF41.SC
+
+U+FF42 ｂ = U+FF42.SC
+
+U+FF43 ｃ = U+FF43.SC
+
+U+FF44 ｄ = U+FF44.SC
+
+U+FF45 ｅ = U+FF45.SC
+
+U+FF46 ｆ = U+FF46.SC
+
+U+FF47 ｇ = U+FF47.SC
+
+U+FF48 ｈ = U+FF48.SC
+
+U+FF49 ｉ = U+FF49.SC
+
+U+FF4A ｊ = U+FF4A.SC
+
+U+FF4B ｋ = U+FF4B.SC
+
+U+FF4C ｌ = U+FF4C.SC
+
+U+FF4D ｍ = U+FF4D.SC
+
+U+FF4E ｎ = U+FF4E.SC
+
+U+FF4F ｏ = U+FF4F.SC
+
+U+FF50 ｐ = U+FF50.SC
+
+U+FF51 ｑ = U+FF51.SC
+
+U+FF52 ｒ = U+FF52.SC
+
+U+FF53 ｓ = U+FF53.SC
+
+U+FF54 ｔ = U+FF54.SC
+
+U+FF55 ｕ = U+FF55.SC
+
+U+FF56 ｖ = U+FF56.SC
+
+U+FF57 ｗ = U+FF57.SC
+
+U+FF58 ｘ = U+FF58.SC
+
+U+FF59 ｙ = U+FF59.SC
+
+U+FF5A ｚ = U+FF5A.SC
+
+U+FF5B ｛ = U+FF5B.SC
+
+U+FF5C ｜ = U+FF5C.SC
+
+U+FF5D ｝ = U+FF5D.SC
+
+U+FFE3 ￣ = U+FFE3.SC
+
+U+FFE5 ￥ = U+FFE5.SC

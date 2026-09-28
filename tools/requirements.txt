@@ -1,0 +1,4 @@
+fonttools
+pillow
+freetype-py
+numpy

@@ -1,0 +1,11 @@
+{
+  "name": "BabelStone IDS",
+  "maintainer": "Andrew West",
+  "url": "https://www.babelstone.co.uk/CJK/IDS.TXT",
+  "documentation": "https://www.babelstone.co.uk/CJK/IDS.HTML",
+  "file_date": "2025-06-27",
+  "retrieved": "2026-09-19",
+  "sha256": "cc2a0a97e6a51ed6ebe59870ef2af66e83f3c3c27387d79b4441bb2d791d78b1",
+  "permission": "Author permits personal/commercial reuse, forking and waives claims to presentation format; see original header paragraphs 1-2.",
+  "scope": "Structural IDS and regional tags only, not pixel segmentation or font artwork."
+}

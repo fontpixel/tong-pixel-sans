@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tong Pixel Sans · 修字编辑器</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+<header><div><strong>Tong Pixel Sans</strong><span>修字编辑器</span></div><div class="header-actions"><span id="counts">正在载入…</span><button id="reading-open">预览通过字</button><button id="reading-all-open">预览所有字</button><button id="library-open">所有部件</button></div></header>
+<div id="notice" role="status" aria-live="polite">读取字形…</div>
+<main>
+<aside class="browser">
+ <h2>字形</h2>
+ <label>查找字或 ID<input id="search" placeholder="字符（囱、1、é）或码位（U+56F1.SC、0031）" autocomplete="off"></label>
+ <div class="filters"><label>状态<select id="batch"><option value="">所有状态</option></select></label><label>筛选<select id="filter"><option value="all">全部</option><option value="punct-cjk">全角标点（SC/TC/JP/KR）</option><option value="punct-west">西文标点（等宽 .HW / 比例 .PR）</option><option value="digits-west">西文数字（等宽 .HW / 比例 .PR）</option><option value="latin-hw">西文字母：等宽 .HW</option><option value="latin-pr">西文字母：比例 .PR</option><option value="rep-SC">接下来建议修：简体</option><option value="rep-TC">接下来建议修：繁体</option><option value="concern">有 AI 问题说明</option><option value="edited">改过（人工或脚本）</option><option value="approved">审核通过</option><option value="pending">尚未通过</option></select></label></div>
+ <label class="check"><input type="checkbox" id="hide-unused" checked>隐藏字体里用不到的字形</label>
+ <p id="priority-summary" class="hint" hidden></p>
+ 
+ <div id="queue" aria-label="字形列表"></div>
+</aside>
+<section class="workspace">
+ <div class="glyph-heading"><div><span id="bigchar">—</span><div><h1 id="identity">选择一个字形</h1><p id="recipe"></p></div></div><span id="state" class="state">待审核</span></div>
+ <div id="usage-note" class="original-note" hidden></div>
+  <div class="references"><figure id="reference-box"><figcaption id="reference-label">思源参考</figcaption><img id="reference" alt="参考字体轮廓" width="112" height="112"></figure><figure id="ai-box" hidden><figcaption>AI 原稿</figcaption><canvas id="ai-original" width="14" height="14"></canvas></figure><figure><figcaption id="original-label">上次提交</figcaption><canvas id="original" width="14" height="14"></canvas></figure><figure><figcaption>你的修改 · 1:1 / 4×</figcaption><div class="native"><canvas id="native" width="14" height="14"></canvas><canvas id="preview" width="14" height="14"></canvas></div></figure></div>
+ <div class="tools"><button id="pen" aria-pressed="true">画笔</button><button id="select" aria-pressed="false">框选</button><button id="undo" title="Ctrl+Z">撤销</button><button id="redo" title="Ctrl+Y">重做</button><label class="check"><input type="checkbox" id="diff" checked>显示改动</label></div>
+ <div class="overlay-controls" id="overlay-controls"><label class="check"><input type="checkbox" id="overlay">叠加思源参考</label><label>透明度 <input id="overlay-opacity" type="range" min="10" max="90" value="45"><output id="overlay-value">45%</output></label></div>
+ <p id="overlay-info" class="hint" hidden>青色为参考字体轮廓，黑色为当前点阵。</p>
+ <canvas id="grid" width="448" height="448" tabindex="0" aria-label="像素编辑区，左侧和底部是固定留白"></canvas>
+ <div id="selection-info" class="hint">尚未框选</div><div class="tools"><button id="copy">复制选区</button><button id="paste">粘贴选区</button><button id="erase">清空选区</button><button id="clear-all" title="解除全部部件关联并清除全部像素（会弹出确认）；像素可撤销，需保存">全部清空</button><button id="restore" title="载入上次提交的版本（尚未保存，可撤销）">恢复上次提交</button><button id="restore-ai" hidden title="载入 AI 原稿（尚未保存，可撤销）">载入 AI 原稿</button><button id="phase-draft" hidden title="用参考字体重新点阵化：WorkBench 同样的渲染，另试 16 种 1/16 像素横向平移，挑最对称、黑块最少、不断笔的一种。载入后需保存，可撤销。">载入相位底稿</button></div><div class="tools" id="width-tools" hidden><span class="hint">比例字宽度：</span><button id="w-add-left" title="在左边加一列空白">左 +1</button><button id="w-del-left" title="删去最左一列（须为空白）">左 −1</button><button id="w-add-right" title="在右边加一列空白">右 +1</button><button id="w-del-right" title="删去最右一列（须为空白）">右 −1</button><span id="width-info" class="hint"></span></div>
+ <p id="linked-hint" class="hint" hidden></p><p class="hint">点按 / 拖动画点；Shift 拖动框选。方向键移动选区，Alt + 方向键移动整字。橙框表示相对“上次提交”（没有 git 时为编辑器启动时）的改动。左侧与底部淡色格为固定留白。</p>
+ <div class="savebar"><button id="previous">上一字</button><button id="next">下一字</button><span class="grow"></span><button id="save">保存修改</button><button id="approve" class="primary">审核通过</button></div><button id="drafts" hidden></button>
+</section>
+<aside class="details">
+ <section id="siblings" class="siblings" hidden><h2>同码位其他字形</h2><p class="hint compact">“完全复制过来”会清空本字当前的全部像素和关联，换成对方的像素和关联部件（可在历史版本恢复）。</p><div id="sibling-list" class="sibling-list"></div></section>
+ <section class="component-panel"><div class="section-title"><h2>可复用部件</h2><button id="component-library" class="text-button">打开形态库</button></div>
+ <p id="structure-summary" class="hint">正在读取数据库部件…</p><button id="unlink-all" class="text-button" hidden title="解除当前字的全部部件关联；像素与审核状态不变">解除所有关联</button>
+ <label class="search-label">搜索部件或形态<input id="component-search" type="search" placeholder="例如 木、窄木、形态名称" autocomplete="off"></label>
+ <p class="hint compact">按部件显示全部形态。关联会保存并应用；不选形态也可以继续修字。</p>
+ <div id="components" aria-live="polite"></div>
+ <p class="hint component-footnote">部件身份来自 <a href="https://www.babelstone.co.uk/CJK/IDS.TXT" target="_blank" rel="noreferrer">BabelStone IDS</a>。自动关联的形态按 IDS 结构从本字黑点推断边界，未经人审；不合适时解除关联或编辑形态。参考形态由你选择是否关联。</p></section>
+ <section><h2>修改说明</h2><p id="concern" class="original-note"></p><label for="note">你改了什么，为什么这样改？</label><textarea id="note" rows="4" placeholder="例如：口内留两格空白；右竖不要与隔壁部件相接。可以留空。"></textarea><p class="hint">保存修改与审核通过是两个动作。修改过已通过的字，需要再次审核。</p><label>历史版本（git 提交）<select id="history"><option value="">当前版本</option></select></label><button id="history-load">把所选历史版本载入编辑区</button></section>
+ <section><h2>保存到哪里</h2><p class="hint">保存会直接改写 <code>glyphs/</code> 下这个字所在的文本文件（改部件时还有 <code>forms/forms.txt</code>）。用 <code>git diff</code> 查看，满意后提交。</p></section>
+</aside>
+</main>
+<dialog id="reading-dialog" aria-labelledby="reading-title"><div class="reading-heading"><h2 id="reading-title">预览通过字</h2><button id="reading-close">关闭</button></div><p id="reading-count" class="hint"></p><label class="reading-scale">放大倍率<select id="reading-scale"><option value="2">2×</option><option value="3">3×</option><option value="4">4×</option></select></label><p id="reading-description" class="hint"></p><div id="reading-content"></div></dialog>
+<dialog id="library-dialog" class="library-dialog" aria-labelledby="library-title">
+ <div class="dialog-header"><div><p class="eyebrow">Tong Pixel Sans · 形态库</p><h2 id="library-title">所有部件</h2></div><button id="library-close">返回修字</button></div>
+ <div class="library-toolbar"><label>搜索部件、形态或来源字<input id="library-search" type="search" placeholder="例如 氵、窄、访、U+6728.SC" autocomplete="off"></label><label>显示<select id="library-kind"><option value="all">全部形态</option><option value="shared">已建立关联</option><option value="reference">参考形态</option></select></label><span id="library-count" class="hint"></span></div>
+ <div class="library-layout"><nav id="library-groups" aria-label="按部件浏览"></nav><div id="library-content"></div></div>
+</dialog>
+<dialog id="shape-dialog" class="shape-dialog" aria-labelledby="shape-title">
+ <div class="dialog-header"><div><p id="shape-eyebrow" class="eyebrow">独立形态编辑</p><h2 id="shape-title">编辑部件形态</h2></div><button id="shape-close">取消</button></div>
+ <p id="shape-error" class="inline-error" role="alert" hidden></p>
+ <div class="shape-workspace"><section class="shape-canvas-panel">
+  <div class="shape-toolbar" role="group" aria-label="形态画笔"><button id="shape-ink" aria-pressed="true">黑点</button><button id="shape-transparent" aria-pressed="false">擦除（透明）</button></div>
+  <canvas id="shape-grid" width="448" height="448" tabindex="0" aria-label="独立部件形态编辑区：13乘13墨迹，固定在字格坐标"></canvas>
+  <div class="shape-edit-tools"><button id="shape-undo">撤销</button><button id="shape-redo">重做</button><span class="grow"></span><button data-shift="-1,0" aria-label="形态左移一像素">←</button><button data-shift="1,0" aria-label="形态右移一像素">→</button><button data-shift="0,-1" aria-label="形态上移一像素">↑</button><button data-shift="0,1" aria-label="形态下移一像素">↓</button></div>
+  <p class="hint">只有黑点属于形态。斜纹格全部透明，关联字可在这些位置自由加点；形态黑点在所有关联字中保持相同坐标。方向键整体移动，Ctrl / ⌘ Z 撤销。</p>
+ </section><section class="shape-inspector">
+  <label>形态名称<input id="shape-name" maxlength="80" placeholder="例如 窄木 · 竖钩"></label>
+  <p id="shape-meta" class="hint"></p><div class="shape-preview-pair"><figure><figcaption>8×</figcaption><canvas id="shape-large"></canvas></figure><figure><figcaption>1:1</figcaption><canvas id="shape-native"></canvas></figure></div>
+  <div class="section-title"><h3 id="shape-users-title">关联字</h3><button id="shape-family" class="text-button">此部件的所有形态</button></div>
+  <p id="shape-impact" class="hint"></p><div id="shape-users"></div>
+ </section></div>
+ <div class="dialog-footer"><span id="shape-save-note" class="hint"></span><button id="shape-save" class="primary">保存并同步</button></div>
+</dialog>
+<dialog id="shape-users-dialog" aria-labelledby="users-title"><div class="dialog-header"><h2 id="users-title">关联字</h2><button id="users-close">关闭</button></div><p id="users-hint" class="hint"></p><div id="users-list" class="users-list"></div></dialog>
+<dialog id="shape-preview-dialog" aria-labelledby="form-preview-title"><div class="dialog-header"><h2 id="form-preview-title">应用预览</h2><button id="form-preview-close">关闭</button></div><p id="form-preview-note" class="hint"></p><div id="form-preview-images" class="form-preview-images"></div><div class="dialog-footer"><button id="form-preview-apply" class="primary">关联并应用</button></div></dialog>
+<script src="/editor.js"></script><script src="/shapes-ui.js"></script>
+</body></html>

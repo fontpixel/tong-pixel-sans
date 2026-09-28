@@ -1,0 +1,2167 @@
+# Reference outline for .HW/.PR glyphs: glyph id, reference font label, draft face width and
+# height in pixels (the em is scaled to these), leftmost ink column of the draft (the outline's
+# left edge is aligned to it). Tab-separated. Fonts: see docs/reference-fonts.md.
+U+0021.HW	Source Sans 3 w320	13	13	3
+U+0021.PR	Source Sans 3 w320	13	13	0
+U+0022.HW	Source Sans 3 w320	13	13	2
+U+0022.PR	Source Sans 3 w320	13	13	0
+U+0023.HW	Source Sans 3 w320	13	13	1
+U+0023.PR	Source Sans 3 w320	13	13	0
+U+0024.HW	Source Sans 3 w320	13	13	1
+U+0024.PR	Source Sans 3 w320	13	13	0
+U+0025.HW	Source Sans 3 w320	8	13	0
+U+0025.PR	Source Sans 3 w320	13	13	0
+U+0026.HW	Source Sans 3 w320	12	13	0
+U+0026.PR	Source Sans 3 w320	13	13	0
+U+0027.HW	Source Sans 3 w320	13	13	3
+U+0027.PR	Source Sans 3 w320	13	13	0
+U+0028.HW	Source Sans 3 w320	13	13	2
+U+0028.PR	Source Sans 3 w320	13	13	0
+U+0029.HW	Source Sans 3 w320	13	13	2
+U+0029.PR	Source Sans 3 w320	13	13	0
+U+002A.HW	Source Sans 3 w320	13	13	2
+U+002A.PR	Source Sans 3 w320	13	13	0
+U+002B.HW	Source Sans 3 w320	13	13	1
+U+002B.PR	Source Sans 3 w320	13	13	0
+U+002C.HW	Source Sans 3 w320	13	13	3
+U+002C.PR	Source Sans 3 w320	13	13	0
+U+002D.HW	Source Sans 3 w320	13	13	2
+U+002D.PR	Source Sans 3 w320	13	13	0
+U+002E.HW	Source Sans 3 w320	13	13	3
+U+002E.PR	Source Sans 3 w320	13	13	0
+U+002F.HW	Source Sans 3 w320	13	13	1
+U+002F.PR	Source Sans 3 w320	13	13	0
+U+0030.HW	Source Sans 3 w320	13	13	1
+U+0030.PR	Source Sans 3 w320	13	13	0
+U+0031.HW	Source Sans 3 w320	13	13	1
+U+0031.PR	Source Sans 3 w320	13	13	0
+U+0032.HW	Source Sans 3 w320	13	13	1
+U+0032.PR	Source Sans 3 w320	13	13	0
+U+0033.HW	Source Sans 3 w320	13	13	1
+U+0033.PR	Source Sans 3 w320	13	13	0
+U+0034.HW	Source Sans 3 w320	13	13	1
+U+0034.PR	Source Sans 3 w320	13	13	0
+U+0035.HW	Source Sans 3 w320	13	13	1
+U+0035.PR	Source Sans 3 w320	13	13	0
+U+0036.HW	Source Sans 3 w320	13	13	1
+U+0036.PR	Source Sans 3 w320	13	13	0
+U+0037.HW	Source Sans 3 w320	13	13	1
+U+0037.PR	Source Sans 3 w320	13	13	0
+U+0038.HW	Source Sans 3 w320	13	13	1
+U+0038.PR	Source Sans 3 w320	13	13	0
+U+0039.HW	Source Sans 3 w320	13	13	1
+U+0039.PR	Source Sans 3 w320	13	13	0
+U+003A.HW	Source Sans 3 w320	13	13	3
+U+003A.PR	Source Sans 3 w320	13	13	0
+U+003B.HW	Source Sans 3 w320	13	13	3
+U+003B.PR	Source Sans 3 w320	13	13	0
+U+003C.HW	Source Sans 3 w320	13	13	1
+U+003C.PR	Source Sans 3 w320	13	13	0
+U+003D.HW	Source Sans 3 w320	13	13	1
+U+003D.PR	Source Sans 3 w320	13	13	0
+U+003E.HW	Source Sans 3 w320	13	13	1
+U+003E.PR	Source Sans 3 w320	13	13	0
+U+003F.HW	Source Sans 3 w320	13	13	1
+U+003F.PR	Source Sans 3 w320	13	13	0
+U+0040.HW	Source Sans 3 w320	8	13	0
+U+0040.PR	Source Sans 3 w320	13	13	0
+U+0041.HW	Source Sans 3 w320	13	13	0
+U+0041.PR	Source Sans 3 w320	13	13	0
+U+0042.HW	Source Sans 3 w320	13	13	0
+U+0042.PR	Source Sans 3 w320	13	13	0
+U+0043.HW	Source Sans 3 w320	13	13	0
+U+0043.PR	Source Sans 3 w320	13	13	0
+U+0044.HW	Source Sans 3 w320	13	13	0
+U+0044.PR	Source Sans 3 w320	13	13	0
+U+0045.HW	Source Sans 3 w320	13	13	1
+U+0045.PR	Source Sans 3 w320	13	13	0
+U+0046.HW	Source Sans 3 w320	13	13	1
+U+0046.PR	Source Sans 3 w320	13	13	0
+U+0047.HW	Source Sans 3 w320	13	13	0
+U+0047.PR	Source Sans 3 w320	13	13	0
+U+0048.HW	Source Sans 3 w320	13	13	0
+U+0048.PR	Source Sans 3 w320	13	13	0
+U+0049.HW	Source Sans 3 w320	13	13	3
+U+0049.PR	Source Sans 3 w320	13	13	0
+U+004A.HW	Source Sans 3 w320	13	13	1
+U+004A.PR	Source Sans 3 w320	13	13	0
+U+004B.HW	Source Sans 3 w320	13	13	0
+U+004B.PR	Source Sans 3 w320	13	13	0
+U+004C.HW	Source Sans 3 w320	13	13	1
+U+004C.PR	Source Sans 3 w320	13	13	0
+U+004D.HW	Source Sans 3 w320	12	13	0
+U+004D.PR	Source Sans 3 w320	13	13	0
+U+004E.HW	Source Sans 3 w320	13	13	0
+U+004E.PR	Source Sans 3 w320	13	13	0
+U+004F.HW	Source Sans 3 w320	12	13	0
+U+004F.PR	Source Sans 3 w320	13	13	0
+U+0050.HW	Source Sans 3 w320	13	13	1
+U+0050.PR	Source Sans 3 w320	13	13	0
+U+0051.HW	Source Sans 3 w320	11	13	0
+U+0051.PR	Source Sans 3 w320	13	13	0
+U+0052.HW	Source Sans 3 w320	13	13	1
+U+0052.PR	Source Sans 3 w320	13	13	0
+U+0053.HW	Source Sans 3 w320	13	13	1
+U+0053.PR	Source Sans 3 w320	13	13	0
+U+0054.HW	Source Sans 3 w320	12	13	1
+U+0054.PR	Source Sans 3 w320	13	13	0
+U+0055.HW	Source Sans 3 w320	13	13	0
+U+0055.PR	Source Sans 3 w320	13	13	0
+U+0056.HW	Source Sans 3 w320	13	13	0
+U+0056.PR	Source Sans 3 w320	13	13	0
+U+0057.HW	Source Sans 3 w320	8	13	0
+U+0057.PR	Source Sans 3 w320	13	13	0
+U+0058.HW	Source Sans 3 w320	13	13	1
+U+0058.PR	Source Sans 3 w320	13	13	0
+U+0059.HW	Source Sans 3 w320	13	13	1
+U+0059.PR	Source Sans 3 w320	13	13	0
+U+005A.HW	Source Sans 3 w320	13	13	1
+U+005A.PR	Source Sans 3 w320	13	13	0
+U+005B.HW	Source Sans 3 w320	13	13	3
+U+005B.PR	Source Sans 3 w320	13	13	0
+U+005C.HW	Source Sans 3 w320	13	13	1
+U+005C.PR	Source Sans 3 w320	13	13	0
+U+005D.HW	Source Sans 3 w320	13	13	3
+U+005D.PR	Source Sans 3 w320	13	13	0
+U+005E.HW	Source Sans 3 w320	13	13	1
+U+005E.PR	Source Sans 3 w320	13	13	0
+U+005F.HW	Source Sans 3 w320	13	13	0
+U+005F.PR	Source Sans 3 w320	13	13	0
+U+0060.HW	Source Sans 3 w320	13	13	2
+U+0060.PR	Source Sans 3 w320	13	13	0
+U+0061.HW	Source Sans 3 w320	13	13	1
+U+0061.PR	Source Sans 3 w320	13	13	0
+U+0062.HW	Source Sans 3 w320	13	13	1
+U+0062.PR	Source Sans 3 w320	13	13	0
+U+0063.HW	Source Sans 3 w320	13	13	1
+U+0063.PR	Source Sans 3 w320	13	13	0
+U+0064.HW	Source Sans 3 w320	13	13	1
+U+0064.PR	Source Sans 3 w320	13	13	0
+U+0065.HW	Source Sans 3 w320	13	13	1
+U+0065.PR	Source Sans 3 w320	13	13	0
+U+0066.HW	Source Sans 3 w320	13	13	2
+U+0066.PR	Source Sans 3 w320	13	13	0
+U+0067.HW	Source Sans 3 w320	13	13	1
+U+0067.PR	Source Sans 3 w320	13	13	0
+U+0068.HW	Source Sans 3 w320	13	13	1
+U+0068.PR	Source Sans 3 w320	13	13	0
+U+0069.HW	Source Sans 3 w320	13	13	3
+U+0069.PR	Source Sans 3 w320	13	13	0
+U+006A.HW	Source Sans 3 w320	13	13	2
+U+006A.PR	Source Sans 3 w320	13	13	0
+U+006B.HW	Source Sans 3 w320	13	13	1
+U+006B.PR	Source Sans 3 w320	13	13	0
+U+006C.HW	Source Sans 3 w320	13	13	3
+U+006C.PR	Source Sans 3 w320	13	13	0
+U+006D.HW	Source Sans 3 w320	9	13	0
+U+006D.PR	Source Sans 3 w320	13	13	0
+U+006E.HW	Source Sans 3 w320	13	13	1
+U+006E.PR	Source Sans 3 w320	13	13	0
+U+006F.HW	Source Sans 3 w320	13	13	0
+U+006F.PR	Source Sans 3 w320	13	13	0
+U+0070.HW	Source Sans 3 w320	13	13	1
+U+0070.PR	Source Sans 3 w320	13	13	0
+U+0071.HW	Source Sans 3 w320	13	13	1
+U+0071.PR	Source Sans 3 w320	13	13	0
+U+0072.HW	Source Sans 3 w320	13	13	2
+U+0072.PR	Source Sans 3 w320	13	13	0
+U+0073.HW	Source Sans 3 w320	13	13	1
+U+0073.PR	Source Sans 3 w320	13	13	0
+U+0074.HW	Source Sans 3 w320	13	13	2
+U+0074.PR	Source Sans 3 w320	13	13	0
+U+0075.HW	Source Sans 3 w320	13	13	1
+U+0075.PR	Source Sans 3 w320	13	13	0
+U+0076.HW	Source Sans 3 w320	13	13	1
+U+0076.PR	Source Sans 3 w320	13	13	0
+U+0077.HW	Source Sans 3 w320	10	13	0
+U+0077.PR	Source Sans 3 w320	13	13	0
+U+0078.HW	Source Sans 3 w320	13	13	1
+U+0078.PR	Source Sans 3 w320	13	13	0
+U+0079.HW	Source Sans 3 w320	13	13	1
+U+0079.PR	Source Sans 3 w320	13	13	0
+U+007A.HW	Source Sans 3 w320	13	13	1
+U+007A.PR	Source Sans 3 w320	13	13	0
+U+007B.HW	Source Sans 3 w320	13	13	2
+U+007B.PR	Source Sans 3 w320	13	13	0
+U+007C.HW	Source Sans 3 w320	13	13	3
+U+007C.PR	Source Sans 3 w320	13	13	0
+U+007D.HW	Source Sans 3 w320	13	13	2
+U+007D.PR	Source Sans 3 w320	13	13	0
+U+007E.HW	Source Sans 3 w320	13	13	1
+U+007E.PR	Source Sans 3 w320	13	13	0
+U+00A1.HW	Source Sans 3 w320	13	13	3
+U+00A1.PR	Source Sans 3 w320	13	13	0
+U+00A2.HW	Source Sans 3 w320	13	13	1
+U+00A2.PR	Source Sans 3 w320	13	13	0
+U+00A3.HW	Source Sans 3 w320	13	13	1
+U+00A3.PR	Source Sans 3 w320	13	13	0
+U+00A4.HW	Source Sans 3 w320	13	13	1
+U+00A4.PR	Source Sans 3 w320	13	13	0
+U+00A5.HW	Source Sans 3 w320	13	13	1
+U+00A5.PR	Source Sans 3 w320	13	13	0
+U+00A6.HW	Source Sans 3 w320	13	13	3
+U+00A6.PR	Source Sans 3 w320	13	13	0
+U+00A7.HW	Source Sans 3 w320	13	13	1
+U+00A7.PR	Source Sans 3 w320	13	13	0
+U+00A8.HW	Source Sans 3 w320	13	13	3
+U+00A8.PR	Source Sans 3 w320	13	13	0
+U+00A9.HW	Source Sans 3 w320	9	13	1
+U+00A9.PR	Source Sans 3 w320	13	13	0
+U+00AA.HW	Source Sans 3 w320	13	13	1
+U+00AA.PR	Source Sans 3 w320	13	13	0
+U+00AB.HW	Source Sans 3 w320	13	13	1
+U+00AB.PR	Source Sans 3 w320	13	13	0
+U+00AC.HW	Source Sans 3 w320	13	13	1
+U+00AC.PR	Source Sans 3 w320	13	13	0
+U+00AE.HW	Source Sans 3 w320	13	13	1
+U+00AE.PR	Source Sans 3 w320	13	13	0
+U+00AF.HW	Source Sans 3 w320	13	13	2
+U+00AF.PR	Source Sans 3 w320	13	13	0
+U+00B0.HW	Source Sans 3 w320	13	13	2
+U+00B0.PR	Source Sans 3 w320	13	13	0
+U+00B1.HW	Source Sans 3 w320	13	13	1
+U+00B1.PR	Source Sans 3 w320	13	13	0
+U+00B2.HW	Source Sans 3 w320	13	13	2
+U+00B2.PR	Source Sans 3 w320	13	13	0
+U+00B3.HW	Source Sans 3 w320	13	13	2
+U+00B3.PR	Source Sans 3 w320	13	13	0
+U+00B4.HW	Source Sans 3 w320	13	13	2
+U+00B4.PR	Source Sans 3 w320	13	13	0
+U+00B5.HW	Source Sans 3 w320	13	13	1
+U+00B5.PR	Source Sans 3 w320	13	13	0
+U+00B6.HW	Source Sans 3 w320	13	13	1
+U+00B6.PR	Source Sans 3 w320	13	13	0
+U+00B7.HW	Source Sans 3 w320	13	13	3
+U+00B7.PR	Source Sans 3 w320	13	13	0
+U+00B8.HW	Source Sans 3 w320	13	13	2
+U+00B8.PR	Source Sans 3 w320	13	13	0
+U+00B9.HW	Source Sans 3 w320	13	13	2
+U+00B9.PR	Source Sans 3 w320	13	13	0
+U+00BA.HW	Source Sans 3 w320	13	13	1
+U+00BA.PR	Source Sans 3 w320	13	13	0
+U+00BB.HW	Source Sans 3 w320	13	13	1
+U+00BB.PR	Source Sans 3 w320	13	13	0
+U+00BC.HW	Source Sans 3 w320	10	13	0
+U+00BC.PR	Source Sans 3 w320	13	13	0
+U+00BD.HW	Source Sans 3 w320	10	13	0
+U+00BD.PR	Source Sans 3 w320	13	13	0
+U+00BE.HW	Source Sans 3 w320	9	13	0
+U+00BE.PR	Source Sans 3 w320	13	13	0
+U+00BF.HW	Source Sans 3 w320	13	13	1
+U+00BF.PR	Source Sans 3 w320	13	13	0
+U+00C0.HW	Source Sans 3 w320	13	13	0
+U+00C0.PR	Source Sans 3 w320	13	13	0
+U+00C1.HW	Source Sans 3 w320	13	13	0
+U+00C1.PR	Source Sans 3 w320	13	13	0
+U+00C2.HW	Source Sans 3 w320	13	13	0
+U+00C2.PR	Source Sans 3 w320	13	13	0
+U+00C3.HW	Source Sans 3 w320	12	13	0
+U+00C3.PR	Source Sans 3 w320	13	13	0
+U+00C4.HW	Source Sans 3 w320	13	13	0
+U+00C4.PR	Source Sans 3 w320	13	13	0
+U+00C5.HW	Source Sans 3 w320	12	13	0
+U+00C5.PR	Source Sans 3 w320	13	13	0
+U+00C6.HW	Source Sans 3 w320	9	13	0
+U+00C6.PR	Source Sans 3 w320	13	13	0
+U+00C7.HW	Source Sans 3 w320	13	13	0
+U+00C7.PR	Source Sans 3 w320	13	13	0
+U+00C8.HW	Source Sans 3 w320	13	13	1
+U+00C8.PR	Source Sans 3 w320	13	13	0
+U+00C9.HW	Source Sans 3 w320	13	13	1
+U+00C9.PR	Source Sans 3 w320	13	13	0
+U+00CA.HW	Source Sans 3 w320	13	13	1
+U+00CA.PR	Source Sans 3 w320	13	13	0
+U+00CB.HW	Source Sans 3 w320	13	13	1
+U+00CB.PR	Source Sans 3 w320	13	13	0
+U+00CC.HW	Source Sans 3 w320	13	13	2
+U+00CC.PR	Source Sans 3 w320	13	13	0
+U+00CD.HW	Source Sans 3 w320	13	13	2
+U+00CD.PR	Source Sans 3 w320	13	13	0
+U+00CE.HW	Source Sans 3 w320	13	13	2
+U+00CE.PR	Source Sans 3 w320	13	13	0
+U+00CF.HW	Source Sans 3 w320	13	13	2
+U+00CF.PR	Source Sans 3 w320	13	13	0
+U+00D0.HW	Source Sans 3 w320	11	13	0
+U+00D0.PR	Source Sans 3 w320	13	13	0
+U+00D1.HW	Source Sans 3 w320	13	13	0
+U+00D1.PR	Source Sans 3 w320	13	13	0
+U+00D2.HW	Source Sans 3 w320	12	13	0
+U+00D2.PR	Source Sans 3 w320	13	13	0
+U+00D3.HW	Source Sans 3 w320	12	13	0
+U+00D3.PR	Source Sans 3 w320	13	13	0
+U+00D4.HW	Source Sans 3 w320	12	13	0
+U+00D4.PR	Source Sans 3 w320	13	13	0
+U+00D5.HW	Source Sans 3 w320	11	13	0
+U+00D5.PR	Source Sans 3 w320	13	13	0
+U+00D6.HW	Source Sans 3 w320	12	13	0
+U+00D6.PR	Source Sans 3 w320	13	13	0
+U+00D7.HW	Source Sans 3 w320	13	13	1
+U+00D7.PR	Source Sans 3 w320	13	13	0
+U+00D8.HW	Source Sans 3 w320	11	13	0
+U+00D8.PR	Source Sans 3 w320	13	13	0
+U+00D9.HW	Source Sans 3 w320	13	13	0
+U+00D9.PR	Source Sans 3 w320	13	13	0
+U+00DA.HW	Source Sans 3 w320	13	13	0
+U+00DA.PR	Source Sans 3 w320	13	13	0
+U+00DB.HW	Source Sans 3 w320	13	13	0
+U+00DB.PR	Source Sans 3 w320	13	13	0
+U+00DC.HW	Source Sans 3 w320	13	13	0
+U+00DC.PR	Source Sans 3 w320	13	13	0
+U+00DD.HW	Source Sans 3 w320	13	13	1
+U+00DD.PR	Source Sans 3 w320	13	13	0
+U+00DE.HW	Source Sans 3 w320	13	13	0
+U+00DE.PR	Source Sans 3 w320	13	13	0
+U+00DF.HW	Source Sans 3 w320	13	13	0
+U+00DF.PR	Source Sans 3 w320	13	13	0
+U+00E0.HW	Source Sans 3 w320	13	13	1
+U+00E0.PR	Source Sans 3 w320	13	13	0
+U+00E1.HW	Source Sans 3 w320	13	13	1
+U+00E1.PR	Source Sans 3 w320	13	13	0
+U+00E2.HW	Source Sans 3 w320	13	13	1
+U+00E2.PR	Source Sans 3 w320	13	13	0
+U+00E3.HW	Source Sans 3 w320	13	13	1
+U+00E3.PR	Source Sans 3 w320	13	13	0
+U+00E4.HW	Source Sans 3 w320	13	13	1
+U+00E4.PR	Source Sans 3 w320	13	13	0
+U+00E5.HW	Source Sans 3 w320	13	13	1
+U+00E5.PR	Source Sans 3 w320	13	13	0
+U+00E6.HW	Source Sans 3 w320	9	13	0
+U+00E6.PR	Source Sans 3 w320	13	13	0
+U+00E7.HW	Source Sans 3 w320	13	13	1
+U+00E7.PR	Source Sans 3 w320	13	13	0
+U+00E8.HW	Source Sans 3 w320	13	13	1
+U+00E8.PR	Source Sans 3 w320	13	13	0
+U+00E9.HW	Source Sans 3 w320	13	13	1
+U+00E9.PR	Source Sans 3 w320	13	13	0
+U+00EA.HW	Source Sans 3 w320	13	13	1
+U+00EA.PR	Source Sans 3 w320	13	13	0
+U+00EB.HW	Source Sans 3 w320	13	13	1
+U+00EB.PR	Source Sans 3 w320	13	13	0
+U+00EC.HW	Source Sans 3 w320	13	13	2
+U+00EC.PR	Source Sans 3 w320	13	13	0
+U+00ED.HW	Source Sans 3 w320	13	13	2
+U+00ED.PR	Source Sans 3 w320	13	13	0
+U+00EE.HW	Source Sans 3 w320	13	13	2
+U+00EE.PR	Source Sans 3 w320	13	13	0
+U+00EF.HW	Source Sans 3 w320	13	13	2
+U+00EF.PR	Source Sans 3 w320	13	13	0
+U+00F0.HW	Source Sans 3 w320	13	13	1
+U+00F0.PR	Source Sans 3 w320	13	13	0
+U+00F1.HW	Source Sans 3 w320	13	13	1
+U+00F1.PR	Source Sans 3 w320	13	13	0
+U+00F2.HW	Source Sans 3 w320	13	13	0
+U+00F2.PR	Source Sans 3 w320	13	13	0
+U+00F3.HW	Source Sans 3 w320	13	13	0
+U+00F3.PR	Source Sans 3 w320	13	13	0
+U+00F4.HW	Source Sans 3 w320	13	13	0
+U+00F4.PR	Source Sans 3 w320	13	13	0
+U+00F5.HW	Source Sans 3 w320	13	13	0
+U+00F5.PR	Source Sans 3 w320	13	13	0
+U+00F6.HW	Source Sans 3 w320	13	13	0
+U+00F6.PR	Source Sans 3 w320	13	13	0
+U+00F7.HW	Source Sans 3 w320	13	13	1
+U+00F7.PR	Source Sans 3 w320	13	13	0
+U+00F8.HW	Source Sans 3 w320	13	13	0
+U+00F8.PR	Source Sans 3 w320	13	13	0
+U+00F9.HW	Source Sans 3 w320	13	13	1
+U+00F9.PR	Source Sans 3 w320	13	13	0
+U+00FA.HW	Source Sans 3 w320	13	13	1
+U+00FA.PR	Source Sans 3 w320	13	13	0
+U+00FB.HW	Source Sans 3 w320	13	13	1
+U+00FB.PR	Source Sans 3 w320	13	13	0
+U+00FC.HW	Source Sans 3 w320	13	13	1
+U+00FC.PR	Source Sans 3 w320	13	13	0
+U+00FD.HW	Source Sans 3 w320	13	13	1
+U+00FD.PR	Source Sans 3 w320	13	13	0
+U+00FE.HW	Source Sans 3 w320	13	13	1
+U+00FE.PR	Source Sans 3 w320	13	13	0
+U+00FF.HW	Source Sans 3 w320	13	13	1
+U+00FF.PR	Source Sans 3 w320	13	13	0
+U+0100.HW	Source Sans 3 w320	13	13	0
+U+0100.PR	Source Sans 3 w320	13	13	0
+U+0101.HW	Source Sans 3 w320	13	13	1
+U+0101.PR	Source Sans 3 w320	13	13	0
+U+0102.HW	Source Sans 3 w320	13	13	0
+U+0102.PR	Source Sans 3 w320	13	13	0
+U+0103.HW	Source Sans 3 w320	13	13	1
+U+0103.PR	Source Sans 3 w320	13	13	0
+U+0104.HW	Source Sans 3 w320	11	13	0
+U+0104.PR	Source Sans 3 w320	13	13	0
+U+0105.HW	Source Sans 3 w320	13	13	1
+U+0105.PR	Source Sans 3 w320	13	13	0
+U+0106.HW	Source Sans 3 w320	13	13	0
+U+0106.PR	Source Sans 3 w320	13	13	0
+U+0107.HW	Source Sans 3 w320	13	13	1
+U+0107.PR	Source Sans 3 w320	13	13	0
+U+0108.HW	Source Sans 3 w320	13	13	0
+U+0108.PR	Source Sans 3 w320	13	13	0
+U+0109.HW	Source Sans 3 w320	13	13	1
+U+0109.PR	Source Sans 3 w320	13	13	0
+U+010A.HW	Source Sans 3 w320	13	13	0
+U+010A.PR	Source Sans 3 w320	13	13	0
+U+010B.HW	Source Sans 3 w320	13	13	1
+U+010B.PR	Source Sans 3 w320	13	13	0
+U+010C.HW	Source Sans 3 w320	13	13	0
+U+010C.PR	Source Sans 3 w320	13	13	0
+U+010D.HW	Source Sans 3 w320	13	13	1
+U+010D.PR	Source Sans 3 w320	13	13	0
+U+010E.HW	Source Sans 3 w320	13	13	0
+U+010E.PR	Source Sans 3 w320	13	13	0
+U+010F.HW	Source Sans 3 w320	13	13	0
+U+010F.PR	Source Sans 3 w320	13	13	0
+U+0110.HW	Source Sans 3 w320	11	13	0
+U+0110.PR	Source Sans 3 w320	13	13	0
+U+0111.HW	Source Sans 3 w320	13	13	0
+U+0111.PR	Source Sans 3 w320	13	13	0
+U+0112.HW	Source Sans 3 w320	13	13	1
+U+0112.PR	Source Sans 3 w320	13	13	0
+U+0113.HW	Source Sans 3 w320	13	13	1
+U+0113.PR	Source Sans 3 w320	13	13	0
+U+0114.HW	Source Sans 3 w320	13	13	1
+U+0114.PR	Source Sans 3 w320	13	13	0
+U+0115.HW	Source Sans 3 w320	13	13	1
+U+0115.PR	Source Sans 3 w320	13	13	0
+U+0116.HW	Source Sans 3 w320	13	13	1
+U+0116.PR	Source Sans 3 w320	13	13	0
+U+0117.HW	Source Sans 3 w320	13	13	1
+U+0117.PR	Source Sans 3 w320	13	13	0
+U+0118.HW	Source Sans 3 w320	13	13	1
+U+0118.PR	Source Sans 3 w320	13	13	0
+U+0119.HW	Source Sans 3 w320	13	13	1
+U+0119.PR	Source Sans 3 w320	13	13	0
+U+011A.HW	Source Sans 3 w320	13	13	1
+U+011A.PR	Source Sans 3 w320	13	13	0
+U+011B.HW	Source Sans 3 w320	13	13	1
+U+011B.PR	Source Sans 3 w320	13	13	0
+U+011C.HW	Source Sans 3 w320	13	13	0
+U+011C.PR	Source Sans 3 w320	13	13	0
+U+011D.HW	Source Sans 3 w320	13	13	1
+U+011D.PR	Source Sans 3 w320	13	13	0
+U+011E.HW	Source Sans 3 w320	13	13	0
+U+011E.PR	Source Sans 3 w320	13	13	0
+U+011F.HW	Source Sans 3 w320	13	13	1
+U+011F.PR	Source Sans 3 w320	13	13	0
+U+0120.HW	Source Sans 3 w320	13	13	0
+U+0120.PR	Source Sans 3 w320	13	13	0
+U+0121.HW	Source Sans 3 w320	13	13	1
+U+0121.PR	Source Sans 3 w320	13	13	0
+U+0122.HW	Source Sans 3 w320	13	13	0
+U+0122.PR	Source Sans 3 w320	13	13	0
+U+0123.HW	Source Sans 3 w320	13	13	1
+U+0123.PR	Source Sans 3 w320	13	13	0
+U+0124.HW	Source Sans 3 w320	13	13	0
+U+0124.PR	Source Sans 3 w320	13	13	0
+U+0125.HW	Source Sans 3 w320	13	12	1
+U+0125.PR	Source Sans 3 w320	12	12	0
+U+0126.HW	Source Sans 3 w320	9	13	1
+U+0126.PR	Source Sans 3 w320	13	13	0
+U+0127.HW	Source Sans 3 w320	13	13	0
+U+0127.PR	Source Sans 3 w320	13	13	0
+U+0128.HW	Source Sans 3 w320	13	13	1
+U+0128.PR	Source Sans 3 w320	13	13	0
+U+0129.HW	Source Sans 3 w320	13	13	1
+U+0129.PR	Source Sans 3 w320	13	13	0
+U+012A.HW	Source Sans 3 w320	13	13	2
+U+012A.PR	Source Sans 3 w320	13	13	0
+U+012B.HW	Source Sans 3 w320	13	13	2
+U+012B.PR	Source Sans 3 w320	13	13	0
+U+012C.HW	Source Sans 3 w320	13	13	2
+U+012C.PR	Source Sans 3 w320	13	13	0
+U+012D.HW	Source Sans 3 w320	13	13	2
+U+012D.PR	Source Sans 3 w320	13	13	0
+U+012E.HW	Source Sans 3 w320	13	13	2
+U+012E.PR	Source Sans 3 w320	13	13	0
+U+012F.HW	Source Sans 3 w320	13	13	2
+U+012F.PR	Source Sans 3 w320	13	13	0
+U+0130.HW	Source Sans 3 w320	13	13	3
+U+0130.PR	Source Sans 3 w320	13	13	0
+U+0131.HW	Source Sans 3 w320	13	13	3
+U+0131.PR	Source Sans 3 w320	13	13	0
+U+0132.HW	Source Sans 3 w320	13	13	1
+U+0132.PR	Source Sans 3 w320	13	13	0
+U+0133.HW	Source Sans 3 w320	13	13	1
+U+0133.PR	Source Sans 3 w320	13	13	0
+U+0134.HW	Source Sans 3 w320	13	13	1
+U+0134.PR	Source Sans 3 w320	13	13	0
+U+0135.HW	Source Sans 3 w320	13	13	1
+U+0135.PR	Source Sans 3 w320	13	13	0
+U+0136.HW	Source Sans 3 w320	13	13	0
+U+0136.PR	Source Sans 3 w320	13	13	0
+U+0137.HW	Source Sans 3 w320	13	13	1
+U+0137.PR	Source Sans 3 w320	13	13	0
+U+0138.HW	Source Sans 3 w320	13	13	1
+U+0138.PR	Source Sans 3 w320	13	13	0
+U+0139.HW	Source Sans 3 w320	13	13	1
+U+0139.PR	Source Sans 3 w320	13	13	0
+U+013A.HW	Source Sans 3 w320	13	12	2
+U+013A.PR	Source Sans 3 w320	12	12	0
+U+013B.HW	Source Sans 3 w320	13	13	1
+U+013B.PR	Source Sans 3 w320	13	13	0
+U+013C.HW	Source Sans 3 w320	13	13	2
+U+013C.PR	Source Sans 3 w320	13	13	0
+U+013D.HW	Source Sans 3 w320	13	13	1
+U+013D.PR	Source Sans 3 w320	13	13	0
+U+013E.HW	Source Sans 3 w320	13	13	2
+U+013E.PR	Source Sans 3 w320	13	13	0
+U+013F.HW	Source Sans 3 w320	13	13	1
+U+013F.PR	Source Sans 3 w320	13	13	0
+U+0140.HW	Source Sans 3 w320	13	13	2
+U+0140.PR	Source Sans 3 w320	13	13	0
+U+0141.HW	Source Sans 3 w320	13	13	0
+U+0141.PR	Source Sans 3 w320	13	13	0
+U+0142.HW	Source Sans 3 w320	13	13	2
+U+0142.PR	Source Sans 3 w320	13	13	0
+U+0143.HW	Source Sans 3 w320	13	13	0
+U+0143.PR	Source Sans 3 w320	13	13	0
+U+0144.HW	Source Sans 3 w320	13	13	1
+U+0144.PR	Source Sans 3 w320	13	13	0
+U+0145.HW	Source Sans 3 w320	13	13	0
+U+0145.PR	Source Sans 3 w320	13	13	0
+U+0146.HW	Source Sans 3 w320	13	13	1
+U+0146.PR	Source Sans 3 w320	13	13	0
+U+0147.HW	Source Sans 3 w320	13	13	0
+U+0147.PR	Source Sans 3 w320	13	13	0
+U+0148.HW	Source Sans 3 w320	13	13	1
+U+0148.PR	Source Sans 3 w320	13	13	0
+U+0149.HW	Source Sans 3 w320	11	13	0
+U+0149.PR	Source Sans 3 w320	13	13	0
+U+014A.HW	Source Sans 3 w320	13	13	0
+U+014A.PR	Source Sans 3 w320	13	13	0
+U+014B.HW	Source Sans 3 w320	13	13	1
+U+014B.PR	Source Sans 3 w320	13	13	0
+U+014C.HW	Source Sans 3 w320	12	13	0
+U+014C.PR	Source Sans 3 w320	13	13	0
+U+014D.HW	Source Sans 3 w320	13	13	0
+U+014D.PR	Source Sans 3 w320	13	13	0
+U+014E.HW	Source Sans 3 w320	12	13	0
+U+014E.PR	Source Sans 3 w320	13	13	0
+U+014F.HW	Source Sans 3 w320	13	13	0
+U+014F.PR	Source Sans 3 w320	13	13	0
+U+0150.HW	Source Sans 3 w320	11	13	0
+U+0150.PR	Source Sans 3 w320	13	13	0
+U+0151.HW	Source Sans 3 w320	13	13	0
+U+0151.PR	Source Sans 3 w320	13	13	0
+U+0152.HW	Source Sans 3 w320	9	13	0
+U+0152.PR	Source Sans 3 w320	13	13	0
+U+0153.HW	Source Sans 3 w320	8	13	0
+U+0153.PR	Source Sans 3 w320	13	13	0
+U+0154.HW	Source Sans 3 w320	13	13	1
+U+0154.PR	Source Sans 3 w320	13	13	0
+U+0155.HW	Source Sans 3 w320	13	13	2
+U+0155.PR	Source Sans 3 w320	13	13	0
+U+0156.HW	Source Sans 3 w320	13	13	0
+U+0156.PR	Source Sans 3 w320	13	13	0
+U+0157.HW	Source Sans 3 w320	13	13	1
+U+0157.PR	Source Sans 3 w320	13	13	0
+U+0158.HW	Source Sans 3 w320	13	13	1
+U+0158.PR	Source Sans 3 w320	13	13	0
+U+0159.HW	Source Sans 3 w320	13	13	2
+U+0159.PR	Source Sans 3 w320	13	13	0
+U+015A.HW	Source Sans 3 w320	13	13	1
+U+015A.PR	Source Sans 3 w320	13	13	0
+U+015B.HW	Source Sans 3 w320	13	13	1
+U+015B.PR	Source Sans 3 w320	13	13	0
+U+015C.HW	Source Sans 3 w320	13	13	1
+U+015C.PR	Source Sans 3 w320	13	13	0
+U+015D.HW	Source Sans 3 w320	13	13	1
+U+015D.PR	Source Sans 3 w320	13	13	0
+U+015E.HW	Source Sans 3 w320	13	13	1
+U+015E.PR	Source Sans 3 w320	13	13	0
+U+015F.HW	Source Sans 3 w320	13	13	1
+U+015F.PR	Source Sans 3 w320	13	13	0
+U+0160.HW	Source Sans 3 w320	13	13	1
+U+0160.PR	Source Sans 3 w320	13	13	0
+U+0161.HW	Source Sans 3 w320	13	13	1
+U+0161.PR	Source Sans 3 w320	13	13	0
+U+0162.HW	Source Sans 3 w320	13	13	0
+U+0162.PR	Source Sans 3 w320	13	13	0
+U+0163.HW	Source Sans 3 w320	13	13	2
+U+0163.PR	Source Sans 3 w320	13	13	0
+U+0164.HW	Source Sans 3 w320	12	13	1
+U+0164.PR	Source Sans 3 w320	13	13	0
+U+0165.HW	Source Sans 3 w320	13	13	2
+U+0165.PR	Source Sans 3 w320	13	13	0
+U+0166.HW	Source Sans 3 w320	12	13	1
+U+0166.PR	Source Sans 3 w320	13	13	0
+U+0167.HW	Source Sans 3 w320	13	13	2
+U+0167.PR	Source Sans 3 w320	13	13	0
+U+0168.HW	Source Sans 3 w320	13	13	0
+U+0168.PR	Source Sans 3 w320	13	13	0
+U+0169.HW	Source Sans 3 w320	13	13	1
+U+0169.PR	Source Sans 3 w320	13	13	0
+U+016A.HW	Source Sans 3 w320	13	13	0
+U+016A.PR	Source Sans 3 w320	13	13	0
+U+016B.HW	Source Sans 3 w320	13	13	1
+U+016B.PR	Source Sans 3 w320	13	13	0
+U+016C.HW	Source Sans 3 w320	13	13	0
+U+016C.PR	Source Sans 3 w320	13	13	0
+U+016D.HW	Source Sans 3 w320	13	13	1
+U+016D.PR	Source Sans 3 w320	13	13	0
+U+016E.HW	Source Sans 3 w320	13	13	1
+U+016E.PR	Source Sans 3 w320	13	13	0
+U+016F.HW	Source Sans 3 w320	13	13	1
+U+016F.PR	Source Sans 3 w320	13	13	0
+U+0170.HW	Source Sans 3 w320	13	13	0
+U+0170.PR	Source Sans 3 w320	13	13	0
+U+0171.HW	Source Sans 3 w320	13	13	1
+U+0171.PR	Source Sans 3 w320	13	13	0
+U+0172.HW	Source Sans 3 w320	13	13	0
+U+0172.PR	Source Sans 3 w320	13	13	0
+U+0173.HW	Source Sans 3 w320	13	13	1
+U+0173.PR	Source Sans 3 w320	13	13	0
+U+0174.HW	Source Sans 3 w320	8	13	1
+U+0174.PR	Source Sans 3 w320	13	13	0
+U+0175.HW	Source Sans 3 w320	10	13	0
+U+0175.PR	Source Sans 3 w320	13	13	0
+U+0176.HW	Source Sans 3 w320	13	13	1
+U+0176.PR	Source Sans 3 w320	13	13	0
+U+0177.HW	Source Sans 3 w320	13	13	1
+U+0177.PR	Source Sans 3 w320	13	13	0
+U+0178.HW	Source Sans 3 w320	13	13	1
+U+0178.PR	Source Sans 3 w320	13	13	0
+U+0179.HW	Source Sans 3 w320	13	13	1
+U+0179.PR	Source Sans 3 w320	13	13	0
+U+017A.HW	Source Sans 3 w320	13	13	1
+U+017A.PR	Source Sans 3 w320	13	13	0
+U+017B.HW	Source Sans 3 w320	13	13	1
+U+017B.PR	Source Sans 3 w320	13	13	0
+U+017C.HW	Source Sans 3 w320	13	13	1
+U+017C.PR	Source Sans 3 w320	13	13	0
+U+017D.HW	Source Sans 3 w320	13	13	1
+U+017D.PR	Source Sans 3 w320	13	13	0
+U+017E.HW	Source Sans 3 w320	13	13	1
+U+017E.PR	Source Sans 3 w320	13	13	0
+U+017F.HW	Source Sans 3 w320	13	13	2
+U+017F.PR	Source Sans 3 w320	13	13	0
+U+0180.HW	Source Sans 3 w320	13	13	0
+U+0180.PR	Source Sans 3 w320	13	13	0
+U+0181.HW	Source Sans 3 w320	10	13	0
+U+0181.PR	Source Sans 3 w320	13	13	0
+U+0182.HW	Noto Sans w320	13	13	0
+U+0182.PR	Noto Sans w320	13	13	0
+U+0183.HW	Noto Sans w320	13	13	0
+U+0183.PR	Noto Sans w320	13	13	0
+U+0184.HW	Noto Sans w320	13	13	0
+U+0184.PR	Noto Sans w320	13	13	0
+U+0185.HW	Noto Sans w320	13	13	0
+U+0185.PR	Noto Sans w320	13	13	0
+U+0186.HW	Source Sans 3 w320	13	13	0
+U+0186.PR	Source Sans 3 w320	13	13	0
+U+0187.HW	Noto Sans w320	10	13	0
+U+0187.PR	Noto Sans w320	13	13	0
+U+0188.HW	Noto Sans w320	13	13	0
+U+0188.PR	Noto Sans w320	13	13	0
+U+0189.HW	Noto Sans w320	10	13	0
+U+0189.PR	Noto Sans w320	13	13	0
+U+018A.HW	Source Sans 3 w320	9	13	0
+U+018A.PR	Source Sans 3 w320	13	13	0
+U+018B.HW	Noto Sans w320	13	13	0
+U+018B.PR	Noto Sans w320	13	13	0
+U+018C.HW	Noto Sans w320	13	13	0
+U+018C.PR	Noto Sans w320	13	13	0
+U+018D.HW	Source Sans 3 w320	13	13	1
+U+018D.PR	Source Sans 3 w320	13	13	0
+U+018E.HW	Source Sans 3 w320	13	13	1
+U+018E.PR	Source Sans 3 w320	13	13	0
+U+018F.HW	Source Sans 3 w320	12	13	0
+U+018F.PR	Source Sans 3 w320	13	13	0
+U+0190.HW	Source Sans 3 w320	13	13	1
+U+0190.PR	Source Sans 3 w320	13	13	0
+U+0191.HW	Noto Sans w320	11	13	0
+U+0191.PR	Noto Sans w320	13	13	0
+U+0192.HW	Source Sans 3 w320	13	13	2
+U+0192.PR	Source Sans 3 w320	13	13	0
+U+0193.HW	Source Sans 3 w320	13	13	0
+U+0193.PR	Source Sans 3 w320	13	13	0
+U+0194.HW	Source Sans 3 w320	13	13	0
+U+0194.PR	Source Sans 3 w320	13	13	0
+U+0195.HW	Noto Sans w320	8	13	0
+U+0195.PR	Noto Sans w320	13	13	0
+U+0196.HW	Source Sans 3 w320	13	13	3
+U+0196.PR	Source Sans 3 w320	13	13	0
+U+0197.HW	Source Sans 3 w320	13	13	2
+U+0197.PR	Source Sans 3 w320	13	13	0
+U+0198.HW	Noto Sans w320	12	13	0
+U+0198.PR	Noto Sans w320	13	13	0
+U+0199.HW	Noto Sans w320	13	13	1
+U+0199.PR	Noto Sans w320	13	13	0
+U+019A.HW	Source Sans 3 w320	13	13	3
+U+019A.PR	Source Sans 3 w320	13	13	0
+U+019B.HW	Source Sans 3 w320	13	13	0
+U+019B.PR	Source Sans 3 w320	13	13	0
+U+019C.HW	Noto Sans w320	7	13	0
+U+019C.PR	Noto Sans w320	13	13	0
+U+019D.HW	Noto Sans w320	9	13	0
+U+019D.PR	Noto Sans w320	13	13	0
+U+019E.HW	Source Sans 3 w320	13	13	1
+U+019E.PR	Source Sans 3 w320	13	13	0
+U+019F.HW	Noto Sans w320	10	13	0
+U+019F.PR	Noto Sans w320	13	13	0
+U+01A0.HW	Source Sans 3 w320	11	13	0
+U+01A0.PR	Source Sans 3 w320	13	13	0
+U+01A1.HW	Source Sans 3 w320	13	13	0
+U+01A1.PR	Source Sans 3 w320	13	13	0
+U+01A2.HW	Noto Sans w320	7	13	0
+U+01A2.PR	Noto Sans w320	13	13	0
+U+01A3.HW	Noto Sans w320	9	13	0
+U+01A3.PR	Noto Sans w320	13	13	0
+U+01A4.HW	Noto Sans w320	10	13	0
+U+01A4.PR	Noto Sans w320	13	13	0
+U+01A5.HW	Noto Sans w320	13	13	0
+U+01A5.PR	Noto Sans w320	13	13	0
+U+01A6.HW	Noto Sans w320	13	13	0
+U+01A6.PR	Noto Sans w320	13	13	0
+U+01A7.HW	Noto Sans w320	13	13	0
+U+01A7.PR	Noto Sans w320	13	13	0
+U+01A8.HW	Noto Sans w320	13	13	1
+U+01A8.PR	Noto Sans w320	13	13	0
+U+01A9.HW	Noto Sans w320	13	13	0
+U+01A9.PR	Noto Sans w320	13	13	0
+U+01AA.HW	Noto Sans w320	13	13	1
+U+01AA.PR	Noto Sans w320	13	13	0
+U+01AB.HW	Noto Sans w320	13	13	1
+U+01AB.PR	Noto Sans w320	13	13	0
+U+01AC.HW	Noto Sans w320	12	13	0
+U+01AC.PR	Noto Sans w320	13	13	0
+U+01AD.HW	Noto Sans w320	13	13	1
+U+01AD.PR	Noto Sans w320	13	13	0
+U+01AE.HW	Noto Sans w320	11	13	1
+U+01AE.PR	Noto Sans w320	13	13	0
+U+01AF.HW	Source Sans 3 w320	11	13	0
+U+01AF.PR	Source Sans 3 w320	13	13	0
+U+01B0.HW	Source Sans 3 w320	13	13	0
+U+01B0.PR	Source Sans 3 w320	13	13	0
+U+01B1.HW	Source Sans 3 w320	12	13	0
+U+01B1.PR	Source Sans 3 w320	13	13	0
+U+01B2.HW	Noto Sans w320	11	13	0
+U+01B2.PR	Noto Sans w320	13	13	0
+U+01B3.HW	Noto Sans w320	11	13	0
+U+01B3.PR	Noto Sans w320	13	13	0
+U+01B4.HW	Noto Sans w320	13	13	0
+U+01B4.PR	Noto Sans w320	13	13	0
+U+01B5.HW	Noto Sans w320	12	13	0
+U+01B5.PR	Noto Sans w320	13	13	0
+U+01B6.HW	Noto Sans w320	13	13	1
+U+01B6.PR	Noto Sans w320	13	13	0
+U+01B7.HW	Source Sans 3 w320	13	13	1
+U+01B7.PR	Source Sans 3 w320	13	13	0
+U+01B8.HW	Noto Sans w320	13	13	0
+U+01B8.PR	Noto Sans w320	13	13	0
+U+01B9.HW	Noto Sans w320	13	13	1
+U+01B9.PR	Noto Sans w320	13	13	0
+U+01BA.HW	Noto Sans w320	13	13	1
+U+01BA.PR	Noto Sans w320	13	13	0
+U+01BB.HW	Noto Sans w320	13	13	1
+U+01BB.PR	Noto Sans w320	13	13	0
+U+01BC.HW	Noto Sans w320	13	13	0
+U+01BC.PR	Noto Sans w320	13	13	0
+U+01BD.HW	Noto Sans w320	13	13	1
+U+01BD.PR	Noto Sans w320	13	13	0
+U+01BE.HW	Noto Sans w320	13	13	1
+U+01BE.PR	Noto Sans w320	13	13	0
+U+01BF.HW	Source Sans 3 w320	13	13	1
+U+01BF.PR	Source Sans 3 w320	13	13	0
+U+01C0.HW	Source Sans 3 w320	13	13	3
+U+01C0.PR	Source Sans 3 w320	13	13	0
+U+01C1.HW	Source Sans 3 w320	13	13	1
+U+01C1.PR	Source Sans 3 w320	13	13	0
+U+01C2.HW	Source Sans 3 w320	13	13	2
+U+01C2.PR	Source Sans 3 w320	13	13	0
+U+01C3.HW	Source Sans 3 w320	13	13	3
+U+01C3.PR	Source Sans 3 w320	13	13	0
+U+01C4.HW	Noto Sans w320	6	12	0
+U+01C4.PR	Noto Sans w320	12	12	0
+U+01C5.HW	Noto Sans w320	7	13	0
+U+01C5.PR	Noto Sans w320	13	13	0
+U+01C6.HW	Noto Sans w320	7	13	0
+U+01C6.PR	Noto Sans w320	13	13	0
+U+01C7.HW	Noto Sans w320	10	13	0
+U+01C7.PR	Noto Sans w320	13	13	0
+U+01C8.HW	Noto Sans w320	10	13	0
+U+01C8.PR	Noto Sans w320	13	13	0
+U+01C9.HW	Noto Sans w320	13	13	1
+U+01C9.PR	Noto Sans w320	13	13	0
+U+01CA.HW	Noto Sans w320	7	13	0
+U+01CA.PR	Noto Sans w320	13	13	0
+U+01CB.HW	Noto Sans w320	7	13	0
+U+01CB.PR	Noto Sans w320	13	13	0
+U+01CC.HW	Noto Sans w320	9	13	0
+U+01CC.PR	Noto Sans w320	13	13	0
+U+01CD.HW	Source Sans 3 w320	13	13	0
+U+01CD.PR	Source Sans 3 w320	13	13	0
+U+01CE.HW	Source Sans 3 w320	13	13	1
+U+01CE.PR	Source Sans 3 w320	13	13	0
+U+01CF.HW	Source Sans 3 w320	13	13	2
+U+01CF.PR	Source Sans 3 w320	13	13	0
+U+01D0.HW	Source Sans 3 w320	13	13	2
+U+01D0.PR	Source Sans 3 w320	13	13	0
+U+01D1.HW	Source Sans 3 w320	12	13	0
+U+01D1.PR	Source Sans 3 w320	13	13	0
+U+01D2.HW	Source Sans 3 w320	13	13	0
+U+01D2.PR	Source Sans 3 w320	13	13	0
+U+01D3.HW	Source Sans 3 w320	13	13	0
+U+01D3.PR	Source Sans 3 w320	13	13	0
+U+01D4.HW	Source Sans 3 w320	13	13	1
+U+01D4.PR	Source Sans 3 w320	13	13	0
+U+01D5.HW	Source Sans 3 w320	13	12	0
+U+01D5.PR	Source Sans 3 w320	12	12	0
+U+01D6.HW	Source Sans 3 w320	13	13	1
+U+01D6.PR	Source Sans 3 w320	13	13	0
+U+01D7.HW	Source Sans 3 w320	13	12	0
+U+01D7.PR	Source Sans 3 w320	12	12	0
+U+01D8.HW	Source Sans 3 w320	13	13	1
+U+01D8.PR	Source Sans 3 w320	13	13	0
+U+01D9.HW	Source Sans 3 w320	13	12	0
+U+01D9.PR	Source Sans 3 w320	12	12	0
+U+01DA.HW	Source Sans 3 w320	13	13	1
+U+01DA.PR	Source Sans 3 w320	13	13	0
+U+01DB.HW	Source Sans 3 w320	13	12	0
+U+01DB.PR	Source Sans 3 w320	12	12	0
+U+01DC.HW	Source Sans 3 w320	13	13	1
+U+01DC.PR	Source Sans 3 w320	13	13	0
+U+01DD.HW	Source Sans 3 w320	13	13	1
+U+01DD.PR	Source Sans 3 w320	13	13	0
+U+01DE.HW	Noto Sans w320	9	11	1
+U+01DE.PR	Noto Sans w320	11	11	0
+U+01DF.HW	Noto Sans w320	13	13	1
+U+01DF.PR	Noto Sans w320	13	13	0
+U+01E0.HW	Noto Sans w320	9	11	1
+U+01E0.PR	Noto Sans w320	11	11	0
+U+01E1.HW	Noto Sans w320	13	13	1
+U+01E1.PR	Noto Sans w320	13	13	0
+U+01E2.HW	Source Sans 3 w320	9	13	0
+U+01E2.PR	Source Sans 3 w320	13	13	0
+U+01E3.HW	Source Sans 3 w320	9	13	0
+U+01E3.PR	Source Sans 3 w320	13	13	0
+U+01E4.HW	Source Sans 3 w320	11	13	0
+U+01E4.PR	Source Sans 3 w320	13	13	0
+U+01E5.HW	Source Sans 3 w320	13	13	0
+U+01E5.PR	Source Sans 3 w320	13	13	0
+U+01E6.HW	Source Sans 3 w320	13	13	0
+U+01E6.PR	Source Sans 3 w320	13	13	0
+U+01E7.HW	Source Sans 3 w320	13	13	1
+U+01E7.PR	Source Sans 3 w320	13	13	0
+U+01E8.HW	Noto Sans w320	13	12	0
+U+01E8.PR	Noto Sans w320	12	12	0
+U+01E9.HW	Noto Sans w320	13	11	0
+U+01E9.PR	Noto Sans w320	11	11	0
+U+01EA.HW	Source Sans 3 w320	12	13	0
+U+01EA.PR	Source Sans 3 w320	13	13	0
+U+01EB.HW	Source Sans 3 w320	13	13	0
+U+01EB.PR	Source Sans 3 w320	13	13	0
+U+01EC.HW	Noto Sans w320	9	13	1
+U+01EC.PR	Noto Sans w320	13	13	0
+U+01ED.HW	Noto Sans w320	13	13	0
+U+01ED.PR	Noto Sans w320	13	13	0
+U+01EE.HW	Source Sans 3 w320	13	13	1
+U+01EE.PR	Source Sans 3 w320	13	13	0
+U+01EF.HW	Source Sans 3 w320	13	13	1
+U+01EF.PR	Source Sans 3 w320	13	13	0
+U+01F0.HW	Source Sans 3 w320	13	13	2
+U+01F0.PR	Source Sans 3 w320	13	13	0
+U+01F1.HW	Noto Sans w320	6	13	0
+U+01F1.PR	Noto Sans w320	13	13	0
+U+01F2.HW	Noto Sans w320	7	13	0
+U+01F2.PR	Noto Sans w320	13	13	0
+U+01F3.HW	Noto Sans w320	7	13	0
+U+01F3.PR	Noto Sans w320	13	13	0
+U+01F4.HW	Source Sans 3 w320	13	13	0
+U+01F4.PR	Source Sans 3 w320	13	13	0
+U+01F5.HW	Source Sans 3 w320	13	13	1
+U+01F5.PR	Source Sans 3 w320	13	13	0
+U+01F6.HW	Noto Sans w320	8	13	0
+U+01F6.PR	Noto Sans w320	13	13	0
+U+01F7.HW	Source Sans 3 w320	13	13	1
+U+01F7.PR	Source Sans 3 w320	13	13	0
+U+01F8.HW	Source Sans 3 w320	13	13	0
+U+01F8.PR	Source Sans 3 w320	13	13	0
+U+01F9.HW	Source Sans 3 w320	13	13	1
+U+01F9.PR	Source Sans 3 w320	13	13	0
+U+01FA.HW	Source Sans 3 w320	12	12	0
+U+01FA.PR	Source Sans 3 w320	12	12	0
+U+01FB.HW	Source Sans 3 w320	13	13	1
+U+01FB.PR	Source Sans 3 w320	13	13	0
+U+01FC.HW	Source Sans 3 w320	9	13	0
+U+01FC.PR	Source Sans 3 w320	13	13	0
+U+01FD.HW	Source Sans 3 w320	9	13	0
+U+01FD.PR	Source Sans 3 w320	13	13	0
+U+01FE.HW	Source Sans 3 w320	11	13	0
+U+01FE.PR	Source Sans 3 w320	13	13	0
+U+01FF.HW	Source Sans 3 w320	13	13	0
+U+01FF.PR	Source Sans 3 w320	13	13	0
+U+0200.HW	Source Sans 3 w320	13	13	0
+U+0200.PR	Source Sans 3 w320	13	13	0
+U+0201.HW	Source Sans 3 w320	13	13	1
+U+0201.PR	Source Sans 3 w320	13	13	0
+U+0202.HW	Noto Sans w320	11	12	0
+U+0202.PR	Noto Sans w320	12	12	0
+U+0203.HW	Noto Sans w320	13	13	1
+U+0203.PR	Noto Sans w320	13	13	0
+U+0204.HW	Source Sans 3 w320	13	13	1
+U+0204.PR	Source Sans 3 w320	13	13	0
+U+0205.HW	Source Sans 3 w320	13	13	1
+U+0205.PR	Source Sans 3 w320	13	13	0
+U+0206.HW	Noto Sans w320	13	12	1
+U+0206.PR	Noto Sans w320	12	12	0
+U+0207.HW	Noto Sans w320	13	13	1
+U+0207.PR	Noto Sans w320	13	13	0
+U+0208.HW	Source Sans 3 w320	13	13	1
+U+0208.PR	Source Sans 3 w320	13	13	0
+U+0209.HW	Source Sans 3 w320	13	13	2
+U+0209.PR	Source Sans 3 w320	13	13	0
+U+020A.HW	Noto Sans w320	13	12	2
+U+020A.PR	Noto Sans w320	12	12	0
+U+020B.HW	Noto Sans w320	13	13	2
+U+020B.PR	Noto Sans w320	13	13	0
+U+020C.HW	Source Sans 3 w320	11	13	0
+U+020C.PR	Source Sans 3 w320	13	13	0
+U+020D.HW	Source Sans 3 w320	13	13	0
+U+020D.PR	Source Sans 3 w320	13	13	0
+U+020E.HW	Noto Sans w320	9	12	0
+U+020E.PR	Noto Sans w320	12	12	0
+U+020F.HW	Noto Sans w320	13	13	0
+U+020F.PR	Noto Sans w320	13	13	0
+U+0210.HW	Noto Sans w320	13	12	0
+U+0210.PR	Noto Sans w320	12	12	0
+U+0211.HW	Noto Sans w320	13	13	1
+U+0211.PR	Noto Sans w320	13	13	0
+U+0212.HW	Noto Sans w320	13	12	0
+U+0212.PR	Noto Sans w320	12	12	0
+U+0213.HW	Noto Sans w320	13	13	1
+U+0213.PR	Noto Sans w320	13	13	0
+U+0214.HW	Noto Sans w320	11	12	0
+U+0214.PR	Noto Sans w320	12	12	0
+U+0215.HW	Noto Sans w320	13	13	0
+U+0215.PR	Noto Sans w320	13	13	0
+U+0216.HW	Noto Sans w320	12	12	0
+U+0216.PR	Noto Sans w320	12	12	0
+U+0217.HW	Noto Sans w320	13	13	0
+U+0217.PR	Noto Sans w320	13	13	0
+U+0218.HW	Source Sans 3 w320	13	13	0
+U+0218.PR	Source Sans 3 w320	13	13	0
+U+0219.HW	Source Sans 3 w320	13	13	1
+U+0219.PR	Source Sans 3 w320	13	13	0
+U+021A.HW	Source Sans 3 w320	13	13	0
+U+021A.PR	Source Sans 3 w320	13	13	0
+U+021B.HW	Source Sans 3 w320	13	13	2
+U+021B.PR	Source Sans 3 w320	13	13	0
+U+021C.HW	Source Sans 3 w320	13	13	1
+U+021C.PR	Source Sans 3 w320	13	13	0
+U+021D.HW	Source Sans 3 w320	13	13	1
+U+021D.PR	Source Sans 3 w320	13	13	0
+U+021E.HW	Source Sans 3 w320	13	13	0
+U+021E.PR	Source Sans 3 w320	13	13	0
+U+021F.HW	Source Sans 3 w320	13	12	1
+U+021F.PR	Source Sans 3 w320	12	12	0
+U+0220.HW	Source Sans 3 w320	13	13	0
+U+0220.PR	Source Sans 3 w320	13	13	0
+U+0221.HW	Noto Sans w320	7	13	0
+U+0221.PR	Noto Sans w320	13	13	0
+U+0222.HW	Source Sans 3 w320	12	13	0
+U+0222.PR	Source Sans 3 w320	13	13	0
+U+0223.HW	Source Sans 3 w320	13	13	1
+U+0223.PR	Source Sans 3 w320	13	13	0
+U+0224.HW	Noto Sans w320	12	13	0
+U+0224.PR	Noto Sans w320	13	13	0
+U+0225.HW	Noto Sans w320	13	13	1
+U+0225.PR	Noto Sans w320	13	13	0
+U+0226.HW	Source Sans 3 w320	12	13	0
+U+0226.PR	Source Sans 3 w320	13	13	0
+U+0227.HW	Source Sans 3 w320	13	13	1
+U+0227.PR	Source Sans 3 w320	13	13	0
+U+0228.HW	Noto Sans w320	13	13	1
+U+0228.PR	Noto Sans w320	13	13	0
+U+0229.HW	Noto Sans w320	13	13	1
+U+0229.PR	Noto Sans w320	13	13	0
+U+022A.HW	Noto Sans w320	9	11	1
+U+022A.PR	Noto Sans w320	11	11	0
+U+022B.HW	Noto Sans w320	13	13	0
+U+022B.PR	Noto Sans w320	13	13	0
+U+022C.HW	Noto Sans w320	10	11	0
+U+022C.PR	Noto Sans w320	11	11	0
+U+022D.HW	Noto Sans w320	13	13	0
+U+022D.PR	Noto Sans w320	13	13	0
+U+022E.HW	Noto Sans w320	9	12	1
+U+022E.PR	Noto Sans w320	12	12	0
+U+022F.HW	Noto Sans w320	12	13	1
+U+022F.PR	Noto Sans w320	13	13	0
+U+0230.HW	Noto Sans w320	9	11	1
+U+0230.PR	Noto Sans w320	11	11	0
+U+0231.HW	Noto Sans w320	13	13	0
+U+0231.PR	Noto Sans w320	13	13	0
+U+0232.HW	Noto Sans w320	11	13	0
+U+0232.PR	Noto Sans w320	13	13	0
+U+0233.HW	Noto Sans w320	13	13	0
+U+0233.PR	Noto Sans w320	13	13	0
+U+0234.HW	Noto Sans w320	13	13	1
+U+0234.PR	Noto Sans w320	13	13	0
+U+0235.HW	Noto Sans w320	9	13	0
+U+0235.PR	Noto Sans w320	13	13	0
+U+0236.HW	Noto Sans w320	13	13	1
+U+0236.PR	Noto Sans w320	13	13	0
+U+0237.HW	Source Sans 3 w320	13	13	2
+U+0237.PR	Source Sans 3 w320	13	13	0
+U+0238.HW	Noto Sans w320	7	13	0
+U+0238.PR	Noto Sans w320	13	13	0
+U+0239.HW	Noto Sans w320	7	13	0
+U+0239.PR	Noto Sans w320	13	13	0
+U+023A.HW	Source Sans 3 w320	12	13	0
+U+023A.PR	Source Sans 3 w320	13	13	0
+U+023B.HW	Source Sans 3 w320	13	13	0
+U+023B.PR	Source Sans 3 w320	13	13	0
+U+023C.HW	Source Sans 3 w320	13	13	1
+U+023C.PR	Source Sans 3 w320	13	13	0
+U+023D.HW	Source Sans 3 w320	13	13	0
+U+023D.PR	Source Sans 3 w320	13	13	0
+U+023E.HW	Source Sans 3 w320	13	13	0
+U+023E.PR	Source Sans 3 w320	13	13	0
+U+023F.HW	Noto Sans w320	13	13	1
+U+023F.PR	Noto Sans w320	13	13	0
+U+0240.HW	Noto Sans w320	13	13	1
+U+0240.PR	Noto Sans w320	13	13	0
+U+0241.HW	Source Sans 3 w320	13	13	1
+U+0241.PR	Source Sans 3 w320	13	13	0
+U+0242.HW	Source Sans 3 w320	13	13	1
+U+0242.PR	Source Sans 3 w320	13	13	0
+U+0243.HW	Source Sans 3 w320	12	13	0
+U+0243.PR	Source Sans 3 w320	13	13	0
+U+0244.HW	Source Sans 3 w320	9	13	0
+U+0244.PR	Source Sans 3 w320	13	13	0
+U+0245.HW	Source Sans 3 w320	12	13	1
+U+0245.PR	Source Sans 3 w320	13	13	0
+U+0246.HW	Noto Sans w320	13	13	1
+U+0246.PR	Noto Sans w320	13	13	0
+U+0247.HW	Noto Sans w320	13	13	0
+U+0247.PR	Noto Sans w320	13	13	0
+U+0248.HW	Source Sans 3 w320	13	13	1
+U+0248.PR	Source Sans 3 w320	13	13	0
+U+0249.HW	Source Sans 3 w320	13	13	2
+U+0249.PR	Source Sans 3 w320	13	13	0
+U+024A.HW	Noto Sans w320	8	13	0
+U+024A.PR	Noto Sans w320	13	13	0
+U+024B.HW	Noto Sans w320	11	13	0
+U+024B.PR	Noto Sans w320	13	13	0
+U+024C.HW	Noto Sans w320	11	13	0
+U+024C.PR	Noto Sans w320	13	13	0
+U+024D.HW	Noto Sans w320	13	13	1
+U+024D.PR	Noto Sans w320	13	13	0
+U+024E.HW	Noto Sans w320	11	13	0
+U+024E.PR	Noto Sans w320	13	13	0
+U+024F.HW	Noto Sans w320	13	13	0
+U+024F.PR	Noto Sans w320	13	13	0
+U+02C6.HW	Source Sans 3 w320	13	13	1
+U+02C6.PR	Source Sans 3 w320	13	13	0
+U+02C7.HW	Source Sans 3 w320	13	13	2
+U+02C7.PR	Source Sans 3 w320	13	13	0
+U+02C9.HW	Source Sans 3 w320	13	13	2
+U+02C9.PR	Source Sans 3 w320	13	13	0
+U+02D8.HW	Source Sans 3 w320	13	13	2
+U+02D8.PR	Source Sans 3 w320	13	13	0
+U+02D9.HW	Source Sans 3 w320	13	13	3
+U+02D9.PR	Source Sans 3 w320	13	13	0
+U+02DA.HW	Source Sans 3 w320	13	13	2
+U+02DA.PR	Source Sans 3 w320	13	13	0
+U+02DB.HW	Source Sans 3 w320	13	13	2
+U+02DB.PR	Source Sans 3 w320	13	13	0
+U+02DD.HW	Source Sans 3 w320	13	13	2
+U+02DD.PR	Source Sans 3 w320	13	13	0
+U+0384.HW	Source Sans 3 w320	13	13	3
+U+0384.PR	Source Sans 3 w320	13	13	0
+U+0385.HW	Source Sans 3 w320	13	13	2
+U+0385.PR	Source Sans 3 w320	13	13	0
+U+0386.HW	Source Sans 3 w320	12	13	0
+U+0386.PR	Source Sans 3 w320	13	13	0
+U+0387.HW	Source Sans 3 w320	13	13	3
+U+0387.PR	Source Sans 3 w320	13	13	0
+U+0388.HW	Source Sans 3 w320	12	13	0
+U+0388.PR	Source Sans 3 w320	13	13	0
+U+0389.HW	Source Sans 3 w320	9	13	0
+U+0389.PR	Source Sans 3 w320	13	13	0
+U+038A.HW	Source Sans 3 w320	13	13	2
+U+038A.PR	Source Sans 3 w320	13	13	0
+U+038C.HW	Source Sans 3 w320	9	13	0
+U+038C.PR	Source Sans 3 w320	13	13	0
+U+038E.HW	Source Sans 3 w320	10	13	0
+U+038E.PR	Source Sans 3 w320	13	13	0
+U+038F.HW	Source Sans 3 w320	9	13	0
+U+038F.PR	Source Sans 3 w320	13	13	0
+U+0390.HW	Source Sans 3 w320	13	13	2
+U+0390.PR	Source Sans 3 w320	13	13	0
+U+0391.HW	Source Sans 3 w320	13	13	0
+U+0391.PR	Source Sans 3 w320	13	13	0
+U+0392.HW	Source Sans 3 w320	13	13	0
+U+0392.PR	Source Sans 3 w320	13	13	0
+U+0393.HW	Source Sans 3 w320	13	13	1
+U+0393.PR	Source Sans 3 w320	13	13	0
+U+0394.HW	Source Sans 3 w320	13	13	0
+U+0394.PR	Source Sans 3 w320	13	13	0
+U+0395.HW	Source Sans 3 w320	13	13	1
+U+0395.PR	Source Sans 3 w320	13	13	0
+U+0396.HW	Source Sans 3 w320	13	13	1
+U+0396.PR	Source Sans 3 w320	13	13	0
+U+0397.HW	Source Sans 3 w320	13	13	0
+U+0397.PR	Source Sans 3 w320	13	13	0
+U+0398.HW	Source Sans 3 w320	12	13	0
+U+0398.PR	Source Sans 3 w320	13	13	0
+U+0399.HW	Source Sans 3 w320	13	13	3
+U+0399.PR	Source Sans 3 w320	13	13	0
+U+039A.HW	Source Sans 3 w320	13	13	0
+U+039A.PR	Source Sans 3 w320	13	13	0
+U+039B.HW	Source Sans 3 w320	12	13	1
+U+039B.PR	Source Sans 3 w320	13	13	0
+U+039C.HW	Source Sans 3 w320	12	13	0
+U+039C.PR	Source Sans 3 w320	13	13	0
+U+039D.HW	Source Sans 3 w320	13	13	0
+U+039D.PR	Source Sans 3 w320	13	13	0
+U+039E.HW	Source Sans 3 w320	13	13	1
+U+039E.PR	Source Sans 3 w320	13	13	0
+U+039F.HW	Source Sans 3 w320	12	13	0
+U+039F.PR	Source Sans 3 w320	13	13	0
+U+03A0.HW	Source Sans 3 w320	13	13	0
+U+03A0.PR	Source Sans 3 w320	13	13	0
+U+03A1.HW	Source Sans 3 w320	13	13	1
+U+03A1.PR	Source Sans 3 w320	13	13	0
+U+03A3.HW	Source Sans 3 w320	13	13	1
+U+03A3.PR	Source Sans 3 w320	13	13	0
+U+03A4.HW	Source Sans 3 w320	12	13	1
+U+03A4.PR	Source Sans 3 w320	13	13	0
+U+03A5.HW	Source Sans 3 w320	13	13	1
+U+03A5.PR	Source Sans 3 w320	13	13	0
+U+03A6.HW	Source Sans 3 w320	10	13	0
+U+03A6.PR	Source Sans 3 w320	13	13	0
+U+03A7.HW	Source Sans 3 w320	13	13	1
+U+03A7.PR	Source Sans 3 w320	13	13	0
+U+03A8.HW	Source Sans 3 w320	11	13	1
+U+03A8.PR	Source Sans 3 w320	13	13	0
+U+03A9.HW	Source Sans 3 w320	11	13	0
+U+03A9.PR	Source Sans 3 w320	13	13	0
+U+03AA.HW	Source Sans 3 w320	13	13	2
+U+03AA.PR	Source Sans 3 w320	13	13	0
+U+03AB.HW	Source Sans 3 w320	13	13	1
+U+03AB.PR	Source Sans 3 w320	13	13	0
+U+03AC.HW	Source Sans 3 w320	13	13	0
+U+03AC.PR	Source Sans 3 w320	13	13	0
+U+03AD.HW	Source Sans 3 w320	13	13	1
+U+03AD.PR	Source Sans 3 w320	13	13	0
+U+03AE.HW	Source Sans 3 w320	13	13	1
+U+03AE.PR	Source Sans 3 w320	13	13	0
+U+03AF.HW	Source Sans 3 w320	13	13	3
+U+03AF.PR	Source Sans 3 w320	13	13	0
+U+03B0.HW	Source Sans 3 w320	13	13	1
+U+03B0.PR	Source Sans 3 w320	13	13	0
+U+03B1.HW	Source Sans 3 w320	13	13	0
+U+03B1.PR	Source Sans 3 w320	13	13	0
+U+03B2.HW	Source Sans 3 w320	13	13	0
+U+03B2.PR	Source Sans 3 w320	13	13	0
+U+03B3.HW	Source Sans 3 w320	13	13	1
+U+03B3.PR	Source Sans 3 w320	13	13	0
+U+03B4.HW	Source Sans 3 w320	13	13	1
+U+03B4.PR	Source Sans 3 w320	13	13	0
+U+03B5.HW	Source Sans 3 w320	13	13	1
+U+03B5.PR	Source Sans 3 w320	13	13	0
+U+03B6.HW	Source Sans 3 w320	13	13	1
+U+03B6.PR	Source Sans 3 w320	13	13	0
+U+03B7.HW	Source Sans 3 w320	13	13	1
+U+03B7.PR	Source Sans 3 w320	13	13	0
+U+03B8.HW	Source Sans 3 w320	13	13	1
+U+03B8.PR	Source Sans 3 w320	13	13	0
+U+03B9.HW	Source Sans 3 w320	13	13	3
+U+03B9.PR	Source Sans 3 w320	13	13	0
+U+03BA.HW	Source Sans 3 w320	13	13	1
+U+03BA.PR	Source Sans 3 w320	13	13	0
+U+03BB.HW	Source Sans 3 w320	13	13	1
+U+03BB.PR	Source Sans 3 w320	13	13	0
+U+03BC.HW	Source Sans 3 w320	13	13	1
+U+03BC.PR	Source Sans 3 w320	13	13	0
+U+03BD.HW	Source Sans 3 w320	13	13	1
+U+03BD.PR	Source Sans 3 w320	13	13	0
+U+03BE.HW	Source Sans 3 w320	13	13	1
+U+03BE.PR	Source Sans 3 w320	13	13	0
+U+03BF.HW	Source Sans 3 w320	13	13	1
+U+03BF.PR	Source Sans 3 w320	13	13	0
+U+03C0.HW	Source Sans 3 w320	13	13	0
+U+03C0.PR	Source Sans 3 w320	13	13	0
+U+03C1.HW	Source Sans 3 w320	13	13	1
+U+03C1.PR	Source Sans 3 w320	13	13	0
+U+03C2.HW	Source Sans 3 w320	13	13	1
+U+03C2.PR	Source Sans 3 w320	13	13	0
+U+03C3.HW	Source Sans 3 w320	13	13	1
+U+03C3.PR	Source Sans 3 w320	13	13	0
+U+03C4.HW	Source Sans 3 w320	13	13	1
+U+03C4.PR	Source Sans 3 w320	13	13	0
+U+03C5.HW	Source Sans 3 w320	13	13	1
+U+03C5.PR	Source Sans 3 w320	13	13	0
+U+03C6.HW	Source Sans 3 w320	10	13	1
+U+03C6.PR	Source Sans 3 w320	13	13	0
+U+03C7.HW	Source Sans 3 w320	13	13	1
+U+03C7.PR	Source Sans 3 w320	13	13	0
+U+03C8.HW	Source Sans 3 w320	11	13	0
+U+03C8.PR	Source Sans 3 w320	13	13	0
+U+03C9.HW	Source Sans 3 w320	10	13	1
+U+03C9.PR	Source Sans 3 w320	13	13	0
+U+03CA.HW	Source Sans 3 w320	13	13	2
+U+03CA.PR	Source Sans 3 w320	13	13	0
+U+03CB.HW	Source Sans 3 w320	13	13	1
+U+03CB.PR	Source Sans 3 w320	13	13	0
+U+03CC.HW	Source Sans 3 w320	13	13	1
+U+03CC.PR	Source Sans 3 w320	13	13	0
+U+03CD.HW	Source Sans 3 w320	13	13	1
+U+03CD.PR	Source Sans 3 w320	13	13	0
+U+03CE.HW	Source Sans 3 w320	10	13	0
+U+03CE.PR	Source Sans 3 w320	13	13	0
+U+0401.HW	Source Sans 3 w320	13	13	1
+U+0401.PR	Source Sans 3 w320	13	13	0
+U+0402.HW	Source Sans 3 w320	10	13	0
+U+0402.PR	Source Sans 3 w320	13	13	0
+U+0403.HW	Source Sans 3 w320	13	13	1
+U+0403.PR	Source Sans 3 w320	13	13	0
+U+0404.HW	Source Sans 3 w320	13	13	0
+U+0404.PR	Source Sans 3 w320	13	13	0
+U+0405.HW	Source Sans 3 w320	13	13	1
+U+0405.PR	Source Sans 3 w320	13	13	0
+U+0406.HW	Source Sans 3 w320	13	13	3
+U+0406.PR	Source Sans 3 w320	13	13	0
+U+0407.HW	Source Sans 3 w320	13	13	2
+U+0407.PR	Source Sans 3 w320	13	13	0
+U+0408.HW	Source Sans 3 w320	13	13	1
+U+0408.PR	Source Sans 3 w320	13	13	0
+U+0409.HW	Source Sans 3 w320	7	13	0
+U+0409.PR	Source Sans 3 w320	13	13	0
+U+040A.HW	Source Sans 3 w320	7	13	0
+U+040A.PR	Source Sans 3 w320	13	13	0
+U+040B.HW	Source Sans 3 w320	10	13	0
+U+040B.PR	Source Sans 3 w320	13	13	0
+U+040C.HW	Source Sans 3 w320	13	13	0
+U+040C.PR	Source Sans 3 w320	13	13	0
+U+040D.HW	Source Sans 3 w320	13	13	0
+U+040D.PR	Source Sans 3 w320	13	13	0
+U+040E.HW	Source Sans 3 w320	13	13	0
+U+040E.PR	Source Sans 3 w320	13	13	0
+U+040F.HW	Source Sans 3 w320	13	13	1
+U+040F.PR	Source Sans 3 w320	13	13	0
+U+0410.HW	Source Sans 3 w320	13	13	0
+U+0410.PR	Source Sans 3 w320	13	13	0
+U+0411.HW	Source Sans 3 w320	13	13	0
+U+0411.PR	Source Sans 3 w320	13	13	0
+U+0412.HW	Source Sans 3 w320	13	13	0
+U+0412.PR	Source Sans 3 w320	13	13	0
+U+0413.HW	Source Sans 3 w320	13	13	1
+U+0413.PR	Source Sans 3 w320	13	13	0
+U+0414.HW	Source Sans 3 w320	10	13	0
+U+0414.PR	Source Sans 3 w320	13	13	0
+U+0415.HW	Source Sans 3 w320	13	13	1
+U+0415.PR	Source Sans 3 w320	13	13	0
+U+0416.HW	Source Sans 3 w320	7	13	1
+U+0416.PR	Source Sans 3 w320	13	13	0
+U+0417.HW	Source Sans 3 w320	13	13	1
+U+0417.PR	Source Sans 3 w320	13	13	0
+U+0418.HW	Source Sans 3 w320	13	13	0
+U+0418.PR	Source Sans 3 w320	13	13	0
+U+0419.HW	Source Sans 3 w320	13	13	0
+U+0419.PR	Source Sans 3 w320	13	13	0
+U+041A.HW	Source Sans 3 w320	13	13	0
+U+041A.PR	Source Sans 3 w320	13	13	0
+U+041B.HW	Source Sans 3 w320	12	13	0
+U+041B.PR	Source Sans 3 w320	13	13	0
+U+041C.HW	Source Sans 3 w320	12	13	0
+U+041C.PR	Source Sans 3 w320	13	13	0
+U+041D.HW	Source Sans 3 w320	13	13	0
+U+041D.PR	Source Sans 3 w320	13	13	0
+U+041E.HW	Source Sans 3 w320	12	13	0
+U+041E.PR	Source Sans 3 w320	13	13	0
+U+041F.HW	Source Sans 3 w320	13	13	0
+U+041F.PR	Source Sans 3 w320	13	13	0
+U+0420.HW	Source Sans 3 w320	13	13	1
+U+0420.PR	Source Sans 3 w320	13	13	0
+U+0421.HW	Source Sans 3 w320	13	13	0
+U+0421.PR	Source Sans 3 w320	13	13	0
+U+0422.HW	Source Sans 3 w320	12	13	1
+U+0422.PR	Source Sans 3 w320	13	13	0
+U+0423.HW	Source Sans 3 w320	13	13	0
+U+0423.PR	Source Sans 3 w320	13	13	0
+U+0424.HW	Source Sans 3 w320	9	13	1
+U+0424.PR	Source Sans 3 w320	13	13	0
+U+0425.HW	Source Sans 3 w320	13	13	1
+U+0425.PR	Source Sans 3 w320	13	13	0
+U+0426.HW	Source Sans 3 w320	12	13	0
+U+0426.PR	Source Sans 3 w320	13	13	0
+U+0427.HW	Source Sans 3 w320	13	13	0
+U+0427.PR	Source Sans 3 w320	13	13	0
+U+0428.HW	Source Sans 3 w320	8	13	1
+U+0428.PR	Source Sans 3 w320	13	13	0
+U+0429.HW	Source Sans 3 w320	8	13	0
+U+0429.PR	Source Sans 3 w320	13	13	0
+U+042A.HW	Source Sans 3 w320	10	13	0
+U+042A.PR	Source Sans 3 w320	13	13	0
+U+042B.HW	Source Sans 3 w320	10	13	0
+U+042B.PR	Source Sans 3 w320	13	13	0
+U+042C.HW	Source Sans 3 w320	13	13	0
+U+042C.PR	Source Sans 3 w320	13	13	0
+U+042D.HW	Source Sans 3 w320	13	13	0
+U+042D.PR	Source Sans 3 w320	13	13	0
+U+042E.HW	Source Sans 3 w320	8	13	0
+U+042E.PR	Source Sans 3 w320	13	13	0
+U+042F.HW	Source Sans 3 w320	13	13	0
+U+042F.PR	Source Sans 3 w320	13	13	0
+U+0430.HW	Source Sans 3 w320	13	13	1
+U+0430.PR	Source Sans 3 w320	13	13	0
+U+0431.HW	Source Sans 3 w320	13	13	1
+U+0431.PR	Source Sans 3 w320	13	13	0
+U+0432.HW	Source Sans 3 w320	13	13	1
+U+0432.PR	Source Sans 3 w320	13	13	0
+U+0433.HW	Source Sans 3 w320	13	13	2
+U+0433.PR	Source Sans 3 w320	13	13	0
+U+0434.HW	Source Sans 3 w320	13	13	0
+U+0434.PR	Source Sans 3 w320	13	13	0
+U+0435.HW	Source Sans 3 w320	13	13	1
+U+0435.PR	Source Sans 3 w320	13	13	0
+U+0436.HW	Source Sans 3 w320	10	13	0
+U+0436.PR	Source Sans 3 w320	13	13	0
+U+0437.HW	Source Sans 3 w320	13	13	1
+U+0437.PR	Source Sans 3 w320	13	13	0
+U+0438.HW	Source Sans 3 w320	13	13	1
+U+0438.PR	Source Sans 3 w320	13	13	0
+U+0439.HW	Source Sans 3 w320	13	13	1
+U+0439.PR	Source Sans 3 w320	13	13	0
+U+043A.HW	Source Sans 3 w320	13	13	1
+U+043A.PR	Source Sans 3 w320	13	13	0
+U+043B.HW	Source Sans 3 w320	13	13	1
+U+043B.PR	Source Sans 3 w320	13	13	0
+U+043C.HW	Source Sans 3 w320	13	13	0
+U+043C.PR	Source Sans 3 w320	13	13	0
+U+043D.HW	Source Sans 3 w320	13	13	1
+U+043D.PR	Source Sans 3 w320	13	13	0
+U+043E.HW	Source Sans 3 w320	13	13	0
+U+043E.PR	Source Sans 3 w320	13	13	0
+U+043F.HW	Source Sans 3 w320	13	13	1
+U+043F.PR	Source Sans 3 w320	13	13	0
+U+0440.HW	Source Sans 3 w320	13	13	1
+U+0440.PR	Source Sans 3 w320	13	13	0
+U+0441.HW	Source Sans 3 w320	13	13	1
+U+0441.PR	Source Sans 3 w320	13	13	0
+U+0442.HW	Source Sans 3 w320	13	13	1
+U+0442.PR	Source Sans 3 w320	13	13	0
+U+0443.HW	Source Sans 3 w320	13	13	1
+U+0443.PR	Source Sans 3 w320	13	13	0
+U+0444.HW	Source Sans 3 w320	9	13	1
+U+0444.PR	Source Sans 3 w320	13	13	0
+U+0445.HW	Source Sans 3 w320	13	13	1
+U+0445.PR	Source Sans 3 w320	13	13	0
+U+0446.HW	Source Sans 3 w320	13	13	0
+U+0446.PR	Source Sans 3 w320	13	13	0
+U+0447.HW	Source Sans 3 w320	13	13	1
+U+0447.PR	Source Sans 3 w320	13	13	0
+U+0448.HW	Source Sans 3 w320	11	13	0
+U+0448.PR	Source Sans 3 w320	13	13	0
+U+0449.HW	Source Sans 3 w320	10	13	0
+U+0449.PR	Source Sans 3 w320	13	13	0
+U+044A.HW	Source Sans 3 w320	13	13	0
+U+044A.PR	Source Sans 3 w320	13	13	0
+U+044B.HW	Source Sans 3 w320	13	13	0
+U+044B.PR	Source Sans 3 w320	13	13	0
+U+044C.HW	Source Sans 3 w320	13	13	1
+U+044C.PR	Source Sans 3 w320	13	13	0
+U+044D.HW	Source Sans 3 w320	13	13	1
+U+044D.PR	Source Sans 3 w320	13	13	0
+U+044E.HW	Source Sans 3 w320	10	13	0
+U+044E.PR	Source Sans 3 w320	13	13	0
+U+044F.HW	Source Sans 3 w320	13	13	1
+U+044F.PR	Source Sans 3 w320	13	13	0
+U+0450.HW	Source Sans 3 w320	13	13	1
+U+0450.PR	Source Sans 3 w320	13	13	0
+U+0451.HW	Source Sans 3 w320	13	13	1
+U+0451.PR	Source Sans 3 w320	13	13	0
+U+0452.HW	Source Sans 3 w320	13	13	0
+U+0452.PR	Source Sans 3 w320	13	13	0
+U+0453.HW	Source Sans 3 w320	13	13	2
+U+0453.PR	Source Sans 3 w320	13	13	0
+U+0454.HW	Source Sans 3 w320	13	13	1
+U+0454.PR	Source Sans 3 w320	13	13	0
+U+0455.HW	Source Sans 3 w320	13	13	1
+U+0455.PR	Source Sans 3 w320	13	13	0
+U+0456.HW	Source Sans 3 w320	13	13	3
+U+0456.PR	Source Sans 3 w320	13	13	0
+U+0457.HW	Source Sans 3 w320	13	13	2
+U+0457.PR	Source Sans 3 w320	13	13	0
+U+0458.HW	Source Sans 3 w320	13	13	2
+U+0458.PR	Source Sans 3 w320	13	13	0
+U+0459.HW	Source Sans 3 w320	9	13	0
+U+0459.PR	Source Sans 3 w320	13	13	0
+U+045A.HW	Source Sans 3 w320	10	13	0
+U+045A.PR	Source Sans 3 w320	13	13	0
+U+045B.HW	Source Sans 3 w320	13	13	0
+U+045B.PR	Source Sans 3 w320	13	13	0
+U+045C.HW	Source Sans 3 w320	13	13	1
+U+045C.PR	Source Sans 3 w320	13	13	0
+U+045D.HW	Source Sans 3 w320	13	13	1
+U+045D.PR	Source Sans 3 w320	13	13	0
+U+045E.HW	Source Sans 3 w320	13	13	1
+U+045E.PR	Source Sans 3 w320	13	13	0
+U+045F.HW	Source Sans 3 w320	13	13	1
+U+045F.PR	Source Sans 3 w320	13	13	0
+U+0490.HW	Source Sans 3 w320	13	13	1
+U+0490.PR	Source Sans 3 w320	13	13	0
+U+0491.HW	Source Sans 3 w320	13	13	1
+U+0491.PR	Source Sans 3 w320	13	13	0
+U+060C.PR	Noto Sans Arabic w320	13	13	2
+U+061B.PR	Noto Sans Arabic w320	13	13	2
+U+061F.PR	Noto Sans Arabic w320	13	13	1
+U+0621.PR	Noto Sans Arabic w320	13	13	1
+U+0622.PR	Noto Sans Arabic w320	13	13	0
+U+0623.PR	Noto Sans Arabic w320	11	11	1
+U+0624.PR	Noto Sans Arabic w320	13	13	1
+U+0625.PR	Noto Sans Arabic w320	13	13	1
+U+0626.PR	Noto Sans Arabic w320	13	13	1
+U+0627.PR	Noto Sans Arabic w320	13	13	2
+U+0628.PR	Noto Sans Arabic w320	13	13	1
+U+0629.PR	Noto Sans Arabic w320	13	13	1
+U+062A.PR	Noto Sans Arabic w320	13	13	1
+U+062B.PR	Noto Sans Arabic w320	13	13	1
+U+062C.PR	Noto Sans Arabic w320	11	11	1
+U+062D.PR	Noto Sans Arabic w320	11	11	1
+U+062E.PR	Noto Sans Arabic w320	11	11	1
+U+062F.PR	Noto Sans Arabic w320	13	13	1
+U+0630.PR	Noto Sans Arabic w320	13	13	1
+U+0631.PR	Noto Sans Arabic w320	13	13	0
+U+0632.PR	Noto Sans Arabic w320	13	13	0
+U+0633.PR	Noto Sans Arabic w320	13	13	1
+U+0634.PR	Noto Sans Arabic w320	13	13	1
+U+0635.PR	Noto Sans Arabic w320	13	13	1
+U+0636.PR	Noto Sans Arabic w320	13	13	1
+U+0637.PR	Noto Sans Arabic w320	13	13	1
+U+0638.PR	Noto Sans Arabic w320	13	13	1
+U+0639.PR	Noto Sans Arabic w320	11	11	1
+U+063A.PR	Noto Sans Arabic w320	11	11	1
+U+0640.PR	Noto Sans Arabic w320	13	13	0
+U+0641.PR	Noto Sans Arabic w320	13	13	1
+U+0642.PR	Noto Sans Arabic w320	13	13	1
+U+0643.PR	Noto Sans Arabic w320	13	13	1
+U+0644.PR	Noto Sans Arabic w320	13	13	1
+U+0645.PR	Noto Sans Arabic w320	11	11	1
+U+0646.PR	Noto Sans Arabic w320	13	13	1
+U+0647.PR	Noto Sans Arabic w320	13	13	1
+U+0648.PR	Noto Sans Arabic w320	13	13	1
+U+0649.PR	Noto Sans Arabic w320	13	13	1
+U+064A.PR	Noto Sans Arabic w320	10	10	1
+U+064B.PR	Noto Sans Arabic w320	13	13	0
+U+064C.PR	Noto Sans Arabic w320	13	13	0
+U+064D.PR	Noto Sans Arabic w320	13	13	0
+U+064E.PR	Noto Sans Arabic w320	13	13	0
+U+064F.PR	Noto Sans Arabic w320	13	13	0
+U+0650.PR	Noto Sans Arabic w320	13	13	0
+U+0651.PR	Noto Sans Arabic w320	13	13	0
+U+0652.PR	Noto Sans Arabic w320	13	13	0
+U+0653.PR	Noto Sans Arabic w320	13	13	0
+U+0654.PR	Noto Sans Arabic w320	13	13	0
+U+0655.PR	Noto Sans Arabic w320	13	13	0
+U+0660.PR	Noto Sans Arabic w320	13	13	4
+U+0661.PR	Noto Sans Arabic w320	13	13	3
+U+0662.PR	Noto Sans Arabic w320	13	13	2
+U+0663.PR	Noto Sans Arabic w320	13	13	1
+U+0664.PR	Noto Sans Arabic w320	13	13	2
+U+0665.PR	Noto Sans Arabic w320	13	13	2
+U+0666.PR	Noto Sans Arabic w320	13	13	1
+U+0667.PR	Noto Sans Arabic w320	13	13	1
+U+0668.PR	Noto Sans Arabic w320	13	13	1
+U+0669.PR	Noto Sans Arabic w320	13	13	2
+U+066A.PR	Noto Sans Arabic w320	13	13	1
+U+066B.PR	Noto Sans Arabic w320	13	13	1
+U+066C.PR	Noto Sans Arabic w320	13	13	1
+U+066D.PR	Noto Sans Arabic w320	13	13	0
+U+0679.PR	Noto Sans Arabic w320	13	13	1
+U+067E.PR	Noto Sans Arabic w320	12	12	1
+U+0686.PR	Noto Sans Arabic w320	11	11	1
+U+0688.PR	Noto Sans Arabic w320	13	13	1
+U+0691.PR	Noto Sans Arabic w320	13	13	1
+U+0698.PR	Noto Sans Arabic w320	13	13	1
+U+06A9.PR	Noto Sans Arabic w320	13	13	1
+U+06AF.PR	Noto Sans Arabic w320	13	13	1
+U+06BA.PR	Noto Sans Arabic w320	13	13	1
+U+06BE.PR	Noto Sans Arabic w320	13	13	1
+U+06C1.PR	Noto Sans Arabic w320	13	13	1
+U+06C2.PR	Noto Sans Arabic w320	13	13	1
+U+06C3.PR	Noto Sans Arabic w320	13	13	1
+U+06CC.PR	Noto Sans Arabic w320	13	13	1
+U+06D2.PR	Noto Sans Arabic w320	13	13	1
+U+06D3.PR	Noto Sans Arabic w320	13	13	1
+U+06D4.PR	Noto Sans Arabic w320	13	13	1
+U+06F0.PR	Noto Sans Arabic w320	13	13	4
+U+06F1.PR	Noto Sans Arabic w320	13	13	3
+U+06F2.PR	Noto Sans Arabic w320	13	13	2
+U+06F3.PR	Noto Sans Arabic w320	13	13	1
+U+06F4.PR	Noto Sans Arabic w320	13	13	2
+U+06F5.PR	Noto Sans Arabic w320	13	13	2
+U+06F6.PR	Noto Sans Arabic w320	13	13	2
+U+06F7.PR	Noto Sans Arabic w320	13	13	1
+U+06F8.PR	Noto Sans Arabic w320	13	13	1
+U+06F9.PR	Noto Sans Arabic w320	13	13	2
+U+0E01.PR	Noto Sans Thai w320	13	13	1
+U+0E02.PR	Noto Sans Thai w320	13	13	2
+U+0E03.PR	Noto Sans Thai w320	13	13	2
+U+0E04.PR	Noto Sans Thai w320	13	13	1
+U+0E05.PR	Noto Sans Thai w320	13	13	1
+U+0E06.PR	Noto Sans Thai w320	13	13	1
+U+0E07.PR	Noto Sans Thai w320	13	13	1
+U+0E08.PR	Noto Sans Thai w320	13	13	1
+U+0E09.PR	Noto Sans Thai w320	13	13	1
+U+0E0A.PR	Noto Sans Thai w320	13	13	1
+U+0E0B.PR	Noto Sans Thai w320	13	13	2
+U+0E0C.PR	Noto Sans Thai w320	13	13	1
+U+0E0D.PR	Noto Sans Thai w320	13	13	1
+U+0E0E.PR	Noto Sans Thai w320	13	13	1
+U+0E0F.PR	Noto Sans Thai w320	13	13	1
+U+0E10.PR	Noto Sans Thai w320	13	13	1
+U+0E11.PR	Noto Sans Thai w320	13	13	2
+U+0E12.PR	Noto Sans Thai w320	13	13	1
+U+0E13.PR	Noto Sans Thai w320	13	13	1
+U+0E14.PR	Noto Sans Thai w320	13	13	1
+U+0E15.PR	Noto Sans Thai w320	13	13	2
+U+0E16.PR	Noto Sans Thai w320	13	13	1
+U+0E17.PR	Noto Sans Thai w320	13	13	1
+U+0E18.PR	Noto Sans Thai w320	13	13	2
+U+0E19.PR	Noto Sans Thai w320	13	13	1
+U+0E1A.PR	Noto Sans Thai w320	13	13	1
+U+0E1B.PR	Noto Sans Thai w320	13	13	1
+U+0E1C.PR	Noto Sans Thai w320	13	13	2
+U+0E1D.PR	Noto Sans Thai w320	13	13	2
+U+0E1E.PR	Noto Sans Thai w320	13	13	1
+U+0E1F.PR	Noto Sans Thai w320	13	13	1
+U+0E20.PR	Noto Sans Thai w320	13	13	1
+U+0E21.PR	Noto Sans Thai w320	13	13	2
+U+0E22.PR	Noto Sans Thai w320	13	13	1
+U+0E23.PR	Noto Sans Thai w320	13	13	1
+U+0E24.PR	Noto Sans Thai w320	13	13	1
+U+0E25.PR	Noto Sans Thai w320	13	13	1
+U+0E26.PR	Noto Sans Thai w320	13	13	1
+U+0E27.PR	Noto Sans Thai w320	13	13	1
+U+0E28.PR	Noto Sans Thai w320	13	13	1
+U+0E29.PR	Noto Sans Thai w320	13	13	1
+U+0E2A.PR	Noto Sans Thai w320	13	13	1
+U+0E2B.PR	Noto Sans Thai w320	13	13	2
+U+0E2C.PR	Noto Sans Thai w320	13	13	1
+U+0E2D.PR	Noto Sans Thai w320	13	13	1
+U+0E2E.PR	Noto Sans Thai w320	13	13	1
+U+0E2F.PR	Noto Sans Thai w320	13	13	1
+U+0E30.PR	Noto Sans Thai w320	13	13	1
+U+0E31.PR	Noto Sans Thai w320	13	13	0
+U+0E32.PR	Noto Sans Thai w320	13	13	1
+U+0E33.PR	Noto Sans Thai w320	13	13	0
+U+0E34.PR	Noto Sans Thai w320	13	13	0
+U+0E35.PR	Noto Sans Thai w320	13	13	0
+U+0E36.PR	Noto Sans Thai w320	13	13	0
+U+0E37.PR	Noto Sans Thai w320	13	13	0
+U+0E38.PR	Noto Sans Thai w320	13	13	0
+U+0E39.PR	Noto Sans Thai w320	13	13	0
+U+0E3A.PR	Noto Sans Thai w320	13	13	0
+U+0E3F.PR	Noto Sans Thai w320	13	13	2
+U+0E40.PR	Noto Sans Thai w320	13	13	2
+U+0E41.PR	Noto Sans Thai w320	13	13	2
+U+0E42.PR	Noto Sans Thai w320	13	13	1
+U+0E43.PR	Noto Sans Thai w320	13	13	1
+U+0E44.PR	Noto Sans Thai w320	13	13	1
+U+0E45.PR	Noto Sans Thai w320	13	13	1
+U+0E46.PR	Noto Sans Thai w320	13	13	1
+U+0E47.PR	Noto Sans Thai w320	13	13	0
+U+0E48.PR	Noto Sans Thai w320	13	13	0
+U+0E49.PR	Noto Sans Thai w320	13	13	0
+U+0E4A.PR	Noto Sans Thai w320	13	13	0
+U+0E4B.PR	Noto Sans Thai w320	13	13	0
+U+0E4C.PR	Noto Sans Thai w320	13	13	0
+U+0E4D.PR	Noto Sans Thai w320	13	13	0
+U+0E4E.PR	Noto Sans Thai w320	13	13	0
+U+0E4F.PR	Noto Sans Thai w320	13	13	1
+U+0E50.PR	Noto Sans Thai w320	13	13	1
+U+0E51.PR	Noto Sans Thai w320	13	13	2
+U+0E52.PR	Noto Sans Thai w320	13	13	2
+U+0E53.PR	Noto Sans Thai w320	13	13	1
+U+0E54.PR	Noto Sans Thai w320	13	13	1
+U+0E55.PR	Noto Sans Thai w320	13	13	1
+U+0E56.PR	Noto Sans Thai w320	13	13	0
+U+0E57.PR	Noto Sans Thai w320	13	13	1
+U+0E58.PR	Noto Sans Thai w320	13	13	1
+U+0E59.PR	Noto Sans Thai w320	13	13	1
+U+0E5A.PR	Noto Sans Thai w320	13	13	1
+U+0E5B.PR	Noto Sans Thai w320	13	13	1
+U+1E80.HW	Source Sans 3 w320	8	13	0
+U+1E80.PR	Source Sans 3 w320	13	13	0
+U+1E81.HW	Source Sans 3 w320	10	13	0
+U+1E81.PR	Source Sans 3 w320	13	13	0
+U+1E82.HW	Source Sans 3 w320	8	13	0
+U+1E82.PR	Source Sans 3 w320	13	13	0
+U+1E83.HW	Source Sans 3 w320	10	13	0
+U+1E83.PR	Source Sans 3 w320	13	13	0
+U+1E84.HW	Source Sans 3 w320	8	13	0
+U+1E84.PR	Source Sans 3 w320	13	13	0
+U+1E85.HW	Source Sans 3 w320	10	13	0
+U+1E85.PR	Source Sans 3 w320	13	13	0
+U+1EA0.HW	Source Sans 3 w320	13	13	0
+U+1EA0.PR	Source Sans 3 w320	13	13	0
+U+1EA1.HW	Source Sans 3 w320	13	13	1
+U+1EA1.PR	Source Sans 3 w320	13	13	0
+U+1EA2.HW	Source Sans 3 w320	13	13	0
+U+1EA2.PR	Source Sans 3 w320	13	13	0
+U+1EA3.HW	Source Sans 3 w320	13	13	1
+U+1EA3.PR	Source Sans 3 w320	13	13	0
+U+1EA4.HW	Source Sans 3 w320	12	12	0
+U+1EA4.PR	Source Sans 3 w320	12	12	0
+U+1EA5.HW	Source Sans 3 w320	13	13	0
+U+1EA5.PR	Source Sans 3 w320	13	13	0
+U+1EA6.HW	Source Sans 3 w320	12	12	0
+U+1EA6.PR	Source Sans 3 w320	12	12	0
+U+1EA7.HW	Source Sans 3 w320	13	13	1
+U+1EA7.PR	Source Sans 3 w320	13	13	0
+U+1EA8.HW	Source Sans 3 w320	13	12	0
+U+1EA8.PR	Source Sans 3 w320	12	12	0
+U+1EA9.HW	Source Sans 3 w320	13	13	0
+U+1EA9.PR	Source Sans 3 w320	13	13	0
+U+1EAA.HW	Source Sans 3 w320	12	12	0
+U+1EAA.PR	Source Sans 3 w320	12	12	0
+U+1EAB.HW	Source Sans 3 w320	13	13	1
+U+1EAB.PR	Source Sans 3 w320	13	13	0
+U+1EAC.HW	Source Sans 3 w320	13	13	0
+U+1EAC.PR	Source Sans 3 w320	13	13	0
+U+1EAD.HW	Source Sans 3 w320	13	13	1
+U+1EAD.PR	Source Sans 3 w320	13	13	0
+U+1EAE.HW	Source Sans 3 w320	12	12	0
+U+1EAE.PR	Source Sans 3 w320	12	12	0
+U+1EAF.HW	Source Sans 3 w320	13	13	1
+U+1EAF.PR	Source Sans 3 w320	13	13	0
+U+1EB0.HW	Source Sans 3 w320	12	12	0
+U+1EB0.PR	Source Sans 3 w320	12	12	0
+U+1EB1.HW	Source Sans 3 w320	13	13	1
+U+1EB1.PR	Source Sans 3 w320	13	13	0
+U+1EB2.HW	Source Sans 3 w320	12	12	0
+U+1EB2.PR	Source Sans 3 w320	12	12	0
+U+1EB3.HW	Source Sans 3 w320	13	13	1
+U+1EB3.PR	Source Sans 3 w320	13	13	0
+U+1EB4.HW	Source Sans 3 w320	13	12	0
+U+1EB4.PR	Source Sans 3 w320	12	12	0
+U+1EB5.HW	Source Sans 3 w320	13	13	1
+U+1EB5.PR	Source Sans 3 w320	13	13	0
+U+1EB6.HW	Source Sans 3 w320	13	13	0
+U+1EB6.PR	Source Sans 3 w320	13	13	0
+U+1EB7.HW	Source Sans 3 w320	13	13	1
+U+1EB7.PR	Source Sans 3 w320	13	13	0
+U+1EB8.HW	Source Sans 3 w320	13	13	1
+U+1EB8.PR	Source Sans 3 w320	13	13	0
+U+1EB9.HW	Source Sans 3 w320	13	13	1
+U+1EB9.PR	Source Sans 3 w320	13	13	0
+U+1EBA.HW	Source Sans 3 w320	13	13	1
+U+1EBA.PR	Source Sans 3 w320	13	13	0
+U+1EBB.HW	Source Sans 3 w320	13	13	1
+U+1EBB.PR	Source Sans 3 w320	13	13	0
+U+1EBC.HW	Source Sans 3 w320	13	13	1
+U+1EBC.PR	Source Sans 3 w320	13	13	0
+U+1EBD.HW	Source Sans 3 w320	13	13	1
+U+1EBD.PR	Source Sans 3 w320	13	13	0
+U+1EBE.HW	Source Sans 3 w320	13	13	1
+U+1EBE.PR	Source Sans 3 w320	13	13	0
+U+1EBF.HW	Source Sans 3 w320	13	13	1
+U+1EBF.PR	Source Sans 3 w320	13	13	0
+U+1EC0.HW	Source Sans 3 w320	13	13	1
+U+1EC0.PR	Source Sans 3 w320	13	13	0
+U+1EC1.HW	Source Sans 3 w320	13	13	1
+U+1EC1.PR	Source Sans 3 w320	13	13	0
+U+1EC2.HW	Source Sans 3 w320	13	12	1
+U+1EC2.PR	Source Sans 3 w320	12	12	0
+U+1EC3.HW	Source Sans 3 w320	13	13	1
+U+1EC3.PR	Source Sans 3 w320	13	13	0
+U+1EC4.HW	Source Sans 3 w320	13	12	1
+U+1EC4.PR	Source Sans 3 w320	12	12	0
+U+1EC5.HW	Source Sans 3 w320	13	13	1
+U+1EC5.PR	Source Sans 3 w320	13	13	0
+U+1EC6.HW	Source Sans 3 w320	13	13	1
+U+1EC6.PR	Source Sans 3 w320	13	13	0
+U+1EC7.HW	Source Sans 3 w320	13	13	1
+U+1EC7.PR	Source Sans 3 w320	13	13	0
+U+1EC8.HW	Source Sans 3 w320	13	13	3
+U+1EC8.PR	Source Sans 3 w320	13	13	0
+U+1EC9.HW	Source Sans 3 w320	13	13	2
+U+1EC9.PR	Source Sans 3 w320	13	13	0
+U+1ECA.HW	Source Sans 3 w320	13	13	3
+U+1ECA.PR	Source Sans 3 w320	13	13	0
+U+1ECB.HW	Source Sans 3 w320	13	13	3
+U+1ECB.PR	Source Sans 3 w320	13	13	0
+U+1ECC.HW	Source Sans 3 w320	12	13	0
+U+1ECC.PR	Source Sans 3 w320	13	13	0
+U+1ECD.HW	Source Sans 3 w320	13	13	1
+U+1ECD.PR	Source Sans 3 w320	13	13	0
+U+1ECE.HW	Source Sans 3 w320	11	13	0
+U+1ECE.PR	Source Sans 3 w320	13	13	0
+U+1ECF.HW	Source Sans 3 w320	13	13	0
+U+1ECF.PR	Source Sans 3 w320	13	13	0
+U+1ED0.HW	Source Sans 3 w320	11	12	0
+U+1ED0.PR	Source Sans 3 w320	13	13	0
+U+1ED1.HW	Source Sans 3 w320	13	13	0
+U+1ED1.PR	Source Sans 3 w320	13	13	0
+U+1ED2.HW	Source Sans 3 w320	11	12	0
+U+1ED2.PR	Source Sans 3 w320	13	13	0
+U+1ED3.HW	Source Sans 3 w320	13	13	0
+U+1ED3.PR	Source Sans 3 w320	13	13	0
+U+1ED4.HW	Source Sans 3 w320	11	12	0
+U+1ED4.PR	Source Sans 3 w320	12	12	0
+U+1ED5.HW	Source Sans 3 w320	13	13	0
+U+1ED5.PR	Source Sans 3 w320	13	13	0
+U+1ED6.HW	Source Sans 3 w320	12	12	0
+U+1ED6.PR	Source Sans 3 w320	12	12	0
+U+1ED7.HW	Source Sans 3 w320	13	13	1
+U+1ED7.PR	Source Sans 3 w320	13	13	0
+U+1ED8.HW	Source Sans 3 w320	12	13	0
+U+1ED8.PR	Source Sans 3 w320	13	13	0
+U+1ED9.HW	Source Sans 3 w320	13	13	1
+U+1ED9.PR	Source Sans 3 w320	13	13	0
+U+1EDA.HW	Source Sans 3 w320	11	13	0
+U+1EDA.PR	Source Sans 3 w320	13	13	0
+U+1EDB.HW	Source Sans 3 w320	13	13	0
+U+1EDB.PR	Source Sans 3 w320	13	13	0
+U+1EDC.HW	Source Sans 3 w320	11	13	0
+U+1EDC.PR	Source Sans 3 w320	13	13	0
+U+1EDD.HW	Source Sans 3 w320	13	13	0
+U+1EDD.PR	Source Sans 3 w320	13	13	0
+U+1EDE.HW	Source Sans 3 w320	11	13	0
+U+1EDE.PR	Source Sans 3 w320	13	13	0
+U+1EDF.HW	Source Sans 3 w320	13	13	0
+U+1EDF.PR	Source Sans 3 w320	13	13	0
+U+1EE0.HW	Source Sans 3 w320	12	13	0
+U+1EE0.PR	Source Sans 3 w320	13	13	0
+U+1EE1.HW	Source Sans 3 w320	13	13	0
+U+1EE1.PR	Source Sans 3 w320	13	13	0
+U+1EE2.HW	Source Sans 3 w320	12	13	0
+U+1EE2.PR	Source Sans 3 w320	13	13	0
+U+1EE3.HW	Source Sans 3 w320	13	13	0
+U+1EE3.PR	Source Sans 3 w320	13	13	0
+U+1EE4.HW	Source Sans 3 w320	13	13	0
+U+1EE4.PR	Source Sans 3 w320	13	13	0
+U+1EE5.HW	Source Sans 3 w320	13	13	1
+U+1EE5.PR	Source Sans 3 w320	13	13	0
+U+1EE6.HW	Source Sans 3 w320	13	13	0
+U+1EE6.PR	Source Sans 3 w320	13	13	0
+U+1EE7.HW	Source Sans 3 w320	13	13	1
+U+1EE7.PR	Source Sans 3 w320	13	13	0
+U+1EE8.HW	Source Sans 3 w320	11	13	0
+U+1EE8.PR	Source Sans 3 w320	13	13	0
+U+1EE9.HW	Source Sans 3 w320	13	13	0
+U+1EE9.PR	Source Sans 3 w320	13	13	0
+U+1EEA.HW	Source Sans 3 w320	11	13	0
+U+1EEA.PR	Source Sans 3 w320	13	13	0
+U+1EEB.HW	Source Sans 3 w320	13	13	0
+U+1EEB.PR	Source Sans 3 w320	13	13	0
+U+1EEC.HW	Source Sans 3 w320	11	13	0
+U+1EEC.PR	Source Sans 3 w320	13	13	0
+U+1EED.HW	Source Sans 3 w320	13	13	0
+U+1EED.PR	Source Sans 3 w320	13	13	0
+U+1EEE.HW	Source Sans 3 w320	11	13	0
+U+1EEE.PR	Source Sans 3 w320	13	13	0
+U+1EEF.HW	Source Sans 3 w320	13	13	0
+U+1EEF.PR	Source Sans 3 w320	13	13	0
+U+1EF0.HW	Source Sans 3 w320	11	13	0
+U+1EF0.PR	Source Sans 3 w320	13	13	0
+U+1EF1.HW	Source Sans 3 w320	13	13	0
+U+1EF1.PR	Source Sans 3 w320	13	13	0
+U+1EF2.HW	Source Sans 3 w320	13	13	1
+U+1EF2.PR	Source Sans 3 w320	13	13	0
+U+1EF3.HW	Source Sans 3 w320	13	13	1
+U+1EF3.PR	Source Sans 3 w320	13	13	0
+U+1EF4.HW	Source Sans 3 w320	13	13	1
+U+1EF4.PR	Source Sans 3 w320	13	13	0
+U+1EF5.HW	Source Sans 3 w320	13	13	1
+U+1EF5.PR	Source Sans 3 w320	13	13	0
+U+1EF6.HW	Source Sans 3 w320	13	13	1
+U+1EF6.PR	Source Sans 3 w320	13	13	0
+U+1EF7.HW	Source Sans 3 w320	13	13	1
+U+1EF7.PR	Source Sans 3 w320	13	13	0
+U+1EF8.HW	Source Sans 3 w320	13	13	1
+U+1EF8.PR	Source Sans 3 w320	13	13	0
+U+1EF9.HW	Source Sans 3 w320	13	13	1
+U+1EF9.PR	Source Sans 3 w320	13	13	0
+U+2013.HW	Source Sans 3 w320	13	13	1
+U+2013.PR	Source Sans 3 w320	13	13	0
+U+2014.HW	Source Sans 3 w320	9	13	0
+U+2014.PR	Source Sans 3 w320	13	13	0
+U+2015.HW	Source Sans 3 w320	9	13	0
+U+2015.PR	Source Sans 3 w320	13	13	0
+U+2017.HW	Source Sans 3 w320	13	13	0
+U+2017.PR	Source Sans 3 w320	13	13	0
+U+2018.HW	Source Sans 3 w320	13	13	3
+U+2018.PR	Source Sans 3 w320	13	13	0
+U+2019.HW	Source Sans 3 w320	13	13	3
+U+2019.PR	Source Sans 3 w320	13	13	0
+U+201A.HW	Source Sans 3 w320	13	13	3
+U+201A.PR	Source Sans 3 w320	13	13	0
+U+201B.HW	Source Sans 3 w320	13	13	3
+U+201B.PR	Source Sans 3 w320	13	13	0
+U+201C.HW	Source Sans 3 w320	13	13	2
+U+201C.PR	Source Sans 3 w320	13	13	0
+U+201D.HW	Source Sans 3 w320	13	13	2
+U+201D.PR	Source Sans 3 w320	13	13	0
+U+201E.HW	Source Sans 3 w320	13	13	2
+U+201E.PR	Source Sans 3 w320	13	13	0
+U+2020.HW	Source Sans 3 w320	13	13	2
+U+2020.PR	Source Sans 3 w320	13	13	0
+U+2021.HW	Source Sans 3 w320	13	13	1
+U+2021.PR	Source Sans 3 w320	13	13	0
+U+2022.HW	Source Sans 3 w320	13	13	2
+U+2022.PR	Source Sans 3 w320	13	13	0
+U+2026.HW	Source Sans 3 w320	7	13	1
+U+2026.PR	Source Sans 3 w320	13	13	0
+U+2030.HW	Source Sans 3 w320	6	13	0
+U+2030.PR	Source Sans 3 w320	13	13	0
+U+2032.HW	Source Sans 3 w320	13	13	3
+U+2032.PR	Source Sans 3 w320	13	13	0
+U+2033.HW	Source Sans 3 w320	13	13	2
+U+2033.PR	Source Sans 3 w320	13	13	0
+U+2039.HW	Source Sans 3 w320	13	13	2
+U+2039.PR	Source Sans 3 w320	13	13	0
+U+203A.HW	Source Sans 3 w320	13	13	2
+U+203A.PR	Source Sans 3 w320	13	13	0
+U+203C.HW	Source Sans 3 w320	13	13	1
+U+203C.PR	Source Sans 3 w320	13	13	0
+U+203E.HW	Source Sans 3 w320	13	13	0
+U+203E.PR	Source Sans 3 w320	13	13	0
+U+2044.HW	Source Sans 3 w320	13	13	1
+U+2044.PR	Source Sans 3 w320	13	13	0
+U+207F.HW	Source Sans 3 w320	13	13	1
+U+207F.PR	Source Sans 3 w320	13	13	0
+U+20A3.HW	Source Sans 3 w320	13	13	1
+U+20A3.PR	Source Sans 3 w320	13	13	0
+U+20A4.HW	Source Sans 3 w320	13	13	1
+U+20A4.PR	Source Sans 3 w320	13	13	0
+U+20A7.HW	Source Sans 3 w320	13	13	1
+U+20A7.PR	Source Sans 3 w320	13	13	0
+U+20AC.HW	Source Sans 3 w320	13	13	0
+U+20AC.PR	Source Sans 3 w320	13	13	0
+U+2105.HW	Source Sans 3 w320	8	13	0
+U+2105.PR	Source Sans 3 w320	13	13	0
+U+2113.HW	Source Sans 3 w320	13	13	1
+U+2113.PR	Source Sans 3 w320	13	13	0
+U+2116.HW	Source Sans 3 w320	8	13	0
+U+2116.PR	Source Sans 3 w320	13	13	0
+U+2122.HW	Source Sans 3 w320	11	13	0
+U+2122.PR	Source Sans 3 w320	13	13	0
+U+2126.HW	Source Sans 3 w320	11	13	0
+U+2126.PR	Source Sans 3 w320	13	13	0
+U+212E.HW	Source Sans 3 w320	9	13	0
+U+212E.PR	Source Sans 3 w320	13	13	0
+U+215B.HW	Source Sans 3 w320	10	13	0
+U+215B.PR	Source Sans 3 w320	13	13	0
+U+215C.HW	Source Sans 3 w320	8	13	0
+U+215C.PR	Source Sans 3 w320	13	13	0
+U+215D.HW	Source Sans 3 w320	8	13	0
+U+215D.PR	Source Sans 3 w320	13	13	0
+U+215E.HW	Source Sans 3 w320	9	13	0
+U+215E.PR	Source Sans 3 w320	13	13	0
+U+2190.HW	Source Sans 3 w320	12	13	0
+U+2190.PR	Source Sans 3 w320	13	13	0
+U+2191.HW	Source Sans 3 w320	11	13	1
+U+2191.PR	Source Sans 3 w320	13	13	0
+U+2192.HW	Source Sans 3 w320	12	13	0
+U+2192.PR	Source Sans 3 w320	13	13	0
+U+2193.HW	Source Sans 3 w320	13	13	0
+U+2193.PR	Source Sans 3 w320	13	13	0
+U+2194.HW	Source Sans 3 w320	11	13	0
+U+2194.PR	Source Sans 3 w320	13	13	0
+U+2195.HW	Source Sans 3 w320	13	13	1
+U+2195.PR	Source Sans 3 w320	13	13	0
+U+21A8.HW	Source Sans 3 w320	13	13	0
+U+21A8.PR	Source Sans 3 w320	13	13	0
+U+2202.HW	Source Sans 3 w320	13	13	0
+U+2202.PR	Source Sans 3 w320	13	13	0
+U+2206.HW	Source Sans 3 w320	13	13	0
+U+2206.PR	Source Sans 3 w320	13	13	0
+U+220F.HW	Source Sans 3 w320	13	13	0
+U+220F.PR	Source Sans 3 w320	13	13	0
+U+2211.HW	Source Sans 3 w320	13	13	0
+U+2211.PR	Source Sans 3 w320	13	13	0
+U+2212.HW	Source Sans 3 w320	13	13	1
+U+2212.PR	Source Sans 3 w320	13	13	0
+U+2215.HW	Source Sans 3 w320	13	13	1
+U+2215.PR	Source Sans 3 w320	13	13	0
+U+2219.HW	Source Sans 3 w320	13	13	3
+U+2219.PR	Source Sans 3 w320	13	13	0
+U+221A.HW	Source Sans 3 w320	13	13	0
+U+221A.PR	Source Sans 3 w320	13	13	0
+U+221E.HW	Source Sans 3 w320	9	13	0
+U+221E.PR	Source Sans 3 w320	13	13	0
+U+221F.HW	Source Sans 3 w320	13	13	1
+U+221F.PR	Source Sans 3 w320	13	13	0
+U+2229.HW	Source Sans 3 w320	13	13	1
+U+2229.PR	Source Sans 3 w320	13	13	0
+U+222B.HW	Source Sans 3 w320	13	13	2
+U+222B.PR	Source Sans 3 w320	13	13	0
+U+2248.HW	Source Sans 3 w320	13	13	1
+U+2248.PR	Source Sans 3 w320	13	13	0
+U+2260.HW	Source Sans 3 w320	13	13	0
+U+2260.PR	Source Sans 3 w320	13	13	0
+U+2261.HW	Source Sans 3 w320	13	13	1
+U+2261.PR	Source Sans 3 w320	13	13	0
+U+2264.HW	Source Sans 3 w320	13	13	1
+U+2264.PR	Source Sans 3 w320	13	13	0
+U+2265.HW	Source Sans 3 w320	13	13	1
+U+2265.PR	Source Sans 3 w320	13	13	0
+U+2302.HW	Source Sans 3 w320	12	13	0
+U+2302.PR	Source Sans 3 w320	13	13	0
+U+2310.HW	Source Sans 3 w320	13	13	1
+U+2310.PR	Source Sans 3 w320	13	13	0
+U+2320.HW	Source Sans 3 w320	13	12	2
+U+2320.PR	Source Sans 3 w320	12	12	0
+U+2321.HW	Source Sans 3 w320	13	12	2
+U+2321.PR	Source Sans 3 w320	12	12	0
+U+25A0.HW	Source Sans 3 w320	13	13	1
+U+25A0.PR	Source Sans 3 w320	13	13	0
+U+25A1.HW	Source Sans 3 w320	13	13	0
+U+25A1.PR	Source Sans 3 w320	13	13	0
+U+25AA.HW	Source Sans 3 w320	13	13	2
+U+25AA.PR	Source Sans 3 w320	13	13	0
+U+25AB.HW	Source Sans 3 w320	13	13	2
+U+25AB.PR	Source Sans 3 w320	13	13	0
+U+25AC.HW	Source Sans 3 w320	13	13	1
+U+25AC.PR	Source Sans 3 w320	13	13	0
+U+25B2.HW	Source Sans 3 w320	13	13	0
+U+25B2.PR	Source Sans 3 w320	13	13	0
+U+25BA.HW	Source Sans 3 w320	11	13	0
+U+25BA.PR	Source Sans 3 w320	13	13	0
+U+25BC.HW	Source Sans 3 w320	13	13	0
+U+25BC.PR	Source Sans 3 w320	13	13	0
+U+25C4.HW	Source Sans 3 w320	11	13	0
+U+25C4.PR	Source Sans 3 w320	13	13	0
+U+25CA.HW	Source Sans 3 w320	13	13	1
+U+25CA.PR	Source Sans 3 w320	13	13	0
+U+25CB.HW	Source Sans 3 w320	13	13	0
+U+25CB.PR	Source Sans 3 w320	13	13	0
+U+25CF.HW	Source Sans 3 w320	13	13	1
+U+25CF.PR	Source Sans 3 w320	13	13	0
+U+25D8.HW	Source Sans 3 w320	13	13	2
+U+25D8.PR	Source Sans 3 w320	13	13	0
+U+25D9.HW	Source Sans 3 w320	13	13	1
+U+25D9.PR	Source Sans 3 w320	13	13	0
+U+25E6.HW	Source Sans 3 w320	13	13	2
+U+25E6.PR	Source Sans 3 w320	13	13	0
+U+263A.HW	Source Sans 3 w320	12	13	0
+U+263A.PR	Source Sans 3 w320	13	13	0
+U+263B.HW	Source Sans 3 w320	12	13	0
+U+263B.PR	Source Sans 3 w320	13	13	0
+U+263C.HW	Source Sans 3 w320	10	13	0
+U+263C.PR	Source Sans 3 w320	13	13	0
+U+2640.HW	Source Sans 3 w320	13	13	0
+U+2640.PR	Source Sans 3 w320	13	13	0
+U+2642.HW	Source Sans 3 w320	10	13	0
+U+2642.PR	Source Sans 3 w320	13	13	0
+U+2660.HW	Source Sans 3 w320	10	13	1
+U+2660.PR	Source Sans 3 w320	13	13	0
+U+2663.HW	Source Sans 3 w320	10	13	1
+U+2663.PR	Source Sans 3 w320	13	13	0
+U+2665.HW	Source Sans 3 w320	11	13	0
+U+2665.PR	Source Sans 3 w320	13	13	0
+U+2666.HW	Source Sans 3 w320	10	13	1
+U+2666.PR	Source Sans 3 w320	13	13	0
+U+266A.HW	Source Sans 3 w320	13	13	0
+U+266A.PR	Source Sans 3 w320	13	13	0
+U+266B.HW	Source Sans 3 w320	11	13	0
+U+266B.PR	Source Sans 3 w320	13	13	0
+U+FB01.HW	Source Sans 3 w320	13	13	1
+U+FB01.PR	Source Sans 3 w320	13	13	0
+U+FB02.HW	Source Sans 3 w320	13	13	1
+U+FB02.PR	Source Sans 3 w320	13	13	0
+U+FE70.PR	Noto Sans Arabic w320	13	13	1
+U+FE71.PR	Noto Sans Arabic w320	13	13	0
+U+FE72.PR	Noto Sans Arabic w320	13	13	1
+U+FE73.PR	Noto Sans Arabic w320	13	13	1
+U+FE74.PR	Noto Sans Arabic w320	13	13	1
+U+FE76.PR	Noto Sans Arabic w320	13	13	1
+U+FE77.PR	Noto Sans Arabic w320	13	13	0
+U+FE78.PR	Noto Sans Arabic w320	13	13	1
+U+FE79.PR	Noto Sans Arabic w320	13	13	0
+U+FE7A.PR	Noto Sans Arabic w320	13	13	1
+U+FE7B.PR	Noto Sans Arabic w320	13	13	0
+U+FE7C.PR	Noto Sans Arabic w320	13	13	1
+U+FE7D.PR	Noto Sans Arabic w320	13	13	1
+U+FE7E.PR	Noto Sans Arabic w320	13	13	0
+U+FE7F.PR	Noto Sans Arabic w320	13	13	0
+U+FE80.PR	Noto Sans Arabic w320	13	13	1
+U+FE81.PR	Noto Sans Arabic w320	13	13	0
+U+FE82.PR	Noto Sans Arabic w320	12	12	0
+U+FE83.PR	Noto Sans Arabic w320	11	11	1
+U+FE84.PR	Noto Sans Arabic w320	11	11	0
+U+FE85.PR	Noto Sans Arabic w320	13	13	1
+U+FE86.PR	Noto Sans Arabic w320	13	13	1
+U+FE87.PR	Noto Sans Arabic w320	13	13	1
+U+FE88.PR	Noto Sans Arabic w320	13	13	1
+U+FE89.PR	Noto Sans Arabic w320	13	13	1
+U+FE8A.PR	Noto Sans Arabic w320	13	13	1
+U+FE8B.PR	Noto Sans Arabic w320	13	13	1
+U+FE8C.PR	Noto Sans Arabic w320	13	13	0
+U+FE8D.PR	Noto Sans Arabic w320	13	13	2
+U+FE8E.PR	Noto Sans Arabic w320	13	13	2
+U+FE8F.PR	Noto Sans Arabic w320	13	13	1
+U+FE90.PR	Noto Sans Arabic w320	13	13	1
+U+FE91.PR	Noto Sans Arabic w320	13	13	0
+U+FE92.PR	Noto Sans Arabic w320	13	13	0
+U+FE93.PR	Noto Sans Arabic w320	13	13	1
+U+FE94.PR	Noto Sans Arabic w320	13	13	1
+U+FE95.PR	Noto Sans Arabic w320	13	13	1
+U+FE96.PR	Noto Sans Arabic w320	13	13	1
+U+FE97.PR	Noto Sans Arabic w320	13	13	1
+U+FE98.PR	Noto Sans Arabic w320	13	13	0
+U+FE99.PR	Noto Sans Arabic w320	13	13	1
+U+FE9A.PR	Noto Sans Arabic w320	13	13	1
+U+FE9B.PR	Noto Sans Arabic w320	13	13	1
+U+FE9C.PR	Noto Sans Arabic w320	13	13	0
+U+FE9D.PR	Noto Sans Arabic w320	11	11	1
+U+FE9E.PR	Noto Sans Arabic w320	11	11	1
+U+FE9F.PR	Noto Sans Arabic w320	13	13	0
+U+FEA0.PR	Noto Sans Arabic w320	13	13	0
+U+FEA1.PR	Noto Sans Arabic w320	11	11	1
+U+FEA2.PR	Noto Sans Arabic w320	11	11	1
+U+FEA3.PR	Noto Sans Arabic w320	13	13	0
+U+FEA4.PR	Noto Sans Arabic w320	13	13	0
+U+FEA5.PR	Noto Sans Arabic w320	11	11	1
+U+FEA6.PR	Noto Sans Arabic w320	11	11	1
+U+FEA7.PR	Noto Sans Arabic w320	13	13	0
+U+FEA8.PR	Noto Sans Arabic w320	13	13	0
+U+FEA9.PR	Noto Sans Arabic w320	13	13	1
+U+FEAA.PR	Noto Sans Arabic w320	13	13	1
+U+FEAB.PR	Noto Sans Arabic w320	13	13	1
+U+FEAC.PR	Noto Sans Arabic w320	13	13	1
+U+FEAD.PR	Noto Sans Arabic w320	13	13	0
+U+FEAE.PR	Noto Sans Arabic w320	13	13	1
+U+FEAF.PR	Noto Sans Arabic w320	13	13	0
+U+FEB0.PR	Noto Sans Arabic w320	13	13	1
+U+FEB1.PR	Noto Sans Arabic w320	13	13	1
+U+FEB2.PR	Noto Sans Arabic w320	13	13	1
+U+FEB3.PR	Noto Sans Arabic w320	13	13	0
+U+FEB4.PR	Noto Sans Arabic w320	13	13	1
+U+FEB5.PR	Noto Sans Arabic w320	13	13	1
+U+FEB6.PR	Noto Sans Arabic w320	13	13	1
+U+FEB7.PR	Noto Sans Arabic w320	13	13	0
+U+FEB8.PR	Noto Sans Arabic w320	13	13	1
+U+FEB9.PR	Noto Sans Arabic w320	13	13	1
+U+FEBA.PR	Noto Sans Arabic w320	13	13	1
+U+FEBB.PR	Noto Sans Arabic w320	13	13	0
+U+FEBC.PR	Noto Sans Arabic w320	13	13	0
+U+FEBD.PR	Noto Sans Arabic w320	13	13	1
+U+FEBE.PR	Noto Sans Arabic w320	13	13	1
+U+FEBF.PR	Noto Sans Arabic w320	13	13	0
+U+FEC0.PR	Noto Sans Arabic w320	13	13	0
+U+FEC1.PR	Noto Sans Arabic w320	13	13	1
+U+FEC2.PR	Noto Sans Arabic w320	13	13	1
+U+FEC3.PR	Noto Sans Arabic w320	13	13	0
+U+FEC4.PR	Noto Sans Arabic w320	13	13	0
+U+FEC5.PR	Noto Sans Arabic w320	13	13	1
+U+FEC6.PR	Noto Sans Arabic w320	13	13	1
+U+FEC7.PR	Noto Sans Arabic w320	13	13	0
+U+FEC8.PR	Noto Sans Arabic w320	13	13	0
+U+FEC9.PR	Noto Sans Arabic w320	11	11	1
+U+FECA.PR	Noto Sans Arabic w320	11	11	0
+U+FECB.PR	Noto Sans Arabic w320	13	13	0
+U+FECC.PR	Noto Sans Arabic w320	13	13	1
+U+FECD.PR	Noto Sans Arabic w320	11	11	1
+U+FECE.PR	Noto Sans Arabic w320	11	11	0
+U+FECF.PR	Noto Sans Arabic w320	13	13	0
+U+FED0.PR	Noto Sans Arabic w320	13	13	0
+U+FED1.PR	Noto Sans Arabic w320	13	13	1
+U+FED2.PR	Noto Sans Arabic w320	13	13	1
+U+FED3.PR	Noto Sans Arabic w320	13	13	0
+U+FED4.PR	Noto Sans Arabic w320	13	13	1
+U+FED5.PR	Noto Sans Arabic w320	13	13	1
+U+FED6.PR	Noto Sans Arabic w320	12	12	1
+U+FED7.PR	Noto Sans Arabic w320	13	13	0
+U+FED8.PR	Noto Sans Arabic w320	13	13	1
+U+FED9.PR	Noto Sans Arabic w320	13	13	1
+U+FEDA.PR	Noto Sans Arabic w320	13	13	1
+U+FEDB.PR	Noto Sans Arabic w320	13	13	1
+U+FEDC.PR	Noto Sans Arabic w320	13	13	1
+U+FEDD.PR	Noto Sans Arabic w320	13	13	1
+U+FEDE.PR	Noto Sans Arabic w320	13	13	1
+U+FEDF.PR	Noto Sans Arabic w320	13	13	1
+U+FEE0.PR	Noto Sans Arabic w320	13	13	1
+U+FEE1.PR	Noto Sans Arabic w320	11	11	1
+U+FEE2.PR	Noto Sans Arabic w320	11	11	1
+U+FEE3.PR	Noto Sans Arabic w320	13	13	0
+U+FEE4.PR	Noto Sans Arabic w320	13	13	1
+U+FEE5.PR	Noto Sans Arabic w320	13	13	1
+U+FEE6.PR	Noto Sans Arabic w320	13	13	1
+U+FEE7.PR	Noto Sans Arabic w320	13	13	1
+U+FEE8.PR	Noto Sans Arabic w320	13	13	0
+U+FEE9.PR	Noto Sans Arabic w320	13	13	1
+U+FEEA.PR	Noto Sans Arabic w320	13	13	1
+U+FEEB.PR	Noto Sans Arabic w320	13	13	0
+U+FEEC.PR	Noto Sans Arabic w320	13	13	0
+U+FEED.PR	Noto Sans Arabic w320	13	13	1
+U+FEEE.PR	Noto Sans Arabic w320	13	13	1
+U+FEEF.PR	Noto Sans Arabic w320	13	13	1
+U+FEF0.PR	Noto Sans Arabic w320	13	13	1
+U+FEF1.PR	Noto Sans Arabic w320	10	10	1
+U+FEF2.PR	Noto Sans Arabic w320	10	10	1
+U+FEF3.PR	Noto Sans Arabic w320	13	13	0
+U+FEF4.PR	Noto Sans Arabic w320	13	13	0
+U+FEF5.PR	Noto Sans Arabic w320	13	13	0
+U+FEF6.PR	Noto Sans Arabic w320	13	13	0
+U+FEF7.PR	Noto Sans Arabic w320	13	13	0
+U+FEF8.PR	Noto Sans Arabic w320	13	13	0
+U+FEF9.PR	Noto Sans Arabic w320	13	13	1
+U+FEFA.PR	Noto Sans Arabic w320	13	13	1
+U+FEFB.PR	Noto Sans Arabic w320	13	13	1
+U+FEFC.PR	Noto Sans Arabic w320	13	13	1
+U+FF61.HW	思源 JP w320	13	13	2
+U+FF62.HW	思源 JP w320	13	13	1
+U+FF63.HW	思源 JP w320	13	13	1
+U+FF64.HW	思源 JP w320	13	13	2
+U+FF65.HW	思源 JP w320	13	13	2
+U+FF66.HW	思源 JP w320	13	13	1
+U+FF67.HW	思源 JP w320	13	13	1
+U+FF68.HW	思源 JP w320	13	13	2
+U+FF69.HW	思源 JP w320	13	13	1
+U+FF6A.HW	思源 JP w320	13	13	1
+U+FF6B.HW	思源 JP w320	13	13	1
+U+FF6C.HW	思源 JP w320	13	13	1
+U+FF6D.HW	思源 JP w320	13	13	1
+U+FF6E.HW	思源 JP w320	13	13	2
+U+FF6F.HW	思源 JP w320	13	13	1
+U+FF70.HW	思源 JP w320	13	13	1
+U+FF71.HW	思源 JP w320	13	13	1
+U+FF72.HW	思源 JP w320	13	13	1
+U+FF73.HW	思源 JP w320	13	13	1
+U+FF74.HW	思源 JP w320	13	13	1
+U+FF75.HW	思源 JP w320	13	13	1
+U+FF76.HW	思源 JP w320	13	13	1
+U+FF77.HW	思源 JP w320	13	13	1
+U+FF78.HW	思源 JP w320	13	13	1
+U+FF79.HW	思源 JP w320	13	13	1
+U+FF7A.HW	思源 JP w320	13	13	1
+U+FF7B.HW	思源 JP w320	13	13	1
+U+FF7C.HW	思源 JP w320	13	13	1
+U+FF7D.HW	思源 JP w320	13	13	1
+U+FF7E.HW	思源 JP w320	13	13	1
+U+FF7F.HW	思源 JP w320	13	13	1
+U+FF80.HW	思源 JP w320	13	13	1
+U+FF81.HW	思源 JP w320	13	13	1
+U+FF82.HW	思源 JP w320	13	13	1
+U+FF83.HW	思源 JP w320	13	13	1
+U+FF84.HW	思源 JP w320	13	13	1
+U+FF85.HW	思源 JP w320	13	13	1
+U+FF86.HW	思源 JP w320	13	13	1
+U+FF87.HW	思源 JP w320	13	13	1
+U+FF88.HW	思源 JP w320	13	13	1
+U+FF89.HW	思源 JP w320	13	13	1
+U+FF8A.HW	思源 JP w320	13	13	1
+U+FF8B.HW	思源 JP w320	13	13	1
+U+FF8C.HW	思源 JP w320	13	13	1
+U+FF8D.HW	思源 JP w320	13	13	1
+U+FF8E.HW	思源 JP w320	13	13	1
+U+FF8F.HW	思源 JP w320	13	13	1
+U+FF90.HW	思源 JP w320	13	13	1
+U+FF91.HW	思源 JP w320	13	13	0
+U+FF92.HW	思源 JP w320	13	13	1
+U+FF93.HW	思源 JP w320	13	13	0
+U+FF94.HW	思源 JP w320	13	13	1
+U+FF95.HW	思源 JP w320	13	13	1
+U+FF96.HW	思源 JP w320	13	13	1
+U+FF97.HW	思源 JP w320	13	13	1
+U+FF98.HW	思源 JP w320	13	13	1
+U+FF99.HW	思源 JP w320	13	13	0
+U+FF9A.HW	思源 JP w320	13	13	1
+U+FF9B.HW	思源 JP w320	13	13	1
+U+FF9C.HW	思源 JP w320	13	13	1
+U+FF9D.HW	思源 JP w320	13	13	1
+U+FF9E.HW	思源 JP w320	13	13	2
+U+FF9F.HW	思源 JP w320	13	13	2
