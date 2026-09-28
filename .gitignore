@@ -1,8 +1,10 @@
-build/
-reports/
-reference-fonts/
+# generated or local-only, at the repository root
+/build/
+/reports/
+/reference-fonts/
+/work/
+/.venv/
+/.editor.lock
 __pycache__/
 *.pyc
-.editor.lock
 .tmp-*
-.venv/

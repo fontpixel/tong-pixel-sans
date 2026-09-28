@@ -41,4 +41,4 @@ python3 tools/verify.py     # 检查源文件和字表覆盖
 
 ## 许可
 
-[SIL Open Font License 1.1](OFL.txt)。点阵参照 Source Han Sans（思源黑体）、Source Sans 3、Noto Sans、Noto Sans Thai、Noto Sans Arabic 绘制，这些字体均以 OFL 发布，许可原文见 [licenses/](licenses/)。
+[SIL Open Font License 1.1](OFL.txt)。点阵参照 Source Han Sans（思源黑体）、Source Sans 3、Noto Sans、Noto Sans Thai、Noto Sans Arabic 绘制，部分汉字点阵借鉴了 TsFreddie 的[圆石点阵黑（TUMBLED）](https://github.com/TsFreddie/TUMBLED)；这些字体均以 OFL 发布，许可原文见 [licenses/](licenses/)。

@@ -12,7 +12,7 @@
 | 底稿生成 | `archive/tong/scripts/prepare.py`、`archive/tong/vendor/WorkBench.py`、`archive/tong-ext-v5/scripts/phase.py`、`varraster.py`、`prepare_ext.py`、`families.py` |
 | 复用已通过部件的补充流程 | `archive/tong-learning-v3/`、`archive/tong-review-v1/prompts/FUTURE_WORKER.md` |
 | 人工修改的分析方法与报告 | `archive/tong-review-v1/prompts/LEARN.md`、`archive/tong-review-v1/knowledge/` |
-| 最新候选规律与自检清单 | `archive/tong-review-v1/data/proposals/20260926T105155Z-88ac38/worker-lessons.md` |
+| 最新候选规律与自检清单 | [`docs/lessons/worker-lessons.md`](lessons/worker-lessons.md)（合并了 2026-09-26 的 L023–L036 与 2026-09-29 的 L037–L043） |
 | 模型与批量试验 | `archive/experiments/AI_fix_glyph_conclusion.md` |
 
 ## 流程
@@ -50,6 +50,10 @@
 提交前自检（C001–C008）：左缘 x0 / 右缘 x12？对称字中轴 x6？平行横画等距？有无 2×2 黑块？是否逐一考虑了已通过的同部件形态？点、提、撇捺位置？1:1 下与同部件字粗细宽度一致？没有为“显得改过”而改？
 
 这些都是模型归纳的候选规律，没有经用户逐条确认，不是 [design-rules.md](design-rules.md) 里的规则。
+
+## 二次修字试验（2026-09-28）
+
+常用百字 189 个字形由 gpt-6-astra xhigh 在第一轮版本上再修一轮，借鉴圆石点阵黑 18 号、复用已通过部件（试验工具在 `work/pilot-tumbled-20260928/`，不入库）。用户认为总体有提高，全部导入后又逐字手修：人工改动中位数从第一轮的 26 点降到 13 点，42 个原样通过。人工又改了什么见 [lessons/2026-09-29-pass2-review.md](lessons/2026-09-29-pass2-review.md)。
 
 ## 以后新增字要注意
 

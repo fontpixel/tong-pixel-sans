@@ -63,7 +63,7 @@ def handler(store):
                 elif path == "/api/session":
                     import draft
                     self.send({"token": token, "geometry": store.geometry, "root": str(store.root), "git": store.has_git(),
-                               "phase_draft": draft.available()})
+                               "phase_draft": draft.available(), "lists": store.lists()})
                 elif path == "/api/queue":
                     self.send(store.queue())
                 elif path == "/api/shapes":

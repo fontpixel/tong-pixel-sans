@@ -473,6 +473,22 @@ class Store(ShapesMixin):
                         "geometry": self.geometry_of(other), "aliases": self.aliases_of(other)})
         return out
 
+    @staticmethod
+    def lists():
+        """Named glyph lists (data/lists/<name>.txt: one glyph id per line, # comments) for the filter."""
+        out = {}
+        for p in sorted((HERE / "data/lists").glob("*.txt")):
+            ids = [l.strip() for l in p.read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("#")]
+            out[p.stem] = ids
+        return out
+
+    @staticmethod
+    def packed(rows):
+        """Compact pixels for the glyph list's previews: width, then each row as hex (bit 0 = leftmost)."""
+        w = len(rows[0]) if rows else 0
+        n = (w + 3) // 4
+        return f"{w}:" + ".".join(format(int(r.replace(".", "0").replace("#", "1")[::-1], 2), f"0{n}x") for r in rows)
+
     def queue(self):
         with self.lock():
             out, used = [], self.usage()[0]
@@ -480,7 +496,7 @@ class Store(ShapesMixin):
                 rec = self.records[gid]
                 out.append({"id": gid, "char": g["char"], "locale": g["locale"], "batch": rec["state"],
                             "concern": g["note"], "approved": rec["state"] == "approved",
-                            "unused": gid not in used,
+                            "unused": gid not in used, "b": self.packed(rec["rows"]),
                             "edited": rec["state"] in ("edited", "derived") or rec["rows"] != self.base.get(gid)})
             out.sort(key=lambda q: (ORDER[q["locale"]], q["id"]))
             return out
@@ -531,6 +547,8 @@ class Store(ShapesMixin):
     def _state(old, rows, approved, origin):
         if approved:
             return "approved"
+        if origin == "ai":
+            return "ai"   # a new AI version (e.g. a second repair pass), never approved
         if rows != old["rows"]:
             return "derived" if origin == "program" else "edited"
         if old["state"] == "approved":
@@ -558,6 +576,34 @@ class Store(ShapesMixin):
             value["note"] = p["note"]
             self._commit_shapes([value])
             return self.current(gid)
+
+    def import_ai(self, gid, rows, ai_note, expected_revision):
+        """Replace an unreviewed AI glyph by a new AI version (state stays `ai`, the `# AI:` note is
+        replaced). The first AI version is archived in history/ai-originals. Links whose form pixels
+        are no longer all in the new rows are removed from this glyph only (forms are not changed; a
+        form no glyph uses any more leaves the library). Refused if the glyph changed since
+        expected_revision or is not in state `ai`."""
+        self.rows_fit(gid, rows)
+        with self.lock():
+            old = self.current(gid)
+            if old["revision"] != expected_revision:
+                raise Conflict(f"{gid} 已被修改，未导入")
+            if old["state"] != "ai":
+                raise Conflict(f"{gid} 状态为 {old['state']}，只替换 AI 版本")
+            lib = self._library()
+            w, h = len(rows[0]), len(rows)
+            ink = {(y, x) for y, r in enumerate(rows) for x, v in enumerate(r) if v == "#"}
+            keep, dropped = [], []
+            for l in old["links"]:
+                f = lib["shapes"].get(l["shape_id"])
+                placed = self._placed(f, l, w, h) if f else None
+                ok = placed is not None and all((y, x) in ink for y, r in enumerate(placed) for x, v in enumerate(r) if v == "#")
+                (keep if ok else dropped).append(l)
+            value = self._revision(old, rows, keep, "AI 版本导入", approved=False, origin="ai")
+            value["ai_note"] = ai_note
+            self._collect(lib, {gid: value})
+            self._commit_shapes([value], lib)
+            return {"current": self.current(gid), "kept_links": len(keep), "dropped_links": [l["symbol"] for l in dropped]}
 
     def _library(self):
         return {"generation": self.generation, "shapes": dict(self.forms), "retired": []}
@@ -599,6 +645,8 @@ class Store(ShapesMixin):
                 rec["links"] = links
                 rec["state"] = r["state"]
                 rec["human_note"] = [t.strip() for t in (r.get("note") or "").splitlines() if t.strip()]
+                if "ai_note" in r:
+                    rec["ai_note"] = [t.strip() for t in r["ai_note"].splitlines() if t.strip()]
                 touched.add(rec["page"])
             for path in ai_pages:
                 self._write_ai_page(path)

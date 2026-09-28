@@ -15,12 +15,15 @@ Writes data/representative.json for the editor's “最具代表性” filters. 
 order, never pixels. Rerun after approving many glyphs to get the next round.
 """
 import json
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
 from store import Store, ROOT
 from structure import database, POSITIONS
-from verify_tables import table_codepoints
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from verify import table_codepoints  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
 PRIMITIVES = set("一丨丿丶乀乁乙乚亅𠃌𠃍")

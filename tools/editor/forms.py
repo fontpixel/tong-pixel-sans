@@ -287,6 +287,124 @@ class ShapesMixin:
             return {'generation': lib['generation'], 'total': len(page), 'offset': offset,
                     'symbols': sorted(counts.items()), 'forms': page[offset:offset + limit]}
 
+    def auto_link(self, plan, algorithm):
+        """Link every planned component form in one recoverable transaction.
+
+        A planned form must be a subset of the glyph's current ink, so linking
+        changes no pixel and keeps each glyph's approval. Only the outermost
+        planned component over any pixels is linked (see _outermost); inner
+        ones fill in where the outer one could not be split. Identical ink at the
+        same coordinates reuses one shared form; a form the user removed before
+        (a retired fingerprint) is left out, and an occupied slot is kept.
+        """
+        from store import now
+        with self.lock():
+            lib = self._library()
+            index = {self._fingerprint(s): s for s in lib['shapes'].values()}
+            by_pixels = {}  # (symbol, rows) -> shared forms of any region, for cross-region reuse
+            for s in lib['shapes'].values():
+                by_pixels.setdefault((s['symbol'], tuple(s['rows'])), []).append(s)
+            retired = set(lib['retired'])
+            names = {(s['symbol'], s['locale'], s['name']) for s in lib['shapes'].values()}
+            stats = Counter()
+            revisions = []
+            for item in plan:
+                gid = item['id']
+                old = self.current(gid)
+                if old['revision'] != item.get('expected_revision', old['revision']):
+                    stats['字已被他处修改，跳过'] += 1
+                    continue
+                locale = self.original(gid)['locale']
+                _, parts = self._parts(gid)
+                slots = {p['key']: p['symbol'] for p in parts}
+                links = list(old.get('links', []))
+                ink = {(x, y) for y, r in enumerate(old['rows']) for x, v in enumerate(r) if v == '#'}
+                added = 0
+                for e in sorted(item['links'], key=lambda e: e['slot'].count('/')):
+                    if any(l['slot'] == e['slot'] for l in links):
+                        stats['部件已有关联，保留原关联'] += 1
+                        continue
+                    if any(self._overlaps(l['slot'], e['slot']) for l in links):
+                        stats['已由外层部件或原有关联覆盖'] += 1
+                        continue
+                    if slots.get(e['slot']) != e['symbol']:
+                        stats['数据库部件已变化'] += 1
+                        continue
+                    pts = {(x, y) for y, r in enumerate(e['rows']) for x, v in enumerate(r) if v == '#'}
+                    if not pts or not pts <= ink:
+                        raise ValueError(f'{gid} {e["slot"]} 的形态含有该字没有的黑点')
+                    f = {'symbol': e['symbol'], 'locale': locale, 'rows': e['rows']}
+                    fp = self._fingerprint(f)
+                    if fp in retired:
+                        stats['用户移除过的相同形态，未重建'] += 1
+                        continue
+                    shape = index.get(fp)
+                    if shape is None:
+                        char = self.original(gid)['char']
+                        shape = next((s for s in by_pixels.get((e['symbol'], tuple(e['rows'])), [])
+                                      if self._fingerprint(s) not in retired
+                                      and self.region_ok(e['symbol'], s['locale'], locale, char)[0]), None)
+                        if shape is not None:
+                            stats['跨地区复用相同形态'] += 1
+                    if shape is None:
+                        x0 = min(x for x, _ in pts); y0 = min(y for _, y in pts)
+                        w = max(x for x, _ in pts) - x0 + 1; h = max(y for _, y in pts) - y0 + 1
+                        base = f"{e['symbol']} · {e['position']} {w}×{h} @{x0},{y0}"
+                        name, n = base, 1
+                        while (e['symbol'], locale, name) in names:
+                            n += 1; name = f'{base} · 变体{n}'
+                        names.add((e['symbol'], locale, name))
+                        shape = {**f, 'id': uuid.uuid4().hex, 'revision': uuid.uuid4().hex,
+                                 'care': e['rows'].copy(), 'name': name, 'kind': 'shared', 'sources': [],
+                                 'note': f'自动分割（{algorithm}）：BabelStone IDS 结构，边界由本字黑点推断，未人审。',
+                                 'origin': algorithm, 'created_at': now(), 'updated_at': now()}
+                        index[fp] = lib['shapes'][shape['id']] = shape
+                        by_pixels.setdefault((e['symbol'], tuple(e['rows'])), []).append(shape)
+                        stats['新建形态'] += 1
+                    links.append({'slot': e['slot'], 'symbol': e['symbol'], 'shape_id': shape['id'],
+                                  'shape_revision': shape['revision'],
+                                  'segmentation': {'algorithm': algorithm, 'joins_cut': e['joins_cut']}})
+                    added += 1
+                if not added:
+                    continue
+                if self._compose(old['rows'], links, lib) != old['rows']:
+                    raise ValueError(f'{gid} 关联后像素会变化，已中止')
+                stats['关联部件'] += added; stats['关联字'] += 1
+                revisions.append(self._revision(old, old['rows'], links,
+                                                 f'自动部件关联（{algorithm}）：{added} 个部件，像素不变',
+                                                 approved=old['approved'], origin='automatic-link'))
+            if revisions:
+                self._commit_shapes(revisions, lib)
+            return dict(stats)
+
+    def prune_nested_links(self, algorithm):
+        """Remove automatic links inside another link; pixels and approval stay."""
+        with self.lock():
+            lib = self._library()
+            revisions, stats = [], Counter()
+            for gid in self.glyphs:
+                old = self.current(gid)
+                links = old.get('links', [])
+                auto = [l for l in links if l.get('segmentation', {}).get('algorithm') == algorithm]
+                if not auto:
+                    continue
+                kept = self._outermost([l for l in links if l not in auto], auto)
+                if len(kept) == len(links):
+                    continue
+                kept = [l for l in links if l in kept]
+                n = len(links) - len(kept)
+                stats['解除内层自动关联'] += n; stats['涉及字'] += 1
+                revisions.append(self._revision(old, old['rows'], kept,
+                                                 f'只保留最外层自动关联：解除 {n} 个内层部件，像素不变',
+                                                 approved=old['approved'], origin='automatic-link'))
+            if revisions:
+                before = len(lib['shapes'])
+                self._collect(lib, {r['id']: r for r in revisions}, unchosen=algorithm)
+                stats['移出无人使用的自动形态'] = before - len(lib['shapes'])
+                self._commit_shapes(revisions, lib)
+            return dict(stats)
+
+
     @staticmethod
     def _placed(shape, link, w, h):
         """The form's pixels in a w×h glyph. Fixed forms carry glyph coordinates; a movable form

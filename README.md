@@ -41,4 +41,4 @@ Every glyph is a plain-text bitmap under `glyphs/`. You can edit it directly or 
 
 ## License
 
-[SIL Open Font License 1.1](OFL.txt). The bitmaps are drawn after Source Han Sans, Source Sans 3, Noto Sans, Noto Sans Thai and Noto Sans Arabic, all released under the OFL; their license texts are in [licenses/](licenses/).
+[SIL Open Font License 1.1](OFL.txt). The bitmaps are drawn after Source Han Sans, Source Sans 3, Noto Sans, Noto Sans Thai and Noto Sans Arabic, and part of the Han bitmaps draw on [TUMBLED](https://github.com/TsFreddie/TUMBLED) by TsFreddie; all are released under the OFL, and their license texts are in [licenses/](licenses/).

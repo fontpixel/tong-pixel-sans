@@ -103,24 +103,41 @@ function renderQueue() {
   // Glyphs no font uses (e.g. a full-width ¤ where every font uses the western one) are hidden unless searched for.
   const hideUnused=$('hide-unused').checked&&!raw;
   const repLocale=/^rep-(SC|TC)$/.test(filter)?filter.slice(4):'';
+  const listName=filter.startsWith('list:')?filter.slice(5):'',listOrder=listName?new Map((session.lists[listName]||[]).map((id,i)=>[id,i])):null;
   filtered=queue.filter(g=>(!raw || (isId ? g.id.includes(q) : g.char===raw)) && (!batch || g.batch===batch) && !(hideUnused&&g.unused) &&
-    (repLocale ? representative.has(g.id)&&g.locale===repLocale&&!g.approved :
+    (listOrder ? listOrder.has(g.id) :
+    repLocale ? representative.has(g.id)&&g.locale===repLocale&&!g.approved :
     special ? special(g) :
     filter==='all' || filter==='concern'&&g.concern || filter==='edited'&&g.edited || filter==='approved'&&g.approved || filter==='pending'&&!g.approved));
   if(special)filtered.sort((a,b)=>a.char.codePointAt(0)-b.char.codePointAt(0)||a.id.localeCompare(b.id));
   if(repLocale)filtered.sort((a,b)=>representative.get(a.id).rank-representative.get(b.id).rank);
-  $('priority-summary').hidden=!repLocale;
+  if(listOrder)filtered.sort((a,b)=>listOrder.get(a.id)-listOrder.get(b.id));
+  $('priority-summary').hidden=!repLocale&&!listOrder;
+  if(listOrder){const all=queue.filter(g=>listOrder.has(g.id));$('priority-summary').textContent=`清单“${listName}”：共 ${all.length} 字，已通过 ${all.filter(g=>g.approved).length}，改过 ${all.filter(g=>g.edited).length}。`;}
   if(repLocale){const total=[...representative.values()].filter(r=>r.locale===repLocale).length;
     $('priority-summary').textContent=`接下来建议修的${repLocale==='SC'?'简体':'繁体'}字：共 ${total} 字，还剩 ${filtered.length} 字未通过。越靠前的字，所含部件被越多其他字用到（常用字优先）；修好并通过一个字，就给这些部件提供了通过的写法。已通过的字自动移出。`;}
-  $('queue').replaceChildren();
+  miniObserver.disconnect();$('queue').replaceChildren();
   for(const g of filtered){
     const b=document.createElement('button');b.textContent=g.char;b.title=`${g.id} · ${STATE_ZH[g.batch]||g.batch}${repLocale?' · '+representativeNote(g.id):''}${g.concern?' · '+g.concern:''}`;
     b.setAttribute('aria-label',`${g.char} ${g.id} ${g.batch}`);b.classList.toggle('active',current?.original.id===g.id);b.classList.toggle('approved',g.approved);b.classList.toggle('edited',g.edited);b.classList.toggle('unused',!!g.unused);if(g.unused)b.title+=' · 字体里用不到';
+    const mini=document.createElement('canvas');mini.className='mini';mini.dataset.b=g.b||'';mini.dataset.cjk=/^(SC|TC|JP|KR)$/.test(g.locale)?'1':'';
+    // real size before it is drawn (a canvas defaults to 300×150)
+    mini.width=mini.dataset.cjk?14:Number((g.b||'0').split(':')[0])||7;mini.height=14;mini.style.width=mini.width+'px';mini.style.height='14px';
+    b.append(mini);miniObserver.observe(mini);
     const detail=document.createElement('small');detail.textContent=g.locale+(g.approved?' ✓':g.edited?' 改':g.concern?' !':'');b.append(detail);b.onclick=guard(()=>show(g.id));$('queue').append(b);
   }
   if(!filtered.length){const p=document.createElement('p');p.className='empty';p.textContent='没有符合条件的字形';$('queue').append(p);}
   $('counts').textContent=`${queue.length} 字 · 已修改 ${queue.filter(g=>g.edited).length} · 已通过 ${queue.filter(g=>g.approved).length} · 用不到 ${queue.filter(g=>g.unused).length}`;
 }
+// 1:1 previews of the current pixels in the glyph list, drawn when a button scrolls into view.
+function drawMini(cv){
+  const [w,rest]=(cv.dataset.b||'').split(':');if(!rest)return;
+  const rows=rest.split('.'),W=Number(w),cjk=!!cv.dataset.cjk,cw=cjk?14:W,ch=cjk?14:rows.length,x0=cjk?1:0;
+  cv.width=cw;cv.height=ch;cv.style.width=cw+'px';cv.style.height=ch+'px';
+  const c=cv.getContext('2d');c.fillStyle='#111';
+  rows.forEach((h,y)=>{const v=parseInt(h,16);for(let x=0;x<W;x++)if(v&(1<<x))c.fillRect(x+x0,y,1,1);});
+}
+const miniObserver=new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting){drawMini(e.target);miniObserver.unobserve(e.target);}},{root:null,rootMargin:'200px'});
 function fillStates(){const chosen=$('batch').value;$('batch').replaceChildren(new Option('所有状态',''));for(const b of Object.keys(STATE_ZH))if(queue.some(g=>g.batch===b))$('batch').add(new Option(`${b} · ${STATE_ZH[b]}`,b));$('batch').value=chosen;}
 async function refreshQueue() { queue=await api('/api/queue');fillStates();renderQueue(); }
 async function show(id, mode='push') {
@@ -357,7 +374,10 @@ $('reading-all-open').onclick=guard(()=>openReading('all'));
 $('reading-close').onclick=()=>$('reading-dialog').close();$('reading-scale').onchange=renderReading;
 let readingResize;window.addEventListener('resize',()=>{clearTimeout(readingResize);if($('reading-dialog').open)readingResize=setTimeout(renderReading,100);});
 async function boot(){
-  session=await api('/api/session');queue=await api('/api/queue');await loadRepresentative();fillStates();renderQueue();
+  session=await api('/api/session');queue=await api('/api/queue');await loadRepresentative();fillStates();
+  const names=Object.keys(session.lists||{});
+  if(names.length){const grp=document.createElement('optgroup');grp.label='清单';for(const n of names)grp.append(new Option(`${n}（${session.lists[n].length}）`,'list:'+n));$('filter').insertBefore(grp,$('filter').options[1]);}
+  renderQueue();
   let remembered;try{remembered=localStorage.getItem('tong-editor-id');}catch{}
   const linked=hashID(),initial=queue.some(g=>g.id===linked)?linked:queue.some(g=>g.id===remembered)?remembered:queue[0]?.id;
   if(initial)await show(initial,'replace');else say('没有字形。');

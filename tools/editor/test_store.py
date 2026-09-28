@@ -119,6 +119,23 @@ class StoreTest(unittest.TestCase):
         self.assertNotIn("FORM f1", self.page("forms/forms.txt"))
         self.assertEqual(self.s.current("U+4E00.SC")["rows"], TEN)
 
+    def test_import_ai_keeps_state_and_drops_broken_links(self):
+        cur = self.s.current("U+4E00.SC")
+        rows = [BLANK] * 6 + ["#" * 12 + "."] + [BLANK] * 6          # the stroke moves: 一's form no longer fits
+        with self.assertRaises(Conflict):
+            self.s.import_ai("U+4E00.SC", rows, "二次修字", "stale")
+        out = self.s.import_ai("U+4E00.SC", rows, "二次修字", cur["revision"])
+        self.assertEqual(out["current"]["state"], "ai")
+        self.assertEqual(out["dropped_links"], ["一"])
+        page = self.page("glyphs/SC/4Exx.txt")
+        self.assertIn("U+4E00 一\nai\n", page)
+        self.assertIn("# AI: 二次修字", page)
+        self.assertNotIn("# AI: 横画", page)
+        self.assertIn("# AI: 横画", self.page("history/ai-originals/SC/4Exx.txt"))
+        self.assertNotIn("f1", self.s.forms)                           # no user left
+        with self.assertRaises(Conflict):                               # only AI versions are replaced
+            self.s.import_ai("U+4E01.SC", TEN, "x", self.s.current("U+4E01.SC")["revision"])
+
     def test_picks_up_outside_changes(self):
         path = self.root / "glyphs/SC/4Exx.txt"
         text = path.read_text().replace("U+4E03 七\nai", "U+4E03 七\napproved")

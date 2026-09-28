@@ -9,6 +9,7 @@
 | [western-tools.md](western-tools.md) | 西文字族连带更新脚本 |
 | [reference-fonts.md](reference-fonts.md) | 参考字体、版本、校验值、点阵化参数 |
 | [ai-repair.md](ai-repair.md) | AI 修字的流程与经验 |
+| [lessons/](lessons/README.md) | 从人工修改中归纳的修字经验；`lessons/worker-lessons.md` 是 AI 修字的当前读本 |
 | [history.md](history.md) | 字形来历、转换记录 |
 | [roadmap.md](roadmap.md) | 待办与未决问题 |
 

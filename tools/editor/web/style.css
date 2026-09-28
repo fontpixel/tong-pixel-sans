@@ -153,3 +153,4 @@ main{grid-template-columns:220px minmax(470px,1fr) 350px;max-width:1620px}
 
 #queue button.unused{opacity:.45}
 #usage-note .text-button{padding:0 2px}
+#queue button canvas.mini{display:block;margin:3px auto 1px;image-rendering:pixelated}
