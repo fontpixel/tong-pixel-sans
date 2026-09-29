@@ -1844,6 +1844,8 @@ approved
 ..#......#...
 ..#......#...
 ..#......#...
+@ whole/0 米 22409bf9e1434d7dbd54ece103e92bed
+@ whole/1 卒 262ab134d0d3441aa0db503d3c57c62f
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+7CBA 粺
@@ -1927,6 +1929,7 @@ approved
 ..#...#######
 ..#...#.....#
 @ whole/0 米 8e4a2d641f084509b5c8ba85eaee2d3e
+@ whole/1 青 ebb9b979f89f4e699b7cd32cf2a68e09
 # AI: 青下月压缩为六行，钩脚较短。
 # 人工: 整字复制自 U+7CBE.SC（1 处关联）
 

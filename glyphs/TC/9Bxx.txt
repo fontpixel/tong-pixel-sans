@@ -878,6 +878,7 @@ approved
 ..#.#.#..#..#
 ##...#....###
 @ whole/0 委 d56489011e52426c9e0ab10f22448948
+@ whole/1 鬼 00df27e881944f4f829d08b2e40c5376
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：鬼的厶與末鉤相鄰，待人審。
 # 人工: 整字复制自 U+9B4F.SC（1 处关联）
 

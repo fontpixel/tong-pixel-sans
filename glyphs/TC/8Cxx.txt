@@ -115,6 +115,8 @@ approved
 #...#.##...#.
 #####....##..
 #.....###....
+@ whole/0 谷 206734523c024f1899e57c580ba4e9c7
+@ whole/1 翏 49d962a690494d3db32ab69b9b4f505d
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+8C43 豃
@@ -170,6 +172,8 @@ approved
 ..#########..
 ....#...#....
 #############
+@ whole/0 山 5b080e831c3c4df79bb10bd3c6ffa80a
+@ whole/1 豆 b174c6dd7d824a61bea25369ff1b5951
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+8C49 豉 = U+8C49.SC
@@ -597,6 +601,8 @@ approved
 .#.#..#.#.#.#
 #..#..#.#.#.#
 .##..########
+@ whole/0 豕 9e4f72d4731b4f71bc6b0288a2f26805
+@ whole/1 𥁕 193c6553310a44d990bafbf7f8da4944
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+8C72 豲
@@ -797,6 +803,8 @@ approved
 ##.#......#..
 ...#......#..
 .##.......#..
+@ whole/0 豸 35ae9d25b4fb4bdab3fd6f91586dec86
+@ whole/1 卑 7f102136a9114461a627c0f580a169a9
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+8C90 貐
@@ -1011,6 +1019,8 @@ approved
 ....#...#....
 ...#.....#...
 .##.......##.
+@ whole/0 ⺊ 02b7b8a9d07746588a7a0361f9052a2a
+@ whole/1 貝 7df839fefeab4cfda97c4ad950d2e9ee
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+8CA0 負
@@ -2043,6 +2053,8 @@ approved
 ......#....#.
 .#.#..######.
 #.....#....#.
+@ whole/0 貝 8304f870839f49b4ac8c642a07ef4229
+@ whole/1 者 43d1a3e84dea4e23b8be61dd2b705149
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+8CEE 賮

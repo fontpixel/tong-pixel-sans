@@ -506,6 +506,8 @@ approved
 #..#...##....
 #....##.#....
 ...##....###.
+@ whole/0 冫 8272ebab8bea40f79db8ce60004806c0
+@ whole/1 夌 252b4c48eec64f909fc02c251bbed838
 # 人工: 整字复制自 U+51CC.TC（0 处关联）
 
 U+51CD 凍 = U+51CD.TC

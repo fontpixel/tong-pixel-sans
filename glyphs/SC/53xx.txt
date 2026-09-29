@@ -296,6 +296,8 @@ approved
 #.....#......
 #............
 ############.
+@ whole/0 匚 97e9aa7df16a4f58ac280790afbefcf3
+@ whole/1 甲 1c24cce8489a49929339220ebb068da6
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+5326 匦
@@ -736,6 +738,8 @@ approved
 ..#.#########
 ..#...#...#..
 ..#.....###..
+@ whole/0 十 623f52260c3444cab656dceaa3e67d08
+@ whole/1 尃 ac865357c36e494e9e6b7d4d501c797a
 # 人工: 整字复制自 U+535A.TC（0 处关联）
 
 U+535C 卜
@@ -1852,6 +1856,8 @@ approved
 ######..#.#..
 ....#..#...#.
 ....#.#.....#
+@ whole/0 耳 e39a74e25bf04f709adedc77f4d85368
+@ whole/1 又 c0ab4b79fc8244c0b6f6b73b17a589e4
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 # 人工: 整字复制自 U+53D6.TC（0 处关联）
 
@@ -1941,6 +1947,8 @@ approved
 .#....#..#...
 .#...#..#.#..
 #...#..#...##
+@ whole/0 半 fb01c83178e44a5b835775949a937b6d
+@ whole/1 反 1d0840b045ee486f9ffd55d43e256105
 # 人工: 整字复制自 U+53DB.TC（0 处关联）
 
 U+53DF 叟

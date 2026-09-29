@@ -783,6 +783,8 @@ approved
 ..#......#...
 ..#......#...
 ..#......#...
+@ whole/0 米 9bbe1d4cb4c7451aa18ffd98f04018aa
+@ whole/1 卒 262ab134d0d3441aa0db503d3c57c62f
 # AI: 卒部双人末笔相接，米右点与十横分开。
 # 人工: 整字复制自 U+7CB9.TC（0 处关联）
 
@@ -835,6 +837,7 @@ approved
 ..#...#######
 ..#...#.....#
 @ whole/0 米 8e4a2d641f084509b5c8ba85eaee2d3e
+@ whole/1 青 96de4152932e4910988e6be2bcff078b
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：青的月部压缩为六行，末横靠近月脚。
 
 U+7CBF 粿

@@ -876,6 +876,8 @@ approved
 .#...#######.
 .#...#..#..#.
 #....#######.
+@ whole/0 氵 030d567398164bd0926fd92f1d2f4be2
+@ whole/1 番 1664f9218966420f9343dc88d3b2344c
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+6F5A 潚

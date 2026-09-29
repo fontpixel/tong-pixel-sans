@@ -131,6 +131,8 @@ approved
 ######.#..#.#
 #......#..#.#
 ######.##.##.
+@ whole/0 區 c00b6a0106444b0e85c2b5e8428a97db
+@ whole/1 瓦 80a4f08b648545669bba1b5c2b40668b
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：瓦部只有四列，点与右折接近，待审。
 
 U+750D 甍

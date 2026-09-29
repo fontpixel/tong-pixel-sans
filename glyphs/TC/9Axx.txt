@@ -302,6 +302,8 @@ approved
 #.#.#.#.#.#.#
 ....#.#.#.#.#
 ...##.#.#.#.#
+@ whole/0 馬 fc1ffc91f3074803b726f8ec1ad21a96
+@ whole/1 扁 03ca8cc0ae4a43119b089c0838142f34
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：馬下點受五列寬度限制，壓縮處待人審。
 
 U+9A1A 騚
@@ -1576,6 +1578,7 @@ approved
 .##..#.#####.
 #...##.#...#.
 @ whole/0 骨 8f12a6294d8d4ba48de89c8d8f8e7861
+@ whole/1 古 b2db850f829d4a5594e234c1fb06217e
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：骨內折按TC保留；骨旁范例未在本批圖頁提供。
 
 U+9AB8 骸
@@ -1818,6 +1821,7 @@ approved
 .#..#...##...
 .#.##.##..###
 @ whole/0 骨 a0ff11c3884b40d2a69983cf4d9857db
+@ whole/1 婁 44dc777b29c44b24b67b7319efe7b430
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：骨部窄幅保留内折角，顶部相邻黑点仍较密。
 
 U+9AD0 髐

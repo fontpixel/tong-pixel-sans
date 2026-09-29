@@ -585,6 +585,8 @@ approved
 ##.##.#.....#
 #...#.#######
 #####.#.....#
+@ whole/0 齿 9fedd947405c4f929ae7d86620b63963
+@ whole/1 召 8e2dbc90a1254c3f8a1030ce14c77a6e
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+9F87 龇

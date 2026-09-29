@@ -692,6 +692,9 @@ approved
 ...#..#..#...
 ..#...#...#..
 ##..###....#.
+@ whole/00 丬 8044519c780a4d76b21dab6bb3787bd3
+@ whole/01 夕 8335fd28d970404d81689581ad8732a4
+@ whole/1 水 0f0928567e654860b94fbece5f05ce84
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+6D47 浇

@@ -330,6 +330,8 @@ approved
 #######..##..
 ...#....#.#.#
 ...#...#...##
+@ whole/0 單 9385479a1cbf41c99f30785a830612bb
+@ whole/1 戈 6b4003f39a3a4811a23225df4ef9b065
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+6232 戲

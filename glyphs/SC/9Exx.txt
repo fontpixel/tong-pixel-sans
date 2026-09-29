@@ -349,6 +349,7 @@ approved
 ...........#.
 #########..#.
 ..........##.
+@ whole/0 夗 367bef249bf74685b785f82f944f003b
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+9E35 鸵
@@ -1526,6 +1527,8 @@ edited
 .############
 #....#.#.#...
 #..##..#..##.
+@ whole/0 鹿 807437f0221d434ababb271280f21e0c
+@ whole/1 米 891b1033ed3c42a1aeca3699a20585f3
 # AI: 鹿比短横压缩，米的点、中竖及撇捺分明。
 # 人工: 整字复制自 U+9E8B.TC（0 处关联）
 
@@ -1893,6 +1896,7 @@ approved
 #.#.#....#...
 #........#...
 @ whole/0 黑 7900cbfd36764244894eac58eba0a413
+@ whole/1 今 e839df740c3246b7ab47490093a5f3b3
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：黑部内点与四点受窄空间压缩，保留地区内部写法。
 # 人工: 整字复制自 U+9ED4.TC（1 处关联）
 
@@ -1998,6 +2002,8 @@ approved
 ........#...#
 #.#.#.#.#####
 #.......#...#
+@ whole/0 黑 4590f2df40604c5ca694ec958a66b2b7
+@ whole/1 吉 fb3c94aa0314451ba6fe7c94daf11c83
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+9EE1 黡

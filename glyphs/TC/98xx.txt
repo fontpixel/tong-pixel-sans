@@ -1682,6 +1682,8 @@ approved
 #.#.#.#.###.#
 #.#.#.#.....#
 .##..#......#
+@ whole/0 票 423e38a3ed9043d4833969fc70157916
+@ whole/1 風 30479e47b231424a8bd9faeef67d23e0
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：票上覀與風末鉤受左右窄部限制，仍需人審。
 
 U+98C6 飆

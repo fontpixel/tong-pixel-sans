@@ -293,6 +293,8 @@ approved
 #..#...#.#.#.
 #.#.#.#..#..#
 ##......##...
+@ whole/0 飠 18331835f9954c26b9e046b980edb323
+@ whole/1 余 2b26c7eab0d2483c8a0f9933db9fc2fd
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+991A 餚
@@ -1789,6 +1791,8 @@ approved
 ...........#.
 .#.#..#.#..#.
 #..#..#.#.##.
+@ whole/0 加 7e7d76bdbe834162a7751e936582b5bd
+@ whole/1 馬 6b3c5739589a440e8410ce31d0a88035
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+99D6 駖

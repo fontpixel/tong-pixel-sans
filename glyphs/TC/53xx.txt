@@ -550,6 +550,8 @@ approved
 ..#.#########
 ..#...#...#..
 ..#.....###..
+@ whole/0 十 623f52260c3444cab656dceaa3e67d08
+@ whole/1 尃 20de33fdf8244c7dbbd882ce7f867051
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：甫首橫與上框合筆，十三行內保留中豎。
 # 人工: 整字复制自 U+535A.SC（0 处关联）
 
@@ -1062,6 +1064,8 @@ approved
 ######..#.#..
 .....#.#...#.
 .....##.....#
+@ whole/0 耳 7e3a31fd02ec4e41803216eeb0bef9a0
+@ whole/1 又 d415b0a2f2714d98bfebe9ce8e6713ba
 # 人工: 整字复制自 U+53D6.SC（0 处关联）
 
 U+53D7 受 = U+53D7.SC
@@ -1081,6 +1085,8 @@ approved
 .#....#..#...
 .#...#..#.#..
 #...#..#...##
+@ whole/0 半 fb01c83178e44a5b835775949a937b6d
+@ whole/1 反 82158310d05d44d598a8d5e8f29a6a36
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+53DF 叟

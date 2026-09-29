@@ -585,6 +585,7 @@ edited
 .#....#....#.
 #.....######.
 @ whole/0 女 52641409877546eeacb4f5043bb91734
+@ whole/1 昏 aa74003c27bc4679a6ebde267e0f9631
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+5A5E 婞

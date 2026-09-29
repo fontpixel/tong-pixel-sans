@@ -161,6 +161,8 @@ approved
 #####....#...
 ..#......#...
 ..#...#######
+@ whole/0 車 bcf458c17d4b4269976411a47c2f330e
+@ whole/1 至 a209a9fb4ddd4088ab325d3d5d134558
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+8F0B 輋
@@ -428,6 +430,8 @@ approved
 .#.##....#...
 #..#..#######
 #........#...
+@ whole/0 光 5797032e5c8c4768abddeb1e50294d98
+@ whole/1 軍 c2e602aba06b4bd78c184f572dd3a9e0
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：光的兒鉤較窄，保留與軍的白縫。
 
 U+8F1E 輞
@@ -747,6 +751,8 @@ approved
 #####.###.#.#
 ..#...#.#...#
 ..#...#.#..##
+@ whole/0 車 bcf458c17d4b4269976411a47c2f330e
+@ whole/1 俞 e5180dbdb79a47a8b0bda7e67865b2e9
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：俞左月为三列窄形，无法原尺寸复用前的月、刂。
 
 U+8F39 輹

@@ -1106,6 +1106,7 @@ approved
 ..###.#...#..
 ###..#######.
 @ whole/1 且 fa54fc1445aa471caf9e0b1b35660793
+@ whole/0 虫 1cc996704a644ffc9ae7e7600c701de3
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+86C7 蛇

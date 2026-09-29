@@ -968,6 +968,7 @@ approved
 ..##.#..#..#.
 ##.....##....
 @ whole/0 鱼 32841d640107425e858ddf7648c76c95
+@ whole/1 京 a8417b6cd9624c1180d1aa38bf4095fd
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+9CB9 鲹

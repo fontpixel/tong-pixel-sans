@@ -527,6 +527,7 @@ approved
 ..##..#.#..##
 ..#..###....#
 @ whole/0 饣 75f2fa4209c241c3bf2691e5993c2329
+@ whole/1 我 6c6f3237ba9c4a94bcd2311911d91865
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：我部交叉处需保留相接像素，待人工审阅。
 
 U+9980 馀

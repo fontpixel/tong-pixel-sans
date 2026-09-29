@@ -1139,6 +1139,8 @@ approved
 ####........#
 #...#.#.#.#.#
 ...#..#.#.###
+@ whole/0 目 25c6061862384e6a87c3c8b0f89676cd
+@ whole/1 鳥 79e61023a49345f8be2ac91e41194ece
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：鳥末点与右钩近接；目旁略加宽以保留内部白缝。
 
 U+7799 瞙
@@ -1953,6 +1955,8 @@ approved
 .#..#.#.#.#.#
 #.....#.###.#
 ......#....##
+@ whole/0 矢 a7e7f31dad19412cadcdb7bf08edad04
+@ whole/1 喬 8e3d8eb6865246b38c10ffe116afc399
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+77F0 矰 = U+77F0.SC

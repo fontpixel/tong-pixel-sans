@@ -1464,6 +1464,7 @@ approved
 .........#...
 ..........#..
 @ whole/0 山 965f0b7727614dd48e7a068ce64d6bbe
+@ whole/1 令 af16ab256141423caf2390b5a4d64c5d
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+5CB1 岱
@@ -1832,6 +1833,8 @@ approved
 .#....#....#.
 .#....#....#.
 .###########.
+@ whole/0 𰁜 69ff0a6ab9204c52a0d11c66828616d6
+@ whole/1 山 a2f5504e360f4114931f7fd82df9e06a
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+5CE7 峧

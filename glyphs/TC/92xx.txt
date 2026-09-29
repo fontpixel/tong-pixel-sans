@@ -1287,6 +1287,8 @@ approved
 ..#.....#.#..
 ..###..#...#.
 ###...#.....#
+@ whole/0 釒 1f95a35f300d4bfe8c69ff8f34419d6a
+@ whole/1 交 2a319fe6524146bd991633c234c08b65
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+9279 鉹
@@ -1678,6 +1680,8 @@ approved
 ..#...#..#..#
 ..###....#...
 ##.......#...
+@ whole/0 釒 c6301fe64c8b4106963bb8d7da924f23
+@ whole/1 朱 e7948626e8b04d45b76b6d9686aff46f
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+9297 銗

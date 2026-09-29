@@ -32,6 +32,7 @@ edited
 .##...#..##..
 .#..##.....#.
 @ whole/0 钅 14ce352e138849b78fc30cfc14ae3acd
+@ whole/1 𭕆 6e1d290099584a0e88a0163d2e3c61bb
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+9502 锂
@@ -1103,6 +1104,7 @@ edited
 .##...#...#..
 .#..##.....#.
 @ whole/0 钅 14ce352e138849b78fc30cfc14ae3acd
+@ whole/1 美 5b045d61965246f18650d11095144911
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+9542 镂
@@ -1203,6 +1205,7 @@ approved
 ..##..#...#..
 ..#..#.....#.
 @ whole/0 钅 cb6ed7a9d96b4d5292eb7591bbd51c29
+@ whole/1 真 2f5c6421a5d04390bb82dda3e22b869e
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：真的目底與下長橫相鄰，保留區別筆畫。
 
 U+9548 镈
@@ -1361,7 +1364,7 @@ edited
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：內口保留三列窄形，避免碰冂。
 
 U+9551 镑
-edited
+approved
 .#.....#.....
 .#......#....
 .###.#######.
@@ -1557,6 +1560,7 @@ edited
 .##...#..#.#.
 .#..##...###.
 @ whole/0 钅 14ce352e138849b78fc30cfc14ae3acd
+@ whole/1 竟 af9bd331d13d438daa162d2599f098e8
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：立底与日顶共横，为日内留白。
 
 U+955D 镝
@@ -1676,6 +1680,7 @@ approved
 .##..#..#..#.
 .#..#..##...#
 @ whole/0 钅 14ce352e138849b78fc30cfc14ae3acd
+@ whole/1 尞 92205e06a6f440539643f6d9eebef185
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+9564 镤

@@ -1232,6 +1232,8 @@ approved
 ..#..........
 ..#.........#
 ...#########.
+@ whole/0 毛 0b07f8d2a0fa48ac9108ca88eb357ae4
+@ whole/1 占 85bf130c71f847f9ae6ac4b7d63574a4
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+6BEA 毪

@@ -1075,6 +1075,8 @@ approved
 ..#.#....#.#.
 .####...####.
 #....#.#....#
+@ whole/01 十 9a66b292c7f14078b63c223a7c12a6d8
+@ whole/1 䖵 03ffb0ec30b240019c39f1a8a1e3fd50
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+8769 蝩
@@ -1645,6 +1647,8 @@ approved
 ..#########..
 ......#....#.
 .##########.#
+@ whole/0 𤇾 1255605983744e5988b28e107bbe6895
+@ whole/1 虫 ee7f0566b5094188803bb732355e6e74
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+87A3 螣 = U+87A3.SC

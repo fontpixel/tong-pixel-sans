@@ -683,6 +683,8 @@ approved
 #..#..#.#.#..
 #..#.#..#..#.
 #..#....#....
+@ whole/0 片 902bba865c8042598b14eda805adcd11
+@ whole/1 枼 cd3b9e49c7c744a4ac815b4f7a118c87
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+7253 牓
@@ -716,6 +718,9 @@ approved
 #..#.#.######
 #..##..#.#..#
 #..##..#.#.##
+@ whole/0 片 4f4936a869544f25af90bf7a77213a73
+@ whole/10 戶 c5b208ea298b4adb8ef59450c0b8f7ed
+@ whole/11 甫 671b199b09214194a77e96ccae7e6a6a
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：戶撇與片的下豎較近，保留完整甫部，待人審。
 
 U+7258 牘
@@ -930,6 +935,8 @@ approved
 ..#..#.#..#.#
 ..#..##....##
 ..#..#.###..#
+@ whole/0 牜 32bae08753274af1b82729ec9e932093
+@ whole/1 氐 e6577b251dc7421ab40df2a996b53ca1
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+7276 牶

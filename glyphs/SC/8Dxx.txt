@@ -1070,6 +1070,8 @@ approved
 .#.#...##.##.
 .#..#..##.##.
 #.....#.#.#.#
+@ whole/0 贝 1d27be44f0074bd5b893b745aefec2e8
+@ whole/1 兼 ee9167c439e44d92882b52af4c3a9121
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+8D5B 赛
@@ -2024,6 +2026,8 @@ approved
 #.#.#.#......
 #.##..#......
 ##....######.
+@ whole/0 𧾷 71c112b765104ef88295feb0ff09d581
+@ whole/1 巨 b2ed1765299f4accaa8e700ea0f8ad51
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 # 人工: 整字复制自 U+8DDD.JP（0 处关联）
 
@@ -2213,6 +2217,7 @@ approved
 ##....#..#..#
 ....##....###
 @ whole/0 𧾷 9a2d732ad56644848304269d2f6074ed
+@ whole/1 兆 577008fcd9d04d48adeb68ac8ed97186
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+8DF5 践

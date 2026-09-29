@@ -252,6 +252,8 @@ approved
 ..#.#.#######
 #####.#.#.#.#
 ......#.#.###
+@ whole/0 虫 fef76077242e4847bf61f37fa832d025
+@ whole/1 需 50de5981bf6244ea9f9dd035b4e262a5
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：雨四点分层；而部压为五行，内竖较短，待审。
 
 U+8816 蠖

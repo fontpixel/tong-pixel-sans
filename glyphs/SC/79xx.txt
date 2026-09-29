@@ -1139,6 +1139,8 @@ approved
 ....#...#...#
 ...#....#...#
 ###......####
+@ whole/0 禾 35251a4a5e6648afb804f7961e55d627
+@ whole/1 几 9e5d602b9ccf431dbef482ca84b5c6db
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+79C6 秆

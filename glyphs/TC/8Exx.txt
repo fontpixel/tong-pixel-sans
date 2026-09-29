@@ -1882,6 +1882,8 @@ approved
 .#..#.#######
 #...#.#......
 ..###.#######
+@ whole/0 身 84be039973154fb49c23549d0208a9b1
+@ whole/1 區 2c61a2a844ac4bacaf79f74ee0e0443f
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+8EC2 軂
@@ -1981,6 +1983,8 @@ approved
 #############
 ......#......
 ......#......
+@ whole/0 冖 920277b7f40445e3b94f19a69aa097e8
+@ whole/1 車 1f4584d3bac047ef8ec2e7049dce57b5
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+8ECF 軏

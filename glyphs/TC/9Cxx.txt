@@ -315,6 +315,8 @@ approved
 #.#.#.#..#..#
 #.#.#....#...
 #........#...
+@ whole/0 魚 5b1d78e1031b4e34b96d63e26489fe11
+@ whole/10 罒 f80e99bb42424494a15ab36b19f4712e
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：魚底灬在五列内压缩为三簇，待人工审阅。
 
 U+9C28 鰨
@@ -586,6 +588,8 @@ approved
 #.#.#....#...
 #.#.#..#.#.#.
 #.....#..#..#
+@ whole/0 魚 ba51bf36832b4a7184837d5fad456975
+@ whole/1 票 94cd944e895648d380084c09e3da5fd8
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：魚底四點高度與寬度均不足，壓縮處待人審。
 
 U+9C3F 鰿
@@ -704,6 +708,8 @@ approved
 .#....#....#.
 .###########.
 #...#...#...#
+@ whole/0 敝 6b794bed944646b8a29cbf92c9679970
+@ whole/1 魚 f5b5347258804f31a88e67498b417939
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：魚田仅三行，内部横画压缩；复杂结构仍待审。
 
 U+9C4A 鱊

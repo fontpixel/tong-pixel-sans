@@ -404,6 +404,7 @@ approved
 ..#..........
 ..###########
 #..#..#..#..#
+@ whole/1 鳥 6b96e76912514640b684f90037883436
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：䜌言省一横以留白；鳥内白与灬高度压缩，待人工审阅。
 
 U+9E75 鹵
@@ -471,6 +472,8 @@ approved
 #..##..#...#.
 ##.##.#.#.#.#
 #....#...#..#
+@ whole/0 鹵 47bf5a057ab74c5facc91a5d58c1e0ad
+@ whole/1 僉 24baa5e3dc2a48df9cd2ea2adb39cfd9
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+9E7D 鹽
@@ -658,6 +661,8 @@ approved
 .############
 #....#.#.#...
 #..##..#..##.
+@ whole/0 鹿 fe3b97a7147a47ea9dea59a560b2e624
+@ whole/1 米 bdb5fc1937f14134b5091662b113484b
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+9E8C 麌
@@ -1347,6 +1352,7 @@ approved
 #.#.#....#...
 #........#...
 @ whole/0 黑 7900cbfd36764244894eac58eba0a413
+@ whole/1 今 fb59aa67639d4861872117975fef5d51
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：黑内点画高度压缩，灬以四点小形保留。
 
 U+9ED5 黕

@@ -943,6 +943,8 @@ approved
 ##...#######.
 .....#.....#.
 ....#....###.
+@ whole/0 立 7d8a82b4606d44ec9ac03fc6b23376cb
+@ whole/1 青 bb6521cb92214315a7c67525c5876d08
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 # 人工: 整字复制自 U+9756.SC（0 处关联）
 
@@ -1010,6 +1012,8 @@ approved
 #...#...#....
 #####...#....
 #..##..##....
+@ whole/0 青 b5bb6d9784ec4681adf7f2b0b3d65d34
+@ whole/1 爭 2185b13c68d044a0bb8cfa83bf702974
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+975E 非
@@ -1449,6 +1453,8 @@ approved
 #####.###..#.
 ..#...#....#.
 ..#..#...###.
+@ whole/0 革 28393ccc13d449cbad7964a6a0e54292
+@ whole/1 肖 01a13616f74d49d48c043b17bbcdf65f
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 # 人工: 整字复制自 U+9798.SC（0 处关联）
 
@@ -1995,6 +2001,8 @@ approved
 #.#...#.....#
 #####.#######
 ..#...#.....#
+@ whole/0 韋 f562af84a71a4244a576001970033def
+@ whole/1 合 c5641acd97484302a8f8cc81c7e3aed4
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+97D3 韓
@@ -2331,6 +2339,8 @@ approved
 #...#.#######
 #####..#...#.
 #.....#.....#
+@ whole/0 音 45c185e4b0534a73b3ba92bf9c6f2cea
+@ whole/1 員 81b19458d9bb49778aaf06ad001ebdfe
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+97FD 韽

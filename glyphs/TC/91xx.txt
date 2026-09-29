@@ -2375,6 +2375,7 @@ approved
 #####.##..#..
 #...#..##..##
 @ whole/0 酉 96cb74d8feee481aafcffb1e60060ec7
+@ whole/1 襄 f6561f7c523a4093ba7b4e6222b98e46
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：襄横画在七列内压缩，保留双口和衣脚。
 
 U+91C1 釁

@@ -451,6 +451,7 @@ approved
 ..#.#.#..#..#
 ##...#....###
 @ whole/0 委 8dc7e966e86e4512a38c8e201642a53c
+@ whole/1 鬼 5b21e863a1bb43af93f7407dfc6185ed
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：鬼下部依同批繁體共有寫法整理，保留首筆地區差異。
 
 U+9B51 魑

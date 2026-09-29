@@ -851,6 +851,8 @@ approved
 .####.#.###.#
 .....#......#
 ....#......##
+@ whole/0 石 2c04f96b6e8f4409af90a7ccad3d5bf7
+@ whole/1 周 a01607ee473e4fc1b4dae1e6145257dc
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+788C 碌
@@ -1425,6 +1427,8 @@ approved
 ..##########.
 ##.#.......#.
 ...#########.
+@ whole/0 般 24ba0ca0b9724bf18daba58c264a32bd
+@ whole/1 石 bab920d67f9f4e999fbd3f756e2e3d08
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+78D1 磑

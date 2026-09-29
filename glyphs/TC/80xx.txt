@@ -223,6 +223,8 @@ approved
 #.#.....#...#
 ..#.....#...#
 ..#......####
+@ whole/0 耒 b817716eea23404ca63bb100100776b3
+@ whole/1 毛 5ff584ef0b6944f391ae25f976d25973
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+8018 耘
@@ -927,6 +929,9 @@ approved
 ####.#...#..#
 ...#..#....#.
 ...#...#####.
+@ whole/0 耳 2a5fca9927a946bdb5435760db4d72ae
+@ whole/10 囪 3a38f320bc6e4c5e803dd9eaf892afc1
+@ whole/11 心 7e952baba5c94552811ad7a17ae43d7d
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+8071 聱

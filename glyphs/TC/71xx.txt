@@ -226,6 +226,8 @@ approved
 .....#.#.....
 ...##...##...
 ###.......###
+@ whole/0 林 f887b795105847ee877187b4fe335148
+@ whole/1 火 fd4fbbf35093431d984fe1402f43bec6
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+711B 焛
@@ -1013,6 +1015,8 @@ approved
 .#..#..#..#..
 .#....#....#.
 #....#......#
+@ whole/0 火 35c7f201b54c423a9e8c6977de1dcc2e
+@ whole/1 頁 dcfd6ebca82245bcafa72de9b2ccb88c
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+716A 煪

@@ -973,6 +973,8 @@ approved
 #.#.#....#.#.
 #.#.#...#####
 #..##.##....#
+@ whole/0 角 4b43e0135c0a4f17beb998baedb651bf
+@ whole/1 虫 d04ed8afa5ca4d96bcfc89b1cfa2ce4c
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+89EB 觫

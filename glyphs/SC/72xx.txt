@@ -445,6 +445,8 @@ approved
 #..#..#.#.#..
 #..#.#..#..#.
 #..##...#...#
+@ whole/0 片 a90129fe6f0841f4805501dcb0fe890b
+@ whole/1 枼 a88ae0d912324715842aa5a172c2f8a3
 # 人工: 整字复制自 U+7252.TC（0 处关联）
 
 U+7256 牖
@@ -462,6 +464,9 @@ approved
 #.#..#.######
 #.#.#..#.#..#
 #.#.#..#.#.##
+@ whole/0 片 781aa19cdf0d45cfabc0b0d28d51bc08
+@ whole/10 户 cce9552ba2bc4ab3ae54f8eab2f8f975
+@ whole/11 甫 671b199b09214194a77e96ccae7e6a6a
 # AI: 户下甫的竖画密，局部横画相接，保留中竖与末钩。
 # 人工: 整字复制自 U+7256.TC（0 处关联）
 
@@ -735,6 +740,9 @@ approved
 #############
 ......#......
 ......#......
+@ whole/0 大 3fe03c98b0c94224bfa23620138f6ff7
+@ whole/1 冖 966cc3b050834801bf6f60cbf6e8f1cc
+@ whole/2 牛 679dc304516a403bb7eadb9585c7811f
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+7279 特

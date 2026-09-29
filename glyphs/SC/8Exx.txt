@@ -1102,6 +1102,7 @@ approved
 #...#.#......
 ...##.######.
 @ whole/1 区 101a57387bd9416690de88a8adfcc79e
+@ whole/0 身 0795f5b2b16d43dbbcd9fec4b23dedce
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+8EB2 躲

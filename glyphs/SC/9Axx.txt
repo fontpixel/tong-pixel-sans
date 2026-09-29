@@ -392,6 +392,8 @@ approved
 #########..#.
 ...........#.
 .........##..
+@ whole/0 吅 a89ec5a888f049b29ca73ada1a2b2d43
+@ whole/1 马 f00974c6a52143d68b25f0028bc4b415
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+9A83 骃
@@ -650,6 +652,8 @@ approved
 ##..#.####.#.
 ....#......#.
 ..##.....###.
+@ whole/0 马 701bd566963f42acaff0f2929996c412
+@ whole/1 奇 6fb6f38259af43c7b965f2644f00c230
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：可內口保留三列窄形。
 
 U+9A92 骒
@@ -1097,6 +1101,7 @@ approved
 .#...#.#####.
 .#..##.#...#.
 @ whole/0 骨 eb1cb6b04cf74c8d911682853d978214
+@ whole/1 古 b2db850f829d4a5594e234c1fb06217e
 # AI: 骨上框内折在五列内压缩，保留左向折笔。
 # 人工: 整字复制自 U+9AB7.TC（0 处关联）
 

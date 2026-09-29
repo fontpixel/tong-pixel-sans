@@ -773,6 +773,7 @@ approved
 ..#..#.#...#.
 ..#..#.#..##.
 @ whole/0 车 2ff9677935fc4faf9cd42deae4f335bc
+@ whole/1 俞 b376bf2c086244f09e71f8bb8fc27d4b
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：俞月部保留三列宽，与繁体輸的月脚区分。
 
 U+8F94 辔

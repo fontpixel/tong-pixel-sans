@@ -735,6 +735,8 @@ approved
 .#..#....#...
 .#..#....#...
 #..#..#######
+@ whole/0 ⺼ e2cfb87261a54c91b2e508bc968aeb13
+@ whole/1 空 4798629dfb8b4e6db6f6b495124461fe
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 # 人工: 整字复制自 U+8154.SC（0 处关联）
 

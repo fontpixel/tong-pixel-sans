@@ -1331,6 +1331,8 @@ approved
 ....#..#..#..
 ..###.#.##...
 ##..##....###
+@ whole/0 龍 16abef585dbc489ba8fabc63c39dcdc6
+@ whole/1 衣 a861ae91d7af417ca521d4385137288a
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：龍内部横画仍压缩，衣底保留各笔分向。
 
 U+8973 襳
@@ -2571,6 +2573,8 @@ approved
 #...#...#.#.#
 #...#.#####.#
 #..##......##
+@ whole/0 角 8caaf21cf24c42e192899cb2882ea678
+@ whole/1 蜀 1b87b5732ab442119dc9ec20e9fbe9f3
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+89FA 觺

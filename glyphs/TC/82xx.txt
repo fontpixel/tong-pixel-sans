@@ -1161,6 +1161,8 @@ approved
 ..#....#.#.#.
 .#.#...##..#.
 #...#..#....#
+@ whole/0 𦰩 82df0d0b5ab944cfaa075736dd133664
+@ whole/1 艮 fd928e177de9483fb93b1e779feb26fd
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+8272 色 = U+8272.SC

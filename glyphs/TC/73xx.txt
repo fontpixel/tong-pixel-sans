@@ -1010,6 +1010,9 @@ approved
 ..#....#..#..
 ..#.....##...
 ##..####..###
+@ whole/0 犭 d637bc043c5442d380869e585b01b2e9
+@ whole/10 卝 321fa7d0749447168a967162e2e874a0
+@ whole/11 隻 e9548e0f2ab74c2fb424f8c840083bea
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：隹末横与又首横共行，保留繁体分离艹。
 
 U+7373 獳

@@ -565,6 +565,8 @@ approved
 #.#.#.#..##..
 #.#.#.#.#..#.
 ##.#.########
+@ whole/0 鼠 a05374b70d2f4f05938cacd667ac2ee6
+@ whole/1 匽 b2379adb585b419b9f22fc8972a912d2
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：匽内日恢复三横；女压为五行，交叉处待审。
 
 U+9F35 鼵
@@ -743,6 +745,8 @@ approved
 .#.#..#.#..#.
 .#.#..#.#.#..
 #..#.#..##.##
+@ whole/0 鼻 1cb235f3b41847beae27263e82dfa794
+@ whole/1 農 159906b5405d424db50ec0011f8c1f32
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：鼻自仍減一橫；曲恢復雙內豎，辰下部密處待人審。
 
 U+9F49 齉 = U+9F49.SC

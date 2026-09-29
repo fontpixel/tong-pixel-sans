@@ -304,6 +304,8 @@ approved
 #.#.####.#...
 #.#.#..#.#...
 #.#.#.##..###
+@ whole/0 月 6a1259bb61ee4953bc11c6f94942aeff
+@ whole/1 龍 f6e920dddfba4f62bcb080c12fe38d09
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：月部仅三列，已通过的宽形放不下；底钩仍紧。
 
 U+6728 木 = U+6728.SC

@@ -585,6 +585,8 @@ approved
 ....#.....#..
 ...#......#..
 .##.....###..
+@ whole/0 穴 96f45b7cb261438ea063afa3dd349267
+@ whole/1 力 2c1aca36dca745809926121bf522ea1d
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+7A78 穸

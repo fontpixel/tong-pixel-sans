@@ -1410,6 +1410,7 @@ approved
 .#...#....#.#
 ##..#.....###
 @ whole/0 扌 ba5a439d920c4e90a714e126b3d4dfe5
+@ whole/1 堯 8e3c35c5f26b49b2a28bbf793e657293
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+6495 撕 = U+6495.SC

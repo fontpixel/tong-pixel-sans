@@ -1504,6 +1504,8 @@ approved
 ####.#.#..#..
 ..#..##..#.#.
 .#..###.#...#
+@ whole/0 芻 9fcdb68f61ce4bf8b9c3d38dc8a9b456
+@ whole/1 皮 09e5b78bc9ca4fdbae9f0792f59ef99d
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：芻两组屮及包钩在六列内有接笔，待人工审阅。
 
 U+76BB 皻

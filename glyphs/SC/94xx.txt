@@ -13,6 +13,8 @@ approved
 ..#########..
 ...#..#..#...
 #############
+@ whole/0 辟 0b479aeae31841a4b0f0cadb0a101d1a
+@ whole/1 金 bb47f9f552fe469b9bf1160950c47501
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：辟与金头交界紧，暂无合适尺寸的已通过整部件可复用。
 
 U+946B 鑫
@@ -728,6 +730,7 @@ edited
 .##....#..#..
 .#...#######.
 @ whole/0 钅 14ce352e138849b78fc30cfc14ae3acd
+@ whole/1 丑 b9e2dde293ac4b58ae11bd2097f55ef4
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：丑竖笔参照已通过丑保持直下，宽度另作压缩。
 
 U+94AF 钯

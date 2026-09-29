@@ -2142,6 +2142,8 @@ approved
 #...#..#...#.
 #####..#####.
 #...#..#...#.
+@ whole/0 口 38833e1de281405e94a9e47d41c04fc0
+@ whole/1 吅 c0a9071203954582be8a28673a206ca3
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+54C2 哂

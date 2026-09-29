@@ -410,6 +410,8 @@ approved
 ...##########
 ...#....#....
 ###.....#....
+@ whole/0 弓 40ddf19cabfc42dba2e2c1dc809ac951
+@ whole/1 單 ad0fb8cf6b574320976bfb4f62327847
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+5F49 彉

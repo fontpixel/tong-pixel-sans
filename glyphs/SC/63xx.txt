@@ -1694,6 +1694,7 @@ approved
 .#..#.##.....
 ##.#....####.
 @ whole/1 是 8b4f1c8899464ed09d67a4ac3956dba6
+@ whole/0 扌 ba5a439d920c4e90a714e126b3d4dfe5
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+63D2 插
