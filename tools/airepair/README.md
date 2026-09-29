@@ -8,6 +8,8 @@ PY=.venv/bin/python     # 需要 tools/requirements.txt 的库和 reference-font
 # 1. 准备一轮（写 work/airepair/NAME/，不入 git，不改字形）
 $PY tools/airepair/prepare.py NAME --representative            # “接下来建议修”清单
 $PY tools/airepair/prepare.py NAME --list 清单.txt --ref-round 前一轮NAME --workers 10
+$PY tools/airepair/prepare.py NAME --list 清单.txt --masters-only …       # 只修各字的母版
+$PY tools/airepair/prepare.py NAME --derive --ref-round 前几轮NAME …        # 地区派生轮
 
 # 2. 在 Codex 里以 work/airepair/NAME/ 为工作目录，发送 work/airepair/NAME/PROMPT.md 里的提示词
 
@@ -17,8 +19,11 @@ $PY tools/airepair/compare.py NAME                # work/airepair/NAME/compare/�
 
 # 4. 用户决定后导入（状态仍为 ai，前一版本存入 history/ai-originals/）
 $PY tools/airepair/import_round.py NAME --dry-run
-$PY tools/airepair/import_round.py NAME [--exclude 字…] [--only-ids 文件]
+$PY tools/airepair/import_round.py NAME [--exclude 字…] [--only-ids 文件] [--masters-only] [--alias-identical]
 ```
+
+- **母版与派生**（`docs/design-rules.md` 第 2 节）：同一个字的地区版本以一个为母版（已通过的，其次改过的，否则按 简 → 繁 → 日 → 韩 的第一个）。修字轮用 `--masters-only` 只修母版；派生轮 `--derive` 取其他地区的 AI 版和底稿，“当前”是母版的逐像素副本（母版未审核时取 `--ref-round` 里最新的结果），AI 只改两地写法不同的笔画。导入时先导母版轮（`--masters-only` 跳过非母版），最后导派生轮（`--alias-identical`：与母版像素相同的改为别名）。
+- 复看图和 `common.wide_gaps` 标出左右并排部件之间空 2 列以上的字（L049；按编辑器的 IDS 分割推断）。
 
 - 只取状态为 `ai` 的字：用户改过或通过的字不交给 AI；准备之后又被人改过的字，导入时跳过、不覆盖。
 - 每字的输入：该地区思源黑体参考（写法依据）、当前点阵、圆石点阵黑 18 号（`data/tumbled-18.bdf`，像素范本）、同部件的已通过字（经部件关联查到，另加已通过的独体字）、同字其他地区的已通过版本，以及 `--ref-round` 指定的前几轮已修的同部件字（保持全库一致）。

@@ -31,7 +31,7 @@ import uuid
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from common import ROUNDS, draw_bits, font, one_to_one  # noqa: E402
+from common import ROUNDS, draw_bits, font, one_to_one, wide_gaps  # noqa: E402
 
 HERE = STATE = WORK = RESULTS = None   # set from --round in main()
 TUMBLED = {"借鉴", "部分借鉴", "未借鉴"}
@@ -216,17 +216,27 @@ def render_pages(b, s, out_dir):
         part = ids[k:k + 12]
         im = Image.new("RGB", (W * 2, 40 + rowh * ((len(part) + 1) // 2)), "white")
         d = ImageDraw.Draw(im)
-        d.text((10, 8), f"{b} 复看 第 {k // 12 + 1} 页 · 思源参考 | 圆石 13×14 | 修前（当前）| 修后", font=big, fill=(0, 0, 0))
+        derive = any(it[gid].get("master") for gid in part)
+        d.text((10, 8), f"{b} 复看 第 {k // 12 + 1} 页 · " + ("思源（本字地区）| 思源（母版地区）| 修前（母版副本）| 修后" if derive else
+                                                             "思源参考 | 圆石 13×14 | 修前（当前）| 修后") + " · 红字：部件间空了 2 列以上（L049）",
+               font=big, fill=(0, 0, 0))
         for i, gid in enumerate(part):
             g, x0 = it[gid], (i % 2) * W + 10
             y0 = 40 + (i // 2) * rowh
             after = s["glyphs"][gid]["rows"]
             n = sum(p != q for r1, r2 in zip(g["rows"], after) for p, q in zip(r1, r2))
-            d.text((x0, y0), f"{g['char']} {gid} · 改 {n} 点 · 圆石：{s['glyphs'][gid]['tumbled']}", font=small, fill=(0, 0, 0))
+            gaps = wide_gaps(g["char"], g["region"], after)
+            d.text((x0, y0), f"{g['char']} {gid} · 改 {n} 点 · " + (f"母版 {g['master']['id']}" if g.get("master") else f"圆石：{s['glyphs'][gid]['tumbled']}"),
+                   font=small, fill=(0, 0, 0))
+            if gaps:
+                d.text((x0 + 330, y0), "间距 " + " ".join(f"{p}|{q} 空{c}列" for p, q, c in gaps), font=small, fill=(210, 30, 30))
             im.paste(Image.open(HERE / g["reference"]).convert("RGB").resize((112, 112)), (x0, y0 + 18))
             x = x0 + 130
             for rows, label in ((g["tumbled"], "圆石"), (g["rows"], "修前"), (after, "修后")):
-                if rows:
+                if label == "圆石" and g.get("master"):
+                    im.paste(Image.open(HERE / g["master_reference"]).convert("RGB").resize((112, 112)), (x, y0 + 18))
+                    d.text((x, y0 + 18 + 114), f"思源 {g['master']['id'][-2:]}（母版）", font=small, fill=(90, 90, 90))
+                elif rows:
                     draw_bits(d, rows, x, y0 + 18, sc, label=label, fnt=small)
                 else:
                     d.text((x, y0 + 60), "（圆石没有此字）", font=small, fill=(90, 90, 90))

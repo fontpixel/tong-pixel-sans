@@ -166,3 +166,46 @@ def one_to_one(im, rows_list, x, y, gap=18):
             for xx, v in enumerate(r):
                 if v == "#":
                     im.putpixel((x + 1 + xx + k * gap, y + yy), (0, 0, 0))
+
+
+# ---------------------------------------------------------------- checks
+def wide_gaps(char, region, rows, limit=2):
+    """Side-by-side components (⿰ ⿲, also inside ⿱ …) whose ink boxes leave `limit` or more blank
+    columns between them: [(left symbol, right symbol, blank columns)]. Uses the IDS segmentation of
+    the editor (an inference; strokes the segmentation cannot place are ignored)."""
+    import segment
+    try:
+        node, found, _ = segment.segment(char, region, rows)
+    except Exception:
+        return []
+
+    def mask(n):
+        if n is None:
+            return set()
+        if "op" in n:
+            return set().union(*(mask(c) for c in n["children"]))
+        return set(found.get(n["slot"], ()))
+
+    def name(n):
+        return "?" if n is None else n["symbol"] if "symbol" in n else "".join(name(c) for c in n["children"])
+
+    out = []
+
+    def visit(n, depth):
+        if n is None or depth > 3:
+            return
+        if "op" in n:
+            if n["op"] in ("⿰", "⿲"):
+                ms = [mask(c) for c in n["children"]]
+                for (a, ca), (b, cb) in zip(zip(ms, n["children"]), zip(ms[1:], n["children"][1:])):
+                    if a and b:
+                        gap = min(x for x, _ in b) - max(x for x, _ in a) - 1
+                        if gap >= limit:
+                            out.append((name(ca), name(cb), gap))
+            for c in n["children"]:
+                visit(c, depth + 1)
+        else:
+            visit(n["sub"], depth + 1)
+
+    visit(node, 0)
+    return out
