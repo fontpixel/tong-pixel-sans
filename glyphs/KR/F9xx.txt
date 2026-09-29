@@ -1,0 +1,511 @@
+U+F900 豈 = U+8C48.TC
+
+U+F901 更 = U+66F4.SC
+
+U+F902 車 = U+8ECA.TC
+
+U+F903 賈 = U+8CC8.TC
+
+U+F904 滑 = U+6ED1.TC
+
+U+F905 串 = U+4E32.SC
+
+U+F906 句 = U+53E5.SC
+
+U+F907 龜 = U+9F9C.TC
+
+U+F908 龜 = U+9F9C.TC
+
+U+F909 契 = U+5951.TC
+
+U+F90A 金 = U+91D1.SC
+
+U+F90B 喇 = U+5587.SC
+
+U+F90C 奈 = U+5948.TC
+
+U+F90D 懶 = U+61F6.TC
+
+U+F90E 癩 = U+7669.TC
+
+U+F90F 羅 = U+7F85.TC
+
+U+F910 蘿 = U+863F.TC
+
+U+F911 螺 = U+87BA.SC
+
+U+F912 裸 = U+88F8.SC
+
+U+F913 邏 = U+908F.TC
+
+U+F914 樂 = U+6A02.TC
+
+U+F915 洛 = U+6D1B.SC
+
+U+F916 烙 = U+70D9.TC
+
+U+F917 珞 = U+73DE.SC
+
+U+F918 落 = U+843D.TC
+
+U+F919 酪 = U+916A.TC
+
+U+F91A 駱 = U+99F1.TC
+
+U+F91B 亂 = U+4E82.TC
+
+U+F91C 卵 = U+5375.SC
+
+U+F91D 欄 = U+6B04.TC
+
+U+F91E 爛 = U+721B.TC
+
+U+F91F 蘭 = U+862D.TC
+
+U+F920 鸞 = U+9E1E.TC
+
+U+F921 嵐 = U+5D50.TC
+
+U+F922 濫 = U+6FEB.TC
+
+U+F923 藍 = U+85CD.TC
+
+U+F924 襤 = U+8964.TC
+
+U+F925 拉 = U+62C9.SC
+
+U+F926 臘 = U+81D8.TC
+
+U+F927 蠟 = U+881F.TC
+
+U+F928 廊 = U+5ECA.SC
+
+U+F929 朗 = U+6717.SC
+
+U+F92A 浪 = U+6D6A.SC
+
+U+F92B 狼 = U+72FC.SC
+
+U+F92C 郎 = U+90CE.SC
+
+U+F92D 來 = U+4F86.TC
+
+U+F92E 冷 = U+51B7.TC
+
+U+F92F 勞 = U+52DE.TC
+
+U+F930 擄 = U+64C4.TC
+
+U+F931 櫓 = U+6AD3.TC
+
+U+F932 爐 = U+7210.TC
+
+U+F933 盧 = U+76E7.TC
+
+U+F934 老 = U+8001.TC
+
+U+F935 蘆 = U+8606.TC
+
+U+F936 虜 = U+865C.TC
+
+U+F937 路 = U+8DEF.SC
+
+U+F938 露 = U+9732.TC
+
+U+F939 魯 = U+9B6F.TC
+
+U+F93A 鷺 = U+9DFA.TC
+
+U+F93B 碌 = U+788C.TC
+
+U+F93C 祿 = U+797F.TC
+
+U+F93D 綠 = U+7DA0.TC
+
+U+F93E 菉 = U+83C9.TC
+
+U+F93F 錄 = U+9304.TC
+
+U+F940 鹿 = U+9E7F.TC
+
+U+F941 論 = U+8AD6.TC
+
+U+F942 壟 = U+58DF.TC
+
+U+F943 弄 = U+5F04.SC
+
+U+F944 籠 = U+7C60.TC
+
+U+F945 聾 = U+807E.TC
+
+U+F946 牢 = U+7262.SC
+
+U+F947 磊 = U+78CA.SC
+
+U+F948 賂 = U+8CC2.TC
+
+U+F949 雷 = U+96F7.TC
+
+U+F94A 壘 = U+58D8.TC
+
+U+F94B 屢 = U+5C62.TC
+
+U+F94C 樓 = U+6A13.TC
+
+U+F94D 淚 = U+6DDA.TC
+
+U+F94E 漏 = U+6F0F.TC
+
+U+F94F 累 = U+7D2F.SC
+
+U+F950 縷 = U+7E37.TC
+
+U+F951 陋 = U+964B.SC
+
+U+F952 勒 = U+52D2.SC
+
+U+F953 肋 = U+808B.TC
+
+U+F954 凜 = U+51DC.TC
+
+U+F955 凌 = U+51CC.TC
+
+U+F956 稜 = U+7A1C.TC
+
+U+F957 綾 = U+7DBE.TC
+
+U+F958 菱 = U+83F1.TC
+
+U+F959 陵 = U+9675.TC
+
+U+F95A 讀 = U+8B80.TC
+
+U+F95B 拏 = U+62CF.TC
+
+U+F95C 樂 = U+6A02.TC
+
+U+F95D 諾 = U+8AFE.TC
+
+U+F95E 丹 = U+4E39.SC
+
+U+F95F 寧 = U+5BE7.TC
+
+U+F960 怒 = U+6012.TC
+
+U+F961 率 = U+7387.SC
+
+U+F962 異 = U+7570.TC
+
+U+F963 北 = U+5317.TC
+
+U+F964 磻 = U+78FB.TC
+
+U+F965 便 = U+4FBF.SC
+
+U+F966 復 = U+5FA9.TC
+
+U+F967 不 = U+4E0D.SC
+
+U+F968 泌 = U+6CCC.SC
+
+U+F969 數 = U+6578.TC
+
+U+F96A 索 = U+7D22.SC
+
+U+F96B 參 = U+53C3.TC
+
+U+F96C 塞 = U+585E.SC
+
+U+F96D 省 = U+7701.SC
+
+U+F96E 葉 = U+8449.TC
+
+U+F96F 說 = U+8AAA.TC
+
+U+F970 殺 = U+6BBA.TC
+
+U+F971 辰 = U+8FB0.TC
+
+U+F972 沈 = U+6C88.SC
+
+U+F973 拾 = U+62FE.SC
+
+U+F974 若 = U+82E5.TC
+
+U+F975 掠 = U+63A0.SC
+
+U+F976 略 = U+7565.SC
+
+U+F977 亮 = U+4EAE.TC
+
+U+F978 兩 = U+5169.TC
+
+U+F979 凉 = U+51C9.SC
+
+U+F97A 梁 = U+6881.TC
+
+U+F97B 糧 = U+7CE7.TC
+
+U+F97C 良 = U+826F.SC
+
+U+F97D 諒 = U+8AD2.TC
+
+U+F97E 量 = U+91CF.SC
+
+U+F97F 勵 = U+52F5.TC
+
+U+F980 呂 = U+5442.TC
+
+U+F981 女 = U+5973.TC
+
+U+F982 廬 = U+5EEC.TC
+
+U+F983 旅 = U+65C5.SC
+
+U+F984 濾 = U+6FFE.TC
+
+U+F985 礪 = U+792A.TC
+
+U+F986 閭 = U+95AD.TC
+
+U+F987 驪 = U+9A6A.TC
+
+U+F988 麗 = U+9E97.TC
+
+U+F989 黎 = U+9ECE.TC
+
+U+F98A 力 = U+529B.SC
+
+U+F98B 曆 = U+66C6.TC
+
+U+F98C 歷 = U+6B77.TC
+
+U+F98D 轢 = U+8F62.TC
+
+U+F98E 年 = U+5E74.SC
+
+U+F98F 憐 = U+6190.TC
+
+U+F990 戀 = U+6200.TC
+
+U+F991 撚 = U+649A.TC
+
+U+F992 漣 = U+6F23.TC
+
+U+F993 煉 = U+7149.TC
+
+U+F994 璉 = U+7489.TC
+
+U+F995 秊 = U+79CA.KR
+
+U+F996 練 = U+7DF4.TC
+
+U+F997 聯 = U+806F.TC
+
+U+F998 輦 = U+8F26.TC
+
+U+F999 蓮 = U+84EE.TC
+
+U+F99A 連 = U+9023.TC
+
+U+F99B 鍊 = U+934A.TC
+
+U+F99C 列 = U+5217.TC
+
+U+F99D 劣 = U+52A3.SC
+
+U+F99E 咽 = U+54BD.SC
+
+U+F99F 烈 = U+70C8.TC
+
+U+F9A0 裂 = U+88C2.TC
+
+U+F9A1 說 = U+8AAA.TC
+
+U+F9A2 廉 = U+5EC9.SC
+
+U+F9A3 念 = U+5FF5.TC
+
+U+F9A4 捻 = U+637B.TC
+
+U+F9A5 殮 = U+6BAE.TC
+
+U+F9A6 簾 = U+7C3E.TC
+
+U+F9A7 獵 = U+7375.TC
+
+U+F9A8 令 = U+4EE4.TC
+
+U+F9A9 囹 = U+56F9.TC
+
+U+F9AA 寧 = U+5BE7.TC
+
+U+F9AB 嶺 = U+5DBA.TC
+
+U+F9AC 怜 = U+601C.TC
+
+U+F9AD 玲 = U+73B2.TC
+
+U+F9AE 瑩 = U+7469.TC
+
+U+F9AF 羚 = U+7F9A.TC
+
+U+F9B0 聆 = U+8046.TC
+
+U+F9B1 鈴 = U+9234.TC
+
+U+F9B2 零 = U+96F6.TC
+
+U+F9B3 靈 = U+9748.TC
+
+U+F9B4 領 = U+9818.TC
+
+U+F9B5 例 = U+4F8B.TC
+
+U+F9B6 禮 = U+79AE.TC
+
+U+F9B7 醴 = U+91B4.TC
+
+U+F9B8 隸 = U+96B8.TC
+
+U+F9B9 惡 = U+60E1.TC
+
+U+F9BA 了 = U+4E86.SC
+
+U+F9BB 僚 = U+50DA.SC
+
+U+F9BC 寮 = U+5BEE.SC
+
+U+F9BD 尿 = U+5C3F.SC
+
+U+F9BE 料 = U+6599.TC
+
+U+F9BF 樂 = U+6A02.TC
+
+U+F9C0 燎 = U+71CE.TC
+
+U+F9C1 療 = U+7642.TC
+
+U+F9C2 蓼 = U+84FC.TC
+
+U+F9C3 遼 = U+907C.TC
+
+U+F9C4 龍 = U+9F8D.TC
+
+U+F9C5 暈 = U+6688.TC
+
+U+F9C6 阮 = U+962E.SC
+
+U+F9C7 劉 = U+5289.TC
+
+U+F9C8 杻 = U+677B.TC
+
+U+F9C9 柳 = U+67F3.SC
+
+U+F9CA 流 = U+6D41.TC
+
+U+F9CB 溜 = U+6E9C.SC
+
+U+F9CC 琉 = U+7409.TC
+
+U+F9CD 留 = U+7559.SC
+
+U+F9CE 硫 = U+786B.TC
+
+U+F9CF 紐 = U+7D10.TC
+
+U+F9D0 類 = U+985E.TC
+
+U+F9D1 六 = U+516D.SC
+
+U+F9D2 戮 = U+622E.TC
+
+U+F9D3 陸 = U+9678.TC
+
+U+F9D4 倫 = U+502B.TC
+
+U+F9D5 崙 = U+5D19.TC
+
+U+F9D6 淪 = U+6DEA.TC
+
+U+F9D7 輪 = U+8F2A.TC
+
+U+F9D8 律 = U+5F8B.SC
+
+U+F9D9 慄 = U+6144.TC
+
+U+F9DA 栗 = U+6817.TC
+
+U+F9DB 率 = U+7387.SC
+
+U+F9DC 隆 = U+9686.SC
+
+U+F9DD 利 = U+5229.SC
+
+U+F9DE 吏 = U+540F.SC
+
+U+F9DF 履 = U+5C65.TC
+
+U+F9E0 易 = U+6613.SC
+
+U+F9E1 李 = U+674E.TC
+
+U+F9E2 梨 = U+68A8.TC
+
+U+F9E3 泥 = U+6CE5.TC
+
+U+F9E4 理 = U+7406.SC
+
+U+F9E5 痢 = U+75E2.SC
+
+U+F9E6 罹 = U+7F79.SC
+
+U+F9E7 裏 = U+88CF.JP
+
+U+F9E8 裡 = U+88E1.TC
+
+U+F9E9 里 = U+91CC.SC
+
+U+F9EA 離 = U+96E2.TC
+
+U+F9EB 匿 = U+533F.TC
+
+U+F9EC 溺 = U+6EBA.TC
+
+U+F9ED 吝 = U+541D.SC
+
+U+F9EE 燐 = U+71D0.TC
+
+U+F9EF 璘 = U+7498.TC
+
+U+F9F0 藺 = U+85FA.TC
+
+U+F9F1 隣 = U+96A3.JP
+
+U+F9F2 鱗 = U+9C57.TC
+
+U+F9F3 麟 = U+9E9F.TC
+
+U+F9F4 林 = U+6797.SC
+
+U+F9F5 淋 = U+6DCB.SC
+
+U+F9F6 臨 = U+81E8.TC
+
+U+F9F7 立 = U+7ACB.SC
+
+U+F9F8 笠 = U+7B20.TC
+
+U+F9F9 粒 = U+7C92.TC
+
+U+F9FA 狀 = U+72C0.TC
+
+U+F9FB 炙 = U+7099.TC
+
+U+F9FC 識 = U+8B58.TC
+
+U+F9FD 什 = U+4EC0.SC
+
+U+F9FE 茶 = U+8336.TC
+
+U+F9FF 刺 = U+523A.SC

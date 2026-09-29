@@ -1,0 +1,26 @@
+# id: kana-marks
+# section: jp
+# name_zh: 平/片假名区其他字符
+# name_en: Other characters of the Hiragana and Katakana blocks
+# desc_zh: 平假名、片假名两个 Unicode 区块中，除平假名、片假名本身以外的已分配字符（与 fontpixel 网站的 kana-marks 相同）
+# source: Unicode blocks Hiragana, Katakana minus jp/hiragana.txt and jp/katakana.txt; generated 2026-09-29
+3094
+3095
+3096
+3099
+309A
+309B
+309C
+309D
+309E
+309F
+30A0
+30F7
+30F8
+30F9
+30FA
+30FB
+30FC
+30FD
+30FE
+30FF

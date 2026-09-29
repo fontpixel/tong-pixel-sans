@@ -263,11 +263,13 @@ def proportional(path, coords, ch, tight):
             return None
         ink, oy, ox = crop(r["b"])
         advance = int(round(r["advance"]))
+        x_offset = 0
         if advance and tight:
             cell_w = ink.shape[1] + 1
             rows, shift = _place(r, cell_w, 0)
-        elif advance == 0:
+        elif advance == 0:              # combining mark: its own box, drawn relative to the pen position
             cell_w = ink.shape[1]
+            x_offset = r["left"] + ox
             rows, shift = _place(r, cell_w, 0)
         else:
             x = max(r["left"] + ox, 0)
@@ -275,7 +277,8 @@ def proportional(path, coords, ch, tight):
             rows, shift = _place(r, cell_w, x)
         if rows is None:
             continue
-        out = {"rows": rows, "phase_k": r["k"], "face": [fw, fh], "shift": shift}
+        out = {"rows": rows, "phase_k": r["k"], "face": [fw, fh], "shift": shift,
+               "advance": cell_w if advance else 0, "x_offset": x_offset}
         if not shift:
             return out
         if fallback is None or abs(shift) < abs(fallback["shift"]):

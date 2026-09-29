@@ -30,3 +30,14 @@ CP437	intl/cp437.txt
 制表符	intl/box-drawing.txt
 方块元素	intl/block-elements.txt
 盲文	intl/braille.txt
+KS X 1001 汉字	kr/ksx1001-hanja.txt
+KS X 1001 符号	kr/ksx1001-symbols.txt
+平/片假名区其他字符	jp/kana-marks.txt
+常用漢字表	jp/joyo.txt
+香港常用字字形表	hk/hk-changyong.txt
+康熙部首	prc-lit/kangxi-radicals.txt
+汉字部首补充	prc-lit/radicals-supplement.txt
+现代汉语通用字表	prc-lit/tongyong-7000.txt
+汉仪简繁字表	prc-lit/hanyi-jianfan.txt
+方正简繁字表	prc-lit/fangzheng-jianfan.txt
+GB/T 12345	gb/gb12345.txt

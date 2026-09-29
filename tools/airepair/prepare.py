@@ -40,8 +40,8 @@ def select(s, a):
     for gid in ids:
         rec = s.records.get(gid)
         if rec is None or "alias" in rec or rec["group"] not in REGIONS:
-            skipped["不是简 / 繁 / 日的独立字形"] += 1
-        elif rec["state"] != "ai":
+            skipped["不是简 / 繁 / 日 / 韩的独立字形"] += 1
+        elif rec["state"] not in ("ai", "draft"):
             skipped[f"状态 {rec['state']}（不交给 AI）"] += 1
         elif gid not in take:
             take.append(gid)
@@ -148,7 +148,7 @@ def main():
     items = []
     for gid in ids:
         rec = s.records[gid]
-        it = {"id": gid, "char": rec["char"], "region": rec["group"], "cp": rec["cp"], "revision": s.current(gid)["revision"],
+        it = {"id": gid, "char": rec["char"], "region": rec["group"], "cp": rec["cp"], "revision": s.current(gid)["revision"], "state": rec["state"],
               "rows": rec["rows"], "ai_note": " ".join(rec["ai_note"]), "tumbled": tum.get(rec["cp"])}
         it["tumbled_match"] = region_match(it["char"], it["region"], it["tumbled"]) if it["tumbled"] else "圆石没有此字"
         it["_ref"] = str(out / "refs" / f"{gid}.png")
@@ -161,12 +161,16 @@ def main():
                 continue
             seen_symbols.add(p["symbol"])
             cands = [(slot, x) for slot, x in by_symbol.get((it["region"], p["symbol"]), []) if x != gid]
+            if not cands and it["region"] == "KR":       # Korean hanja follow the traditional forms
+                cands = [(slot, x) for slot, x in by_symbol.get(("TC", p["symbol"]), [])]
             cands.sort(key=lambda c: c[0] != p["key"])            # the same position first
             ex = list(dict.fromkeys(x for _, x in cands))[:4]
-            alone = standalone.get((it["region"], p["symbol"]))
+            alone = standalone.get((it["region"], p["symbol"])) or (standalone.get(("TC", p["symbol"])) if it["region"] == "KR" else None)
             if alone and alone != gid and alone not in ex:
                 ex.append(alone)
             rr = [x for x in ref_by_symbol.get((it["region"], p["symbol"]), []) if x != gid][:3]
+            if not rr and it["region"] == "KR":
+                rr = ref_by_symbol.get(("TC", p["symbol"]), [])[:3]
             if ex or rr:
                 comps.append({"symbol": p["symbol"], "label": p["label"], "approved": ex, "earlier_rounds": rr})
         it["components"] = comps
@@ -212,10 +216,10 @@ def main():
             examples_page(rexl, bdir / "earlier-01.png", f"{bid} · 前几轮已修的同部件字（待审核，写法保持一致）")
         lines = [f"{a.name} {bid}: {len(batch)} glyphs. 每字：当前 13×13（改动基准，行号 0–12）与圆石 18 的 13×14。"]
         for it in batch:
-            lines += ["", f"{it['id']} {it['char']} region={it['region']} 圆石写法={it['tumbled_match']}"
+            lines += ["", f"{it['id']} {it['char']} region={it['region']}{' 底稿' if it['state'] == 'draft' else ''} 圆石写法={it['tumbled_match']}"
                       + (f" 同字已通过={','.join(it['same_char_approved'])}" if it["same_char_approved"] else "")]
             if it["ai_note"]:
-                lines.append(f"  上一轮 AI 说明：{it['ai_note']}")
+                lines.append(f"  底稿说明：{it['ai_note'].removeprefix('底稿：')}" if it["state"] == "draft" else f"  上一轮 AI 说明：{it['ai_note']}")
             for c in it["components"]:
                 if c["approved"]:
                     lines.append(f"  部件 {c['label']}：已通过范例 " + " ".join(f"{approved[x]['char']}({x})" for x in c["approved"]))
@@ -241,7 +245,12 @@ def main():
     keep = [sec for sec in rules.split("\n## ") if sec.startswith(("1.", "2.", "3.", "8."))]
     (out / "LESSONS.md").write_text("# 本轮读本\n\n以下先是用户确认的规则（必须遵守），再是从人工修改归纳的候选规律与自检清单。\n\n## "
                                     + "\n## ".join(keep) + "\n\n---\n\n" + (ROOT / "docs/lessons/worker-lessons.md").read_text(encoding="utf-8"))
-    subs = {"{KIT}": str(out), "{PY}": str(ROOT / ".venv/bin/python"), "{WF}": str(HERE / "workflow.py"), "{NAME}": a.name,
+    drafts = sum(i["state"] == "draft" for i in items)
+    task = ("本批的字**是新增字的底稿**：由思源黑体点阵化（WorkBench 渲染加相位搜索），还没经 AI 或人工修。请在底稿基础上完整修字，"
+            "像修第一轮那样认真处理每个字（结构、笔画、密处取舍），不要只做微调。" if drafts == len(items) else
+            "本批的字**已经由 AI 修过**，你在**当前版本**的基础上继续修整。满意的字可以不改。" if not drafts else
+            "本批大多数字**已经由 AI 修过**，在当前版本上继续修整，满意的可以不改；inputs.txt 标为“底稿”的字是新增字的底稿，要完整修。")
+    subs = {"{KIT}": str(out), "{TASK}": task, "{PY}": str(ROOT / ".venv/bin/python"), "{WF}": str(HERE / "workflow.py"), "{NAME}": a.name,
             "{MODEL}": a.model, "{EFFORT}": a.effort, "{WORKERS}": str(a.workers), "{N}": str(len(batches)),
             "{BATCH_SIZE}": str(a.batch_size), "{LAST}": batches[-1][0]["batch"]}
     for name in ("PROTOCOL.md", "PROMPT.md"):

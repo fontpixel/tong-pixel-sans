@@ -136,6 +136,20 @@ class StoreTest(unittest.TestCase):
         with self.assertRaises(Conflict):                               # only AI versions are replaced
             self.s.import_ai("U+4E01.SC", TEN, "x", self.s.current("U+4E01.SC")["revision"])
 
+    def test_add_glyphs_inserts_in_order_and_imports_ai(self):
+        self.s.add_glyphs([{"group": "SC", "cp": 0x4E02, "rows": CROSS, "state": "draft", "ai_note": "底稿"},
+                           {"group": "KR", "cp": 0x4E02, "alias": "U+4E02.SC"}])
+        page = self.page("glyphs/SC/4Exx.txt")
+        self.assertLess(page.index("U+4E01 丁"), page.index("U+4E02 丂\ndraft"))
+        self.assertLess(page.index("U+4E02 丂"), page.index("U+4E03 七"))
+        self.assertEqual(self.page("glyphs/KR/4Exx.txt"), "U+4E02 丂 = U+4E02.SC\n")
+        with self.assertRaises(Conflict):
+            self.s.add_glyphs([{"group": "SC", "cp": 0x4E02, "rows": CROSS, "state": "draft"}])
+        cur = self.s.current("U+4E02.SC")
+        out = self.s.import_ai("U+4E02.SC", TEN, "AI 修字", cur["revision"])
+        self.assertEqual(out["current"]["state"], "ai")
+        self.assertIn("U+4E02 丂\nai", self.page("history/ai-originals/SC/4Exx.txt"))
+
     def test_picks_up_outside_changes(self):
         path = self.root / "glyphs/SC/4Exx.txt"
         text = path.read_text().replace("U+4E03 七\nai", "U+4E03 七\napproved")

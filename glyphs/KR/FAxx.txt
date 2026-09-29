@@ -1,0 +1,23 @@
+U+FA00 切 = U+5207.SC
+
+U+FA01 度 = U+5EA6.SC
+
+U+FA02 拓 = U+62D3.SC
+
+U+FA03 糖 = U+7CD6.TC
+
+U+FA04 宅 = U+5B85.TC
+
+U+FA05 洞 = U+6D1E.SC
+
+U+FA06 暴 = U+66B4.SC
+
+U+FA07 輻 = U+8F3B.TC
+
+U+FA08 行 = U+884C.SC
+
+U+FA09 降 = U+964D.TC
+
+U+FA0A 見 = U+898B.TC
+
+U+FA0B 廓 = U+5ED3.SC

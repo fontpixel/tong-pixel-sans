@@ -1621,6 +1621,24 @@ derived
 @ mv:base ˉ 6a9b55be41f440a6a7fab78b90f3851c 0,2
 # 人工: 按用户要求从等宽版 U+02C9.HW 复制，AI 两版修出分歧（墨迹靠左，右留 1 像素字距；待审核）
 
+U+02D0 ː adv=auto
+draft
+..
+..
+..
+..
+..
+#.
+..
+..
+..
+..
+#.
+..
+..
+..
+# AI: 底稿：Source Sans 3 w320 相位搜索 2/16，字面 13×13（ksx1001-symbols）
+
 U+02D8 ˘ adv=auto
 derived
 ......

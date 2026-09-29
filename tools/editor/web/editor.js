@@ -39,7 +39,7 @@ function representativeNote(id){
 const LANG={SC:'zh-Hans',TC:'zh-Hant',JP:'ja',KR:'ko'};
 function setLang(node,locale){if(LANG[locale])node.lang=LANG[locale];else node.removeAttribute('lang');return node;}
 function charSpan(ch,locale){const s=document.createElement('span');s.className='ch';s.textContent=ch;return setLang(s,locale);}
-const STATE_ZH={approved:'审核通过',edited:'人工改过 · 待审核',derived:'脚本连带改 · 待审核',ai:'AI 原稿 · 待审核','hangul-ai':'AI 韩文 · 待审核','hangul-composed':'拼合韩文 · 待审核',generated:'程序生成'};
+const STATE_ZH={approved:'审核通过',draft:'底稿 · 待修',edited:'人工改过 · 待审核',derived:'脚本连带改 · 待审核',ai:'AI 原稿 · 待审核','hangul-ai':'AI 韩文 · 待审核','hangul-composed':'拼合韩文 · 待审核',generated:'程序生成'};
 function say(text, error = false) { $('notice').textContent = text; $('notice').classList.toggle('error', error); }
 async function api(path, body) {
   const response = await fetch(path, body === undefined ? {} : {

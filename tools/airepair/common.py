@@ -9,7 +9,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 FONTS = ROOT / "reference-fonts"
 ROUNDS = ROOT / "work/airepair"
-REGIONS = ("SC", "TC", "JP")
+REGIONS = ("SC", "TC", "JP", "KR")
 sys.path.insert(0, str(ROOT / "tools/editor"))
 
 

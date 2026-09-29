@@ -38,7 +38,7 @@ GEOMETRY = {"cell_width": 14, "cell_height": 14, "ink_width": 13, "ink_height": 
             "ascent": 12, "descent": 2}
 BASELINE_ROW = 11
 MAX_PROPORTIONAL_WIDTH = 16
-STATES = ("approved", "edited", "derived", "ai", "hangul-ai", "hangul-composed", "generated")
+STATES = ("approved", "edited", "derived", "ai", "draft", "hangul-ai", "hangul-composed", "generated")
 
 
 class Conflict(ValueError):
@@ -578,7 +578,7 @@ class Store(ShapesMixin):
             return self.current(gid)
 
     def import_ai(self, gid, rows, ai_note, expected_revision):
-        """Replace an unreviewed AI glyph by a new AI version (state stays `ai`, the `# AI:` note is
+        """Replace an unreviewed AI glyph or a draft by a new AI version (state becomes `ai`, the `# AI:` note is
         replaced). The first AI version is archived in history/ai-originals. Links whose form pixels
         are no longer all in the new rows are removed from this glyph only (forms are not changed; a
         form no glyph uses any more leaves the library). Refused if the glyph changed since
@@ -588,8 +588,8 @@ class Store(ShapesMixin):
             old = self.current(gid)
             if old["revision"] != expected_revision:
                 raise Conflict(f"{gid} 已被修改，未导入")
-            if old["state"] != "ai":
-                raise Conflict(f"{gid} 状态为 {old['state']}，只替换 AI 版本")
+            if old["state"] not in ("ai", "draft"):
+                raise Conflict(f"{gid} 状态为 {old['state']}，只替换 AI 版本或底稿")
             lib = self._library()
             w, h = len(rows[0]), len(rows)
             ink = {(y, x) for y, r in enumerate(rows) for x, v in enumerate(r) if v == "#"}
@@ -604,6 +604,40 @@ class Store(ShapesMixin):
             self._collect(lib, {gid: value})
             self._commit_shapes([value], lib)
             return {"current": self.current(gid), "kept_links": len(keep), "dropped_links": [l["symbol"] for l in dropped]}
+
+    def add_glyphs(self, new):
+        """Add glyphs that do not exist yet: [{'group', 'cp', 'rows' | 'alias', 'state', 'metrics', 'ai_note'}].
+        Each goes on its page in code point order (a new page file if needed). Refuses existing ids."""
+        with self.lock():
+            touched = set()
+            for n in new:
+                gid = f"U+{n['cp']:04X}.{n['group']}"
+                if gid in self.records:
+                    raise Conflict(f"{gid} 已存在")
+                page = self.glyph_dir / n["group"] / f"{n['cp'] >> 8:02X}xx.txt"
+                rec = {"id": gid, "cp": n["cp"], "group": n["group"], "char": chr(n["cp"]), "page": page}
+                if "alias" in n:
+                    rec["alias"] = n["alias"]
+                else:
+                    if n["state"] not in STATES:
+                        raise ValueError(f"未知状态 {n['state']}")
+                    rec.update(metrics=list(n.get("metrics", [])), state=n["state"], rows=list(n["rows"]), links=[],
+                               ai_note=[t for t in (n.get("ai_note") or "").splitlines() if t.strip()], human_note=[])
+                self.records[gid] = rec
+                ids = self.pages.get(page, (None, []))[1]
+                ids = sorted(ids + [gid], key=lambda i: self.records[i]["cp"])
+                self.pages[page] = (None, ids)
+                touched.add(page)
+            for page in touched:
+                ids = self.pages[page][1]
+                atomic_write(page, "\n\n".join(block_text(self.records[i]) for i in ids) + "\n")
+                self.pages[page] = (page.stat().st_mtime_ns, ids)
+                for gid in ids:
+                    if "alias" not in self.records[gid]:
+                        self.glyphs[gid] = self._view(self.records[gid])
+            self.generation += 1
+            self.ids_version += 1
+            return len(new)
 
     def _library(self):
         return {"generation": self.generation, "shapes": dict(self.forms), "retired": []}
@@ -633,7 +667,7 @@ class Store(ShapesMixin):
                 rec = self.records[r["id"]]
                 if r["state"] not in STATES:
                     raise ValueError(f"未知状态 {r['state']}")
-                if r["rows"] != rec["rows"] and rec["state"] in ("ai", "hangul-ai") and rec["id"] not in self.ai_originals:
+                if r["rows"] != rec["rows"] and rec["state"] in ("ai", "hangul-ai", "draft") and rec["id"] not in self.ai_originals:
                     ai_pages.add(self._keep_ai_original(rec))
                 rec["rows"] = list(r["rows"])
                 links = []

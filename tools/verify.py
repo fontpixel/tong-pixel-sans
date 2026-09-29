@@ -11,7 +11,8 @@ Sources (glyphs/, forms/forms.txt):
   Latin letter it is drawn exactly like), a movable form's position keeps it in
   the cell, and the form's black pixels are all black in the glyph (linking never adds a pixel);
 - every fixed form is 13×13 with at least one black pixel.
-Coverage: the 8 faces tools/build.py makes cover every table in build-data/coverage-required.txt.
+Coverage: the 8 faces tools/build.py makes cover every table in build-data/coverage-required.txt, except the
+code points listed with a reason in build-data/coverage-exceptions.txt.
 Exits with status 1 and a list of problems if anything fails. Needs only the Python standard library.
 """
 from __future__ import annotations
@@ -28,7 +29,7 @@ sys.path.insert(0, str(HERE / "editor"))
 import build  # noqa: E402
 from western import HOMOGLYPHS  # noqa: E402  (Greek/Cyrillic letters that share a Latin letter's form)
 
-STATES = {"approved", "edited", "derived", "ai", "hangul-ai", "hangul-composed", "generated"}
+STATES = {"approved", "edited", "derived", "ai", "draft", "hangul-ai", "hangul-composed", "generated"}
 GROUPS = ["SC", "TC", "JP", "KR", "HW", "PR", "GEOMETRIC-FULL", "GEOMETRIC-HALF"]
 
 
@@ -144,13 +145,15 @@ def links_of(group, cp):
 
 def check_coverage(problems):
     tables = []
+    known = {int(l.split("\t")[0], 16) for l in (ROOT / "build-data/coverage-exceptions.txt").read_text(encoding="utf-8").splitlines()
+             if l and not l.startswith("#")}
     for line in (ROOT / "build-data/coverage-required.txt").read_text(encoding="utf-8").splitlines():
         if line and not line.startswith("#"):
             label, path, *flt = line.split("\t")
             cps = table_codepoints(ROOT / "build-data/coverage" / path)
             if flt == ["non-hanzi"]:
                 cps = {c for c in cps if not unicodedata.name(chr(c), "").startswith("CJK UNIFIED")}
-            cps = {c for c in cps if unicodedata.category(chr(c)) not in ("Cc", "Cs", "Co", "Cn")}
+            cps = {c for c in cps if unicodedata.category(chr(c)) not in ("Cc", "Cs", "Co", "Cn") and c not in known}
             tables.append((label, cps))
     summary = {}
     for region, prop, mono in build.faces():
