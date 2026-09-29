@@ -11,7 +11,9 @@ whose Source Han lacks the character borrows the first region font that has it (
 kana voicing marks become zero-advance proportional glyphs. A character with a compatibility or canonical
 decomposition to an ideograph (Kangxi radicals, KS X 1001 compatibility ideographs) whose Source Han
 outline equals that ideograph's becomes an alias of the ideograph's glyph. Symbols that Source Han lacks
-but Source Sans 3 has become half-width and proportional drafts, like the other western glyphs.
+become half-width and proportional drafts from Source Sans 3, or Noto Sans Math, like the other western
+glyphs (their reference entries go to tools/editor/data/reference-western.txt). Han characters that no
+Source Han Sans has (extension B and later) are drafted from Plangothic P1 (遍黑体, weight 400).
 Writes a report to reports/add-glyphs.md.
 """
 from __future__ import annotations
@@ -41,6 +43,8 @@ REQUESTS = [  # (table under build-data/coverage/, region)
 ]
 ORDER = ["SC", "TC", "JP", "KR"]
 COMBINING = {0x3099, 0x309A}
+SYMBOL_FONTS = [("SourceSans3-VF.otf", (320,), "Source Sans 3 w320"), ("NotoSansMath-Regular.ttf", (), "Noto Sans Math")]
+WESTERN_REF = ROOT / "tools/editor/data/reference-western.txt"
 
 
 def unified(cp):
@@ -79,6 +83,40 @@ def outline(region, cp):
     return h.hexdigest()
 
 
+def extension(cp):
+    """Hash of the Plangothic P1 outline (None if it lacks the character or is not installed)."""
+    path = FONTS / draft.EXTENSION[0]
+    if not path.exists():
+        return None
+    from fontTools.ttLib import TTFont
+    from fontTools.pens.recordingPen import DecomposingRecordingPen
+    if "ext" not in _fonts:
+        f = TTFont(str(path))
+        _fonts["ext"] = (f, f.getBestCmap())
+    f, cmap = _fonts["ext"]
+    if cp not in cmap:
+        return None
+    gs = f.getGlyphSet()
+    pen = DecomposingRecordingPen(gs)
+    gs[cmap[cp]].draw(pen)
+    return "ext:" + hashlib.sha256(repr(pen.value).encode()).hexdigest()
+
+
+def add_references(entries):
+    """Add (glyph id, label, face w, face h, leftmost ink column) lines to reference-western.txt, in order."""
+    lines = WESTERN_REF.read_text(encoding="utf-8").splitlines()
+    head = [l for l in lines if not l.startswith("U+")]
+    body = {l.split("\t")[0]: l for l in lines if l.startswith("U+")}
+    for gid, label, fw, fh, left in entries:
+        body[gid] = f"{gid}\t{label}\t{fw}\t{fh}\t{left}"
+    key = lambda g: (int(g[2:].split(".")[0], 16), g)
+    WESTERN_REF.write_text("\n".join(head + [body[g] for g in sorted(body, key=key)]) + "\n", encoding="utf-8")
+
+
+def left_column(rows):
+    return min(x for r in rows for x, v in enumerate(r) if v == "#")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dry-run", action="store_true")
@@ -93,38 +131,44 @@ def main():
             if cp in have or unicodedata.category(chr(cp)) in ("Cc", "Cs", "Co", "Cn"):
                 continue
             wanted.setdefault(cp, {}).setdefault(region, []).append(table)
-    new, report, compat = [], [], []
+    new, report, compat, refs = [], [], [], []
     for cp in sorted(wanted):
         ch = chr(cp)
         u = unified(cp)
         if u is not None and (0xF900 <= cp <= 0xFAFF or any(outline(r, cp) and outline(r, cp) == outline(r, u) for r in wanted[cp])):
             compat.append(cp)                          # drawn like its ideograph: share that glyph
             continue
-        if not any(outline(r, cp) for r in ORDER) and cp not in COMBINING:
-            sans = FONTS / "SourceSans3-VF.otf"
+        if not any(outline(r, cp) for r in ORDER) and cp not in COMBINING and not extension(cp):
             from fontTools.ttLib import TTFont
-            if cp in TTFont(str(sans)).getBestCmap():
-                hw = draft.half_width(sans, (320,), ch)
-                pr = draft.proportional(sans, (320,), ch, tight=True)
+            found = next(((FONTS / name, coords, label) for name, coords, label in SYMBOL_FONTS
+                          if (FONTS / name).exists() and cp in TTFont(str(FONTS / name)).getBestCmap()), None)
+            if found:
+                sans, coords, label = found
+                hw = draft.half_width(sans, coords, ch)
+                pr = draft.proportional(sans, coords, ch, tight=True)
                 for grp, r, metrics in (("HW", hw, ["adv=7"]), ("PR", pr, ["adv=auto"])):
                     new.append({"group": grp, "cp": cp, "rows": r["rows"], "state": "draft", "metrics": metrics,
-                                "ai_note": f"底稿：Source Sans 3 w320 相位搜索 {r['phase_k']}/16，字面 {r['face'][0]}×{r['face'][1]}（{'、'.join(Path(t).stem for rr in wanted[cp] for t in wanted[cp][rr])}）"})
-                report.append(f"{ch} U+{cp:04X}：思源黑体没有，按西文从 Source Sans 3 生成等宽 / 比例底稿")
+                                "ai_note": f"底稿：{label} 相位搜索 {r['phase_k']}/16，字面 {r['face'][0]}×{r['face'][1]}（{'、'.join(Path(t).stem for rr in wanted[cp] for t in wanted[cp][rr])}）"})
+                    refs.append((f"U+{cp:04X}.{grp}", label, *r["face"], left_column(r["rows"])))
+                report.append(f"{ch} U+{cp:04X}：思源黑体没有，按西文从 {label.split(' w')[0]} 生成等宽 / 比例底稿")
                 continue
         if cp in COMBINING:
             r = draft.proportional(FONTS / "SourceHanSansJP-VF.otf", (320,), ch, tight=False)
             new.append({"group": "PR", "cp": cp, "rows": r["rows"], "state": "draft",
                         "metrics": ["adv=0"] + ([f"x={r['x_offset']}"] if r["x_offset"] else []),
                         "ai_note": f"底稿：思源黑体 JP w320 组合用符号（零步进），字面 {r['face'][0]}×{r['face'][1]}"})
+            refs.append((f"U+{cp:04X}.PR", "思源 JP w320", *r["face"], left_column(r["rows"])))
             report.append(f"{ch} U+{cp:04X}.PR 组合符号")
             continue
         made = {}   # region -> (outline hash, glyph id)
         for region in sorted(wanted[cp], key=ORDER.index):
             src = region if outline(region, cp) else next((r for r in ORDER if outline(r, cp)), None)
+            if src is None and extension(cp):
+                src = region                           # draft.regional falls back to Plangothic P1
             if src is None:
-                report.append(f"{ch} U+{cp:04X}：思源黑体各地区都没有此字，跳过")
+                report.append(f"{ch} U+{cp:04X}：思源黑体各地区和遍黑体都没有此字，跳过")
                 continue
-            h = outline(src, cp)
+            h = outline(src, cp) or extension(cp)
             same = next((gid for (hh, gid) in made.values() if hh == h), None)
             tables = "、".join(Path(t).stem for t in wanted[cp][region])
             if same:
@@ -136,8 +180,10 @@ def main():
             except ValueError as e:
                 report.append(f"{ch} U+{cp:04X}.{region}：{e}")
                 continue
-            note = f"底稿：思源黑体 {src} w320 相位搜索 {d['phase_k']}/16，字面 {d['face'][0]}×{d['face'][1]}（{tables}）"
-            if src != region:
+            note = f"底稿：{d['label'].replace('思源 ', '思源黑体 ')} 相位搜索 {d['phase_k']}/16，字面 {d['face'][0]}×{d['face'][1]}（{tables}）"
+            if d["label"].startswith("遍黑体"):
+                note += "；思源黑体各地区都没有此字，取自遍黑体 P1（Plangothic，OFL）"
+            elif src != region:
                 note += f"；思源 {region} 没有此字，借用 {src} 的字形"
             gid = f"U+{cp:04X}.{region}"
             new.append({"group": region, "cp": cp, "rows": d["rows"], "state": "draft", "ai_note": note})
@@ -179,7 +225,9 @@ def main():
     print("\n".join(lines[:4]))
     if not a.dry_run:
         s.add_glyphs(new)
-        drafts = [f"U+{n['cp']:04X}.{n['group']}" for n in new if "alias" not in n and n["group"] != "PR"]
+        if refs:
+            add_references(refs)
+        drafts = [f"U+{n['cp']:04X}.{n['group']}" for n in new if "alias" not in n and n["group"] in ORDER]
         (ROOT / "work/airepair").mkdir(parents=True, exist_ok=True)
         (ROOT / "work/airepair/new-glyphs.txt").write_text("\n".join(drafts) + "\n")
         print(f"added; {len(drafts)} regional drafts listed in work/airepair/new-glyphs.txt")

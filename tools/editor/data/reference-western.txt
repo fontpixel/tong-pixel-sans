@@ -1055,6 +1055,8 @@ U+02C7.HW	Source Sans 3 w320	13	13	2
 U+02C7.PR	Source Sans 3 w320	13	13	0
 U+02C9.HW	Source Sans 3 w320	13	13	2
 U+02C9.PR	Source Sans 3 w320	13	13	0
+U+02D0.HW	Source Sans 3 w320	13	13	3
+U+02D0.PR	Source Sans 3 w320	13	13	0
 U+02D8.HW	Source Sans 3 w320	13	13	2
 U+02D8.PR	Source Sans 3 w320	13	13	0
 U+02D9.HW	Source Sans 3 w320	13	13	3
@@ -1822,6 +1824,14 @@ U+2044.HW	Source Sans 3 w320	13	13	1
 U+2044.PR	Source Sans 3 w320	13	13	0
 U+207F.HW	Source Sans 3 w320	13	13	1
 U+207F.PR	Source Sans 3 w320	13	13	0
+U+2081.HW	Source Sans 3 w320	13	13	3
+U+2081.PR	Source Sans 3 w320	13	13	0
+U+2082.HW	Source Sans 3 w320	13	13	2
+U+2082.PR	Source Sans 3 w320	13	13	0
+U+2083.HW	Source Sans 3 w320	13	13	2
+U+2083.PR	Source Sans 3 w320	13	13	0
+U+2084.HW	Source Sans 3 w320	13	13	2
+U+2084.PR	Source Sans 3 w320	13	13	0
 U+20A3.HW	Source Sans 3 w320	13	13	1
 U+20A3.PR	Source Sans 3 w320	13	13	0
 U+20A4.HW	Source Sans 3 w320	13	13	1
@@ -1842,6 +1852,10 @@ U+2126.HW	Source Sans 3 w320	11	13	0
 U+2126.PR	Source Sans 3 w320	13	13	0
 U+212E.HW	Source Sans 3 w320	9	13	0
 U+212E.PR	Source Sans 3 w320	13	13	0
+U+2153.HW	Source Sans 3 w320	10	13	0
+U+2153.PR	Source Sans 3 w320	13	13	0
+U+2154.HW	Source Sans 3 w320	9	13	0
+U+2154.PR	Source Sans 3 w320	13	13	0
 U+215B.HW	Source Sans 3 w320	10	13	0
 U+215B.PR	Source Sans 3 w320	13	13	0
 U+215C.HW	Source Sans 3 w320	8	13	0
@@ -1888,6 +1902,8 @@ U+2229.HW	Source Sans 3 w320	13	13	1
 U+2229.PR	Source Sans 3 w320	13	13	0
 U+222B.HW	Source Sans 3 w320	13	13	2
 U+222B.PR	Source Sans 3 w320	13	13	0
+U+223C.HW	Noto Sans Math	13	13	0
+U+223C.PR	Noto Sans Math	13	13	0
 U+2248.HW	Source Sans 3 w320	13	13	1
 U+2248.PR	Source Sans 3 w320	13	13	0
 U+2260.HW	Source Sans 3 w320	13	13	0
@@ -1958,6 +1974,8 @@ U+266A.HW	Source Sans 3 w320	13	13	0
 U+266A.PR	Source Sans 3 w320	13	13	0
 U+266B.HW	Source Sans 3 w320	11	13	0
 U+266B.PR	Source Sans 3 w320	13	13	0
+U+3099.PR	思源 JP w320	13	13	0
+U+309A.PR	思源 JP w320	13	13	0
 U+FB01.HW	Source Sans 3 w320	13	13	1
 U+FB01.PR	Source Sans 3 w320	13	13	0
 U+FB02.HW	Source Sans 3 w320	13	13	1

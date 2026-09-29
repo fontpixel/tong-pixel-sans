@@ -3,7 +3,8 @@ see docs/reference-fonts.md). Needs fontTools; without it or without the fonts t
 shows no reference.
 
 - regional glyphs (SC TC JP KR): that region's Source Han Sans at weight 400, em = 14 px, baseline
-  12 px below the top of the 14×14 cell (the geometry the drafts were made with);
+  12 px below the top of the 14×14 cell (the geometry the drafts were made with); characters that
+  Source Han Sans lacks (extension B and later) from Plangothic P1 (遍黑体, weight 400);
 - .HW/.PR glyphs: the font and face size of their draft (tools/editor/data/reference-western.txt),
   on the baseline (row 11), left edge aligned to the draft's leftmost ink column.
 """
@@ -17,10 +18,12 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 FONTS = HERE.parent.parent / "reference-fonts"
 REGIONAL = {r: (f"SourceHanSans{r}-VF.otf", (("wght", 400),)) for r in ("SC", "TC", "JP", "KR")}
+EXTENSION = ("PlangothicP1-Regular.ttf", ())
 WESTERN = {"Source Sans 3": ("SourceSans3-VF.otf", (("wght", 320),)),
            "Noto Sans Thai": ("NotoSansThai-VF.ttf", (("wdth", 100), ("wght", 320))),
            "Noto Sans Arabic": ("NotoSansArabic-VF.ttf", (("wdth", 100), ("wght", 320))),
            "Noto Sans": ("NotoSans-VF.ttf", (("wdth", 100), ("wght", 320))),
+           "Noto Sans Math": ("NotoSansMath-Regular.ttf", ()),
            "思源 JP": ("SourceHanSansJP-VF.otf", (("wght", 320),))}
 _lock = threading.RLock()
 
@@ -41,7 +44,7 @@ WESTERN_REF = _table()
 def _face(name, location):
     from fontTools.ttLib import TTFont
     font = TTFont(str(FONTS / name))
-    return font, font.getGlyphSet(location=dict(location))
+    return font, font.getGlyphSet(location=dict(location) if location else None)
 
 
 def available(gid):
@@ -72,6 +75,8 @@ def svg(gid, char, cell_w, cell_h, fill="#009ec0"):
     with _lock:
         if group in REGIONAL:
             font, glyphs = _face(*REGIONAL[group])
+            if ord(char) not in font.getBestCmap() and (FONTS / EXTENSION[0]).exists():
+                font, glyphs = _face(*EXTENSION)
             upem = font["head"].unitsPerEm
             sx = sy = 14 / upem
             dx, base = 0, 12

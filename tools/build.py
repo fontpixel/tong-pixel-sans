@@ -160,13 +160,14 @@ def letter(cp):
 
 # ---------------------------------------------------------------- BDF
 def bdf(glyphs, family, mono):
-    assert "Source" not in family
+    assert not any(n in family for n in ("Source", "Plangothic", "遍黑"))
     props = [f'FAMILY_NAME "{family}"', 'FOUNDRY "Tong"', 'WEIGHT_NAME "Medium"', 'SLANT "R"', 'SETWIDTH_NAME "Normal"',
              'PIXEL_SIZE 14', 'POINT_SIZE 140', 'RESOLUTION_X 75', 'RESOLUTION_Y 75', 'SPACING "P"',
              f'FONT_ASCENT {ASCENT}', f'FONT_DESCENT {DESCENT}', 'CHARSET_REGISTRY "ISO10646"', 'CHARSET_ENCODING "1"',
              'COPYRIGHT "Derived from Source Han Sans (Adobe), Source Sans 3 (Adobe), Noto Sans, Noto Sans Thai, '
-             'Noto Sans Arabic (Google), with Han bitmaps drawing on TUMBLED (TsFreddie); '
-             'SIL Open Font License 1.1; Reserved Font Name Source"']
+             'Noto Sans Arabic, Noto Sans Math (Google), Plangothic P1 (Plangothic Project), '
+             'with Han bitmaps drawing on TUMBLED (TsFreddie); '
+             'SIL Open Font License 1.1; Reserved Font Names Source, Plangothic"']
     if mono:
         props.append('AVERAGE_WIDTH 70')
     body, box = [], [0, 0, 0, 0]

@@ -11,7 +11,8 @@ k = 0 is WorkBench's own result) and the best candidate is kept:
 
 Regional glyphs (SC TC JP KR): the region's Source Han Sans at weight 320, face 14×13 (13×13 for the
 fully enclosed 囗 characters and 口), falling back to smaller faces when the ink does not fit 13×13;
-the ink is centred horizontally in the 13×13 box as the original drafts were.
+the ink is centred horizontally in the 13×13 box as the original drafts were. Characters that no
+Source Han Sans has (extension B and later) come from Plangothic P1 (遍黑体, a static weight-400 font).
 .HW / .PR glyphs: the font of their original draft (data/reference-western.txt) at weight 320, on
 the real baseline (rows 0–10 above, 11–13 below); the face size is searched as the original drafts
 were (half-width: narrowest face whose ink fits 6 columns; western proportional: ink from column 0,
@@ -25,6 +26,7 @@ from __future__ import annotations
 import math
 import os
 import threading
+from functools import lru_cache
 from pathlib import Path
 
 # Must be set before FreeType is loaded, exactly as in the draft packages.
@@ -40,7 +42,9 @@ REGIONAL_FACES = [(14, 13), (13, 13), (12, 13), (12, 12), (11, 11), (10, 10)]
 # label in data/reference-western.txt -> (font file, variation coordinates as the drafts used them)
 WESTERN_FONTS = {"Source Sans 3": ("SourceSans3-VF.otf", (320,)), "Noto Sans Thai": ("NotoSansThai-VF.ttf", (320, 100)),
                  "Noto Sans Arabic": ("NotoSansArabic-VF.ttf", (320, 100)), "Noto Sans": ("NotoSans-VF.ttf", (320, 100)),
-                 "思源 JP": ("SourceHanSansJP-VF.otf", (320,))}
+                 "Noto Sans Math": ("NotoSansMath-Regular.ttf", ()), "思源 JP": ("SourceHanSansJP-VF.otf", (320,))}
+# Han characters beyond Source Han Sans (extension B and later): static, weight 400 only
+EXTENSION = ("PlangothicP1-Regular.ttf", "遍黑体 P1")
 _lock = threading.RLock()
 _faces = {}
 
@@ -113,7 +117,8 @@ class Face:
         from fontTools.ttLib import TTFont
         self.face = freetype.Face(str(path))
         self.face.set_pixel_sizes(face_w, face_h)
-        self.face.set_var_design_coords(tuple(coords))
+        if coords:
+            self.face.set_var_design_coords(tuple(coords))
         tt = TTFont(str(path))
         tags = [a.axisTag for a in tt["fvar"].axes] if "fvar" in tt else []
         self.glyphs = tt.getGlyphSet(location=dict(zip(tags, coords)) if tags else None)
@@ -195,12 +200,27 @@ def crop(b):
 
 
 # ---------------------------------------------------------------- regional 13×13 (phase.py + prepare.place)
+@lru_cache(maxsize=None)
+def _cmap(path):
+    from fontTools.ttLib import TTFont
+    return set(TTFont(str(path)).getBestCmap())
+
+
+def regional_font(char, region):
+    """(font path, variation coordinates, label): the region's Source Han Sans, or Plangothic P1 for
+    the characters no Source Han Sans has."""
+    font = FONTS / f"SourceHanSans{region}-VF.otf"
+    if ord(char) not in _cmap(font) and (FONTS / EXTENSION[0]).exists():
+        return FONTS / EXTENSION[0], (), EXTENSION[1]
+    return font, (320,), f"思源 {region} w320"
+
+
 def regional(char, region):
     np = _np()
-    font = FONTS / f"SourceHanSans{region}-VF.otf"
+    font, coords, label = regional_font(char, region)
     faces = [(13, 13)] + [f for f in REGIONAL_FACES if f != (13, 13)] if char in SQUARE else REGIONAL_FACES
     for fw, fh in faces:
-        r = _face(font, fw, fh, (320,), (0.2, 0, 0, 0.2, 0, 40)).best(char, broken_both_ways=True)
+        r = _face(font, fw, fh, coords, (0.2, 0, 0, 0.2, 0, 40)).best(char, broken_both_ways=True)
         if r is None:
             break
         b, bl, bt = r["b"], r["left"], r["top"]
@@ -212,7 +232,7 @@ def regional(char, region):
         x, y = max(0, math.ceil((14 - w) / 2) - 1), min(max(native_y + top, 0), 13 - h)
         out = np.zeros((13, 13), dtype=bool)
         out[y:y + h, x:x + w] = ink
-        return {"rows": rows_of(out), "phase_k": r["k"], "face": [fw, fh], "label": f"思源 {region} w320",
+        return {"rows": rows_of(out), "phase_k": r["k"], "face": [fw, fh], "label": label,
                 "symmetric_outline": r["symmetric_outline"]}
     raise ValueError("无法生成相位底稿（参考字体没有此字，或墨迹放不进 13×13）")
 

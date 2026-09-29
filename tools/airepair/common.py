@@ -1,4 +1,4 @@
-"""Shared pieces of the AI repair tools: paths, Tumbled glyphs, Source Han references, drawing."""
+"""Shared pieces of the AI repair tools: paths, Tumbled glyphs, Source Han (and Plangothic) references, drawing."""
 from __future__ import annotations
 
 import json
@@ -10,6 +10,7 @@ ROOT = HERE.parent.parent
 FONTS = ROOT / "reference-fonts"
 ROUNDS = ROOT / "work/airepair"
 REGIONS = ("SC", "TC", "JP", "KR")
+EXTENSION = "PlangothicP1-Regular.ttf"   # Han characters beyond Source Han Sans
 sys.path.insert(0, str(ROOT / "tools/editor"))
 
 
@@ -59,7 +60,8 @@ _faces = {}
 
 
 def grey(char, region, ppem=104, weight=400):
-    """Grey rendering (uint8 array) of the character in that region's Source Han Sans."""
+    """Grey rendering (uint8 array) of the character in that region's Source Han Sans, or in
+    Plangothic P1 (遍黑体, weight 400 only) when no Source Han Sans has it."""
     import freetype
     import numpy as np
     key = (region, ppem, weight)
@@ -69,6 +71,11 @@ def grey(char, region, ppem=104, weight=400):
         f.set_var_design_coords((weight,))
         _faces[key] = f
     f = _faces[key]
+    if not f.get_char_index(ord(char)) and (FONTS / EXTENSION).exists():
+        if (EXTENSION, ppem) not in _faces:
+            _faces[EXTENSION, ppem] = freetype.Face(str(FONTS / EXTENSION))
+            _faces[EXTENSION, ppem].set_pixel_sizes(ppem, ppem)
+        f = _faces[EXTENSION, ppem]
     f.load_char(char, freetype.FT_LOAD_RENDER | freetype.FT_LOAD_NO_HINTING)
     bm = f.glyph.bitmap
     if not bm.rows:
