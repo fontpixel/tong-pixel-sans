@@ -517,6 +517,8 @@ approved
 ......#....#.
 ......######.
 ......#....#.
+@ whole/0 土 fac4ecb188884a61ac06aacbc316358f
+@ whole/1 者 a9494f1a73b3435db852ad9d18c1ca7e
 # AI: 者横撇交点较密。
 # 人工: 手机修字
 
@@ -825,6 +827,8 @@ approved
 ##...#.....#.
 .....#.....#.
 .....#######.
+@ whole/0 土 bfcf76b2b5f647dbb8bc1df7fe39a751
+@ whole/1 荅 737b114c676541448e6460ed17a18608
 # 人工: 手机修字
 
 U+5855 塕
@@ -876,6 +880,8 @@ approved
 ##...#.#####.
 ....#..#...#.
 ....#..#####.
+@ whole/0 土 0de4044a217f456691b892dfa99ca3f4
+@ whole/1 唐 a5fd13bd5c9c4c50a1923c243cdcfa3f
 # 人工: 手机修字
 
 U+585A 塚
@@ -1424,6 +1430,7 @@ approved
 ....#.......#
 ....#########
 @ whole/0 土 0ff52a49b5514dd5ba28f05d280a7bb1
+@ whole/1 啬 e6af4d3ecc6044b982dc9050a9d7e05e
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 # 人工: 手机修字
 

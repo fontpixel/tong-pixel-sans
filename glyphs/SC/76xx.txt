@@ -1409,6 +1409,7 @@ approved
 ......#......
 #############
 @ whole/1 王 a3fa96abeedc443e8199ece7b98c22f8
+@ whole/0 白 864cc9b14edc471e84bb4cfcc54b4291
 # 人工: 手机修字
 
 U+7688 皈
@@ -2445,6 +2446,8 @@ approved
 ..#...#....#.
 ..#...######.
 ..#...#....#.
+@ whole/0 木 0b8a7509e6414a76b48904c4b0fa8ce8
+@ whole/1 目 975f5ff8f985456fa716a419c6f0734b
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 # 人工: 手机修字
 

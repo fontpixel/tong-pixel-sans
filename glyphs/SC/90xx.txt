@@ -505,6 +505,7 @@ approved
 .#.#....#....
 #...#########
 @ whole/0 辶 58773b08cfdb406db76b9c6f1c2c339b
+@ whole/1 束 d0a2f3da6e12469ba2aa74ca81be235f
 # 人工: 手机修字
 
 U+9020 造

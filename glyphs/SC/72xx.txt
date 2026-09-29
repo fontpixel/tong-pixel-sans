@@ -683,6 +683,7 @@ approved
 #..#.....#...
 #..#.....#...
 @ whole/0 片 d75740de55ba4fcb87fb92ca9abea474
+@ whole/1 卑 5db015e0fad34eddabb86bfed3421dae
 # AI: 片与卑的横画分开，卑下撇在田与十之间较紧。
 # 人工: 手机修字
 

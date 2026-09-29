@@ -1286,6 +1286,7 @@ approved
 .###########.
 ...........#.
 @ whole/0 亠 07a561d3515241b18a4f8f7b73188eb0
+@ whole/1 幺 5ac0338e77614adf90c4752e2acbacb9
 
 U+7387 率
 ai

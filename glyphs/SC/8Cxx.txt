@@ -834,6 +834,8 @@ approved
 ..#.....#....
 ..#.#########
 ..##....#....
+@ whole/0 讠 9adf9dafb0e945f7b5ea20abe5a017d7
+@ whole/1 覃 3953802f0017451f81e368ee0ceaab4c
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 # 人工: 手机修字
 

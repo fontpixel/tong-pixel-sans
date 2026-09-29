@@ -1404,6 +1404,8 @@ approved
 .####.....#..
 .#........#..
 ..........#..
+@ whole/0 石 e7f41b3a7c464c4cba090d871e9b02d8
+@ whole/1 卑 38ca7f190d4841a78329a49621813b31
 # 人工: 手机修字
 
 U+7893 碓
@@ -1749,6 +1751,8 @@ approved
 .###.#######.
 .#...........
 ....#########
+@ whole/0 石 bb0ba14ef5e64e728a1c24885910dc46
+@ whole/1 查 a44a2973959641b9addb9e87fcb0622b
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 # 人工: 手机修字
 
