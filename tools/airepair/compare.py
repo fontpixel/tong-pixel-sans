@@ -15,7 +15,7 @@ from collections import Counter
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from common import ROUNDS, diff_colors, draw_bits, font, one_to_one, read_json  # noqa: E402
+from common import ROUNDS, cell, diff_colors, draw_bits, font, one_to_one, read_json  # noqa: E402
 
 
 def load(rnd):
@@ -50,9 +50,12 @@ def sheets(rnd, glyphs, out):
             if it["tumbled"]:
                 draw_bits(d, it["tumbled"], x, y0 + 18, sc, label="圆石", fnt=small)
             x += 15 * sc + 24
-            draw_bits(d, g["before"], x, y0 + 18, sc, label="修前", fnt=small)
+            box, xo = cell(g["id"], g["before"])
+            draw_bits(d, g["before"], x, y0 + 18, sc, box=box, x_off=xo, label="修前", fnt=small)
             x += 15 * sc + 24
-            draw_bits(d, g["rows"], x, y0 + 18, sc, label="修后", fnt=small, colors=diff_colors(g["before"], g["rows"]))
+            box, xo = cell(g["id"], g["rows"])
+            draw_bits(d, g["rows"], x, y0 + 18, sc, box=box, x_off=xo, label="修后", fnt=small,
+                      colors=diff_colors(g["before"], g["rows"]) if len(g["before"][0]) == len(g["rows"][0]) else None)
             x += 15 * sc + 24
             one_to_one(im, [g["before"], g["rows"]], x, y0 + 30)
             d.text((x, y0 + 48), "1:1", font=small, fill=(90, 90, 90))

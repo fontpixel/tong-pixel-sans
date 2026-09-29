@@ -13,11 +13,15 @@ submitted results of earlier rounds that share a component (for consistency acro
 Nothing in the repository changes.
 
 A character's regional glyphs derive from one master (docs/design-rules.md §2): its approved glyph,
-else its edited one, else the first of SC TC JP KR. --masters-only leaves out the other regions'
+else its edited one, else a repaired one before a draft, the first of SC TC JP KR among equals. --masters-only leaves out the other regions'
 glyphs (they are derived later). --derive prepares a derivation round instead: every non-master
 regional glyph in state ai or draft, whose starting point (“当前”) is a pixel copy of its master —
 the master's latest result in the --ref-round rounds if it is not reviewed, else its current
 version; the worker changes only the strokes the two regions write differently.
+--symbols prepares a symbol round (with --list): full-width (regional), half-width (HW) and
+proportional (PR) glyphs; the reader is design-rules §1 4 5 7 and docs/lessons/symbols.md, the
+examples are existing glyphs of the same group near the code point (the same family: ①–⑮ for ⑯) and
+the same code point's approved glyphs in other groups.
 """
 from __future__ import annotations
 
@@ -29,7 +33,7 @@ import time
 from collections import Counter
 from pathlib import Path
 
-from common import HERE, ROOT, ROUNDS, REGIONS, draw_bits, font, one_to_one, read_json, reference_png, region_match, tumbled
+from common import HERE, ROOT, ROUNDS, REGIONS, cell, draw_bits, font, one_to_one, read_json, reference_png, region_match, tumbled, western_png
 
 sys.path.insert(0, str(ROOT / "tools/editor"))
 from store import Store  # noqa: E402
@@ -37,11 +41,13 @@ from segment import is_stroke  # noqa: E402  (single strokes are not components)
 
 
 def master_of(s, cp):
-    """The master glyph of a code point: approved, else edited, else the first of SC TC JP KR."""
+    """The master glyph of a code point: approved, else edited, else a repaired glyph (not a draft), else a
+    draft; the first of SC TC JP KR among equals."""
     recs = [s.records[g] for g in (f"U+{cp:04X}.{r}" for r in REGIONS) if g in s.records and "alias" not in s.records[g]]
     if not recs:
         return None
-    return min(recs, key=lambda r: ({"approved": 0, "edited": 1}.get(r["state"], 2), REGIONS.index(r["group"])))["id"]
+    rank = {"approved": 0, "edited": 1, "draft": 3}
+    return min(recs, key=lambda r: (rank.get(r["state"], 2), REGIONS.index(r["group"])))["id"]
 
 
 def select(s, a):
@@ -58,7 +64,7 @@ def select(s, a):
     take, skipped = [], Counter()
     for gid in ids:
         rec = s.records.get(gid)
-        if rec is None or "alias" in rec or rec["group"] not in REGIONS:
+        if rec is None or "alias" in rec or rec["group"] not in REGIONS + (("HW", "PR") if a.symbols else ()):
             skipped["不是简 / 繁 / 日 / 韩的独立字形"] += 1
         elif rec["state"] not in ("ai", "draft"):
             skipped[f"状态 {rec['state']}（不交给 AI）"] += 1
@@ -99,7 +105,8 @@ def input_page(items, path, title):
         im.paste(Image.open(it["_ref"]).convert("RGB").resize((112, 112)), (X, Y + 18))
         d.text((X, Y + 18 + 114), f"思源 {it['region']}", font=small, fill=(90, 90, 90))
         x = X + 130
-        draw_bits(d, it["rows"], x, Y + 18, sc, label="当前 13×13", fnt=small)
+        box, xo = cell(it["id"], it["rows"])
+        draw_bits(d, it["rows"], x, Y + 18, sc, box=box, x_off=xo, label=f"当前 {len(it['rows'][0])}×{len(it['rows'])}", fnt=small)
         x += 15 * sc + 30
         if it["tumbled"]:
             draw_bits(d, it["tumbled"], x, Y + 18, sc, label="圆石 13×14", fnt=small)
@@ -147,7 +154,8 @@ def examples_page(examples, path, title):
     for i, e in enumerate(examples):
         x, y = 10 + (i % cols) * cw, 40 + (i // cols) * ch
         d.text((x, y), f"{e['char']} {e['id'][-2:]}", font=small, fill=(0, 0, 0))
-        draw_bits(d, e["rows"], x, y + 18, sc)
+        box, xo = cell(e["id"], e["rows"])
+        draw_bits(d, e["rows"], x, y + 18, sc, box=box, x_off=xo)
         d.text((x, y + 18 + 14 * sc + 2), "、".join(e["for"])[:9], font=small, fill=(90, 90, 90))
     im.save(path)
 
@@ -160,6 +168,11 @@ DERIVE_TASK = ("本批是**同字各地区的派生**（LESSONS.md L050，用户
                "“旧版”是这个地区以前独立修的版本：某处地区写法它处理得好，可以借鉴那一处，但不能以旧版为基础。")
 
 
+SYMBOL_TASK = ("本批是**符号的底稿**：由参考字体点阵化（相位搜索），还没经 AI 或人工修。全角符号在 13×13 墨迹内，等宽符号 7×14，"
+               "比例符号宽度可变、高 14（基线在第 10 行下，第 11–13 行是降部）。请在底稿基础上完整修字：形状清楚、1 像素笔画、对称的要对称，"
+               "同族（圈号、括号号、箭头、几何图形、上下标、西里尔字母）与 examples 里已有的同族字形用一样的像素写法。")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("name")
@@ -169,6 +182,7 @@ def main():
     g.add_argument("--ids", nargs="+")
     g.add_argument("--derive", action="store_true", help="a derivation round: every non-master regional AI glyph or draft")
     ap.add_argument("--masters-only", action="store_true", help="leave out glyphs that are not their character's master")
+    ap.add_argument("--symbols", action="store_true", help="a symbol round: regional, HW and PR glyphs from --list")
     ap.add_argument("--batch-size", type=int, default=50)
     ap.add_argument("--ref-round", nargs="*", default=[])
     ap.add_argument("--workers", type=int, default=10)
@@ -206,9 +220,21 @@ def main():
         rec = s.records[gid]
         it = {"id": gid, "char": rec["char"], "region": rec["group"], "cp": rec["cp"], "revision": s.current(gid)["revision"], "state": rec["state"],
               "rows": rec["rows"], "ai_note": " ".join(rec["ai_note"]), "tumbled": tum.get(rec["cp"])}
-        it["tumbled_match"] = region_match(it["char"], it["region"], it["tumbled"]) if it["tumbled"] and not a.derive else "圆石没有此字"
+        it["tumbled_match"] = region_match(it["char"], it["region"], it["tumbled"]) if it["tumbled"] and not a.derive and not a.symbols else "圆石没有此字"
         it["_ref"] = str(out / "refs" / f"{gid}.png")
-        reference_png(it["char"], it["region"], it["_ref"])
+        if rec["group"] in ("HW", "PR"):
+            western_png(gid, it["char"], it["_ref"])
+        else:
+            reference_png(it["char"], it["region"], it["_ref"])
+        if a.symbols:
+            near = sorted((o for o, r in s.records.items() if r["group"] == rec["group"] and "alias" not in r and o != gid
+                           and r["state"] != "draft" and abs(r["cp"] - rec["cp"]) <= 48 and r["cp"] >> 7 == rec["cp"] >> 7),
+                          key=lambda o: (s.records[o]["state"] != "approved", abs(s.records[o]["cp"] - rec["cp"])))
+            it["family"] = near[:8]
+            it["same_char_approved"] = [o for o in s.sibling_ids(gid) if s.records[o].get("state") == "approved"]
+            it["components"], it["tumbled"], it["tumbled_match"] = [], None, "符号轮不参考圆石"
+            items.append(it)
+            continue
         if a.derive:
             mid = master_of(s, rec["cp"])
             m = s.records[mid]
@@ -275,6 +301,30 @@ def main():
             else:
                 input_page(pg, bdir / f"input-{k:02d}.png", f"{a.name} {bid} 第 {k}/{len(pages)} 页 · 思源参考（写法依据）| 当前版本 | 圆石 18（像素范本）")
         ex, rex = {}, {}
+        if a.symbols:
+            for it in batch:
+                for x in it["same_char_approved"]:
+                    ex.setdefault(x, set()).add(f"{it['char']}同码位")
+                for x in it["family"]:
+                    ex.setdefault(x, set()).add("同族")
+            exl = [{"id": x, "char": s.records[x]["char"] + ("✓" if s.records[x]["state"] == "approved" else ""), "rows": s.records[x]["rows"],
+                    "for": sorted(v)} for x, v in sorted(ex.items())][:72]
+            for k in range(0, len(exl), 36):
+                examples_page(exl[k:k + 36], bdir / f"examples-{k // 36 + 1:02d}.png", f"{bid} · 同族已有字形（✓ 为已通过；族内圆圈、括号、箭头头部等像素要一致）")
+            lines = [f"{a.name} {bid}: {len(batch)} glyphs（符号）。每字的“当前”是改动基准，行号从 0 起；宽 × 高见每字标注。"]
+            for it in batch:
+                w, h = len(it["rows"][0]), len(it["rows"])
+                kind = {"HW": "等宽 7×14", "PR": "比例（宽度可变，墨迹从第 0 列起，右留 1 列）"}.get(it["region"], "全角 13×13")
+                lines += ["", f"{it['id']} {it['char']} U+{it['cp']:04X} {kind} 当前 {w}×{h}{' 底稿' if it['state'] == 'draft' else ''}"
+                          + (f" 同码位已通过={','.join(it['same_char_approved'])}" if it["same_char_approved"] else "")
+                          + (f" 同族={' '.join(s.records[x]['char'] + '(' + x + ')' for x in it['family'][:6])}" if it["family"] else "")]
+                if it["ai_note"]:
+                    lines.append(f"  底稿说明：{it['ai_note'].removeprefix('底稿：')}")
+                lines.append("  当前：")
+                lines += [f"    {y:2d} {r}" for y, r in enumerate(it["rows"])]
+            (bdir / "inputs.txt").write_text("\n".join(lines) + "\n")
+            (bdir / "batch.json").write_text(json.dumps({"id": bid, "ids": [it["id"] for it in batch]}, ensure_ascii=False, indent=1))
+            continue
         for it in batch:
             for x in it["same_char_approved"]:
                 ex.setdefault(x, set()).add(f"{it['char']}同字")
@@ -331,11 +381,12 @@ def main():
                                                ensure_ascii=False, indent=1))
     # readers and prompts for this round
     rules = (ROOT / "docs/design-rules.md").read_text(encoding="utf-8")
-    keep = [sec for sec in rules.split("\n## ") if sec.startswith(("1.", "2.", "3.", "8."))]
-    (out / "LESSONS.md").write_text("# 本轮读本\n\n以下先是用户确认的规则（必须遵守），再是从人工修改归纳的候选规律与自检清单。\n\n## "
-                                    + "\n## ".join(keep) + "\n\n---\n\n" + (ROOT / "docs/lessons/worker-lessons.md").read_text(encoding="utf-8"))
+    keep = [sec for sec in rules.split("\n## ") if sec.startswith(("1.", "4.", "5.", "7.") if a.symbols else ("1.", "2.", "3.", "8."))]
+    reader = ROOT / "docs/lessons" / ("symbols.md" if a.symbols else "worker-lessons.md")
+    (out / "LESSONS.md").write_text("# 本轮读本\n\n以下先是用户确认的规则（必须遵守），再是修字要点与自检清单。\n\n## "
+                                    + "\n## ".join(keep) + "\n\n---\n\n" + reader.read_text(encoding="utf-8"))
     drafts = sum(i["state"] == "draft" for i in items)
-    task = DERIVE_TASK if a.derive else ("本批的字**是新增字的底稿**：由思源黑体点阵化（WorkBench 渲染加相位搜索），还没经 AI 或人工修。请在底稿基础上完整修字，"
+    task = DERIVE_TASK if a.derive else SYMBOL_TASK if a.symbols else ("本批的字**是新增字的底稿**：由思源黑体点阵化（WorkBench 渲染加相位搜索），还没经 AI 或人工修。请在底稿基础上完整修字，"
             "像修第一轮那样认真处理每个字（结构、笔画、密处取舍），不要只做微调。" if drafts == len(items) else
             "本批的字**已经由 AI 修过**，你在**当前版本**的基础上继续修整。满意的字可以不改。" if not drafts else
             "本批大多数字**已经由 AI 修过**，在当前版本上继续修整，满意的可以不改；inputs.txt 标为“底稿”的字是新增字的底稿，要完整修。")
@@ -343,7 +394,7 @@ def main():
             "{MODEL}": a.model, "{EFFORT}": a.effort, "{WORKERS}": str(a.workers), "{N}": str(len(batches)),
             "{BATCH_SIZE}": str(a.batch_size), "{LAST}": batches[-1][0]["batch"]}
     for name in ("PROTOCOL.md", "PROMPT.md"):
-        t = (HERE / "templates" / name).read_text(encoding="utf-8")
+        t = (HERE / "templates" / ("PROTOCOL-symbols.md" if a.symbols and name == "PROTOCOL.md" else name)).read_text(encoding="utf-8")
         for k, v in subs.items():
             t = t.replace(k, v)
         (out / name).write_text(t)

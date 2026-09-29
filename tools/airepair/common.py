@@ -209,3 +209,30 @@ def wide_gaps(char, region, rows, limit=2):
 
     visit(node, 0)
     return out
+
+
+# ---------------------------------------------------------------- half-width and proportional glyphs
+def cell(gid, rows):
+    """(drawn box (columns, rows), column offset of the rows in it) for draw_bits: regional glyphs
+    are 13×13 ink in a 14×14 cell (offset 1); HW / PR glyphs are drawn as they are (w × 14)."""
+    if gid.rsplit(".", 1)[-1] in REGIONS:
+        return (14, 14), 1
+    return (max(len(rows[0]), 1), len(rows)), 0
+
+
+def western_png(gid, char, path):
+    """Reference image of a .HW / .PR glyph: its draft font (tools/editor/data/reference-western.txt),
+    on the baseline, like reference_png for regional glyphs."""
+    from PIL import Image
+    import numpy as np
+    import reference
+    from fontTools.pens.freetypePen import FreeTypePen
+    label = reference.WESTERN_REF[gid][0]
+    key = next(k for k in reference.WESTERN if label.startswith(k))
+    font, glyphs = reference._face(*reference.WESTERN[key])
+    name = font.getBestCmap()[ord(char)]
+    pen = FreeTypePen(glyphs)
+    glyphs[name].draw(pen)
+    s = 100 / font["head"].unitsPerEm
+    a = pen.array(width=128, height=128, transform=(s, 0, 0, s, 14, 128 * 3 / 14))
+    Image.fromarray((255 - np.clip(a, 0, 1) * 255).astype("uint8")).save(path)

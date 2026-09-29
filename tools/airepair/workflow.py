@@ -31,7 +31,7 @@ import uuid
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from common import ROUNDS, draw_bits, font, one_to_one, wide_gaps  # noqa: E402
+from common import ROUNDS, cell, draw_bits, font, one_to_one, wide_gaps  # noqa: E402
 
 HERE = STATE = WORK = RESULTS = None   # set from --round in main()
 TUMBLED = {"借鉴", "部分借鉴", "未借鉴"}
@@ -177,9 +177,14 @@ def cmd_checkpoint(a):
             if gid not in ids:
                 raise SystemExit(f"{gid} is not in batch {a.batch}")
             ch = g["changes"]
-            if not isinstance(ch, dict) or any(not k.isdigit() or not 0 <= int(k) <= 12 or not isinstance(v, str)
-                                               or len(v) != 13 or set(v) - {".", "#"} for k, v in ch.items()):
-                raise SystemExit(f"{gid}: changes keys must be 0–12, values 13 characters of . and #")
+            base = it[gid]["rows"]
+            h, w, flexible = len(base), len(base[0]), gid.endswith(".PR")
+            if not isinstance(ch, dict) or any(not k.isdigit() or not 0 <= int(k) < h or not isinstance(v, str)
+                                               or not (2 <= len(v) <= 16 if flexible else len(v) == w) or set(v) - {".", "#"}
+                                               for k, v in ch.items()):
+                raise SystemExit(f"{gid}: changes keys must be 0–{h - 1}, values {'2–16' if flexible else w} characters of . and #")
+            if flexible and len({len(r) for r in apply(base, ch)}) != 1:
+                raise SystemExit(f"{gid}: a proportional glyph that changes width must give every row, all of the same width")
             if g["tumbled"] not in TUMBLED:
                 raise SystemExit(f"{gid}: tumbled must be one of {sorted(TUMBLED)}")
             if not isinstance(g["note"], str) or len(g["note"]) > 300:
@@ -225,7 +230,7 @@ def render_pages(b, s, out_dir):
             y0 = 40 + (i // 2) * rowh
             after = s["glyphs"][gid]["rows"]
             n = sum(p != q for r1, r2 in zip(g["rows"], after) for p, q in zip(r1, r2))
-            gaps = wide_gaps(g["char"], g["region"], after)
+            gaps = wide_gaps(g["char"], g["region"], after) if g["region"] in ("SC", "TC", "JP", "KR") else []
             d.text((x0, y0), f"{g['char']} {gid} · 改 {n} 点 · " + (f"母版 {g['master']['id']}" if g.get("master") else f"圆石：{s['glyphs'][gid]['tumbled']}"),
                    font=small, fill=(0, 0, 0))
             if gaps:
@@ -237,7 +242,8 @@ def render_pages(b, s, out_dir):
                     im.paste(Image.open(HERE / g["master_reference"]).convert("RGB").resize((112, 112)), (x, y0 + 18))
                     d.text((x, y0 + 18 + 114), f"思源 {g['master']['id'][-2:]}（母版）", font=small, fill=(90, 90, 90))
                 elif rows:
-                    draw_bits(d, rows, x, y0 + 18, sc, label=label, fnt=small)
+                    box, xo = cell(gid, rows)
+                    draw_bits(d, rows, x, y0 + 18, sc, box=box, x_off=xo, label=label, fnt=small)
                 else:
                     d.text((x, y0 + 60), "（圆石没有此字）", font=small, fill=(90, 90, 90))
                 x += 15 * sc + 30
