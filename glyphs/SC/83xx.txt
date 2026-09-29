@@ -1113,6 +1113,7 @@ ai
 ......#......
 ......#......
 @ whole/1 军 0bb23c5327e4454492182a80ea554bd6
+# AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：艹压三行，以保留冖和车的分界。
 
 U+8365 荥
 ai

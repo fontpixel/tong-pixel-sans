@@ -440,12 +440,12 @@ ai
 ..#..#..#..#.
 ..#..#..#..#.
 ..#..#..#..#.
-.##..#..#..#.
+.#...#..#..#.
 .#.#.#..#..#.
 #....#######.
 #..........#.
-@ whole/0 火 91f54a6968af48bfa23ab153d261fa65
 @ whole/1 山 b0a11304c2e942dc9a589df4d1b85169
+# AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+7080 炀
 ai
@@ -1016,6 +1016,7 @@ ai
 #............
 @ whole/0 火 46fe2461fb0344b5bd31d19a58df8768
 @ whole/1 兰 c20432837539498ebbc543d662ab3139
+# AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+70C3 烃
 ai
@@ -1348,6 +1349,7 @@ ai
 #....#..#..#.
 @ whole/0 执 13409850630144a29db1a6d7a0c12fce
 @ whole/1 灬 67112c76903e4f8591f832acc92683c6
+# AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+70EF 烯
 ai

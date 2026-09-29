@@ -820,7 +820,7 @@ approved
 
 U+575E 坞
 ai
-.............
+........#....
 .#.....#.....
 .#...######..
 .#...#....#..
@@ -835,6 +835,7 @@ ai
 .........##..
 @ whole/0 土 fac4ecb188884a61ac06aacbc316358f
 @ whole/1 乌 350c08fb36b649ae80134e1c0ef6a6f4
+# AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+575F 坟
 ai
@@ -1568,6 +1569,7 @@ ai
 ...#..#....#.
 @ whole/0 土 e22263d11fc04c34857984b0d30f5fe9
 @ whole/1 后 47b2430014c542e2b823dd39320ddef7
+# AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+57A3 垣
 ai
@@ -2162,7 +2164,7 @@ ai
 ......#...##.
 @ whole/0 土 0ff52a49b5514dd5ba28f05d280a7bb1
 @ whole/1 或 abbae56958a14d44857db04321e58180
-# AI: 或部斜钩与撇交会处仍紧。
+# AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+57E0 埠
 ai

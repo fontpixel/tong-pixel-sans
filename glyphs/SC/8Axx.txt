@@ -175,7 +175,7 @@ ai
 ..#########..
 @ whole/0 龹 433815b63c024b69bed75c3acacbf4ee
 @ whole/1 言 adef1bf297524416a305721465704c01
-# AI: 言的两短横压作一横，避免连续三行全黑，待人审。
+# AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：言的兩短橫仍壓作一橫；恢復需相鄰粗橫，留待人審。
 
 U+8A93 誓
 ai

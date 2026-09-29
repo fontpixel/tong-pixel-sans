@@ -482,6 +482,7 @@ ai
 ....#....#...
 ....#.....##.
 ...#........#
+# AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+544F 呏
 ai
@@ -1030,6 +1031,7 @@ ai
 ....#...#...#
 ........#....
 ........#....
+# AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+54AB 咫
 ai
