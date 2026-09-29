@@ -101,16 +101,17 @@ def input_page(items, path, title):
     d.text((10, 8), title, font=big, fill=(0, 0, 0))
     for i, it in enumerate(items):
         X, Y = (i % 2) * W + 10, 40 + (i // 2) * rowh
-        d.text((X, Y), f"{it['char']} {it['id']} · 圆石写法：{it['tumbled_match']}", font=small, fill=(0, 0, 0))
+        symbol = it["tumbled_match"] == "符号轮不参考圆石"
+        d.text((X, Y), f"{it['char']} {it['id']}" + ("" if symbol else f" · 圆石写法：{it['tumbled_match']}"), font=small, fill=(0, 0, 0))
         im.paste(Image.open(it["_ref"]).convert("RGB").resize((112, 112)), (X, Y + 18))
-        d.text((X, Y + 18 + 114), f"思源 {it['region']}", font=small, fill=(90, 90, 90))
+        d.text((X, Y + 18 + 114), "参考字体" if it["region"] in ("HW", "PR") else f"思源 {it['region']}", font=small, fill=(90, 90, 90))
         x = X + 130
         box, xo = cell(it["id"], it["rows"])
         draw_bits(d, it["rows"], x, Y + 18, sc, box=box, x_off=xo, label=f"当前 {len(it['rows'][0])}×{len(it['rows'])}", fnt=small)
         x += 15 * sc + 30
         if it["tumbled"]:
             draw_bits(d, it["tumbled"], x, Y + 18, sc, label="圆石 13×14", fnt=small)
-        else:
+        elif not symbol:
             d.text((x, Y + 60), "（圆石没有此字）", font=small, fill=(90, 90, 90))
         x += 15 * sc + 30
         one_to_one(im, [it["rows"]] + ([it["tumbled"]] if it["tumbled"] else []), x, Y + 30, gap=20)
@@ -299,7 +300,7 @@ def main():
             if a.derive:
                 derive_page(pg, bdir / f"input-{k:02d}.png", f"{a.name} {bid} 第 {k}/{len(pages)} 页 · 思源：本字地区 | 母版地区 · 母版（改动基准）| 旧版（仅参考）")
             else:
-                input_page(pg, bdir / f"input-{k:02d}.png", f"{a.name} {bid} 第 {k}/{len(pages)} 页 · 思源参考（写法依据）| 当前版本 | 圆石 18（像素范本）")
+                input_page(pg, bdir / f"input-{k:02d}.png", f"{a.name} {bid} 第 {k}/{len(pages)} 页 · " + ("参考（写法依据）| 当前版本" if a.symbols else "思源参考（写法依据）| 当前版本 | 圆石 18（像素范本）"))
         ex, rex = {}, {}
         if a.symbols:
             for it in batch:
