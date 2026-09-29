@@ -1,0 +1,132 @@
+<title>通格手机修字</title>
+<style>
+/* layout: one-column phone workbench — list strip, 13×13 grid, tools, exemplars */
+:root{--bg:#f6f7f4;--panel:#ffffff;--fg:#1b1d1a;--muted:#6b7068;--grid:#dfe4dc;--ink:#111311;--accent:#c23b22;--ok:#2f7d4f;--ghost:rgba(40,110,220,.55);--ref:rgba(0,158,192,.28);--line:#cfd5cb;
+--ui:system-ui,-apple-system,"PingFang SC","Noto Sans CJK SC","Hiragino Sans",sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161816;--panel:#1f221f;--fg:#e8ebe5;--muted:#9aa196;--grid:#2e332d;--ink:#f1f3ee;--accent:#e2644a;--ok:#5fb982;--ghost:rgba(110,160,255,.6);--ref:rgba(0,190,230,.3);--line:#3a4038;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161816;--panel:#1f221f;--fg:#e8ebe5;--muted:#9aa196;--grid:#2e332d;--ink:#f1f3ee;--accent:#e2644a;--ok:#5fb982;--ghost:rgba(110,160,255,.6);--ref:rgba(0,190,230,.3);--line:#3a4038;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--ui)}
+.wrap{max-width:560px;margin:0 auto;padding-inline:16px;padding-block:10px 40px;display:flex;flex-direction:column;gap:12px}
+header{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+h1{font-size:17px;margin:0}
+.muted{color:var(--muted);font-size:12px}
+.strip{display:flex;gap:4px;overflow-x:auto;padding-bottom:4px}
+.strip button{flex:0 0 auto;width:38px;height:38px;font-size:20px;border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:6px;position:relative}
+.strip button.cur{outline:2px solid var(--accent)}
+.strip button.approved{background:var(--ok);color:#fff;border-color:var(--ok)}
+.strip button.edited::after{content:"";position:absolute;right:3px;top:3px;width:6px;height:6px;border-radius:3px;background:var(--accent)}
+.strip button.skipped{opacity:.45}
+.head{display:flex;align-items:center;gap:12px}
+.big{font-size:40px;line-height:1}
+.chip{font-size:11px;padding:2px 7px;border-radius:9px;border:1px solid var(--line);color:var(--muted)}
+.chip.approved{color:#fff;background:var(--ok);border-color:var(--ok)}.chip.edited{color:#fff;background:var(--accent);border-color:var(--accent)}
+.stage{position:relative;width:100%;max-width:420px;aspect-ratio:14/13;touch-action:none;user-select:none;-webkit-user-select:none;align-self:center}
+.stage canvas{width:100%;height:100%;display:block;background:var(--panel);border:1px solid var(--line);border-radius:4px}
+.row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+button.t{font:inherit;font-size:14px;padding:8px 11px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--fg)}
+button.t.on{border-color:var(--accent);color:var(--accent)}
+button.go{background:var(--ok);border-color:var(--ok);color:#fff}
+button.warn{border-color:var(--accent);color:var(--accent)}
+.minis{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}
+.mini{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;color:var(--muted)}
+.mini canvas{border:1px solid var(--line);background:var(--panel);image-rendering:pixelated}
+.ex{display:flex;gap:8px;flex-wrap:wrap}
+.ex button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--fg);font-size:11px}
+.ex button.on{border-color:var(--ghost);outline:2px solid var(--ghost)}
+.ex canvas{image-rendering:pixelated}
+textarea{width:100%;box-sizing:border-box;font:inherit;font-size:14px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--fg);padding:8px;min-height:44px}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:8px}
+.why{font-size:12px;color:var(--muted);line-height:1.5}
+#msg{font-size:13px;min-height:18px}
+</style>
+<div class="wrap">
+  <header><h1>通格手机修字</h1><span class="muted" id="progress"></span><span class="muted" id="sync"></span></header>
+  <div class="strip" id="strip"></div>
+  <div class="head"><span class="big" id="ch"></span><div><div id="gid" style="font-weight:600"></div><div class="muted" id="src"></div></div><span class="chip" id="st"></span></div>
+  <div class="stage" id="stage"><canvas id="cv" width="560" height="520"></canvas></div>
+  <div class="row">
+    <button class="t" id="undo">撤销</button><button class="t" id="redo">重做</button>
+    <button class="t on" id="tRef">思源轮廓</button><button class="t" id="reset">回到 AI 版</button>
+  </div>
+  <div id="ghostBar" class="row" hidden>
+    <span class="muted" id="ghostName"></span>
+    <button class="t" data-mv="-1,0">←</button><button class="t" data-mv="1,0">→</button><button class="t" data-mv="0,-1">↑</button><button class="t" data-mv="0,1">↓</button>
+    <button class="t" id="stamp">盖上</button><button class="t" id="stampClear">清空这块再盖</button><button class="t" id="ghostOff">收起</button>
+  </div>
+  <div class="minis" id="minis"></div>
+  <div class="box"><div class="why" id="why"></div><div class="muted">点范例：蓝色半透明叠在字上，可平移后“盖上”（逐像素复用已通过的部件）。</div><div class="ex" id="ex"></div></div>
+  <textarea id="note" placeholder="说明（可不填）：改了什么、为什么"></textarea>
+  <div class="row">
+    <button class="t go" id="approve">通过</button><button class="t" id="save">暂存（改过）</button><button class="t" id="skip">跳过</button>
+    <button class="t" id="prev">上一个</button><button class="t" id="next">下一个</button>
+  </div>
+  <div id="msg"></div>
+  <div class="box">
+    <div style="font-weight:600">结果</div>
+    <div class="muted">每次“通过 / 暂存 / 跳过”都存在本机浏览器里（离线可用）；联网时自动同步给 Claude 读取。也可以复制全部结果发给 Claude。</div>
+    <div class="row"><button class="t" id="syncNow">立即同步</button><button class="t" id="copy">复制全部结果</button></div>
+    <textarea id="dump" readonly hidden></textarea>
+  </div>
+</div>
+<script type="application/json" id="data">__DATA__</script>
+<script>
+const D=JSON.parse(document.getElementById('data').textContent);
+const KEY='tong-mobile-v1',LANG={SC:'zh-Hans',TC:'zh-Hant',JP:'ja',KR:'ko'};
+const $=id=>document.getElementById(id);
+let store={};try{store=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(store))}catch(e){}}
+let i=0,rows=[],undo=[],redo=[],showRef=true,ghost=null,db=null;
+const cv=$('cv'),cx=cv.getContext('2d'),N=13,CW=14;
+function col(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim()}
+function load(k){i=(k+D.length)%D.length;const g=D[i],e=store[g.id];rows=(e&&e.rows?e.rows:g.start).slice();undo=[];redo=[];ghost=null;
+ $('ch').textContent=g.ch;$('ch').lang=LANG[g.rg];$('gid').textContent=g.id;$('src').textContent='起点：'+g.src;$('note').value=e?.note||'';
+ $('why').textContent='这个字的范例价值：'+g.why.join('；');renderState();renderStrip();renderMinis();renderEx();draw();$('msg').textContent='';
+ try{localStorage.setItem(KEY+'-i',i)}catch(e){}}
+function renderState(){const e=store[D[i].id];const s=e?.state;$('st').className='chip '+(s||'');$('st').textContent=s==='approved'?'已通过':s==='edited'?'改过':s==='skipped'?'跳过':'未处理';
+ const n=Object.values(store).filter(x=>x.state==='approved').length,m=Object.values(store).filter(x=>x.state==='edited').length;$('progress').textContent=`通过 ${n} · 改过 ${m} · 共 ${D.length}`}
+function renderStrip(){const s=$('strip');if(!s.children.length)D.forEach((g,k)=>{const b=document.createElement('button');b.textContent=g.ch;b.lang=LANG[g.rg];b.onclick=()=>load(k);s.append(b)});
+ [...s.children].forEach((b,k)=>{b.className=(k===i?'cur ':'')+(store[D[k].id]?.state||'')});s.children[i].scrollIntoView({inline:'center',block:'nearest'})}
+const path2d={};
+function draw(){const g=D[i],W=cv.width,H=cv.height,cs=W/CW;cx.clearRect(0,0,W,H);
+ cx.strokeStyle=col('--grid');cx.lineWidth=1;for(let x=0;x<=CW;x++){cx.beginPath();cx.moveTo(x*cs,0);cx.lineTo(x*cs,H);cx.stroke()}for(let y=0;y<=N;y++){cx.beginPath();cx.moveTo(0,y*cs);cx.lineTo(W,y*cs);cx.stroke()}
+ if(showRef){const p=path2d[g.id]||(path2d[g.id]=new Path2D(g.d));const m=g.tr.match(/translate\(([-\d.e]+) ([-\d.e]+)\) scale\(([-\d.e]+) ([-\d.e]+)\)/);cx.save();cx.scale(cs,cs);cx.translate(+m[1],+m[2]);cx.scale(+m[3],+m[4]);cx.fillStyle=col('--ref');cx.fill(p);cx.restore()}
+ cx.fillStyle=col('--ink');rows.forEach((r,y)=>{for(let x=0;x<N;x++)if(r[x]==='#')cx.fillRect((x+1)*cs+1,y*cs+1,cs-2,cs-2)});
+ if(ghost){cx.fillStyle=col('--ghost');ghost.form.forEach((r,y)=>{for(let x=0;x<N;x++)if(r[x]==='#'){const X=x+ghost.dx,Y=y+ghost.dy;if(X>=0&&X<N&&Y>=0&&Y<N)cx.fillRect((X+1)*cs+4,Y*cs+4,cs-8,cs-8)}})}
+ renderMinis(true)}
+function mini(rows,w,h,sc){const c=document.createElement('canvas');c.width=w*sc;c.height=h*sc;const x=c.getContext('2d');x.fillStyle=col('--panel');x.fillRect(0,0,c.width,c.height);x.fillStyle=col('--ink');rows.forEach((r,y)=>{for(let k=0;k<r.length;k++)if(r[k]==='#')x.fillRect(k*sc,y*sc,sc,sc)});return c}
+function renderMinis(onlyLive){const g=D[i],m=$('minis');if(onlyLive&&m.firstChild){m.firstChild.replaceChild(mini(rows,13,13,1),m.firstChild.firstChild);m.children[1].replaceChild(mini(rows,13,13,3),m.children[1].firstChild);return}
+ m.replaceChildren();const add=(c,l)=>{const d=document.createElement('div');d.className='mini';d.append(c,l);m.append(d)};
+ add(mini(rows,13,13,1),'1:1');add(mini(rows,13,13,3),'3×');add(mini(g.start,13,13,4),'AI 版');if(g.tum)add(mini(g.tum,13,14,4),'圆石');g.same.forEach(s=>add(mini(s.rows,13,13,4),s.id.slice(-2)+' 已通过'))}
+function renderEx(){const e=$('ex');e.replaceChildren();D[i].ex.forEach((x,k)=>{const b=document.createElement('button');b.append(mini(x.form,13,13,3),`${x.sym} ← ${x.ch}`);b.onclick=()=>{ghost={...x,dx:0,dy:0};$('ghostBar').hidden=false;$('ghostName').textContent=`范例：${x.ch} 的 ${x.sym}`;[...e.children].forEach(c=>c.classList.remove('on'));b.classList.add('on');draw()};e.append(b)});
+ if(!D[i].ex.length)e.textContent='（这个字的部件还没有已通过的范例，修好后它自己就是范例）';$('ghostBar').hidden=true}
+function set(nr){undo.push(rows.slice());if(undo.length>200)undo.shift();redo=[];rows=nr;draw()}
+function cellAt(ev){const r=cv.getBoundingClientRect(),cs=r.width/CW;const x=Math.floor((ev.clientX-r.left)/cs)-1,y=Math.floor((ev.clientY-r.top)/(r.height/N));return x>=0&&x<N&&y>=0&&y<N?[x,y]:null}
+let paint=null;
+cv.addEventListener('pointerdown',ev=>{const c=cellAt(ev);if(!c)return;cv.setPointerCapture(ev.pointerId);const v=rows[c[1]][c[0]]==='#'?'.':'#';paint={v,seen:new Set()};undo.push(rows.slice());redo=[];apply(c)});
+cv.addEventListener('pointermove',ev=>{if(!paint)return;const c=cellAt(ev);if(c)apply(c)});
+['pointerup','pointercancel'].forEach(t=>cv.addEventListener(t,()=>{paint=null}));
+function apply([x,y]){const k=x+','+y;if(paint.seen.has(k))return;paint.seen.add(k);const r=rows[y].split('');r[x]=paint.v;rows[y]=r.join('');draw()}
+$('undo').onclick=()=>{if(undo.length){redo.push(rows);rows=undo.pop();draw()}};$('redo').onclick=()=>{if(redo.length){undo.push(rows);rows=redo.pop();draw()}};
+$('tRef').onclick=()=>{showRef=!showRef;$('tRef').classList.toggle('on',showRef);draw()};
+$('reset').onclick=()=>set(D[i].start.slice());
+document.querySelectorAll('[data-mv]').forEach(b=>b.onclick=()=>{const[a,c]=b.dataset.mv.split(',').map(Number);ghost.dx+=a;ghost.dy+=c;draw()});
+function stamp(clear){if(!ghost)return;const nr=rows.map(r=>r.split(''));let x0=N,x1=-1,y0=N,y1=-1;ghost.form.forEach((r,y)=>{for(let x=0;x<N;x++)if(r[x]==='#'){const X=x+ghost.dx,Y=y+ghost.dy;if(X<0||X>=N||Y<0||Y>=N)continue;x0=Math.min(x0,X);x1=Math.max(x1,X);y0=Math.min(y0,Y);y1=Math.max(y1,Y)}});
+ if(clear)for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++)nr[y][x]='.';ghost.form.forEach((r,y)=>{for(let x=0;x<N;x++)if(r[x]==='#'){const X=x+ghost.dx,Y=y+ghost.dy;if(X>=0&&X<N&&Y>=0&&Y<N)nr[Y][X]='#'}});set(nr.map(r=>r.join('')));$('msg').textContent=`已盖上 ${ghost.ch} 的 ${ghost.sym}`}
+$('stamp').onclick=()=>stamp(false);$('stampClear').onclick=()=>stamp(true);$('ghostOff').onclick=()=>{ghost=null;$('ghostBar').hidden=true;[...$('ex').children].forEach(c=>c.classList?.remove('on'));draw()};
+function record(state){const g=D[i];store[g.id]={id:g.id,rev:g.rev,rows:rows.slice(),state,note:$('note').value.trim(),t:Date.now(),synced:false};persist();renderState();renderStrip();push(g.id);
+ $('msg').textContent=state==='approved'?`${g.ch} 已通过`:state==='edited'?`${g.ch} 已暂存`:`${g.ch} 已跳过`;if(state!=='edited')setTimeout(()=>load(i+1),250)}
+$('approve').onclick=()=>record('approved');$('save').onclick=()=>record('edited');$('skip').onclick=()=>record('skipped');
+$('prev').onclick=()=>load(i-1);$('next').onclick=()=>load(i+1);
+const docId=id=>id.replace('+','').replace('.','-');
+async function push(id){if(!db)return;const e=store[id];try{await db.doc('edits/'+docId(id)).set({id:e.id,rev:e.rev,rows:e.rows,state:e.state,note:e.note,t:e.t});e.synced=true;persist();syncLabel()}catch(err){syncLabel()}}
+async function pushAll(){for(const id of Object.keys(store))if(!store[id].synced)await push(id)}
+function syncLabel(){const n=Object.values(store).filter(e=>!e.synced).length;$('sync').textContent=db?(n?`待同步 ${n}`:'已同步'):'离线：只存本机'}
+$('syncNow').onclick=()=>{pushAll().then(()=>$('msg').textContent=db?'同步完成':'现在连不上 Claude，结果仍在本机')};
+$('copy').onclick=()=>{const t=JSON.stringify(Object.values(store));const d=$('dump');d.hidden=false;d.value=t;navigator.clipboard?.writeText(t).then(()=>$('msg').textContent='已复制，发给 Claude 即可').catch(()=>{d.select();$('msg').textContent='请长按文本框全选复制'})};
+window.addEventListener('online',()=>pushAll());
+let start=0;try{start=+localStorage.getItem(KEY+'-i')||0}catch(e){}
+load(start);syncLabel();
+(async()=>{try{db=await window.claude?.use?.('db')}catch(e){db=null}if(!db){syncLabel();return}
+ try{const snap=await db.collection('edits').get();(snap.docs||snap).forEach(d=>{const v=d.data?d.data():d;if(v&&v.id&&(!store[v.id]||store[v.id].t<v.t)){store[v.id]={...v,synced:true}}});persist();renderState();renderStrip()}catch(e){}
+ syncLabel();pushAll()})();
+</script>
