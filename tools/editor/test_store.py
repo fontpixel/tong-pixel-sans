@@ -136,6 +136,37 @@ class StoreTest(unittest.TestCase):
         with self.assertRaises(Conflict):                               # only AI versions are replaced
             self.s.import_ai("U+4E01.SC", TEN, "x", self.s.current("U+4E01.SC")["revision"])
 
+    def test_split_alias_then_make_alias_again(self):
+        with self.assertRaises(ValueError):
+            self.s.split_alias({"id": "U+4E00.SC"})                   # not an alias
+        out = self.s.split_alias({"id": "U+4E00.TC"})
+        self.assertEqual((out["source"], out["links"]), ("U+4E00.SC", 1))
+        cur = self.s.current("U+4E00.TC")
+        self.assertEqual((cur["rows"], cur["state"]), (TEN, "ai"))
+        self.assertEqual(self.s.aliases_of("U+4E00.SC"), [])
+        self.assertIn("U+4E00 一\nai\n" + "\n".join(TEN), self.page("glyphs/TC/4Exx.txt"))
+        # pixels differ: refused; identical again: back to an alias, the AI version archived
+        rows = list(TEN); rows[1] = "#" + BLANK[1:]
+        changed = self.s.save({"id": "U+4E00.TC", "expected_revision": cur["revision"], "rows": rows,
+                               "note": "", "approved": False})
+        with self.assertRaises(ValueError):
+            self.s.make_alias({"id": "U+4E00.TC", "target": "U+4E00.SC", "expected_revision": changed["revision"]})
+        back = self.s.save({"id": "U+4E00.TC", "expected_revision": changed["revision"], "rows": TEN,
+                            "note": "", "approved": False})
+        with self.assertRaises(Conflict):
+            self.s.make_alias({"id": "U+4E00.TC", "target": "U+4E00.SC", "expected_revision": changed["revision"]})
+        self.s.make_alias({"id": "U+4E00.TC", "target": "U+4E00.SC", "expected_revision": back["revision"]})
+        self.assertEqual(self.page("glyphs/TC/4Exx.txt"), "U+4E00 一 = U+4E00.SC\n")
+        self.assertEqual(self.s.aliases_of("U+4E00.SC"), ["U+4E00.TC"])
+        self.assertNotIn("U+4E00.TC", self.s.glyphs)
+        self.assertIn("U+4E00 一\nai\n", self.page("history/ai-originals/TC/4Exx.txt"))
+        self.assertIn("f1", self.s.forms)                              # still used by the SC glyph
+
+    def test_split_alias_of_approved_glyph_is_edited(self):
+        self.s.add_glyphs([{"group": "TC", "cp": 0x4E01, "alias": "U+4E01.SC"}])
+        self.s.split_alias({"id": "U+4E01.TC"})
+        self.assertEqual(self.s.current("U+4E01.TC")["state"], "edited")
+
     def test_add_glyphs_inserts_in_order_and_imports_ai(self):
         self.s.add_glyphs([{"group": "SC", "cp": 0x4E02, "rows": CROSS, "state": "draft", "ai_note": "底稿"},
                            {"group": "KR", "cp": 0x4E02, "alias": "U+4E02.SC"}])

@@ -145,7 +145,7 @@ const miniObserver=new IntersectionObserver(es=>{for(const e of es)if(e.isInters
 function fillStates(){const chosen=$('batch').value;$('batch').replaceChildren(new Option('所有状态',''));for(const b of Object.keys(STATE_ZH))if(queue.some(g=>g.batch===b))$('batch').add(new Option(`${b} · ${STATE_ZH[b]}`,b));$('batch').value=chosen;}
 async function refreshQueue() { queue=await api('/api/queue');fillStates();renderQueue(); }
 async function show(id, mode='push') {
-  if(!queue.some(g=>g.id===id)){say('没有这个字形，或它与其他地区共用字形（别名）。',true);if(current)setRoute(current.original.id,'replace');return;}
+  if(!queue.some(g=>g.id===id)){say('没有这个字形，或它与其他地区共用字形（别名）。别名可在所共用字形的“同字其他地区”里拆开。',true);if(current)setRoute(current.original.id,'replace');return;}
   if(busy){queuedNavigation={id,mode};return;}
   if(current?.original.id===id){setRoute(id,mode==='none'?'none':'replace');return;}
   stashDraft();
@@ -185,7 +185,16 @@ function renderUsage(u){
   if(!u.instead?.length)box.append('（没有）');
 }
 function renderSiblings(data){
-  const list=$('sibling-list');list.replaceChildren();const sibs=data.siblings||[];$('siblings').hidden=!sibs.length;
+  const list=$('sibling-list');list.replaceChildren();const sibs=data.siblings||[];$('siblings').hidden=!sibs.length&&!(data.aliases||[]).length;
+  const own=data.current.rows.join('\n');
+  for(const a of data.aliases||[]){
+    // a region that shares this glyph: it can get its own copy to edit
+    const box=document.createElement('div');box.className='sibling';
+    const label=document.createElement('span');label.className='sib-label';label.textContent=`${a.split('.').pop()} · 共用本字形（别名）`;label.title=a;
+    const split=document.createElement('button');split.textContent='拆开别名';split.title=`给 ${a} 一份本字形的副本（像素、关联部件），之后可单独修改`;
+    split.onclick=guard(()=>splitAlias(a));
+    box.append(label,split);list.append(box);
+  }
   for(const sb of sibs){
     const box=document.createElement('div');box.className='sibling';
     const g=sb.geometry,cw=g.cell_width,ch=g.cell_height,xb=g.x_base,sc=4,cv=document.createElement('canvas');
@@ -197,8 +206,29 @@ function renderSiblings(data){
     const copyBtn=document.createElement('button');copyBtn.textContent='完全复制过来';
     copyBtn.disabled=!sb.same_size;copyBtn.title=sb.same_size?`用 ${sb.id} 的全部像素和关联部件替换本字`:'字格大小不同，不能整字复制';
     copyBtn.onclick=guard(()=>copyFrom(sb.id));
-    box.append(cv,label,open,copyBtn);list.append(box);
+    const same=sb.same_size&&!sb.aliases.length&&sb.rows.join('\n')===own;
+    const aliasBtn=document.createElement('button');aliasBtn.textContent='改为本字的别名';aliasBtn.hidden=!same;
+    aliasBtn.title=`${sb.id} 与本字像素完全相同：删去它自己的一份，改为共用本字形（${sb.id} 的关联部件不再保留）`;
+    aliasBtn.onclick=guard(()=>makeAlias(sb.id,sb.revision));
+    box.append(cv,label,open,copyBtn,aliasBtn);list.append(box);
   }
+}
+async function splitAlias(alias){
+  if(!current||busy)return;const id=current.original.id;
+  if(!confirm(`拆开别名：给 ${alias} 一份 ${id} 的副本（像素和关联部件），之后 ${alias} 可以单独修改，不再随 ${id} 变化。`))return;
+  busy=true;updateDirty();
+  let r;try{r=await api('/api/split-alias',{id:alias});}finally{busy=false;}
+  await refreshQueue();await show(alias);
+  say(`已拆开：${alias} 现在有自己的字形（复制自 ${r.source}，${r.links} 处关联${r.dropped.length?`；未对应的部件：${r.dropped.join('、')}`:''}），尚未审核通过。`);
+}
+async function makeAlias(other,revision){
+  if(!current||busy)return;const id=current.original.id;
+  if(dirty){say('请先保存本字的修改。',true);return;}
+  if(!confirm(`${other} 与 ${id} 像素完全相同。把 ${other} 改为 ${id} 的别名？\n${other} 自己的一份（状态、说明、关联部件）会被删去，以后随 ${id} 变化。需要时可以再拆开。`))return;
+  busy=true;updateDirty();
+  try{await api('/api/make-alias',{id:other,target:id,expected_revision:revision});}finally{busy=false;}
+  current=null;await refreshQueue();await show(id,'replace');
+  say(`${other} 已改为 ${id} 的别名。`);
 }
 async function copyFrom(source){
   if(!current||busy)return;const id=current.original.id;

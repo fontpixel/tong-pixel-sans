@@ -114,6 +114,8 @@ def handler(store):
                           "/api/shape-unlink-all": store.shape_unlink_all,
                           "/api/shape-move": store.shape_move,
                           "/api/copy-from": store.copy_from,
+                          "/api/split-alias": store.split_alias,
+                          "/api/make-alias": store.make_alias,
                           "/api/shape-create": store.shape_create,
                           "/api/shape-edit": store.shape_edit}
                 fn = routes.get(urlparse(self.path).path)

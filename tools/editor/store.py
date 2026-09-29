@@ -467,7 +467,7 @@ class Store(ShapesMixin):
         out = []
         for other in self.sibling_ids(gid):
             c = self.current(other)
-            out.append({"id": other, "locale": self.original(other)["locale"], "rows": c["rows"],
+            out.append({"id": other, "locale": self.original(other)["locale"], "rows": c["rows"], "revision": c["revision"],
                         "approved": c["approved"], "edited": c["state"] in ("edited", "derived"), "state": c["state"],
                         "links": len(c["links"]), "same_size": self.can_copy(other, gid),
                         "geometry": self.geometry_of(other), "aliases": self.aliases_of(other)})
@@ -638,6 +638,71 @@ class Store(ShapesMixin):
             self.generation += 1
             self.ids_version += 1
             return len(new)
+
+    def _write_pages(self, pages):
+        for page in pages:
+            ids = self.pages[page][1]
+            atomic_write(page, "\n\n".join(block_text(self.records[i]) for i in ids) + "\n")
+            self.pages[page] = (page.stat().st_mtime_ns, ids)
+
+    def split_alias(self, p):
+        """Give an alias its own copy of the glyph it shares, so this region can be edited alone: the
+        pixels, metrics and notes, then the form links where this region's component slots match
+        (as copy_from). An approved or edited source gives state `edited` (this region is not
+        reviewed yet); otherwise the source's state is kept."""
+        with self.lock():
+            gid = p["id"]
+            rec = self.records.get(gid)
+            if rec is None or "alias" not in rec:
+                raise ValueError(f"{gid} 不是别名")
+            src = rec["alias"]
+            s = self.records[src]
+            state = "edited" if s["state"] in ("approved", "edited") else s["state"]
+            own = {k: rec[k] for k in ("id", "cp", "group", "char", "page")}
+            own.update(metrics=list(s["metrics"]), state=state, rows=list(s["rows"]), links=[],
+                       ai_note=list(s["ai_note"]), human_note=[f"拆开别名，复制自 {src}"])
+            self.records[gid] = own
+            self.glyphs[gid] = self._view(own)
+            self._write_pages([own["page"]])
+            self.generation += 1
+            self.ids_version += 1
+            if s["links"] and self.can_copy(src, gid):
+                r = self.copy_from({"id": gid, "expected_revision": self.current(gid)["revision"], "source_id": src})
+                return {"current": self.current(gid), "source": src, "links": r["links"], "dropped": r["dropped"]}
+            return {"current": self.current(gid), "source": src, "links": 0, "dropped": []}
+
+    def make_alias(self, p):
+        """Make a glyph an alias of another glyph of the same code point whose pixels are identical.
+        Aliases of this glyph move to the target; its links are dropped (a form no glyph uses any
+        more leaves the library); an AI version or draft is archived in history/ai-originals first."""
+        with self.lock():
+            gid, target = p["id"], p.get("target")
+            old = self.current(gid)
+            if old["revision"] != p.get("expected_revision"):
+                raise Conflict(f"{gid} 已被修改，请重新载入")
+            if target not in self.sibling_ids(gid):
+                raise ValueError("只能设为同码位其他字形的别名")
+            if self.size(target) != self.size(gid) or self.flexible_width(gid) != self.flexible_width(target):
+                raise ValueError("字格大小不同，不能共用字形")
+            rec, tgt = self.records[gid], self.records[target]
+            if rec["rows"] != tgt["rows"] or rec["metrics"] != tgt["metrics"]:
+                raise ValueError("像素或度量与目标不完全相同，不能共用字形")
+            lib = self._library()
+            self._collect(lib, {gid: {"links": []}})
+            pages = {rec["page"]}
+            for a in self.aliases_of(gid):
+                self.records[a]["alias"] = target
+                pages.add(self.records[a]["page"])
+            if rec["state"] in ("ai", "hangul-ai", "draft") and gid not in self.ai_originals:
+                self._write_ai_page(self._keep_ai_original(rec))
+            self.records[gid] = {k: rec[k] for k in ("id", "cp", "group", "char", "page")} | {"alias": target}
+            self.glyphs.pop(gid, None)
+            if set(lib["shapes"]) != set(self.forms):
+                self._commit_shapes([], lib)
+            self._write_pages(pages)
+            self.generation += 1
+            self.ids_version += 1
+            return {"id": gid, "alias": target}
 
     def _library(self):
         return {"generation": self.generation, "shapes": dict(self.forms), "retired": []}
