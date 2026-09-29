@@ -25,3 +25,4 @@ $PY tools/airepair/import_round.py NAME [--exclude 字…] [--only-ids 文件]
 - 同一个字的各地区字形在同一批。每批 ≤ 50 字（`--batch-size`）。
 - worker 协议和启动提示词由 `templates/` 生成到每轮目录，写明模型、推理强度、并发数。
 - `workflow.py`：领取令牌、每 ≤10 字检查点、渲染复看并登记、每字最多两轮、提交时校验齐全；只写本轮目录。
+- `add_glyphs.py`：新增字写成底稿（状态 `draft`，之后可交给 AI 修）。默认补齐必需字表里还没有的字；`--symbols data/symbols-2026-09-29.txt` 补清单里的符号（按思源黑体的有无和宽窄，决定画全角地区版还是等宽 / 比例版，报告写到 `reports/add-symbols.md`）。

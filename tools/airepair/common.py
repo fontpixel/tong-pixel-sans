@@ -10,7 +10,8 @@ ROOT = HERE.parent.parent
 FONTS = ROOT / "reference-fonts"
 ROUNDS = ROOT / "work/airepair"
 REGIONS = ("SC", "TC", "JP", "KR")
-EXTENSION = "PlangothicP1-Regular.ttf"   # Han characters beyond Source Han Sans
+# what Source Han Sans lacks (static fonts): Han characters, then symbols; as tools/editor/draft.py
+FALLBACK_FONTS = ["PlangothicP1-Regular.ttf", "NotoSansSymbols2-Regular.ttf", "NotoSansSymbols-Regular.ttf", "NotoSansMath-Regular.ttf"]
 sys.path.insert(0, str(ROOT / "tools/editor"))
 
 
@@ -60,8 +61,8 @@ _faces = {}
 
 
 def grey(char, region, ppem=104, weight=400):
-    """Grey rendering (uint8 array) of the character in that region's Source Han Sans, or in
-    Plangothic P1 (遍黑体, weight 400 only) when no Source Han Sans has it."""
+    """Grey rendering (uint8 array) of the character in that region's Source Han Sans, or in the
+    first of FALLBACK_FONTS that has it (Plangothic P1 for Han characters; weight 400 only)."""
     import freetype
     import numpy as np
     key = (region, ppem, weight)
@@ -71,11 +72,13 @@ def grey(char, region, ppem=104, weight=400):
         f.set_var_design_coords((weight,))
         _faces[key] = f
     f = _faces[key]
-    if not f.get_char_index(ord(char)) and (FONTS / EXTENSION).exists():
-        if (EXTENSION, ppem) not in _faces:
-            _faces[EXTENSION, ppem] = freetype.Face(str(FONTS / EXTENSION))
-            _faces[EXTENSION, ppem].set_pixel_sizes(ppem, ppem)
-        f = _faces[EXTENSION, ppem]
+    for name in FALLBACK_FONTS:
+        if f.get_char_index(ord(char)) or not (FONTS / name).exists():
+            continue
+        if (name, ppem) not in _faces:
+            _faces[name, ppem] = freetype.Face(str(FONTS / name))
+            _faces[name, ppem].set_pixel_sizes(ppem, ppem)
+        f = _faces[name, ppem]
     f.load_char(char, freetype.FT_LOAD_RENDER | freetype.FT_LOAD_NO_HINTING)
     bm = f.glyph.bitmap
     if not bm.rows:

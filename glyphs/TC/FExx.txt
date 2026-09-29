@@ -1,3 +1,23 @@
+U+FE10 ︐ = U+FE10.SC
+
+U+FE11 ︑ = U+FE11.SC
+
+U+FE12 ︒ = U+FE12.SC
+
+U+FE13 ︓ = U+FE13.SC
+
+U+FE14 ︔ = U+FE14.SC
+
+U+FE15 ︕ = U+FE15.SC
+
+U+FE16 ︖ = U+FE16.SC
+
+U+FE17 ︗ = U+FE17.SC
+
+U+FE18 ︘ = U+FE18.SC
+
+U+FE19 ︙ = U+FE19.SC
+
 U+FE30 ︰
 approved
 .............
@@ -29,6 +49,8 @@ ai
 ......#......
 ......#......
 ......#......
+
+U+FE32 ︲ = U+FE32.SC
 
 U+FE33 ︳
 approved
@@ -322,6 +344,14 @@ ai
 .............
 .............
 .............
+
+U+FE45 ﹅ = U+FE45.SC
+
+U+FE46 ﹆ = U+FE46.SC
+
+U+FE47 ﹇ = U+FE47.SC
+
+U+FE48 ﹈ = U+FE48.SC
 
 U+FE49 ﹉
 ai

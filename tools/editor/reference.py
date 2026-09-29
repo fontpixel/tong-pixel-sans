@@ -3,8 +3,8 @@ see docs/reference-fonts.md). Needs fontTools; without it or without the fonts t
 shows no reference.
 
 - regional glyphs (SC TC JP KR): that region's Source Han Sans at weight 400, em = 14 px, baseline
-  12 px below the top of the 14×14 cell (the geometry the drafts were made with); characters that
-  Source Han Sans lacks (extension B and later) from Plangothic P1 (遍黑体, weight 400);
+  12 px below the top of the 14×14 cell (the geometry the drafts were made with); what Source Han
+  Sans lacks from Plangothic P1 (遍黑体, weight 400; Han characters) or the Noto symbol fonts;
 - .HW/.PR glyphs: the font and face size of their draft (tools/editor/data/reference-western.txt),
   on the baseline (row 11), left edge aligned to the draft's leftmost ink column.
 """
@@ -18,12 +18,16 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 FONTS = HERE.parent.parent / "reference-fonts"
 REGIONAL = {r: (f"SourceHanSans{r}-VF.otf", (("wght", 400),)) for r in ("SC", "TC", "JP", "KR")}
-EXTENSION = ("PlangothicP1-Regular.ttf", ())
+# what Source Han Sans lacks: Plangothic P1 for Han characters, then Noto symbol fonts (as draft.py)
+REGIONAL_FALLBACK = ["PlangothicP1-Regular.ttf", "NotoSansSymbols2-Regular.ttf", "NotoSansSymbols-Regular.ttf",
+                     "NotoSansMath-Regular.ttf"]
 WESTERN = {"Source Sans 3": ("SourceSans3-VF.otf", (("wght", 320),)),
            "Noto Sans Thai": ("NotoSansThai-VF.ttf", (("wdth", 100), ("wght", 320))),
            "Noto Sans Arabic": ("NotoSansArabic-VF.ttf", (("wdth", 100), ("wght", 320))),
-           "Noto Sans": ("NotoSans-VF.ttf", (("wdth", 100), ("wght", 320))),
            "Noto Sans Math": ("NotoSansMath-Regular.ttf", ()),
+           "Noto Sans Symbols 2": ("NotoSansSymbols2-Regular.ttf", ()),
+           "Noto Sans Symbols": ("NotoSansSymbols-Regular.ttf", ()),
+           "Noto Sans": ("NotoSans-VF.ttf", (("wdth", 100), ("wght", 320))),
            "思源 JP": ("SourceHanSansJP-VF.otf", (("wght", 320),))}
 _lock = threading.RLock()
 
@@ -75,8 +79,10 @@ def svg(gid, char, cell_w, cell_h, fill="#009ec0"):
     with _lock:
         if group in REGIONAL:
             font, glyphs = _face(*REGIONAL[group])
-            if ord(char) not in font.getBestCmap() and (FONTS / EXTENSION[0]).exists():
-                font, glyphs = _face(*EXTENSION)
+            for name in REGIONAL_FALLBACK:
+                if ord(char) in font.getBestCmap() or not (FONTS / name).exists():
+                    continue
+                font, glyphs = _face(name, ())
             upem = font["head"].unitsPerEm
             sx = sy = 14 / upem
             dx, base = 0, 12

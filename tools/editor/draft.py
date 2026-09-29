@@ -39,12 +39,17 @@ H, BASELINE_ROW = 14, 11
 # User decision 2026-09-16: fully enclosed 囗 characters and the standalone 口 use a 13×13 face.
 SQUARE = set("口囗囚四囝回囟因囡团囤囪囫园困囱围囵囹固国图囿圃圄圆圈圉圊國圍園圓圖團圜")
 REGIONAL_FACES = [(14, 13), (13, 13), (12, 13), (12, 12), (11, 11), (10, 10)]
-# label in data/reference-western.txt -> (font file, variation coordinates as the drafts used them)
+# label in data/reference-western.txt -> (font file, variation coordinates as the drafts used them);
+# a label is matched by its prefix, so the longer names come first
 WESTERN_FONTS = {"Source Sans 3": ("SourceSans3-VF.otf", (320,)), "Noto Sans Thai": ("NotoSansThai-VF.ttf", (320, 100)),
-                 "Noto Sans Arabic": ("NotoSansArabic-VF.ttf", (320, 100)), "Noto Sans": ("NotoSans-VF.ttf", (320, 100)),
-                 "Noto Sans Math": ("NotoSansMath-Regular.ttf", ()), "思源 JP": ("SourceHanSansJP-VF.otf", (320,))}
+                 "Noto Sans Arabic": ("NotoSansArabic-VF.ttf", (320, 100)), "Noto Sans Math": ("NotoSansMath-Regular.ttf", ()),
+                 "Noto Sans Symbols 2": ("NotoSansSymbols2-Regular.ttf", ()), "Noto Sans Symbols": ("NotoSansSymbols-Regular.ttf", ()),
+                 "Noto Sans": ("NotoSans-VF.ttf", (320, 100)), "思源 JP": ("SourceHanSansJP-VF.otf", (320,))}
 # Han characters beyond Source Han Sans (extension B and later): static, weight 400 only
 EXTENSION = ("PlangothicP1-Regular.ttf", "遍黑体 P1")
+# full-width glyphs no Source Han Sans has, in this order: Han characters, then symbols (all static)
+REGIONAL_FALLBACK = [EXTENSION, ("NotoSansSymbols2-Regular.ttf", "Noto Sans Symbols 2"),
+                     ("NotoSansSymbols-Regular.ttf", "Noto Sans Symbols"), ("NotoSansMath-Regular.ttf", "Noto Sans Math")]
 _lock = threading.RLock()
 _faces = {}
 
@@ -207,17 +212,21 @@ def _cmap(path):
 
 
 def regional_font(char, region):
-    """(font path, variation coordinates, label): the region's Source Han Sans, or Plangothic P1 for
-    the characters no Source Han Sans has."""
+    """(font path, variation coordinates, label): the region's Source Han Sans, or for what it lacks
+    the first of REGIONAL_FALLBACK that has the character (Plangothic P1 for Han characters)."""
     font = FONTS / f"SourceHanSans{region}-VF.otf"
-    if ord(char) not in _cmap(font) and (FONTS / EXTENSION[0]).exists():
-        return FONTS / EXTENSION[0], (), EXTENSION[1]
+    if ord(char) not in _cmap(font):
+        for name, label in REGIONAL_FALLBACK:
+            if (FONTS / name).exists() and ord(char) in _cmap(FONTS / name):
+                return FONTS / name, (), label
     return font, (320,), f"思源 {region} w320"
 
 
-def regional(char, region):
+def regional(char, region, font=None):
+    """13×13 draft; `font` = (path, variation coordinates, label) overrides the region's font (e.g. a
+    full-width symbol from Noto Sans Symbols 2 that no Source Han Sans has)."""
     np = _np()
-    font, coords, label = regional_font(char, region)
+    font, coords, label = font or regional_font(char, region)
     faces = [(13, 13)] + [f for f in REGIONAL_FACES if f != (13, 13)] if char in SQUARE else REGIONAL_FACES
     for fw, fh in faces:
         r = _face(font, fw, fh, coords, (0.2, 0, 0, 0.2, 0, 40)).best(char, broken_both_ways=True)

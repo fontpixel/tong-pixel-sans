@@ -19,6 +19,8 @@ cd reference-fonts && sha256sum -c ../build-data/reference-fonts.sha256
 | `NotoSansThai-VF.ttf` | Noto Sans Thai 2.001 | 泰文 | [notofonts/thai](https://github.com/notofonts/thai) 可变字体，改名 |
 | `NotoSansArabic-VF.ttf` | Noto Sans Arabic 2.013 | 阿拉伯文 | [notofonts/arabic](https://github.com/notofonts/arabic) 可变字体，改名 |
 | `NotoSansMath-Regular.ttf` | Noto Sans Math 2.001（静态，只有常规体） | 以上字体都没有的数学符号（如 ∼ U+223C） | [notofonts/math](https://github.com/notofonts/math)；本机取自 Ubuntu 的 fonts-noto-core |
+| `NotoSansSymbols-Regular.ttf` | Noto Sans Symbols 2.001（静态） | 以上字体都没有的符号（⌘ 类技术符号、罗马数字 Ⅼ–ⅿ、⚙ 等） | [notofonts/symbols](https://github.com/notofonts/symbols)；本机取自 Ubuntu 的 fonts-noto-core |
+| `NotoSansSymbols2-Regular.ttf` | Noto Sans Symbols 2 2.003（静态） | 同上（几何图形、播放键 ⏩ ⏸、☀ ☔ 等） | 同上 |
 | `PlangothicP1-Regular.ttf` | 遍黑体 Plangothic P1 6.400（项目版本 V2.9.5795，静态，只有常规体） | 思源黑体各地区都没有的汉字（扩展 B 区及以后） | [Plangothic_Project](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/releases/tag/V2.9.5795) 发布附件 `PlangothicP1-Regular.ttf`（2026-09-29 取得） |
 
 各字体的精确 SHA-256 见 `build-data/reference-fonts.sha256`。表中只有思源黑体 TC / JP / KR 的下载地址有原始记录；其余字体以版本号和校验值为准，重新下载后请核对校验值。
