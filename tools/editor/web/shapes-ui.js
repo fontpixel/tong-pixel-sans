@@ -46,7 +46,7 @@ window.ShapeUI = (() => {
       const section=el('details','component-family');section.dataset.symbol=symbol;section.open=expanded.has(symbol)||!!q||visible===1;
       section.ontoggle=()=>{if(section.open)expanded.add(symbol);else expanded.delete(symbol);};
       const total=catalog.totals?.[symbol]??all.length;
-      const summary=el('summary');summary.append(el('span','family-symbol',symbol),el('span','family-count',total+' 种形态'));
+      const summary=el('summary');summary.append(setLang(el('span','family-symbol',symbol),current?.original.locale),el('span','family-count',total+' 种形态'));
       if(parts.some(p=>linked(p.key)))summary.append(el('span','linked-badge','已关联'));
       section.append(summary);
       const head=el('div','family-actions');
@@ -73,7 +73,7 @@ window.ShapeUI = (() => {
     const isLinked=target&&linked(target.key)?.shape_id===f.id;
     card.classList.toggle('is-linked',!!isLinked);
     const top=el('div','form-top'),name=el('div','form-description');
-    name.append(el('h3','form-name',formName(f)));
+    name.append(setLang(el('h3','form-name',formName(f)),f.locale));
     const b=f.bounds, dims=b?`${b[2]}×${b[3]} · ${f.pixel_count} 点`:'';
     const other=f.locale!==current?.original.locale;
     name.append(el('p','form-meta',`${f.locale}${other?'（其他地区）':''} · ${dims}`),el('p','form-meta',b?`字格坐标 (${b[0]}, ${b[1]})`:''));

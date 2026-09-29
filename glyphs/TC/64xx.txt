@@ -1395,7 +1395,7 @@ ai
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：繁体肉部窄至四列，内部点画仍需人工核对。
 
 U+6493 撓
-ai
+approved
 .#......#....
 .#...#######.
 .#......#....
@@ -1409,6 +1409,7 @@ ai
 .#....#...#..
 .#...#....#.#
 ##..#.....###
+@ whole/0 扌 ba5a439d920c4e90a714e126b3d4dfe5
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+6495 撕 = U+6495.SC

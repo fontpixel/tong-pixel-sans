@@ -35,6 +35,10 @@ function representativeNote(id){
   const r=representative.get(id);if(!r)return '';
   return `建议修第 ${r.rank+1} 位：带来 ${r.components.slice(0,6).map(c=>`${c.symbol}·${c.position}（${c.uses} 字用到）`).join('、')}${r.components.length>6?' 等':''}`;
 }
+// Language tags so the browser shows each region's forms (the page itself is zh-CN).
+const LANG={SC:'zh-Hans',TC:'zh-Hant',JP:'ja',KR:'ko'};
+function setLang(node,locale){if(LANG[locale])node.lang=LANG[locale];else node.removeAttribute('lang');return node;}
+function charSpan(ch,locale){const s=document.createElement('span');s.className='ch';s.textContent=ch;return setLang(s,locale);}
 const STATE_ZH={approved:'审核通过',edited:'人工改过 · 待审核',derived:'脚本连带改 · 待审核',ai:'AI 原稿 · 待审核','hangul-ai':'AI 韩文 · 待审核','hangul-composed':'拼合韩文 · 待审核',generated:'程序生成'};
 function say(text, error = false) { $('notice').textContent = text; $('notice').classList.toggle('error', error); }
 async function api(path, body) {
@@ -118,7 +122,7 @@ function renderQueue() {
     $('priority-summary').textContent=`接下来建议修的${repLocale==='SC'?'简体':'繁体'}字：共 ${total} 字，还剩 ${filtered.length} 字未通过。越靠前的字，所含部件被越多其他字用到（常用字优先）；修好并通过一个字，就给这些部件提供了通过的写法。已通过的字自动移出。`;}
   miniObserver.disconnect();$('queue').replaceChildren();
   for(const g of filtered){
-    const b=document.createElement('button');b.textContent=g.char;b.title=`${g.id} · ${STATE_ZH[g.batch]||g.batch}${repLocale?' · '+representativeNote(g.id):''}${g.concern?' · '+g.concern:''}`;
+    const b=document.createElement('button');b.append(charSpan(g.char,g.locale));b.title=`${g.id} · ${STATE_ZH[g.batch]||g.batch}${repLocale?' · '+representativeNote(g.id):''}${g.concern?' · '+g.concern:''}`;
     b.setAttribute('aria-label',`${g.char} ${g.id} ${g.batch}`);b.classList.toggle('active',current?.original.id===g.id);b.classList.toggle('approved',g.approved);b.classList.toggle('edited',g.edited);b.classList.toggle('unused',!!g.unused);if(g.unused)b.title+=' · 字体里用不到';
     const mini=document.createElement('canvas');mini.className='mini';mini.dataset.b=g.b||'';mini.dataset.cjk=/^(SC|TC|JP|KR)$/.test(g.locale)?'1':'';
     // real size before it is drawn (a canvas defaults to 300×150)
@@ -151,7 +155,7 @@ async function show(id, mode='push') {
     current=data;rows=data.current.rows.slice();reused=structuredClone(data.current.reused);undo=[];redo=[];selection=null;drag=null;
     const geom=data.geometry;W=geom.ink_width;H=geom.ink_height;X=geom.x_base;CW=geom.cell_width;CH=geom.cell_height;BASE=geom.baseline_row??null;
     const refName=geom.reference_label||`思源 ${data.original.locale} w400`;
-    $('bigchar').textContent=data.original.char;$('identity').textContent=data.original.id;
+    $('bigchar').textContent=data.original.char;setLang($('bigchar'),data.original.locale);$('identity').textContent=data.original.id;
     const shared=(data.aliases||[]).map(a=>a.split('.').pop());
     $('recipe').textContent=(BASE!==null?`${geom.kind==='mono'?'等宽':'比例'}字格 ${CW}×${CH} · 步进 ${geom.flexible_width?'墨迹宽+1':geom.advance}${geom.x_offset?` · x_offset ${geom.x_offset}`:''} · 红线=基线（${BASE} 行起为降部）`:`字格 ${CW}×${CH} · 墨迹 ${W}×${H}`)+(shared.length?` · ${shared.join('、')} 也用此字形`:'');
     $('reference-box').hidden=!data.reference;$('overlay-controls').hidden=!data.overlay;
