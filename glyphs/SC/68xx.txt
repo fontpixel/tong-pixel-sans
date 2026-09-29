@@ -272,6 +272,8 @@ approved
 ...#..#..#...
 ..#...#...#..
 ##....#....##
+@ whole/0 覀 1f1ef6c21c7d4ca28d8a123bb61096c6
+@ whole/1 木 2c027e98f8f34d67a69c8bff00f7925c
 
 U+681D 栝
 ai
@@ -420,6 +422,7 @@ approved
 ..#.....#....
 ..#.....#....
 @ whole/0 木 8c0a7d2e2d864439a3dd875d3c996d08
+@ whole/1 羊 45b0d8a01b0843eaa44fb839da3f5f7d
 # AI: 二次修字（gpt-6-astra xhigh，借鉴圆石点阵黑，2026-09-28）：窄木復用板的左部，避開右部厂的末撇。
 
 U+6838 核
@@ -1658,6 +1661,7 @@ approved
 ..#.....#....
 ..#.....#....
 @ whole/0 木 bb8c11e61cee41c98d00b44ed031085a
+@ whole/1 奉 512fbb8e512a48238a61d99c3c0d26a1
 
 U+68D3 棓
 ai

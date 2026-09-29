@@ -1297,6 +1297,8 @@ approved
 ......#......
 #############
 ......#......
+@ whole/0 立 cd723353b17a4d0f8e8f99ac5627c827
+@ whole/1 早 8bd97e3a4eb343f6bde17dd394a2d652
 
 U+7AE3 竣
 ai
@@ -1471,3 +1473,4 @@ approved
 ......#......
 ......#......
 @ whole/1 干 e72179da74a14cd7862dbc85d9e9ebd0
+@ whole/0 𥫗 c95cdd2b8ca24d28a1f808946015ee42

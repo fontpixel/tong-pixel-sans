@@ -1274,6 +1274,8 @@ approved
 .#..#..#..#..
 .#..#..#..#..
 ############.
+@ whole/0 夃 b5faf92ebb9444048c126da9b886adfe
+@ whole/1 皿 177d288be42a4bb18f3cfa6c2c00de47
 
 U+76C9 盉
 ai

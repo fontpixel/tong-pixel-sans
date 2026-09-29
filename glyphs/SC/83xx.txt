@@ -174,6 +174,7 @@ approved
 ###...#...###
 ......#......
 @ whole/0 艹 ef205dba25a646498ccaf8b4b74ee3cf
+@ whole/1 末 a7a1d5bf081a40e6ac2bd46f43769ffc
 
 U+830B 茋
 ai
@@ -294,6 +295,8 @@ approved
 ......#......
 ......#......
 #############
+@ whole/0 𫇦 5e3d8449d6df4fbdba22b04ef2af5beb
+@ whole/1 土 182067b530d04130bb270938b3c357b9
 
 U+8315 茕
 ai
@@ -560,6 +563,8 @@ approved
 .#.........#.
 .###########.
 .#.........#.
+@ whole/0 艹 ef205dba25a646498ccaf8b4b74ee3cf
+@ whole/1 回 e201e7ebeefe413eb6834daa56e6a28b
 
 U+8335 茵
 approved
@@ -576,6 +581,7 @@ approved
 .#.#.....#.#.
 .###########.
 .#.........#.
+@ whole/1 因 d3631c584b8b40f5aea41e5811b6af49
 # AI: 因内大横与外框分开。
 
 U+8336 茶
@@ -718,6 +724,8 @@ approved
 ..#########..
 .............
 #############
+@ whole/0 艹 eccf815a95344a4eb9ba4719a076be35
+@ whole/1 亘 d5df9c427b494f9d9de00ee499c54f09
 
 U+8343 荃
 ai
@@ -1087,6 +1095,7 @@ approved
 ###...#...###
 ......#......
 @ whole/0 艹 ef205dba25a646498ccaf8b4b74ee3cf
+@ whole/1 𣎾 dec12981f0894522a733901215365e1b
 
 U+8364 荤
 ai
@@ -1482,6 +1491,8 @@ approved
 .#.........#.
 .###########.
 .#.........#.
+@ whole/0 艹 ef205dba25a646498ccaf8b4b74ee3cf
+@ whole/1 吕 6377b5eaad55467984c6eec8e51ca37a
 
 U+8393 莓
 ai
@@ -1516,6 +1527,8 @@ approved
 ..#########..
 ......#......
 ......#......
+@ whole/0 艹 ef205dba25a646498ccaf8b4b74ee3cf
+@ whole/1 辛 880f6048ca3f4ccdb0c70a8b241477e8
 
 U+8399 莙
 ai
@@ -1692,6 +1705,8 @@ approved
 .....#.#.....
 ...##...##...
 ###.......###
+@ whole/0 艹 8a09f25bce0f48dabb1af4176ccdbf51
+@ whole/1 旲 1acc934120dd4393b9cbfcf756cdde62
 
 U+83B0 莰
 ai
@@ -1726,6 +1741,8 @@ approved
 ...#..#..#...
 ..#...#...#..
 ##....#....##
+@ whole/0 艹 ef205dba25a646498ccaf8b4b74ee3cf
+@ whole/1 来 1762c884cc4a4c87832b854bc27549b8
 
 U+83B2 莲
 ai
@@ -2280,6 +2297,8 @@ approved
 ..#.......#..
 ..#.......#..
 ..#########..
+@ whole/0 艹 ef205dba25a646498ccaf8b4b74ee3cf
+@ whole/1 咅 7b5287415578439b905224f4e2a1ea61
 
 U+83EA 菪
 ai

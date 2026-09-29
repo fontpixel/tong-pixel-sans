@@ -503,6 +503,7 @@ approved
 .#....#....##
 #.....#......
 ....###......
+@ whole/1 𰛅 dd2db268796d414281d6bc67441cda80
 
 U+6C35 氵
 ai
@@ -1500,6 +1501,7 @@ approved
 #....##.##...
 #..##.....##.
 @ whole/0 氵 6e46c340f7d54431baf92491ff0651be
+@ whole/1 殳 dcee4a6c066d4d6b8fb935e9e87cbab4
 # AI: 二次修字（gpt-6-astra xhigh，借鉴圆石点阵黑，2026-09-28）
 
 U+6CA3 沣
@@ -2091,6 +2093,7 @@ approved
 #...########.
 #..........#.
 @ whole/0 氵 6e46c340f7d54431baf92491ff0651be
+@ whole/1 去 e0b245fb6e7544f08f910e50b5ad6dd2
 # AI: 二次修字（gpt-6-astra xhigh，借鉴圆石点阵黑，2026-09-28）
 
 U+6CD6 泖

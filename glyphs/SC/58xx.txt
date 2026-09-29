@@ -84,6 +84,7 @@ approved
 ..#########..
 ......#......
 #############
+@ whole/0 廿 94c59762b6f24a5591bd039f9abc66c9
 
 U+5809 堉
 ai
@@ -1314,6 +1315,9 @@ approved
 .....#.#.....
 .....#.#.....
 #############
+@ whole/00 士 d72095bc38ca49deac063ac201a9bd28
+@ whole/01 冖 ebbf64672226450eba6bab466abfb3a3
+@ whole/1 业 52bb4fa4dccc4056915d17eaaf0038c6
 
 U+58F8 壸
 ai

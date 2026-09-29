@@ -291,6 +291,7 @@ approved
 .#.#.........
 #...#########
 @ whole/0 辶 b0cefa5baa5b4eb6b98bbc0636db9050
+@ whole/1 言 f0f855f098ce427bac53b255a3ee2974
 # AI: 二次修字（gpt-6-astra xhigh，借鉴圆石点阵黑，2026-09-28）：保留繁体辶的曲折写法；圆石单折辶不适用。
 
 U+901A 通
@@ -556,6 +557,7 @@ approved
 .#.#.........
 #...#########
 @ whole/0 辶 b0cefa5baa5b4eb6b98bbc0636db9050
+@ whole/1 隹 663e5bff6aba495190126ad0293e18ab
 # AI: 二次修字（gpt-6-astra xhigh，借鉴圆石点阵黑，2026-09-28）：辶依TC保留兩折；隹右首筆保留丶。
 
 U+9034 逴
@@ -839,6 +841,7 @@ approved
 .#.#.........
 #...#########
 @ whole/0 辶 b0cefa5baa5b4eb6b98bbc0636db9050
+@ whole/1 咼 e9502fdbc43b4bcaa9052d94989e712a
 # AI: 二次修字（gpt-6-astra xhigh，借鉴圆石点阵黑，2026-09-28）：圆石咼上框内折在左，繁体参考在右，保留本地区写法。
 
 U+904F 遏
@@ -924,6 +927,7 @@ approved
 .#.#.........
 #...#########
 @ whole/0 辶 b0cefa5baa5b4eb6b98bbc0636db9050
+@ whole/1 首 16c5c045999c4c0b8132809d05734068
 # AI: 二次修字（gpt-6-astra xhigh，借鉴圆石点阵黑，2026-09-28）：保留繁体辶双折，未套圆石的一折。
 # 人工: 整字复制自 U+9053.SC（1 处关联）
 
@@ -1565,6 +1569,7 @@ approved
 .#.#..##...#.
 #...#########
 @ whole/0 辶 b0cefa5baa5b4eb6b98bbc0636db9050
+@ whole/1 睘 ac7552290e0f40a79cfe8aa42b202361
 # AI: 二次修字（gpt-6-astra xhigh，借鉴圆石点阵黑，2026-09-28）：保留TC辶；睘長橫兼口頂，衣腳近走底需人審。
 
 U+9085 邅

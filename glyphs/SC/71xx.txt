@@ -318,6 +318,8 @@ approved
 .#..#..#...#.
 #....#..#...#
 @ whole/1 灬 056ca124552a4a39b0212fead3aeb386
+@ whole/00 𱼀 c03a69d407ab4aebbe1e77e36559d1a9
+@ whole/01 犬 78dc23f31b5c409f88fe04d382b9e93a
 # AI: 二次修字（gpt-6-astra xhigh，借鉴圆石点阵黑，2026-09-28）：上部重排斜笔，灬缩为两行以留出一行白缝。
 
 U+7141 煁

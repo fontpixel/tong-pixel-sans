@@ -13,6 +13,8 @@ approved
 ..#.......#..
 ..#########..
 ..#.......#..
+@ whole/1 二 6a3574c12809444fabce3e269213dc83
+@ whole/2 口 13df4cd918dc490eb6b47cd39be7ce29
 # AI: 二次修字（gpt-6-astra xhigh，借鉴圆石点阵黑，2026-09-28）：首笔依日文思源作短横，不采用圆石的点。
 
 U+8A02 訂
@@ -658,6 +660,8 @@ approved
 #...#.#....#.
 #####.######.
 #...#.#....#.
+@ whole/0 訁 bce691bc6fbc49bbb5c0d6b2ed087e86
+@ whole/1 吾 f1ecdafbc09048b0a2e4dfc3fedbb9b9
 # AI: 二次修字（gpt-6-astra xhigh，借鉴圆石点阵黑，2026-09-28）：言首笔保留日文短横；两侧口下横对齐。
 # 人工: 整字复制自 U+8A9E.TC（0 处关联）
 
@@ -741,6 +745,8 @@ approved
 #...#.#..#...
 #####.#..#...
 #.....#######
+@ whole/0 訁 e67c0d6d9c8746798f7ae70373f5e7e2
+@ whole/1 隹 e2066ef6024f461c8dff1dc0e314fadb
 
 U+8AB2 課
 ai

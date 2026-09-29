@@ -33,6 +33,8 @@ approved
 .#........#..
 .#........#..
 #.......###..
+@ whole/0 ⺆ 41c8aaf7ac134a7d86e11c3f34db0b63
+@ whole/1 二 5bd8c7439009439989bfbb74422f6d6b
 
 U+6709 有
 approved
@@ -49,6 +51,8 @@ approved
 ...#......#..
 ...#......#..
 ...#....###..
+@ whole/0 𠂇 19a3e54e9b9d4bd2b7d0316b41e3a872
+@ whole/1 ⺝ ad036b9e287d48fca52c87cd9db27ba6
 # AI: 二次修字（gpt-6-astra xhigh，借鉴圆石点阵黑，2026-09-28）：月的三横间隔相等，末段竖线压缩一行。
 
 U+670A 朊
@@ -578,6 +582,7 @@ approved
 ..#.....#....
 ..#.....#....
 @ whole/1 干 df891ad403734d899a1ced9b5218fd44
+@ whole/0 木 0b8a7509e6414a76b48904c4b0fa8ce8
 
 U+6748 杈
 ai
@@ -662,6 +667,8 @@ approved
 ..#.......#..
 ..#.......#..
 ..#########..
+@ whole/0 木 9c2b937e0e134f0eb0a95ef7364dda39
+@ whole/1 口 4e6c69d02ccc4342b20c4219e243705c
 
 U+6750 材
 approved
@@ -679,6 +686,7 @@ approved
 ..#.......#..
 ..#......##..
 @ whole/1 才 5a34c803c93a4def9ae11d635c126e1c
+@ whole/0 木 91a336edcc194663b66cd712de4b5f2a
 
 U+6751 村
 approved
@@ -696,6 +704,7 @@ approved
 ..#.......#..
 ..#.....###..
 @ whole/1 寸 0fbeb06ff44f4091892da2ba95f4fefa
+@ whole/0 木 91a336edcc194663b66cd712de4b5f2a
 
 U+6753 杓
 ai

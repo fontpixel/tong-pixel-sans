@@ -64,6 +64,8 @@ approved
 .###########.
 ...#..#..#...
 .##..##...##.
+@ whole/0 敏 148f2cfb77064aeb97ef3b84fc0ff880
+@ whole/1 糸 18fa84037c5a4c9b8e5d853a5e634b70
 # AI: 二次修字（gpt-6-astra xhigh，借鉴圆石点阵黑，2026-09-28）：每撇头与短横共行，糸留六行；母内点与毎竖小字号近似，待审。
 
 U+7E44 繄
@@ -982,6 +984,7 @@ approved
 ..##....#....
 ##..#########
 @ whole/0 纟 cfb1f55fa19c4bc8be6107cc2877b64d
+@ whole/1 𢀖 28ccaa6b0846477099ee3559fdcce12c
 # AI: 二次修字（gpt-6-astra xhigh，借鉴圆石点阵黑，2026-09-28）
 
 U+7ED0 绐

@@ -461,6 +461,8 @@ approved
 ......#......
 ......#......
 #############
+@ whole/0 口 ed2afd7a288b4c7dbbcecddec9c6a1cf
+@ whole/1 𡈼 7eeb2f1729684bbab36f302b2b5838fb
 # AI: 呈依TC保留壬部上撇，与口之间留白。
 
 U+544A 告 = U+544A.SC

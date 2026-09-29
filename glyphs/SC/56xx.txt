@@ -1247,6 +1247,7 @@ approved
 .###########.
 .#.........#.
 @ whole/0 囗 af23fce896e748ceaa5237cbd6333d6b
+@ whole/1 大 09c8b2ed0a0e49ad9d932e0d8d802db3
 # AI: 二次修字（gpt-6-astra xhigh，借鉴圆石点阵黑，2026-09-28）：保留通過范例的囗，內大與上框隔開。
 
 U+56E1 囡

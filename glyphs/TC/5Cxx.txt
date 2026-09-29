@@ -147,6 +147,9 @@ approved
 ...#......#..
 ...###....#..
 ###.....###..
+@ whole/00 业 cdbddb2429f24a5b8acb55d890564244
+@ whole/01 𦍌 ca7c31c841fa462daadeedc64e80b1b3
+@ whole/1 寸 b0830f2969de4d42a2745667ef924927
 # AI: 二次修字（gpt-6-astra xhigh，借鉴圆石点阵黑，2026-09-28）
 
 U+5C0E 導

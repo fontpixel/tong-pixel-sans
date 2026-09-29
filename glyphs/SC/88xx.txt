@@ -293,6 +293,7 @@ approved
 ..#......#...
 ..#....###...
 @ whole/0 彳 35aa7d3118ad4fc9869e57b9dc94662a
+@ whole/1 亍 60b5fbd4e2dc43a1a5ac8117c27b0d9c
 # AI: 二次修字（gpt-6-astra xhigh，借鉴圆石点阵黑，2026-09-28）
 
 U+884D 衍

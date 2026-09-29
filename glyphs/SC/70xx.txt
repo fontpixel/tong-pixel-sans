@@ -320,6 +320,7 @@ approved
 #........#...
 #.....####...
 @ whole/1 丁 8a4f52f7004241ff84bfaf645a28ffaf
+@ whole/0 火 ae305d0a419b47888ff74873acef3cb1
 
 U+7070 灰
 ai

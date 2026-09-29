@@ -49,6 +49,8 @@ approved
 ...#..#..#...
 ..#...#...#..
 ##....#....##
+@ whole/0 覀 1f1ef6c21c7d4ca28d8a123bb61096c6
+@ whole/1 木 9963f880913c4e92aed4a85baca70f6f
 
 U+6818 栘
 ai

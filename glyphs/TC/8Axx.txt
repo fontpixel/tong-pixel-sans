@@ -1618,6 +1618,8 @@ approved
 #...#.#....#.
 #####.######.
 #...#.#....#.
+@ whole/0 訁 85831544ac65479ba7fac06d48711eb8
+@ whole/1 吾 5bf663b8cb4c4ba3a94f0ab78c3bd944
 # AI: 二次修字（gpt-6-astra xhigh，借鉴圆石点阵黑，2026-09-28）
 
 U+8AA0 誠
@@ -1766,6 +1768,8 @@ approved
 #..#...#..#..
 #..#...#..#.#
 ####.##....##
+@ whole/0 訁 82df5aebbda14ede93239e3bec72f578
+@ whole/1 兌 6ccb8543687c4d95a327ae5234a18dde
 # AI: 二次修字（gpt-6-astra xhigh，借鉴圆石点阵黑，2026-09-28）：保留繁体兌上部；收窄儿部竖弯钩以留白。
 
 U+8AAB 誫
@@ -1799,6 +1803,8 @@ approved
 #...#.#..#...
 #####.#..#...
 #.....#######
+@ whole/0 訁 ff0302d623c749cf8ade76dd3dce6a7b
+@ whole/1 隹 4a22afb82f6a49a3a6b0b657a432979e
 
 U+8AB2 課
 ai
