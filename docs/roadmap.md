@@ -4,15 +4,13 @@
 
 ## 进行中：AI 修字队列
 
-启动提示词在 `work/airepair/QUEUE-PROMPT.md`（不入库），用户在新的 Codex 会话中发送。依次：
+三步，提示词在 `work/airepair/STEP1-PROMPT.md`、`STEP2-PROMPT.md`、`STEP3-PROMPT.md`（不入库），用户在 Codex 中发送（50 个并发）：
 
-1. `phase2a-common`：第二期前半，剩 22 批。
-2. `symbols-v1`：补充符号的底稿，1,012 字，21 批。
-3. `phase2b-v2`：第二期后半，只含母版，48 批。已用上手机修的 95 字作范例。
-4. `phase3-v2`：新增字的底稿，9 批。
-5. `derive-v1`：地区派生，约 10,700 字，其中 6,497 个是新建的地区版底稿。第 1、3、4 轮全部提交后才生成。
+1. 汉字母版：phase2a-v2（764 字）、phase2b-v3（2,272 字）、phase3-v3（445 字）、recheck-v1（466 字，按 L049 / L052 / L053 回头修）。
+2. 符号：symbols-v2（1,012 字）。
+3. 地区派生：derive-v1（约 10,500 字），第一步全部提交后才生成。
 
-跑完之后：`compare.py` 出对比图，用户决定是否导入。导入顺序见 `QUEUE-PROMPT.md`。用户手修后，用 `review_edits.py` 总结修改，更新 `docs/lessons/`。
+跑完之后：`compare.py` 出对比图，用户决定是否导入。导入顺序见 `work/airepair/QUEUE-PROMPT.md`。
 
 ## 待决定
 
@@ -23,7 +21,7 @@
 ## 手机修字
 
 - 手机编辑器：`tools/mobile/`（选字 `select_glyphs.py`、数据 `build_data.py`、页面 `template.html`、导入 `import_edits.py`）。
-- 2026-09-29 的 150 字清单是 `tools/editor/data/lists/手机修字150.txt`：已通过 95 个，其余 55 个还没修。
+- 2026-09-29 的 150 字清单 `tools/editor/data/lists/手机修字150.txt` 已全部通过（2026-09-30）。
 
 ## 西文
 
@@ -42,7 +40,7 @@
 - Powerline 装饰图形 E0C0–E0D4（21 个）尚未做；生成器在 `archive/tong-geometric-v1/generate.py`。
 - 韩文字体里的汉字借用繁体字形，尚无韩国汉字字形。
 - 只输出 BDF；单文件 OpenType（用 locl 切换地区字形）尚未实现。
-- 人工审核进度：通过 1,138，改过未通过 129。
+- 人工审核进度：通过 1,229，改过未通过 330（其中约 200 个只是随共享形态同步变化）。
 
 ## 已完成（2026-09-29–30）
 
