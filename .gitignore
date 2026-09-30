@@ -1,5 +1,6 @@
 # generated or local-only, at the repository root
 /build/
+/dist/
 /reports/
 /reference-fonts/
 /work/

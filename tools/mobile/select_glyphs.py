@@ -1,9 +1,12 @@
 """Pick the glyphs whose hand repair helps the next AI rounds most, as a list for the editors.
 
-    .venv/bin/python tools/mobile/select_glyphs.py NAME --rounds R1 R2 … [--count 150]
+    .venv/bin/python tools/mobile/select_glyphs.py NAME (--rounds R1 R2 … | --unapproved) [--count 150]
 
 Demand: the components (IDS parts, not single strokes) of the glyphs still to be repaired in the
-given rounds under work/airepair/ (unsubmitted batches only). Supply: approved glyphs that serve as
+given rounds under work/airepair/ (unsubmitted batches only), or with --unapproved of every regional
+glyph (SC TC JP) not approved yet, for a review list. With --unapproved a candidate's value is also
+weighted by how common the character is (×3 for SC 常用 2500 / JP 教育汉字 / TC 常用 4808's first
+half, ×2 for SC 3500 / JP 常用 / the rest of TC 4808). Supply: approved glyphs that serve as
 exemplars for a component the way tools/airepair/prepare.py finds them (form links; an approved
 glyph of the component character itself). A component is worth demand × (1, ½, ¼, ⅒ for 0, 1, 2,
 3+ exemplars). Candidates are AI glyphs or drafts of common characters (the tables below); a glyph
@@ -51,7 +54,8 @@ def pending(rnd):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("name")
-    ap.add_argument("--rounds", nargs="+", required=True)
+    ap.add_argument("--rounds", nargs="+", default=[])
+    ap.add_argument("--unapproved", action="store_true", help="demand from every unapproved regional glyph")
     ap.add_argument("--count", type=int, default=150)
     a = ap.parse_args()
     s = Store(ROOT)
@@ -66,7 +70,22 @@ def main():
             parts_cache[gid] = sorted({p["symbol"] for p in parts if p["key"] != "whole" and not is_stroke(p["symbol"])})
         return parts_cache[gid]
 
-    queue = list(dict.fromkeys(g for r in a.rounds for g in pending(r) if g in s.records))
+    if a.unapproved:
+        queue = [g for g, r in s.records.items() if r["group"] in ("SC", "TC", "JP") and "alias" not in r
+                 and r.get("state") in ("ai", "edited", "draft")]
+    else:
+        queue = list(dict.fromkeys(g for r in a.rounds for g in pending(r) if g in s.records))
+    weight = {}
+    if a.unapproved:
+        tiers = {"SC": [("prc-lit/changyong-2500.txt", 3), ("prc-lit/changyong-3500.txt", 2)],
+                 "JP": [("jp/kyoiku.txt", 3), ("jp/joyo.txt", 2)]}
+        for reg, tl in tiers.items():
+            for t, w in reversed(tl):
+                for cp in table_codepoints(ROOT / "build-data/coverage" / t):
+                    weight[f"U+{cp:04X}.{reg}"] = w
+        tw = table_codepoints(ROOT / "build-data/coverage/tw/tw-changyong-4808.txt")
+        for i, cp in enumerate(tw):
+            weight[f"U+{cp:04X}.TC"] = 3 if i < len(tw) // 2 else 2
     demand, users = Counter(), defaultdict(list)
     for g in queue:
         reg = key_region(s.records[g]["group"])
@@ -92,7 +111,7 @@ def main():
         reg = key_region(s.records[g]["group"])
         keys = {(reg, c) for c in comps(g)} | {(reg, s.records[g]["char"])}
         vals = sorted((demand[k] * WEIGHT[min(exemplars[k], 3)] for k in keys), reverse=True)
-        return sum(vals[:4]) / (1 + len(comps(g)) / 8), keys
+        return weight.get(g, 1) * sum(vals[:4]) / (1 + len(comps(g)) / 8), keys
 
     picked = []
     scores = {g: value(g)[0] for g in cands}
@@ -118,7 +137,8 @@ def main():
             exemplars[k] += 1
         del scores[g]
     lst = ROOT / "tools/editor/data/lists" / f"{a.name}.txt"
-    lst.write_text(f"# 手修后最能帮到后续 AI 轮次的字（tools/mobile/select_glyphs.py，轮次 {' '.join(a.rounds)}）\n"
+    lst.write_text((f"# 优先审核的汉字：常用，且部件在未审字里用得多、已通过范例少（tools/mobile/select_glyphs.py --unapproved）\n"
+                    if a.unapproved else f"# 手修后最能帮到后续 AI 轮次的字（tools/mobile/select_glyphs.py，轮次 {' '.join(a.rounds)}）\n")
                    + "\n".join(p["id"] for p in picked) + "\n", encoding="utf-8")
     (ROOT / "work/mobile").mkdir(parents=True, exist_ok=True)
     (ROOT / "work/mobile" / f"{a.name}.json").write_text(json.dumps({"rounds": a.rounds, "queued": len(queue), "glyphs": picked},

@@ -3,6 +3,7 @@
 ```bash
 python3 tools/build.py [输出目录]   # 默认 build/，约 10 秒
 python3 tools/verify.py            # 源文件检查 + 8 个地区字体的字表覆盖
+python3 tools/release.py [版本]      # 构建并在 dist/（不入库）放发布文件：10 个 BDF、全部许可证、README.txt，另打 zip；版本默认为当天日期
 python3 tools/preview.py           # 每个字体的样张 build/*-preview.png（需要 Pillow）
 python3 tools/preview.py --readme  # 同时更新 docs/images/sample.png
 ```
