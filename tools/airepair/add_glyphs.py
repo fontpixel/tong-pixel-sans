@@ -48,7 +48,7 @@ import draft  # noqa: E402
 
 REQUESTS = [  # (table under build-data/coverage/, region)
     ("kr/ksx1001-hanja.txt", "KR"), ("kr/ksx1001-symbols.txt", "KR"),
-    ("jp/kana-marks.txt", "JP"), ("jp/joyo.txt", "JP"),
+    ("jp/kana-marks.txt", "JP"), ("jp/joyo.txt", "JP"), ("jp/jisx0208-l2.txt", "JP"),
     ("hk/hk-changyong.txt", "TC"),
     ("prc-lit/kangxi-radicals.txt", "SC"), ("prc-lit/radicals-supplement.txt", "SC"),
     ("prc-lit/tongyong-7000.txt", "SC"), ("prc-lit/hanyi-jianfan.txt", "SC"),

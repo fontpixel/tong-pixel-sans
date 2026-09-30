@@ -578,7 +578,8 @@ class Store(ShapesMixin):
             return self.current(gid)
 
     def import_ai(self, gid, rows, ai_note, expected_revision):
-        """Replace an unreviewed AI glyph or a draft by a new AI version (state becomes `ai`, the `# AI:` note is
+        """Replace an unreviewed glyph (AI version, draft, or one a person changed without approving it: the user
+        counts those as unfinished, 2026-09-30) by a new AI version (state becomes `ai`, the `# AI:` note is
         replaced). The first AI version is archived in history/ai-originals. Links whose form pixels
         are no longer all in the new rows are removed from this glyph only (forms are not changed; a
         form no glyph uses any more leaves the library). Refused if the glyph changed since
@@ -588,8 +589,8 @@ class Store(ShapesMixin):
             old = self.current(gid)
             if old["revision"] != expected_revision:
                 raise Conflict(f"{gid} 已被修改，未导入")
-            if old["state"] not in ("ai", "draft"):
-                raise Conflict(f"{gid} 状态为 {old['state']}，只替换 AI 版本或底稿")
+            if old["state"] not in ("ai", "draft", "edited"):
+                raise Conflict(f"{gid} 状态为 {old['state']}，只替换未通过的字（AI 版本、底稿、改过未通过）")
             lib = self._library()
             w, h = len(rows[0]), len(rows)
             ink = {(y, x) for y, r in enumerate(rows) for x, v in enumerate(r) if v == "#"}

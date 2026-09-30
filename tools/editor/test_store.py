@@ -133,8 +133,18 @@ class StoreTest(unittest.TestCase):
         self.assertNotIn("# AI: 横画", page)
         self.assertIn("# AI: 横画", self.page("history/ai-originals/SC/4Exx.txt"))
         self.assertNotIn("f1", self.s.forms)                           # no user left
-        with self.assertRaises(Conflict):                               # only AI versions are replaced
+        with self.assertRaises(Conflict):                               # approved glyphs are never replaced
             self.s.import_ai("U+4E01.SC", TEN, "x", self.s.current("U+4E01.SC")["revision"])
+
+    def test_import_ai_replaces_an_edited_glyph(self):
+        cur = self.s.current("U+4E03.SC")
+        rows = list(CROSS); rows[0] = "#" + BLANK[1:]
+        edited = self.s.save({"id": "U+4E03.SC", "expected_revision": cur["revision"], "rows": rows, "note": "改了一点",
+                              "approved": False})
+        self.assertEqual(edited["state"], "edited")
+        out = self.s.import_ai("U+4E03.SC", CROSS, "继续修", edited["revision"])
+        self.assertEqual(out["current"]["state"], "ai")
+        self.assertIn("# 人工: 改了一点", self.page("glyphs/SC/4Exx.txt"))
 
     def test_split_alias_then_make_alias_again(self):
         with self.assertRaises(ValueError):

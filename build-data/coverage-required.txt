@@ -9,6 +9,7 @@ Big5	tw/big5.txt
 常用国字	tw/tw-changyong-4808.txt
 次常用国字	tw/big5-cichangyong.txt
 JIS X 0208 第一水準	jp/jisx0208-l1.txt
+JIS X 0208 第二水準	jp/jisx0208-l2.txt
 JIS X 0208 非汉字	jp/jisx0208-nonkanji.txt
 谚文音节	kr/hangul-syllables.txt
 谚文兼容字母	kr/hangul-compat-jamo.txt

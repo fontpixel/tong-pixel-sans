@@ -53,7 +53,7 @@ def master_of(s, cp):
 def select(s, a):
     if a.derive:
         ids = sorted((g for g, r in s.records.items() if r["group"] in REGIONS and "alias" not in r
-                      and r["state"] in ("ai", "draft") and master_of(s, r["cp"]) != g),
+                      and r["state"] in ("ai", "draft", "edited") and master_of(s, r["cp"]) != g),
                      key=lambda g: (s.records[g]["cp"], REGIONS.index(s.records[g]["group"])))
     elif a.representative:
         ids = [g["id"] for g in read_json(ROOT / "tools/editor/data/representative.json")["glyphs"]]
@@ -66,7 +66,7 @@ def select(s, a):
         rec = s.records.get(gid)
         if rec is None or "alias" in rec or rec["group"] not in REGIONS + (("HW", "PR") if a.symbols else ()):
             skipped["不是简 / 繁 / 日 / 韩的独立字形"] += 1
-        elif rec["state"] not in ("ai", "draft"):
+        elif rec["state"] not in ("ai", "draft", "edited"):     # edited = changed but not approved: unfinished
             skipped[f"状态 {rec['state']}（不交给 AI）"] += 1
         elif a.masters_only and master_of(s, rec["cp"]) != gid:
             skipped["不是母版（之后从母版派生）"] += 1
@@ -169,6 +169,10 @@ DERIVE_TASK = ("本批是**同字各地区的派生**（LESSONS.md L050，用户
                "“旧版”是这个地区以前独立修的版本：某处地区写法它处理得好，可以借鉴那一处，但不能以旧版为基础。")
 
 
+EDITED_TASK = ("本批的字**用户改过一部分、还没审核通过**（例如只改了共享的左偏旁形态，其余还是 AI 版）：用户认为这些字还没修完。"
+               "你在**当前版本**上继续修：用户改过的部分和 inputs.txt 列出的“已关联的部件”保持不动，除非明显有错；其余部分按规则和范例修好。")
+
+
 RECHECK_TASK = ("本批是**按新规则的回头修**：这些字已经由 AI 修过，但不符合用户最近确认的规则。inputs.txt 每字列出了“本轮要改”的问题"
                 "（部件间空了 2 列以上、字修窄了、没用满第 0–12 行），**必须改掉这些问题**：部件靠拢到只空 0–1 列，省下的空间给部件加宽，"
                 "整字按 L052 撑到 13 列、按 L053 用满上下。改时照已通过的范例和 L051 统一左偏旁；列出的问题以外，满意的地方可以不改。")
@@ -232,6 +236,7 @@ def main():
               "ai_note": " ".join(rec["ai_note"]), "tumbled": tum.get(rec["cp"])}
         if a.start_from_ref and gid in refs:
             it["start"] = f"{refs[gid]['round']} 的结果（未导入）"
+        it["linked"] = sorted({l["symbol"] for l in rec["links"]})
         if issues:
             it["issues"] = issues.get(gid, [])
         it["tumbled_match"] = region_match(it["char"], it["region"], it["tumbled"]) if it["tumbled"] and not a.derive and not a.symbols else "圆石没有此字"
@@ -371,6 +376,10 @@ def main():
                       + (f" 同字已通过={','.join(it['same_char_approved'])}" if it["same_char_approved"] else "")]
             if it["ai_note"]:
                 lines.append(f"  底稿说明：{it['ai_note'].removeprefix('底稿：')}" if it["state"] == "draft" else f"  上一轮 AI 说明：{it['ai_note']}")
+            if it["state"] == "edited":
+                lines.append("  用户改过、还没通过：在当前版本上继续修，保留用户改过的地方，除非明显有错")
+            if it["linked"]:
+                lines.append(f"  本字已关联的部件（用户确认或共享的写法，像素尽量不动）：{'、'.join(it['linked'])}")
             if it.get("start"):
                 lines.append(f"  “当前”取自 {it['start']}")
             for x in it.get("issues", []):
@@ -404,7 +413,8 @@ def main():
     (out / "LESSONS.md").write_text("# 本轮读本\n\n以下先是用户确认的规则（必须遵守），再是修字要点与自检清单。\n\n## "
                                     + "\n## ".join(keep) + "\n\n---\n\n" + reader.read_text(encoding="utf-8"))
     drafts = sum(i["state"] == "draft" for i in items)
-    task = DERIVE_TASK if a.derive else SYMBOL_TASK if a.symbols else RECHECK_TASK if issues else ("本批的字**是新增字的底稿**：由思源黑体点阵化（WorkBench 渲染加相位搜索），还没经 AI 或人工修。请在底稿基础上完整修字，"
+    task = DERIVE_TASK if a.derive else SYMBOL_TASK if a.symbols else RECHECK_TASK if issues else EDITED_TASK if all(
+        i["state"] == "edited" for i in items) else ("本批的字**是新增字的底稿**：由思源黑体点阵化（WorkBench 渲染加相位搜索），还没经 AI 或人工修。请在底稿基础上完整修字，"
             "像修第一轮那样认真处理每个字（结构、笔画、密处取舍），不要只做微调。" if drafts == len(items) else
             "本批的字**已经由 AI 修过**，你在**当前版本**的基础上继续修整。满意的字可以不改。" if not drafts else
             "本批大多数字**已经由 AI 修过**，在当前版本上继续修整，满意的可以不改；inputs.txt 标为“底稿”的字是新增字的底稿，要完整修。")

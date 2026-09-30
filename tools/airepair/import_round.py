@@ -2,8 +2,8 @@
 
     .venv/bin/python tools/airepair/import_round.py NAME [--dry-run] [--exclude 字…] [--only-ids FILE] [--masters-only] [--skip-ids FILE] [--alias-identical]
 
-A glyph edited since the round was prepared (revision differs from items.json) or no longer in state
-`ai` is skipped, never overwritten. The previous AI version is archived in history/ai-originals by
+A glyph changed since the round was prepared (revision differs from items.json) or approved is skipped,
+never overwritten; unapproved glyphs (ai, draft, edited) take the new AI version. The previous AI version is archived in history/ai-originals by
 the store; links whose form pixels are no longer in the new version are removed from that glyph only.
 With --masters-only, only glyphs that are their character's master are imported (the other regions
 are left for a derivation round, whose import would otherwise find them changed).
@@ -54,7 +54,7 @@ def main():
                 skipped.append((g["id"], "not the master (left for derivation)")); continue
             if a.dry_run:
                 cur = s.current(g["id"])
-                if cur["revision"] != items[g["id"]]["revision"] or cur["state"] != "ai":
+                if cur["revision"] != items[g["id"]]["revision"] or cur["state"] not in ("ai", "draft", "edited"):
                     skipped.append((g["id"], "changed since the round was prepared"))
                 else:
                     done.append(g["id"])
