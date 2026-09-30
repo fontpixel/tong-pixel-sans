@@ -1,6 +1,6 @@
 """Character charts of the non-Han categories, from the built glyph data (as the BDFs render them).
 
-    python3 tools/charts.py [output-dir] [--region SC|TC|JP|KR|Latin] [--all]      (default: build/charts/; needs Pillow)
+    python3 tools/charts.py [output-dir] [--region SC|TC|JP|KR|Latin] [--root REPO] [--all]      (default: build/charts/; needs Pillow)
 
 For each category of tools/editor/make_symbol_lists.py (by default: punctuation, digits, Latin, IPA,
 and the common symbol categories 18–26) writes chart-NN-<name>.png: 16 code points a row, each cell
@@ -96,13 +96,15 @@ def specimen(prop, path):
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     region = sys.argv[sys.argv.index("--region") + 1] if "--region" in sys.argv else "SC"
-    out = Path(args[0]) if args and args[0] != region else ROOT / "build/charts"
+    root = Path(sys.argv[sys.argv.index("--root") + 1]) if "--root" in sys.argv else ROOT
+    args = [x for x in args if x not in (region, str(root))]
+    out = Path(args[0]) if args else ROOT / "build/charts"
     out.mkdir(parents=True, exist_ok=True)
     if region == "Latin":
         from build import latin_faces
-        prop, mono = latin_faces()
+        prop, mono = latin_faces(root)
     else:
-        prop, mono = next((p, m) for r, p, m in faces() if r == region)
+        prop, mono = next((p, m) for r, p, m in faces(root) if r == region)
     for name, ranges in CATEGORIES:
         if "--all" not in sys.argv and name[:2] not in DEFAULT:
             continue
