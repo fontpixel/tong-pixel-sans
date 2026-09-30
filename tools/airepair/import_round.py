@@ -1,6 +1,6 @@
 """Import a round's submitted versions into glyphs/ as new AI versions (state stays `ai`).
 
-    .venv/bin/python tools/airepair/import_round.py NAME [--dry-run] [--exclude 字…] [--only-ids FILE] [--masters-only] [--alias-identical]
+    .venv/bin/python tools/airepair/import_round.py NAME [--dry-run] [--exclude 字…] [--only-ids FILE] [--masters-only] [--skip-ids FILE] [--alias-identical]
 
 A glyph edited since the round was prepared (revision differs from items.json) or no longer in state
 `ai` is skipped, never overwritten. The previous AI version is archived in history/ai-originals by
@@ -31,12 +31,14 @@ def main():
     ap.add_argument("--exclude", default="", help="characters not to import")
     ap.add_argument("--only-ids", help="file with the glyph ids to import (one per line)")
     ap.add_argument("--masters-only", action="store_true", help="import only glyphs that are their character's master")
+    ap.add_argument("--skip-ids", help="file with glyph ids not to import (a later round repairs them again)")
     ap.add_argument("--alias-identical", action="store_true", help="derived glyphs identical to their master become aliases")
     a = ap.parse_args()
     rnd = Path(a.name) if "/" in a.name else ROUNDS / a.name
     info = read_json(rnd / "round.json")
     items = {i["id"]: i for i in read_json(rnd / "items.json")["items"]}
     only = set(Path(a.only_ids).read_text().split()) if a.only_ids else None
+    skip_ids = set(Path(a.skip_ids).read_text().split()) if a.skip_ids else set()
     prefix = f"AI 修字 {info['name']}（{info['model']} {info['effort']}，{info['created_at'][:10]}）"
     s = Store(ROOT)
     done, skipped, dropped, aliased = [], [], Counter(), []
@@ -44,6 +46,10 @@ def main():
         for g in read_json(p)["glyphs"]:
             if g["char"] in a.exclude or (only is not None and g["id"] not in only):
                 skipped.append((g["id"], "not selected")); continue
+            if g["id"] not in s.glyphs:
+                skipped.append((g["id"], "now an alias (shares another glyph)")); continue
+            if g["id"] in skip_ids:
+                skipped.append((g["id"], "left for a later round (--skip-ids)")); continue
             if a.masters_only and master_of(s, s.records[g["id"]]["cp"]) != g["id"]:
                 skipped.append((g["id"], "not the master (left for derivation)")); continue
             if a.dry_run:

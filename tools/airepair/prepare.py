@@ -169,6 +169,11 @@ DERIVE_TASK = ("本批是**同字各地区的派生**（LESSONS.md L050，用户
                "“旧版”是这个地区以前独立修的版本：某处地区写法它处理得好，可以借鉴那一处，但不能以旧版为基础。")
 
 
+RECHECK_TASK = ("本批是**按新规则的回头修**：这些字已经由 AI 修过，但不符合用户最近确认的规则。inputs.txt 每字列出了“本轮要改”的问题"
+                "（部件间空了 2 列以上、字修窄了、没用满第 0–12 行），**必须改掉这些问题**：部件靠拢到只空 0–1 列，省下的空间给部件加宽，"
+                "整字按 L052 撑到 13 列、按 L053 用满上下。改时照已通过的范例和 L051 统一左偏旁；列出的问题以外，满意的地方可以不改。")
+
+
 SYMBOL_TASK = ("本批是**符号的底稿**：由参考字体点阵化（相位搜索），还没经 AI 或人工修。全角符号在 13×13 墨迹内，等宽符号 7×14，"
                "比例符号宽度可变、高 14（基线在第 10 行下，第 11–13 行是降部）。请在底稿基础上完整修字：形状清楚、1 像素笔画、对称的要对称，"
                "同族（圈号、括号号、箭头、几何图形、上下标、西里尔字母）与 examples 里已有的同族字形用一样的像素写法。")
@@ -184,6 +189,8 @@ def main():
     g.add_argument("--derive", action="store_true", help="a derivation round: every non-master regional AI glyph or draft")
     ap.add_argument("--masters-only", action="store_true", help="leave out glyphs that are not their character's master")
     ap.add_argument("--symbols", action="store_true", help="a symbol round: regional, HW and PR glyphs from --list")
+    ap.add_argument("--start-from-ref", action="store_true", help="start each glyph from its latest --ref-round result if it has one")
+    ap.add_argument("--issues", type=Path, help="JSON {glyph id: [issues]}: what this round must fix, shown per glyph (a recheck round)")
     ap.add_argument("--batch-size", type=int, default=50)
     ap.add_argument("--ref-round", nargs="*", default=[])
     ap.add_argument("--workers", type=int, default=10)
@@ -199,6 +206,7 @@ def main():
         raise SystemExit("no glyphs to repair")
     tum = tumbled()
     refs = ref_results(a.ref_round)
+    issues = json.loads(a.issues.read_text()) if a.issues else None
     approved = {gid: r for gid, r in s.records.items() if r.get("state") == "approved" and r["group"] in REGIONS}
     by_symbol = {}
     for gid, r in approved.items():
@@ -208,7 +216,7 @@ def main():
     standalone = {(r["group"], r["char"]): gid for gid, r in approved.items()}
     ref_by_symbol = {}
     for gid in refs:
-        if gid in s.records:
+        if gid in s.glyphs:          # not an alias
             _, parts = s._parts(gid)
             for p in parts:
                 if p["key"] != "whole" and not is_stroke(p["symbol"]):
@@ -220,7 +228,12 @@ def main():
     for gid in ids:
         rec = s.records[gid]
         it = {"id": gid, "char": rec["char"], "region": rec["group"], "cp": rec["cp"], "revision": s.current(gid)["revision"], "state": rec["state"],
-              "rows": rec["rows"], "ai_note": " ".join(rec["ai_note"]), "tumbled": tum.get(rec["cp"])}
+              "rows": refs[gid]["rows"] if a.start_from_ref and gid in refs else rec["rows"],
+              "ai_note": " ".join(rec["ai_note"]), "tumbled": tum.get(rec["cp"])}
+        if a.start_from_ref and gid in refs:
+            it["start"] = f"{refs[gid]['round']} 的结果（未导入）"
+        if issues:
+            it["issues"] = issues.get(gid, [])
         it["tumbled_match"] = region_match(it["char"], it["region"], it["tumbled"]) if it["tumbled"] and not a.derive and not a.symbols else "圆石没有此字"
         it["_ref"] = str(out / "refs" / f"{gid}.png")
         if rec["group"] in ("HW", "PR"):
@@ -358,6 +371,10 @@ def main():
                       + (f" 同字已通过={','.join(it['same_char_approved'])}" if it["same_char_approved"] else "")]
             if it["ai_note"]:
                 lines.append(f"  底稿说明：{it['ai_note'].removeprefix('底稿：')}" if it["state"] == "draft" else f"  上一轮 AI 说明：{it['ai_note']}")
+            if it.get("start"):
+                lines.append(f"  “当前”取自 {it['start']}")
+            for x in it.get("issues", []):
+                lines.append(f"  本轮要改：{x}")
             for c in it["components"]:
                 if c["approved"]:
                     lines.append(f"  部件 {c['label']}：已通过范例 " + " ".join(f"{approved[x]['char']}({x})" for x in c["approved"]))
@@ -387,7 +404,7 @@ def main():
     (out / "LESSONS.md").write_text("# 本轮读本\n\n以下先是用户确认的规则（必须遵守），再是修字要点与自检清单。\n\n## "
                                     + "\n## ".join(keep) + "\n\n---\n\n" + reader.read_text(encoding="utf-8"))
     drafts = sum(i["state"] == "draft" for i in items)
-    task = DERIVE_TASK if a.derive else SYMBOL_TASK if a.symbols else ("本批的字**是新增字的底稿**：由思源黑体点阵化（WorkBench 渲染加相位搜索），还没经 AI 或人工修。请在底稿基础上完整修字，"
+    task = DERIVE_TASK if a.derive else SYMBOL_TASK if a.symbols else RECHECK_TASK if issues else ("本批的字**是新增字的底稿**：由思源黑体点阵化（WorkBench 渲染加相位搜索），还没经 AI 或人工修。请在底稿基础上完整修字，"
             "像修第一轮那样认真处理每个字（结构、笔画、密处取舍），不要只做微调。" if drafts == len(items) else
             "本批的字**已经由 AI 修过**，你在**当前版本**的基础上继续修整。满意的字可以不改。" if not drafts else
             "本批大多数字**已经由 AI 修过**，在当前版本上继续修整，满意的可以不改；inputs.txt 标为“底稿”的字是新增字的底稿，要完整修。")
