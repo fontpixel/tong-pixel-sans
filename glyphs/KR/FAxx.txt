@@ -4,7 +4,7 @@ U+FA01 度 = U+5EA6.SC
 
 U+FA02 拓 = U+62D3.SC
 
-U+FA03 糖 = U+7CD6.TC
+U+FA03 糖 = U+7CD6.SC
 
 U+FA04 宅 = U+5B85.TC
 

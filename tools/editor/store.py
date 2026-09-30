@@ -696,7 +696,8 @@ class Store(ShapesMixin):
             if rec["rows"] != tgt["rows"] or rec["metrics"] != tgt["metrics"]:
                 raise ValueError("像素或度量与目标不完全相同，不能共用字形")
             lib = self._library()
-            self._collect(lib, {gid: {"links": []}})
+            if rec["links"]:               # only then can a form lose its last user
+                self._collect(lib, {gid: {"links": []}})
             pages = {rec["page"]}
             for a in self.aliases_of(gid):
                 self.records[a]["alias"] = target
