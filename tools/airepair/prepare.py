@@ -211,6 +211,7 @@ def main():
     tum = tumbled()
     refs = ref_results(a.ref_round)
     issues = json.loads(a.issues.read_text()) if a.issues else None
+    confirmed = {l["shape_id"] for r in s.records.values() if r.get("state") == "approved" for l in r["links"]}
     approved = {gid: r for gid, r in s.records.items() if r.get("state") == "approved" and r["group"] in REGIONS}
     by_symbol = {}
     for gid, r in approved.items():
@@ -236,7 +237,8 @@ def main():
               "ai_note": " ".join(rec["ai_note"]), "tumbled": tum.get(rec["cp"])}
         if a.start_from_ref and gid in refs:
             it["start"] = f"{refs[gid]['round']} 的结果（未导入）"
-        it["linked"] = sorted({l["symbol"] for l in rec["links"]})
+        # only forms the user confirmed (used by an approved glyph), or everything a person changed in an edited glyph
+        it["linked"] = sorted({l["symbol"] for l in rec["links"] if rec["state"] == "edited" or l["shape_id"] in confirmed})
         if issues:
             it["issues"] = issues.get(gid, [])
         it["tumbled_match"] = region_match(it["char"], it["region"], it["tumbled"]) if it["tumbled"] and not a.derive and not a.symbols else "圆石没有此字"
@@ -379,7 +381,7 @@ def main():
             if it["state"] == "edited":
                 lines.append("  用户改过、还没通过：在当前版本上继续修，保留用户改过的地方，除非明显有错")
             if it["linked"]:
-                lines.append(f"  本字已关联的部件（用户确认或共享的写法，像素尽量不动）：{'、'.join(it['linked'])}")
+                lines.append(f"  本字已关联、写法经用户确认的部件（像素尽量不动）：{'、'.join(it['linked'])}")
             if it.get("start"):
                 lines.append(f"  “当前”取自 {it['start']}")
             for x in it.get("issues", []):
