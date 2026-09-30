@@ -272,6 +272,7 @@ def main():
                 if compat in s.records and "alias" not in s.records[compat]:
                     it["family"] = [compat] + [x for x in it["family"] if x != compat][:7]
             it["same_char_approved"] = [o for o in s.sibling_ids(gid) if s.records[o].get("state") == "approved"]
+            it["same_char"] = [o for o in s.sibling_ids(gid) if o not in it["same_char_approved"]]   # other versions, any state
             it["components"], it["tumbled"], it["tumbled_match"] = [], None, "符号轮不参考圆石"
             items.append(it)
             continue
@@ -345,6 +346,8 @@ def main():
             for it in batch:
                 for x in it["same_char_approved"]:
                     ex.setdefault(x, set()).add(f"{it['char']}同码位")
+                for x in it.get("same_char", []):
+                    ex.setdefault(x, set()).add(f"{it['char']}同码位（未审）")
                 for x in it["family"]:
                     ex.setdefault(x, set()).add("同族")
             exl = [{"id": x, "char": s.records[x]["char"] + ("✓" if s.records[x]["state"] == "approved" else ""), "rows": s.records[x]["rows"],
@@ -357,6 +360,7 @@ def main():
                 kind = {"HW": "等宽 7×14", "PR": "比例（宽度可变，墨迹从第 0 列起，右留 1 列）"}.get(it["region"], "全角 13×13")
                 lines += ["", f"{it['id']} {it['char']} U+{it['cp']:04X} {kind} 当前 {w}×{h}{' 底稿' if it['state'] == 'draft' else ''}"
                           + (f" 同码位已通过={','.join(it['same_char_approved'])}" if it["same_char_approved"] else "")
+                          + (f" 同码位其他版本（未审）={','.join(it['same_char'])}" if it.get("same_char") else "")
                           + (f" 同族={' '.join(s.records[x]['char'] + '(' + x + ')' for x in it['family'][:6])}" if it["family"] else "")]
                 if it["ai_note"]:
                     lines.append(f"  底稿说明：{it['ai_note'].removeprefix('底稿：')}")

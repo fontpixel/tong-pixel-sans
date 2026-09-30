@@ -2,6 +2,7 @@
 
     .venv/bin/python tools/airepair/add_glyphs.py [--dry-run]
     .venv/bin/python tools/airepair/add_glyphs.py --symbols FILE [--dry-run]
+    .venv/bin/python tools/airepair/add_glyphs.py --proportional FILE [--dry-run]
 
 For every (table, region) in REQUESTS, each code point that none of the 8 fonts has gets a glyph in
 that region: a phase-searched draft (tools/editor/draft.py: WorkBench rendering of the region's Source
@@ -28,6 +29,10 @@ With --symbols, the code points listed in FILE (lines “U+XXXX …”) are adde
 - one Source Han Sans draws narrow: half-width and proportional drafts (from the western font, else
   Source Han Sans JP), the regions added to build-data/narrow-width.txt; combining marks become
   zero-advance proportional glyphs.
+
+With --proportional, each listed code point that has no proportional (PR) glyph gets one, drawn from
+the first western font that has it, else from Source Han Sans JP: for the Latin faces, which have no
+full-width glyphs. Only PR, never HW, so the monospace CJK faces keep their full-width glyphs.
 """
 from __future__ import annotations
 
@@ -255,15 +260,49 @@ def symbols(listing, have):
     return new, refs, narrow, report
 
 
+def proportional_only(listing, s):
+    new, refs, report = [], [], []
+    for line in listing.read_text(encoding="utf-8").splitlines():
+        if not line.startswith("U+"):
+            continue
+        cp = int(line.split()[0][2:], 16)
+        if f"U+{cp:04X}.PR" in s.records:
+            continue
+        ch = chr(cp)
+        src = next(((FONTS / n, c, l) for n, c, l in WESTERN_ORDER if has(n, cp)), None)
+        if src is None and any(advance(r, cp) is not None for r in ORDER):
+            src = (FONTS / "SourceHanSansJP-VF.otf", (320,), "思源 JP w320")
+        r = draft.proportional(src[0], src[1], ch, tight=True) if src else None
+        if r is None:
+            report.append(f"{ch} U+{cp:04X}：画不出，跳过")
+            continue
+        new.append({"group": "PR", "cp": cp, "rows": r["rows"], "state": "draft", "metrics": ["adv=auto"],
+                    "ai_note": f"底稿：{src[2]} 相位搜索 {r['phase_k']}/16，字面 {r['face'][0]}×{r['face'][1]}（补充符号，Latin 字体用的比例版）"})
+        refs.append((f"U+{cp:04X}.PR", src[2], *r["face"], left_column(r["rows"])))
+        report.append(f"{ch} U+{cp:04X}：PR（{src[2]}）")
+    return new, refs, report
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--symbols", type=Path, help="add the symbols listed in this file instead of the tables' characters")
+    ap.add_argument("--proportional", type=Path, help="add proportional (PR) glyphs for the listed code points that have none")
     a = ap.parse_args()
     s = Store(ROOT)
     have = set()
     for _, prop, mono in build.faces(ROOT):
         have |= set(prop) | set(mono)
+    if a.proportional:
+        new, refs, report = proportional_only(a.proportional, s)
+        lines = ["# 补比例版（底稿）", "", f"清单 {a.proportional.name}；新增 PR 底稿 {len(new)}", ""] + [f"- {r}" for r in report]
+        (ROOT / "reports").mkdir(exist_ok=True)
+        (ROOT / "reports/add-proportional.md").write_text("\n".join(lines) + "\n")
+        print("\n".join(lines[:3]))
+        if not a.dry_run:
+            s.add_glyphs(new)
+            add_references(refs)
+        return
     if a.symbols:
         new, refs, narrow, report = symbols(a.symbols, have)
         counts = {}
