@@ -4,13 +4,9 @@
 
 ## 进行中：AI 修字队列
 
-三步，提示词在 `work/airepair/STEP1-PROMPT.md`、`STEP2-PROMPT.md`、`STEP3-PROMPT.md`（不入库），用户在 Codex 中发送（50 个并发）：
-
-1. 汉字母版：phase2a-v2（764 字）、phase2b-v3（2,383 字）、edited-v1（213 字，改过未通过）、phase3-v3（1,135 字，含 JIS 第二水準 423、人名用漢字 52、IICore 215）、recheck-v1（466 字，按 L049 / L052 / L053 回头修）。
-2. 符号与字母：symbols-v2（2,705 字：符号、韩文组合字母、组合附加符号、国际音标、希伯来、格鲁吉亚、亚美尼亚、老挝文）。
-3. 地区派生：derive-v1（约 10,500 字），第一步全部提交后才生成。
-
-跑完之后：`compare.py` 出对比图，用户决定是否导入。导入顺序见 `work/airepair/QUEUE-PROMPT.md`。
+- 第一步（汉字母版）、第二步（符号与字母）已完成并导入（2026-09-30），连同第二期 A 旧批的母版，共 10,500 多个字形，状态仍为 ai，待人工审核。
+- 暂缓导入的 2 个字：编辑器清单“待人工修改”（計.TC、𢵧.TC）。
+- 第三步地区派生：`work/airepair/STEP3-PROMPT.md`，由用户在 Codex 中发送；完成后导入 `derive-v1 --alias-identical`。
 
 ## 待决定
 
