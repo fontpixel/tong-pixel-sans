@@ -645,7 +645,7 @@ ai
 @ whole/0 车 35a0311665424575ad84baf7d32144b8
 
 U+8F68 轨
-edited
+ai
 ..#....#.....
 ..#....#.....
 #####..#.....
@@ -661,6 +661,7 @@ edited
 ...#.#.....##
 @ whole/0 车 a450be6c7c344269956381bec472947e
 @ whole/1 九 8ae02d6b284e4c3d91704863345b48fb
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+8F69 轩
 ai
@@ -763,7 +764,7 @@ ai
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+8F6F 软
-edited
+ai
 ..#....#.....
 ..#....#.....
 ######.#####.
@@ -779,6 +780,7 @@ edited
 ...#.#.....#.
 @ whole/0 车 a450be6c7c344269956381bec472947e
 @ whole/1 欠 2a8a9774469a4b8f988d2b482f79ae00
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+8F70 轰
 ai
@@ -1153,7 +1155,7 @@ ai
 @ whole/1 甫 46f74556405b466faeca5829ff029dc9
 
 U+8F86 辆
-edited
+ai
 .#...........
 .#..########.
 ####...#.#...
@@ -1169,7 +1171,7 @@ edited
 ..#..#....##.
 @ whole/0 车 2ff9677935fc4faf9cd42deae4f335bc
 @ whole/1 两 e528f20640c84e0aa01e083bfd5db889
-# AI: 两内双人仅三列间距，撇捺在y8邻接。
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+8F87 辇
 ai
@@ -1224,14 +1226,14 @@ ai
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+8F8A 辊
-edited
+ai
 ..#..........
 ..#...######.
 #####.#....#.
 .#....######.
 .#.#..#....#.
 #..#..######.
-#####.#..#...
+#####........
 ...#..#..#.#.
 ...##.##.##..
 ..##..#..#...
@@ -1239,7 +1241,7 @@ edited
 ...#..#.##.#.
 ...#..##..##.
 @ whole/0 车 a450be6c7c344269956381bec472947e
-@ whole/1 昆 511257e841b841789616e62a2574c735
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+8F8B 辋
 ai
@@ -1484,7 +1486,7 @@ ai
 # AI: AI 修字 phase2b-v3（gpt-6-astra xhigh，2026-09-30）
 
 U+8F99 辙
-edited
+ai
 .#....#..#...
 .#....#..#...
 ####.###.#...
@@ -1500,7 +1502,7 @@ edited
 ..#..####...#
 @ whole/0 车 2ff9677935fc4faf9cd42deae4f335bc
 @ whole/1 𰕎 8ba62975e4e243a9b6043a0ddb59c4eb
-# AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：育下月为三列窄形，攵与月钩相邻，需人审。
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）：育下月保留三列窄形，末钩与攵相邻，待人审。
 
 U+8F9A 辚
 ai

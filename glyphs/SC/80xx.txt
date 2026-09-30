@@ -2274,7 +2274,7 @@ ai
 # AI: 下月六行压缩，末层留白只有底行一格高
 
 U+80BF 肿
-edited
+ai
 .........#...
 .####....#...
 .#..#....#...
@@ -2290,6 +2290,7 @@ edited
 #..##....#...
 @ whole/0 月 b1b573b7c2da4ad69cd831ff13dbf1ab
 @ whole/1 中 9673e1510cee4040877837d710c5c6b2
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+80C0 胀
 ai

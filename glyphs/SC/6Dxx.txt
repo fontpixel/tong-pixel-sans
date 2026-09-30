@@ -540,7 +540,7 @@ draft
 # AI: 底稿：复制自 U+6D30.TC（本地区思源写法不同，待从母版派生）
 
 U+6D31 洱
-edited
+ai
 .............
 .#..########.
 ..#..#....#..
@@ -556,6 +556,7 @@ edited
 #.........#..
 @ whole/0 氵 9e7d5538980944fd8e19fa79b091f69c
 @ whole/1 耳 986c50c9b41d46daabaeeeb67e4b2047
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+6D32 洲
 ai

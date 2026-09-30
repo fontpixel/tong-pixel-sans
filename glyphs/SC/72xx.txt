@@ -1067,7 +1067,7 @@ ai
 # AI: AI 修字 phase2b-v3（gpt-6-astra xhigh，2026-09-30）
 
 U+7272 牲
-edited
+ai
 ...#.....#...
 .#.#..#..#...
 .#.#..#..#...
@@ -1083,6 +1083,7 @@ edited
 ...#.########
 @ whole/0 牜 5f044033d1a94543980664e211f43ec6
 @ whole/1 生 cff6652b988a4d8f91320cfb5f377793
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+7274 牴
 draft

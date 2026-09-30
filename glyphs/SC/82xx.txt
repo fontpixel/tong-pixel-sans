@@ -2680,7 +2680,7 @@ ai
 # AI: AI 修字 phase2b-v3（gpt-6-astra xhigh，2026-09-30）
 
 U+82CD 苍
-edited
+ai
 ....#...#....
 ....#...#....
 .###########.
@@ -2696,6 +2696,7 @@ edited
 ....#######..
 @ whole/0 艹 d7a4ed80c6774fb68ffed965d4d2816e
 @ whole/1 仓 c03555af28f3457dad3b15b5c45b4c97
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+82CE 苎
 ai

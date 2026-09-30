@@ -288,7 +288,7 @@ ai
 # AI: AI 修字 phase2b-v3（gpt-6-astra xhigh，2026-09-30）
 
 U+9E23 鸣
-edited
+ai
 ........#....
 .....######..
 ###..#....#..
@@ -304,6 +304,7 @@ edited
 .........##..
 @ whole/0 口 4a8f7d8b22ba4ee39f1a9748da1f9974
 @ whole/1 鸟 851add70f11b4592851d872b5dd1d33d
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+9E24 鸤
 ai

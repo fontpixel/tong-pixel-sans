@@ -2147,7 +2147,7 @@ ai
 @ whole/1 召 2ada1b71dbf74c299f6300127fba394e
 
 U+6CBD 沽
-edited
+ai
 ........#....
 .#......#....
 ..#.....#....
@@ -2163,6 +2163,7 @@ edited
 #....#.....#.
 @ whole/0 氵 fa715aee6af643b9b322143fe366f0eb
 @ whole/1 古 6a876c4f20f04363a86e5ca874ea96ab
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+6CBE 沾
 ai
@@ -2490,7 +2491,7 @@ ai
 #........####
 
 U+6CDB 泛
-edited
+ai
 .............
 .#....#####..
 ..#..#.......
@@ -2506,6 +2507,7 @@ edited
 #......#####.
 @ whole/0 氵 9e7d5538980944fd8e19fa79b091f69c
 @ whole/1 乏 ee6eb43699154716afdd5ec17ad64753
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+6CDC 泜
 ai

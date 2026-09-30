@@ -2424,7 +2424,7 @@ ai
 # AI: AI 修字 phase2a-common（gpt-6-astra xhigh，2026-09-29）：口整体上移一行，为下方力保留空隙。
 
 U+53E8 叨
-edited
+ai
 .............
 .....#######.
 ###....#...#.
@@ -2440,6 +2440,7 @@ edited
 ....#...###..
 @ whole/0 口 4a8f7d8b22ba4ee39f1a9748da1f9974
 @ whole/1 刀 1581c04480b74357a868f899d2bc320a
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+53E9 叩
 ai
@@ -2762,9 +2763,9 @@ approved
 @ whole/1 刁 abf7e344da30443ab466746a1081e4cd
 
 U+53FD 叽
-edited
+ai
 .............
-......####...
+.....#####...
 ###..#...#...
 #.#..#...#...
 #.#..#...#...
@@ -2778,3 +2779,4 @@ edited
 ...#......##.
 @ whole/0 口 4a8f7d8b22ba4ee39f1a9748da1f9974
 @ whole/1 几 57ed9e95ec794a72a90527913f87b21e
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）

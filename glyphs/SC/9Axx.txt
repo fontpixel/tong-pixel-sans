@@ -2428,7 +2428,7 @@ draft
 # AI: 底稿：复制自 U+9AD6.TC（本地区思源写法不同，待从母版派生）
 
 U+9AD8 高
-edited
+ai
 .....#.......
 ......#......
 #############
@@ -2445,6 +2445,7 @@ edited
 @ whole/0 亠 a3804a98e8794b168980fddc1a60616e
 @ whole/1 口 32bd5252c6494e11ba08622f7bd5a4a0
 @ whole/2 冋 c589e9b04bbf4b40a3bf1bbe145ae0d3
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）：内口顶与冂顶相邻，保留已关联结构；是否压短亠以留空需人审。
 
 U+9AD9 髙
 draft

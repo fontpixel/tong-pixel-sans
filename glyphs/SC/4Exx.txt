@@ -2133,7 +2133,7 @@ ai
 # AI: AI 修字 phase2a-common（gpt-6-astra xhigh，2026-09-29）
 
 U+4EC2 仂
-edited
+ai
 ..#....#.....
 ..#....#.....
 ..#....#.....
@@ -2149,9 +2149,10 @@ edited
 .#.#....###..
 @ whole/0 亻 bf68b32c8f814ad0b1f3b7d104326b87
 @ whole/1 力 5820cfab30bf49c0a0f3d13d13ffbcfc
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+4EC3 仃
-edited
+ai
 ..#..........
 ..#.########.
 ..#.....#....
@@ -2167,6 +2168,7 @@ edited
 .#....###....
 @ whole/0 亻 bf68b32c8f814ad0b1f3b7d104326b87
 @ whole/1 丁 9918d0c91cad4218974f10a752a4f169
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+4EC4 仄
 approved
@@ -2258,7 +2260,7 @@ draft
 # AI: 底稿：复制自 U+4EC8.TC（本地区思源写法不同，待从母版派生）
 
 U+4EC9 仉
-edited
+ai
 ..#..........
 ..#..#####...
 ..#..#...#...
@@ -2274,6 +2276,7 @@ edited
 .#.#......##.
 @ whole/0 亻 bf68b32c8f814ad0b1f3b7d104326b87
 @ whole/1 几 7c65a1da51464e4bad90f83f12509b56
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+4ECA 今
 ai
@@ -2488,7 +2491,7 @@ approved
 @ whole/1 寸 acbc9f089c5d4c188e64599e6910c99d
 
 U+4ED9 仙
-edited
+ai
 ..#..........
 ..#....#.....
 ..#....#.....
@@ -2504,6 +2507,7 @@ edited
 .#.........#.
 @ whole/0 亻 bf68b32c8f814ad0b1f3b7d104326b87
 @ whole/1 山 9922aba5c67146c1b5fe228069bb46e4
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+4EDD 仝
 ai
@@ -2524,7 +2528,7 @@ ai
 @ whole/1 工 8ff92df2cb69494db3df62740ef79907
 
 U+4EDE 仞
-edited
+ai
 ..#..........
 ..#..........
 ..#.########.
@@ -2540,9 +2544,10 @@ edited
 .#.#....###..
 @ whole/0 亻 bf68b32c8f814ad0b1f3b7d104326b87
 @ whole/1 刃 b5e5702bb73140629d264192c6965301
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+4EDF 仟
-edited
+ai
 ..#..........
 ..#.....###..
 ..#.####.....
@@ -2558,9 +2563,10 @@ edited
 .#.....#.....
 @ whole/0 亻 bf68b32c8f814ad0b1f3b7d104326b87
 @ whole/1 千 eb3aa92ca3344e3fb4ffdf5ff27d89e3
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+4EE1 仡
-edited
+ai
 ..#...#......
 ..#..#.......
 ..#..#######.
@@ -2576,6 +2582,7 @@ edited
 .#...#######.
 @ whole/0 亻 bf68b32c8f814ad0b1f3b7d104326b87
 @ whole/1 乞 a47f8971853c41faa6252ae1aa48e75f
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+4EE3 代
 ai
@@ -2630,22 +2637,22 @@ approved
 # AI: 二次修字（gpt-6-astra xhigh，借鉴圆石点阵黑，2026-09-28）：人部空间窄，范例不直接套用。
 
 U+4EE8 仨
-edited
+ai
 ..#..........
 ..#..........
 ..#.########.
 .#...........
 .#...........
 ##...........
-.#..#######..
+.#...........
+.#...######..
 .#...........
 .#...........
 .#...........
 .#...........
-.#..########.
-.#...........
+.#.##########
 @ whole/0 亻 bf68b32c8f814ad0b1f3b7d104326b87
-@ whole/1 三 08921ae2d46e4fe490cc639dd9ef1546
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）：三横改为等距，底横放长；保留亻。
 
 U+4EEA 仪
 ai
@@ -2788,7 +2795,7 @@ ai
 # AI: AI 修字 phase2b-v3（gpt-6-astra xhigh，2026-09-30）
 
 U+4EF5 仵
-edited
+ai
 ..#..#.......
 ..#..#.......
 ..#..#######.
@@ -2804,9 +2811,10 @@ edited
 .#.....#.....
 @ whole/0 亻 bf68b32c8f814ad0b1f3b7d104326b87
 @ whole/1 午 2ac171f9348b4b64a01e4272341c8b94
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+4EF6 件
-edited
+ai
 ..#....#.....
 ..#..#.#.....
 ..#..#.#.....
@@ -2822,9 +2830,10 @@ edited
 .#.....#.....
 @ whole/0 亻 bf68b32c8f814ad0b1f3b7d104326b87
 @ whole/1 牛 8d9f3454dad443fa96a950059aa1b425
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+4EF7 价
-edited
+ai
 ..#....#.....
 ..#....#.....
 ..#...#.#....
@@ -2840,6 +2849,7 @@ edited
 .#.#.....#...
 @ whole/0 亻 bf68b32c8f814ad0b1f3b7d104326b87
 @ whole/1 介 aef5938b9d3b4a638ca90f11039dbbb5
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+4EFB 任
 ai
@@ -2877,7 +2887,7 @@ approved
 @ whole/1 分 6e2ac656d7d243debe36bb6511dd9308
 
 U+4EFF 仿
-edited
+ai
 ..#....#.....
 ..#.....#....
 ..#..........
@@ -2893,3 +2903,4 @@ edited
 .#.#....##...
 @ whole/0 亻 bf68b32c8f814ad0b1f3b7d104326b87
 @ whole/1 方 a3ea64c2e62c4319b80855aca3aaf69e
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）

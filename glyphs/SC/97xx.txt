@@ -1479,7 +1479,7 @@ ai
 # AI: AI 修字 phase2b-v3（gpt-6-astra xhigh，2026-09-30）
 
 U+978B 鞋
-edited
+ai
 .#.#.....#...
 #####....#...
 .#.#...#####.
@@ -1495,6 +1495,7 @@ edited
 ..#...#######
 @ whole/0 革 48b3c521e4dd457badea6a92d3067a33
 @ whole/1 圭 4e6f0414340443a1a3bfd7c6e39349f5
+# AI: AI 修字 edited-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+978D 鞍
 approved
