@@ -2,7 +2,7 @@
 
 ```bash
 python3 tools/build.py [输出目录]   # 默认 build/，约 10 秒
-python3 tools/verify.py            # 源文件检查 + 8 个字体的字表覆盖
+python3 tools/verify.py            # 源文件检查 + 8 个地区字体的字表覆盖
 python3 tools/preview.py           # 每个字体的样张 build/*-preview.png（需要 Pillow）
 python3 tools/preview.py --readme  # 同时更新 docs/images/sample.png
 ```
@@ -17,6 +17,7 @@ python3 tools/preview.py --readme  # 同时更新 docs/images/sample.png
 | `TongPixelSansTC-14.bdf` / `TongPixelSansMonoTC-14.bdf` | … TC | TC → JP → SC → KR |
 | `TongPixelSansJP-14.bdf` / `TongPixelSansMonoJP-14.bdf` | … JP | JP → TC → SC → KR |
 | `TongPixelSansKR-14.bdf` / `TongPixelSansMonoKR-14.bdf` | … KR | KR → TC → JP → SC |
+| `TongPixelSansLatin-14.bdf` / `TongPixelSansMonoLatin-14.bdf` | Tong Pixel Sans Latin / Tong Pixel Sans Mono Latin | 不含东亚字形：只用比例（PR）、等宽（HW）和半宽几何字形；引号、省略号、破折号总是窄的西文版（简、繁字体里这些跟思源为全角）。2026-09-30 |
 
 - 14 像素：PIXEL_SIZE 14，FONT_ASCENT 11，FONT_DESCENT 3，75 dpi，WEIGHT_NAME Medium，FOUNDRY Tong。
 - 汉字 13×13 墨迹放在字格的第 1–13 列、第 0–12 行，底边在基线下 2 像素，接近思源黑体原设计。

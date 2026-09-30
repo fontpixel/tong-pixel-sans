@@ -19,6 +19,7 @@
 |---|---|
 | `TongPixelSansSC-14.bdf` `TongPixelSansTC-14.bdf` `TongPixelSansJP-14.bdf` `TongPixelSansKR-14.bdf` | 比例版（排版、界面） |
 | `TongPixelSansMonoSC-14.bdf` … `TongPixelSansMonoKR-14.bdf` | 等宽版（终端、代码） |
+| `TongPixelSansLatin-14.bdf` `TongPixelSansMonoLatin-14.bdf` | 只含西文等非东亚文字（引号、省略号、破折号总是窄的西文版） |
 
 字体名分别为 “Tong Pixel Sans SC” 与 “Tong Pixel Sans Mono SC” 等。目前提供 BDF 格式。
 

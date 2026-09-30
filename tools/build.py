@@ -3,8 +3,9 @@
     python tools/build.py [output-dir]      (default: build/)
 
 Per region (SC, TC, JP, KR) one proportional face (TongPixelSans<R>-14.bdf) and one monospace,
-dual-width face (TongPixelSansMono<R>-14.bdf), 14 px, ascent 11, descent 3. Needs only the
-Python standard library.
+dual-width face (TongPixelSansMono<R>-14.bdf), 14 px, ascent 11, descent 3; and two faces without
+any East Asian glyph, TongPixelSansLatin-14.bdf and TongPixelSansMonoLatin-14.bdf (latin_faces).
+Needs only the Python standard library.
 
 Sources (glyphs/<GROUP>/<PAGE>xx.txt, see README.md):
 - SC TC JP KR: 13×13 ink in a 14×14 cell (hanzi, kana, bopomofo, Hangul, full-width symbols).
@@ -239,6 +240,31 @@ def faces(root=ROOT):
         yield region, prop, mono
 
 
+def east_asian(cp):
+    """Han, kana, Hangul and the full-width / half-width forms: left out of the Latin faces."""
+    return any(a <= cp <= b for a, b in ((0x1100, 0x11FF), (0x2E80, 0x9FFF), (0xA960, 0xA97F), (0xAC00, 0xD7FF),
+                                         (0xF900, 0xFAFF), (0xFE10, 0xFE1F), (0xFE30, 0xFE4F), (0xFF00, 0xFFEF),
+                                         (0x1B000, 0x1B16F), (0x1F200, 0x1F2FF), (0x20000, 0x3FFFF)))
+
+
+def latin_faces(root=ROOT):
+    """(proportional face, monospace face) without any East Asian glyph: the western proportional (PR)
+    and half-width (HW) glyphs, half-width geometric characters and the non-CJK spaces. Here the
+    quotation marks, ellipsis and dashes are always the narrow western ones (in the SC / TC faces they
+    follow Source Han Sans and are full-width)."""
+    groups = {g: read_group(g, root) for g in ["HW", "PR", "GEOMETRIC-HALF"]}
+    pr = {cp: {**western(e), "src": e["id"]} for cp in groups["PR"] if not east_asian(cp) for e in [resolve(groups, "PR", cp)]}
+    hw = {cp: {**western(e), "src": e["id"]} for cp in groups["HW"] if not east_asian(cp) for e in [resolve(groups, "HW", cp)]}
+    half = {cp: {**cell(e["rows"], 7, 0, "generated"), "src": e["id"]} for cp, e in groups["GEOMETRIC-HALF"].items()}
+    blank_prop, blank_mono = blanks(read_constants(root)["space_advance_proportional"])
+    prop = {**{cp: g for cp, g in blank_prop.items() if not east_asian(cp) and cp not in (0x3164,)}, **half, **hw, **pr}
+    mono = {**{cp: g for cp, g in blank_mono.items() if not east_asian(cp) and cp not in (0x3164,)}, **half, **hw}
+    for cp, g in pr.items():
+        if cp not in mono:
+            mono[cp], _ = to_mono(g)
+    return prop, mono
+
+
 def main():
     out = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "build"
     out.mkdir(parents=True, exist_ok=True)
@@ -248,6 +274,12 @@ def main():
             family = " ".join(["Tong Pixel Sans"] + ([kind] if kind else []) + [region])
             (out / f"{name}-14.bdf").write_text(bdf(face, family, kind == "Mono"))
             print(name, len(face))
+    prop, mono = latin_faces()
+    for kind, face in (("", prop), ("Mono", mono)):
+        name = f"TongPixelSans{kind}Latin"
+        family = " ".join(["Tong Pixel Sans"] + ([kind] if kind else []) + ["Latin"])
+        (out / f"{name}-14.bdf").write_text(bdf(face, family, kind == "Mono"))
+        print(name, len(face))
 
 
 if __name__ == "__main__":

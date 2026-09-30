@@ -290,7 +290,7 @@ class Store(ShapesMixin):
         key = self.ids_version
         if getattr(self, "_usage_faces_key", None) != key:
             used, served = {}, {}
-            for region, prop, mono in build.faces(self.root):
+            for region, prop, mono in list(build.faces(self.root)) + [("Latin", *build.latin_faces(self.root))]:
                 for kind, face in (("", prop), ("Mono ", mono)):
                     name = f"{kind}{region}"
                     for cp, g in face.items():

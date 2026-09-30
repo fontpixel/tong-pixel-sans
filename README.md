@@ -19,6 +19,7 @@ A 14-pixel pan-CJK bitmap font with separate versions for Simplified Chinese, Tr
 |---|---|
 | `TongPixelSansSC-14.bdf` `TongPixelSansTC-14.bdf` `TongPixelSansJP-14.bdf` `TongPixelSansKR-14.bdf` | Proportional (text, user interfaces) |
 | `TongPixelSansMonoSC-14.bdf` … `TongPixelSansMonoKR-14.bdf` | Monospace (terminals, code) |
+| `TongPixelSansLatin-14.bdf` `TongPixelSansMonoLatin-14.bdf` | Western scripts only, no East Asian glyphs (quotation marks, ellipsis and dashes always narrow) |
 
 The family names are “Tong Pixel Sans SC”, “Tong Pixel Sans Mono SC” and so on. The fonts are currently available as BDF.
 

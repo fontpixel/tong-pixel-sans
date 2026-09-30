@@ -2,7 +2,7 @@
 
     python3 tools/preview.py [output-dir]      (default: build/; needs Pillow)
 
-Writes <face>-preview.png for the 8 faces, and docs/images/sample.png (SC, TC, JP, KR proportional,
+Writes <face>-preview.png for the 10 faces, and docs/images/sample.png (SC, TC, JP, KR proportional,
 first lines) when run with --readme. No shaping: Arabic appears in logical order with isolated forms,
 as a plain BDF renders it.
 """
@@ -58,6 +58,11 @@ def preview(face, path, lines, scale=3):
 
 
 
+LATIN = ["The quick brown fox jumps over the lazy dog. 0123456789", "“Quotes” ‘single’ «guillemets» — dash – en … ‰ † § ©",
+         "Façade naïve café Ærø Łódź Ștefan Đà Nẵng ǅ œ ß ẞ", "αβγ ΑΒΓ Ωμέγα абв Жизнь ← → ≠ ≤ ≥ ∞ ± × ÷ ℃ € ₹",
+         "שלום עולם · Გამარჯობა · Բարեւ · ສະບາຍດີ · สวัสดี", "┌──┬──┐ ▁▂▃▄▅▆▇█ ⣿⠿⡇"]
+
+
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     out = Path(args[0]) if args else ROOT / "build"
@@ -67,6 +72,10 @@ def main():
         for kind, face in (("", prop), ("Mono", mono)):
             preview(face, out / f"TongPixelSans{kind}{region}-preview.png", SAMPLES[region])
         readme.append((region, prop))
+    from build import latin_faces
+    prop, mono = latin_faces()
+    for kind, face in (("", prop), ("Mono", mono)):
+        preview(face, out / f"TongPixelSans{kind}Latin-preview.png", LATIN)
     if "--readme" in sys.argv:
         from PIL import Image
         parts = []

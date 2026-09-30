@@ -180,7 +180,7 @@ async function show(id, mode='push') {
 function renderUsage(u){
   // A glyph no font uses: say so, why, and link to the glyphs the fonts use instead.
   const box=$('usage-note');box.replaceChildren();box.hidden=!u?.unused;if(!u?.unused)return;
-  box.append(`这个字形在 8 个字体里都用不到，不必修${u.reason?`：${u.reason}`:''}。字体里实际用的是：`);
+  box.append(`这个字形在 10 个字体里都用不到，不必修${u.reason?`：${u.reason}`:''}。字体里实际用的是：`);
   (u.instead||[]).forEach((it,i)=>{if(i)box.append('、');const b=document.createElement('button');b.className='text-button';b.textContent=it.id;b.title='用在 '+it.faces.map(f=>'TongPixelSans'+f.replace(' ','')).join('、');b.onclick=guard(()=>show(it.id));box.append(b,`（${it.faces.join('、')}）`);});
   if(!u.instead?.length)box.append('（没有）');
 }
