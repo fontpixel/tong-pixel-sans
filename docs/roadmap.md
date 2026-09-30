@@ -6,8 +6,8 @@
 
 三步，提示词在 `work/airepair/STEP1-PROMPT.md`、`STEP2-PROMPT.md`、`STEP3-PROMPT.md`（不入库），用户在 Codex 中发送（50 个并发）：
 
-1. 汉字母版：phase2a-v2（764 字）、phase2b-v3（2,383 字）、edited-v1（213 字，改过未通过）、phase3-v3（868 字，含 JIS 第二水準 423）、recheck-v1（466 字，按 L049 / L052 / L053 回头修）。
-2. 符号：symbols-v2（1,012 字）。
+1. 汉字母版：phase2a-v2（764 字）、phase2b-v3（2,383 字）、edited-v1（213 字，改过未通过）、phase3-v3（1,135 字，含 JIS 第二水準 423、人名用漢字 52、IICore 215）、recheck-v1（466 字，按 L049 / L052 / L053 回头修）。
+2. 符号：symbols-v2（1,266 字，含韩文组合字母 254）。
 3. 地区派生：derive-v1（约 10,500 字），第一步全部提交后才生成。
 
 跑完之后：`compare.py` 出对比图，用户决定是否导入。导入顺序见 `work/airepair/QUEUE-PROMPT.md`。
