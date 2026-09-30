@@ -37,7 +37,7 @@ ORDER = {g: i for i, g in enumerate(GROUPS)}
 GEOMETRY = {"cell_width": 14, "cell_height": 14, "ink_width": 13, "ink_height": 13, "advance": 14, "x_base": 1,
             "ascent": 12, "descent": 2}
 BASELINE_ROW = 11
-MAX_PROPORTIONAL_WIDTH = 16
+MAX_PROPORTIONAL_WIDTH = 24     # wide proportional glyphs such as Ⅷ (four letters)
 STATES = ("approved", "edited", "derived", "ai", "draft", "hangul-ai", "hangul-composed", "generated")
 
 

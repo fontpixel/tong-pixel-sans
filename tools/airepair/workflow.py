@@ -180,9 +180,9 @@ def cmd_checkpoint(a):
             base = it[gid]["rows"]
             h, w, flexible = len(base), len(base[0]), gid.endswith(".PR")
             if not isinstance(ch, dict) or any(not k.isdigit() or not 0 <= int(k) < h or not isinstance(v, str)
-                                               or not (2 <= len(v) <= 16 if flexible else len(v) == w) or set(v) - {".", "#"}
+                                               or not (2 <= len(v) <= 24 if flexible else len(v) == w) or set(v) - {".", "#"}
                                                for k, v in ch.items()):
-                raise SystemExit(f"{gid}: changes keys must be 0–{h - 1}, values {'2–16' if flexible else w} characters of . and #")
+                raise SystemExit(f"{gid}: changes keys must be 0–{h - 1}, values {'2–24' if flexible else w} characters of . and #")
             if flexible and len({len(r) for r in apply(base, ch)}) != 1:
                 raise SystemExit(f"{gid}: a proportional glyph that changes width must give every row, all of the same width")
             if g["tumbled"] not in TUMBLED:
