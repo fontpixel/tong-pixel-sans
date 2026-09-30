@@ -252,6 +252,17 @@ def main():
                            and r["state"] != "draft" and abs(r["cp"] - rec["cp"]) <= 48 and r["cp"] >> 7 == rec["cp"] >> 7),
                           key=lambda o: (s.records[o]["state"] != "approved", abs(s.records[o]["cp"] - rec["cp"])))
             it["family"] = near[:8]
+            if 0x1100 <= rec["cp"] <= 0x11FF:        # conjoining jamo: the compatibility jamo of the same letter
+                import unicodedata
+                name = unicodedata.name(it["char"], "")
+                for role in ("CHOSEONG ", "JUNGSEONG ", "JONGSEONG "):
+                    name = name.replace(role, "LETTER ")
+                try:
+                    compat = f"U+{ord(unicodedata.lookup(name)):04X}.KR"
+                except KeyError:
+                    compat = None
+                if compat in s.records and "alias" not in s.records[compat]:
+                    it["family"] = [compat] + [x for x in it["family"] if x != compat][:7]
             it["same_char_approved"] = [o for o in s.sibling_ids(gid) if s.records[o].get("state") == "approved"]
             it["components"], it["tumbled"], it["tumbled_match"] = [], None, "符号轮不参考圆石"
             items.append(it)

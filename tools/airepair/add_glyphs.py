@@ -48,7 +48,8 @@ import draft  # noqa: E402
 
 REQUESTS = [  # (table under build-data/coverage/, region)
     ("kr/ksx1001-hanja.txt", "KR"), ("kr/ksx1001-symbols.txt", "KR"),
-    ("jp/kana-marks.txt", "JP"), ("jp/joyo.txt", "JP"), ("jp/jisx0208-l2.txt", "JP"),
+    ("jp/kana-marks.txt", "JP"), ("jp/joyo.txt", "JP"), ("jp/jisx0208-l2.txt", "JP"), ("jp/jinmeiyo.txt", "JP"),
+    ("intl/iicore.txt", "TC"), ("kr/hangul-jamo.txt", "KR"),
     ("hk/hk-changyong.txt", "TC"),
     ("prc-lit/kangxi-radicals.txt", "SC"), ("prc-lit/radicals-supplement.txt", "SC"),
     ("prc-lit/tongyong-7000.txt", "SC"), ("prc-lit/hanyi-jianfan.txt", "SC"),
@@ -282,7 +283,9 @@ def main():
     for cp in sorted(wanted):
         ch = chr(cp)
         u = unified(cp)
-        if u is not None and (0xF900 <= cp <= 0xFAFF or any(outline(r, cp) and outline(r, cp) == outline(r, u) for r in wanted[cp])):
+        # KS X 1001 / Big5 compatibility ideographs are drawn like their ideograph; the Japanese ones
+        # (jinmeiyō 神 祖 …, U+FA30–) keep their older forms unless the outline is really the same
+        if u is not None and ((0xF900 <= cp <= 0xFAFF and "KR" in wanted[cp]) or any(outline(r, cp) and outline(r, cp) == outline(r, u) for r in wanted[cp])):
             compat.append(cp)                          # drawn like its ideograph: share that glyph
             continue
         if not any(outline(r, cp) for r in ORDER) and cp not in COMBINING and not extension(cp):
