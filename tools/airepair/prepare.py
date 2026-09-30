@@ -1,6 +1,6 @@
 """Prepare an AI repair round: pick glyphs, split them into batches, write each batch's inputs.
 
-    .venv/bin/python tools/airepair/prepare.py NAME (--representative | --list FILE | --ids ID … | --derive)
+    .venv/bin/python tools/airepair/prepare.py NAME (--representative | --list FILE | --ids ID … | --derive [--list FILE])
         [--masters-only] [--batch-size 50] [--ref-round NAME …] [--workers 10] [--effort xhigh]
 
 Writes work/airepair/NAME/ (not in git): items.json, batches/bNNN/ (inputs.txt, input-*.png,
@@ -52,8 +52,13 @@ def master_of(s, cp):
 
 def select(s, a):
     if a.derive:
+        wanted = None
+        if a.list or a.ids:
+            wanted = set(a.ids or [l.strip() for l in Path(a.list).read_text(encoding="utf-8").splitlines()
+                                   if l.strip() and not l.startswith("#")])
         ids = sorted((g for g, r in s.records.items() if r["group"] in REGIONS and "alias" not in r
-                      and r["state"] in ("ai", "draft", "edited") and master_of(s, r["cp"]) != g),
+                      and r["state"] in ("ai", "draft", "edited") and master_of(s, r["cp"]) != g
+                      and (wanted is None or g in wanted)),
                      key=lambda g: (s.records[g]["cp"], REGIONS.index(s.records[g]["group"])))
     elif a.representative:
         ids = [g["id"] for g in read_json(ROOT / "tools/editor/data/representative.json")["glyphs"]]
@@ -186,11 +191,12 @@ SYMBOL_TASK = ("本批是**符号的底稿**：由参考字体点阵化（相位
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("name")
-    g = ap.add_mutually_exclusive_group(required=True)
+    g = ap.add_mutually_exclusive_group()
     g.add_argument("--representative", action="store_true", help="the “接下来建议修” list")
     g.add_argument("--list", help="a file with one glyph id per line")
     g.add_argument("--ids", nargs="+")
-    g.add_argument("--derive", action="store_true", help="a derivation round: every non-master regional AI glyph or draft")
+    ap.add_argument("--derive", action="store_true", help="a derivation round: every non-master regional AI glyph or draft "
+                    "(only those in --list / --ids when given)")
     ap.add_argument("--masters-only", action="store_true", help="leave out glyphs that are not their character's master")
     ap.add_argument("--symbols", action="store_true", help="a symbol round: regional, HW and PR glyphs from --list")
     ap.add_argument("--start-from-ref", action="store_true", help="start each glyph from its latest --ref-round result if it has one")
@@ -201,6 +207,8 @@ def main():
     ap.add_argument("--model", default="gpt-6-astra")
     ap.add_argument("--effort", default="xhigh")
     a = ap.parse_args()
+    if not (a.derive or a.representative or a.list or a.ids):
+        ap.error("one of --representative, --list, --ids or --derive is required")
     out = ROUNDS / a.name
     if out.exists():
         raise SystemExit(f"{out} exists")
