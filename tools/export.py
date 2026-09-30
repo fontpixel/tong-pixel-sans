@@ -215,6 +215,8 @@ def finish(fb, order, glyph_records, subs, family, style, version, dot=False):
     from fontTools.feaLib.builder import addOpenTypeFeaturesFromString
     metrics = {".notdef": (UPM // 2, UNIT)}
     for n in order[1:]:
+        if n == "dot":
+            continue
         g = glyph_records[n]
         metrics[n] = (g["adv"] * UNIT, lsb(g) + ((UNIT - DOT_DIAMETER) // 2 if dot and g["rows"] else 0))
     if "dot" in order:
@@ -330,13 +332,20 @@ def build_otf(spacing, shape, version, plan_):
 
 # ---------------------------------------------------------------- main
 def main():
-    args = [a for a in sys.argv[1:] if not a.startswith("--")]
-    out = Path(args[0]) if args else ROOT / "site/downloads"
-    only = sys.argv[sys.argv.index("--only") + 1] if "--only" in sys.argv else None
+    import argparse
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("out", nargs="?", type=Path, default=ROOT / "site/downloads")
+    ap.add_argument("--only", choices=("square", "dot"))
+    ap.add_argument("--skip-otf", action="store_true")
+    a = ap.parse_args()
+    out, only = a.out, a.only
     version = datetime.date.today().strftime("%Y.%m.%d")
     for d in ("bdf", "pcf", "ttf", "otf", "woff2"):
         (out / d).mkdir(parents=True, exist_ok=True)
-    manifest = {"version": version, "files": {}}
+    old = out / "manifest.json"
+    manifest = json.loads(old.read_text()) if old.exists() else {}
+    manifest.update(version=version)
+    manifest.setdefault("files", {})
     tmp = ROOT / "build"
     subprocess.run([sys.executable, str(HERE / "build.py"), str(tmp)], check=True, stdout=subprocess.DEVNULL)
     faces = [f"TongPixelSans{k}{r}-14" for r in REGIONS + ["Latin"] for k in ("", "Mono")]
@@ -361,7 +370,7 @@ def main():
             tt.save(out / "ttf" / f"{stem}.ttf")
             tt.flavor = "woff2"
             tt.save(out / "woff2" / f"{stem}.woff2")
-            if "--skip-otf" not in sys.argv:
+            if not a.skip_otf:
                 build_otf(spacing, shape, version, plan_).save(out / "otf" / f"{stem}.otf")
             for kind in ("ttf", "woff2", "otf"):
                 p = out / kind / f"{stem}.{kind}"
