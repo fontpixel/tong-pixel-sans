@@ -2947,6 +2947,7 @@ U+2070.HW	Source Sans 3 w320	13	13	1
 U+2070.PR	Source Sans 3 w320	13	13	0
 U+2071.HW	Source Sans 3 w320	13	13	3
 U+2071.PR	Source Sans 3 w320	13	13	0
+U+2074.PR	Source Sans 3 w320	13	13	0
 U+2075.HW	Source Sans 3 w320	13	13	1
 U+2075.PR	Source Sans 3 w320	13	13	0
 U+2076.HW	Source Sans 3 w320	13	13	1
@@ -3142,6 +3143,18 @@ U+215E.HW	Source Sans 3 w320	9	13	0
 U+215E.PR	Source Sans 3 w320	13	13	0
 U+215F.HW	Noto Sans w320	11	13	0
 U+215F.PR	Noto Sans w320	13	13	0
+U+2160.PR	Noto Sans Symbols	13	13	0
+U+2161.PR	Noto Sans Symbols	13	13	0
+U+2162.PR	Noto Sans Symbols	13	13	0
+U+2163.PR	Noto Sans Symbols	13	13	0
+U+2164.PR	Noto Sans Symbols	13	13	0
+U+2165.PR	Noto Sans Symbols	13	13	0
+U+2166.PR	Noto Sans Symbols	13	13	0
+U+2167.PR	Noto Sans Symbols	13	13	0
+U+2168.PR	Noto Sans Symbols	13	13	0
+U+2169.PR	Noto Sans Symbols	13	13	0
+U+216A.PR	Noto Sans Symbols	13	13	0
+U+216B.PR	Noto Sans Symbols	13	13	0
 U+216C.HW	Noto Sans Symbols	13	13	1
 U+216C.PR	Noto Sans Symbols	13	13	0
 U+216D.HW	Noto Sans Symbols	12	13	0
@@ -3150,6 +3163,18 @@ U+216E.HW	Noto Sans Symbols	11	13	0
 U+216E.PR	Noto Sans Symbols	13	13	0
 U+216F.HW	Noto Sans Symbols	8	13	0
 U+216F.PR	Noto Sans Symbols	13	13	0
+U+2170.PR	Noto Sans Symbols	13	13	0
+U+2171.PR	Noto Sans Symbols	13	13	0
+U+2172.PR	Noto Sans Symbols	13	13	0
+U+2173.PR	Noto Sans Symbols	13	13	0
+U+2174.PR	Noto Sans Symbols	13	13	0
+U+2175.PR	Noto Sans Symbols	13	13	0
+U+2176.PR	Noto Sans Symbols	13	13	0
+U+2177.PR	Noto Sans Symbols	13	13	0
+U+2178.PR	Noto Sans Symbols	13	13	0
+U+2179.PR	Noto Sans Symbols	13	13	0
+U+217A.PR	Noto Sans Symbols	13	13	0
+U+217B.PR	Noto Sans Symbols	13	13	0
 U+217C.HW	Noto Sans Symbols	13	13	3
 U+217C.PR	Noto Sans Symbols	13	13	0
 U+217D.HW	Noto Sans Symbols	13	13	1
@@ -3798,6 +3823,66 @@ U+2425.HW	Noto Sans Symbols 2	9	13	0
 U+2425.PR	Noto Sans Symbols 2	13	13	0
 U+2426.HW	Noto Sans Symbols 2	13	13	1
 U+2426.PR	Noto Sans Symbols 2	13	13	0
+U+2460.PR	Noto Sans Symbols	13	13	0
+U+2461.PR	Noto Sans Symbols	13	13	0
+U+2462.PR	Noto Sans Symbols	13	13	0
+U+2463.PR	Noto Sans Symbols	13	13	0
+U+2464.PR	Noto Sans Symbols	13	13	0
+U+2465.PR	Noto Sans Symbols	13	13	0
+U+2466.PR	Noto Sans Symbols	13	13	0
+U+2467.PR	Noto Sans Symbols	13	13	0
+U+2468.PR	Noto Sans Symbols	13	13	0
+U+2469.PR	Noto Sans Symbols	13	13	0
+U+246A.PR	Noto Sans Symbols	13	13	0
+U+246B.PR	Noto Sans Symbols	13	13	0
+U+246C.PR	Noto Sans Symbols	13	13	0
+U+246D.PR	Noto Sans Symbols	13	13	0
+U+246E.PR	Noto Sans Symbols	13	13	0
+U+246F.PR	Noto Sans Symbols	13	13	0
+U+2470.PR	Noto Sans Symbols	13	13	0
+U+2471.PR	Noto Sans Symbols	13	13	0
+U+2472.PR	Noto Sans Symbols	13	13	0
+U+2473.PR	Noto Sans Symbols	13	13	0
+U+2474.PR	Noto Sans Math	13	13	0
+U+2475.PR	Noto Sans Math	13	13	0
+U+2476.PR	Noto Sans Symbols	13	13	0
+U+2477.PR	Noto Sans Symbols	13	13	0
+U+2478.PR	Noto Sans Symbols	13	13	0
+U+2479.PR	Noto Sans Symbols	13	13	0
+U+247A.PR	Noto Sans Symbols	13	13	0
+U+247B.PR	Noto Sans Symbols	13	13	0
+U+247C.PR	Noto Sans Symbols	13	13	0
+U+247D.PR	Noto Sans Symbols	13	13	0
+U+247E.PR	Noto Sans Symbols	13	13	0
+U+247F.PR	Noto Sans Symbols	13	13	0
+U+2480.PR	Noto Sans Symbols	13	13	0
+U+2481.PR	Noto Sans Symbols	13	13	0
+U+2482.PR	Noto Sans Symbols	13	13	0
+U+2483.PR	Noto Sans Symbols	13	13	0
+U+2484.PR	Noto Sans Symbols	13	13	0
+U+2485.PR	Noto Sans Symbols	13	13	0
+U+2486.PR	Noto Sans Symbols	13	13	0
+U+2487.PR	Noto Sans Symbols	13	13	0
+U+2488.PR	Noto Sans Symbols	13	13	0
+U+2489.PR	Noto Sans Symbols	13	13	0
+U+248A.PR	Noto Sans Symbols	13	13	0
+U+248B.PR	Noto Sans Symbols	13	13	0
+U+248C.PR	Noto Sans Symbols	13	13	0
+U+248D.PR	Noto Sans Symbols	13	13	0
+U+248E.PR	Noto Sans Symbols	13	13	0
+U+248F.PR	Noto Sans Symbols	13	13	0
+U+2490.PR	Noto Sans Symbols	13	13	0
+U+2491.PR	Noto Sans Symbols	13	13	0
+U+2492.PR	Noto Sans Symbols	13	13	0
+U+2493.PR	Noto Sans Symbols	13	13	0
+U+2494.PR	Noto Sans Symbols	13	13	0
+U+2495.PR	Noto Sans Symbols	13	13	0
+U+2496.PR	Noto Sans Symbols	13	13	0
+U+2497.PR	Noto Sans Symbols	13	13	0
+U+2498.PR	Noto Sans Symbols	13	13	0
+U+2499.PR	Noto Sans Symbols	13	13	0
+U+249A.PR	Noto Sans Symbols	13	13	0
+U+249B.PR	Noto Sans Symbols	13	13	0
 U+249C.PR	Noto Sans Symbols	13	13	0
 U+249D.PR	Noto Sans Symbols	13	13	0
 U+249E.PR	Noto Sans Symbols	13	13	0
@@ -3876,6 +3961,28 @@ U+24E6.PR	Noto Sans Symbols	13	13	0
 U+24E7.PR	Noto Sans Symbols	13	13	0
 U+24E8.PR	Noto Sans Symbols	13	13	0
 U+24E9.PR	Noto Sans Symbols	13	13	0
+U+24EA.PR	Noto Sans Symbols	13	13	0
+U+24EB.PR	Noto Sans Symbols	13	13	0
+U+24EC.PR	Noto Sans Symbols	13	13	0
+U+24ED.PR	Noto Sans Symbols	13	13	0
+U+24EE.PR	Noto Sans Symbols	13	13	0
+U+24EF.PR	Noto Sans Symbols	13	13	0
+U+24F0.PR	Noto Sans Symbols	13	13	0
+U+24F1.PR	Noto Sans Symbols	13	13	0
+U+24F2.PR	Noto Sans Symbols	13	13	0
+U+24F3.PR	Noto Sans Symbols	13	13	0
+U+24F4.PR	Noto Sans Symbols	13	13	0
+U+24F5.PR	Noto Sans Symbols	13	13	0
+U+24F6.PR	Noto Sans Symbols	13	13	0
+U+24F7.PR	Noto Sans Symbols	13	13	0
+U+24F8.PR	Noto Sans Symbols	13	13	0
+U+24F9.PR	Noto Sans Symbols	13	13	0
+U+24FA.PR	Noto Sans Symbols	13	13	0
+U+24FB.PR	Noto Sans Symbols	13	13	0
+U+24FC.PR	Noto Sans Symbols	13	13	0
+U+24FD.PR	Noto Sans Symbols	13	13	0
+U+24FE.PR	Noto Sans Symbols	13	13	0
+U+24FF.PR	Noto Sans Symbols	13	13	0
 U+25A0.HW	Source Sans 3 w320	13	13	1
 U+25A0.PR	Source Sans 3 w320	13	13	0
 U+25A1.HW	Source Sans 3 w320	13	13	0
@@ -4191,6 +4298,36 @@ U+2763.HW	Noto Sans Symbols 2	13	13	0
 U+2763.PR	Noto Sans Symbols 2	13	13	0
 U+2764.HW	Source Sans 3 w320	9	13	0
 U+2764.PR	Source Sans 3 w320	13	13	0
+U+2776.PR	Noto Sans Symbols	13	13	0
+U+2777.PR	Noto Sans Symbols	13	13	0
+U+2778.PR	Noto Sans Symbols	13	13	0
+U+2779.PR	Noto Sans Symbols	13	13	0
+U+277A.PR	Noto Sans Symbols	13	13	0
+U+277B.PR	Noto Sans Symbols	13	13	0
+U+277C.PR	Noto Sans Symbols	13	13	0
+U+277D.PR	Noto Sans Symbols	13	13	0
+U+277E.PR	Noto Sans Symbols	13	13	0
+U+277F.PR	Noto Sans Symbols	13	13	0
+U+2780.PR	Noto Sans Symbols	13	13	0
+U+2781.PR	Noto Sans Symbols	13	13	0
+U+2782.PR	Noto Sans Symbols	13	13	0
+U+2783.PR	Noto Sans Symbols	13	13	0
+U+2784.PR	Noto Sans Symbols	13	13	0
+U+2785.PR	Noto Sans Symbols	13	13	0
+U+2786.PR	Noto Sans Symbols	13	13	0
+U+2787.PR	Noto Sans Symbols	13	13	0
+U+2788.PR	Noto Sans Symbols	13	13	0
+U+2789.PR	Noto Sans Symbols	13	13	0
+U+278A.PR	Noto Sans Symbols	13	13	0
+U+278B.PR	Noto Sans Symbols	13	13	0
+U+278C.PR	Noto Sans Symbols	13	13	0
+U+278D.PR	Noto Sans Symbols	13	13	0
+U+278E.PR	Noto Sans Symbols	13	13	0
+U+278F.PR	Noto Sans Symbols	13	13	0
+U+2790.PR	Noto Sans Symbols	13	13	0
+U+2791.PR	Noto Sans Symbols	13	13	0
+U+2792.PR	Noto Sans Symbols	13	13	0
+U+2793.PR	Noto Sans Symbols	13	13	0
 U+2794.HW	Noto Sans Symbols 2	8	13	0
 U+2794.PR	Noto Sans Symbols 2	13	13	0
 U+279C.HW	Noto Sans Symbols 2	7	13	0
