@@ -645,7 +645,7 @@ ai
 # AI: AI 修字 phase2a-common（gpt-6-astra xhigh，2026-09-29）
 
 U+6843 桃
-ai
+approved
 ..#....#.#...
 ..#....#.#...
 ..#..#.#.#.#.

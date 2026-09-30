@@ -1399,7 +1399,7 @@ ai
 # AI: AI 修字 recheck-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+7F6E 置
-ai
+approved
 .###########.
 .#..#...#..#.
 .###########.
