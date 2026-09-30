@@ -86,6 +86,17 @@ class StoreTest(unittest.TestCase):
         self.assertEqual(archived, "\n".join(["U+4E03 七", "ai"] + CROSS) + "\n")
         self.assertEqual(self.s.ai_originals["U+4E03.SC"], CROSS)
 
+    def test_archive_keeps_entries_written_by_another_process(self):
+        other = Store(self.root)                     # e.g. an import running beside the editor
+        cur = other.current("U+4E00.SC")
+        other.import_ai("U+4E00.SC", [BLANK] * 6 + ["#" * 12 + "."] + [BLANK] * 6, "x", cur["revision"])
+        cur = self.s.current("U+4E03.SC")            # the editor's store never saw that archive entry
+        rows = list(CROSS); rows[12] = "#" + BLANK[1:]
+        self.s.save({"id": "U+4E03.SC", "expected_revision": cur["revision"], "rows": rows, "note": "", "approved": False})
+        archived = self.page("history/ai-originals/SC/4Exx.txt")
+        self.assertIn("U+4E00 一", archived)
+        self.assertIn("U+4E03 七", archived)
+
     def test_cannot_erase_linked_pixels(self):
         cur = self.s.current("U+4E00.SC")
         with self.assertRaises(ValueError):

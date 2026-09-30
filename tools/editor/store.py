@@ -266,6 +266,16 @@ class Store(ShapesMixin):
 
     def _write_ai_page(self, path):
         group, page = path.parent.name, int(path.name[:-6], 16)
+        # Another process (an import, a second editor) may have archived glyphs since this store read the
+        # page: take them in first, so a rewrite never drops them. An archived version never changes.
+        if path.exists():
+            for b in path.read_text(encoding="utf-8").split("\n\n"):
+                lines = [l for l in b.split("\n") if l]
+                if lines:
+                    rec = parse_block(group, lines)
+                    if rec["id"] not in self.ai_records:
+                        self.ai_records[rec["id"]] = rec
+                        self.ai_originals[rec["id"]] = rec["rows"]
         recs = sorted((r for r in self.ai_records.values() if r["group"] == group and r["cp"] >> 8 == page),
                       key=lambda r: r["cp"])
         atomic_write(path, "\n\n".join(block_text(r) for r in recs) + "\n")
