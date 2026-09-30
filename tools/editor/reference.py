@@ -2,8 +2,9 @@
 see docs/reference-fonts.md). Needs fontTools; without it or without the fonts the editor simply
 shows no reference.
 
-- regional glyphs (SC TC JP KR): that region's Source Han Sans at weight 400, em = 14 px, baseline
-  12 px below the top of the 14×14 cell (the geometry the drafts were made with); what Source Han
+- regional glyphs (SC TC JP KR): that region's Source Han Sans at weight 400, em = 14 px, shifted 0.5 px
+  right and baseline 11.8 px below the top of the 14×14 cell, so the outline is centred on the 13×13 ink
+  box (columns 1–13, rows 0–12); what Source Han
   Sans lacks from Plangothic P1 (遍黑体, weight 400; Han characters) or the Noto symbol fonts;
 - .HW/.PR glyphs: the font and face size of their draft (tools/editor/data/reference-western.txt),
   on the baseline (row 11), left edge aligned to the draft's leftmost ink column.
@@ -89,7 +90,9 @@ def svg(gid, char, cell_w, cell_h, fill="#009ec0"):
                 font, glyphs = _face(name, ())
             upem = font["head"].unitsPerEm
             sx = sy = 14 / upem
-            dx, base = 0, 12
+            # the 13×13 ink sits in columns 1–13 of the 14×14 cell and rows 0–12: centre the outline on it
+            # (measured on the approved Han glyphs: ink box right of the outline by 0.47 px, 0.18 px higher)
+            dx, base = 0.5, 11.8
         else:
             lab, fw, fh, left = WESTERN_REF[gid]
             key = next(k for k in WESTERN if lab.startswith(k))

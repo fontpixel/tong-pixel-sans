@@ -32,6 +32,6 @@ cd reference-fonts && sha256sum -c ../build-data/reference-fonts.sha256
 
 - **汉字、全角字形的底稿**：WorkBench（FreeType 单色渲染，`FT_LOAD_TARGET_MONO`，FreeType 2.13.2，关闭 stem darkening），wght 320，字面 14×13（“囗”全包围字与独体“口”13×13）。见 `archive/tong/docs/DESIGN.md`。思源黑体没有的汉字改用遍黑体 P1（只有常规体，相当于 wght 400，笔画比 w320 粗），参考图、叠加轮廓也用它。
 - **全角符号和西文底稿**：同样的渲染，另加 1/16 像素横向相位搜索：每字试 16 种亚像素平移，选对称、少黑块、不断笔的一种（`archive/tong-ext-v5/scripts/phase.py`、`varraster.py`）。
-- **参考图 / 叠加轮廓**：汉字用该地区思源黑体 wght 400，em = 14 像素，基线在字格顶下 12 像素；西文用底稿所用字体（wght 320）和底稿字号，水平对齐底稿的最左墨迹列（`tools/editor/data/reference-western.txt`）。
+- **参考图 / 叠加轮廓**：汉字用该地区思源黑体 wght 400，em = 14 像素，右移 0.5 像素、基线在字格顶下 11.8 像素，使轮廓以 13×13 墨迹框（第 1–13 列、第 0–12 行）为中心（按已通过汉字实测：墨迹框比轮廓偏右 0.47、偏上 0.18 像素）；西文用底稿所用字体（wght 320）和底稿字号，水平对齐底稿的最左墨迹列（`tools/editor/data/reference-western.txt`）。
 - `build-data/narrow-width.txt`：各地区思源黑体中步进 ≤ 700/1000 的码位。
 - `build-data/constants.txt`：比例版空格 = max(3, round(Source Sans 3 空格步进 × 13 / 1000))。
