@@ -806,12 +806,12 @@ ai
 # AI: AI 修字 symbols-v2（gpt-6-astra xhigh，2026-09-30）
 
 U+2074 ⁴ adv=auto
-draft
+ai
 ....
 ..#.
 .##.
 #.#.
-.##.
+###.
 ..#.
 ....
 ....
@@ -821,7 +821,7 @@ draft
 ....
 ....
 ....
-# AI: 底稿：Source Sans 3 w320 相位搜索 9/16，字面 13×13（补充符号，Latin 字体用的比例版）
+# AI: AI 修字 latin-v2（gpt-6-astra xhigh，2026-09-30）
 
 U+2075 ⁵ adv=auto
 ai
