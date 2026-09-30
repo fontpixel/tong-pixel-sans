@@ -2584,6 +2584,8 @@ approved
 ..#...#...#..
 ##....#....##
 ......#......
+@ whole/0 爫 61bffbe4c31249c3b7e3fa68d5d5bed8
+@ whole/1 木 5098a70f4db34a50b8ace299ee0e3ff4
 
 U+91C9 釉
 ai

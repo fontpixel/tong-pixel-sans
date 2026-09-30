@@ -581,6 +581,9 @@ approved
 ##.#....#....
 ...#.##..##..
 ..###......##
+@ whole/0 亠 2e4434ce87f84ad3aa61f2be6a0542b8
+@ whole/1 口 40a36f4935d74b0d89d583d2ab2fdeec
+@ whole/2 𧘇 7a836c6cd06d435384cf06cb93245d61
 # 人工: 整字复制自 U+54C0.SC（3 处关联）
 
 U+54C1 品 = U+54C1.SC

@@ -887,6 +887,8 @@ approved
 ....#.#.#....
 ..##..#..##..
 ##....#....##
+@ whole/0 ⺊ aa6ca3767cda4bbb9d044bd4d3283780
+@ whole/1 杲 844bffa1e3954f44ab918ddef2144319
 
 U+684E 桎
 ai

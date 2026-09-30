@@ -835,6 +835,7 @@ approved
 ###.#....#...
 ....#.#######
 @ whole/1 皇 3625a05375d148baa3e9e55cae441094
+@ whole/0 虫 476c35cb04f249dbba6658f8e8c4ca1f
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+8758 蝘
@@ -1975,6 +1976,8 @@ approved
 ..###....#...
 ###.#....#...
 .........#...
+@ whole/0 虫 958632f0592f4d1fa4937125654d2bfc
+@ whole/1 率 5facf74bbb9b4ba6b5ca1f1a6127bd02
 # AI: 率的点与幺在七列内压缩，需人审密处辨识。
 
 U+87C2 蟂

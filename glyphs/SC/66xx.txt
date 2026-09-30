@@ -851,6 +851,7 @@ approved
 ....#......#.
 ....#.....##.
 @ whole/0 日 b95902da42974df1923b6d0dda626245
+@ whole/1 向 a5e6b28db0944d96aa4dcbca6381f890
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+664F 晏
@@ -953,6 +954,7 @@ approved
 ......#......
 #############
 ......#......
+@ whole/0/0 囗 34aed3cc94984f6ca2fee94e40835063
 # AI: 日底与冖顶紧邻；保留完整日与下方车中竖。
 
 U+6656 晖

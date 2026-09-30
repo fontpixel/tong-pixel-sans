@@ -641,6 +641,7 @@ edited
 .....#...#.#.
 ....#.....##.
 @ whole/0 口 4a8f7d8b22ba4ee39f1a9748da1f9974
+@ whole/1 允 6889a3b6c813455e9f503f1cc82900a9
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+542F 启
@@ -2299,6 +2300,8 @@ approved
 ....#.......#
 ....#########
 ....#.......#
+@ whole/0 口 4a8f7d8b22ba4ee39f1a9748da1f9974
+@ whole/1 因 b71b980c839049fe9f30ca20e725d112
 # AI: 因内大末笔收短，避免与外框粘成厚角。
 # 人工: 整字复制自 U+54BD.JP（0 处关联）
 
@@ -3088,6 +3091,8 @@ approved
 .....#..#..#.
 .....#..#..#.
 .....#..#.##.
+@ whole/0 口 6cb3bf2aa15244dfbc557b42b94af6cb
+@ whole/1 甫 189f066fbb0b480ca4fcc0158fd6f982
 
 U+54FC 哼
 edited

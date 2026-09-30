@@ -345,6 +345,8 @@ approved
 ......#......
 ......#......
 #############
+@ whole/0 保 d23ca718a24f4a428edf56f2ee8cfbb1
+@ whole/1 土 2f5a0bed093f46f4bfa4132ee8aac76d
 # 人工: 整字复制自 U+5821.TC（0 处关联）
 
 U+5823 堣

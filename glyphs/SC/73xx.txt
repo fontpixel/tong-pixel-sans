@@ -416,6 +416,7 @@ approved
 ..#.....#....
 ##..#########
 @ whole/0 犭 e18f2e93017a4e8684f1c6857a22e14d
+@ whole/1 星 4e2d00df40e149e9adb7ef54641b0000
 
 U+732A 猪
 ai

@@ -114,6 +114,7 @@ approved
 ..#.....#....
 ..#.#########
 @ whole/0 禾 a92e919c5b5849ceb928c3e292545072
+@ whole/1 呈 85f9a1326eb2477a9114220ab32990d0
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+7A0C 稌

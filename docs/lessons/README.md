@@ -4,7 +4,8 @@
 
 | 文件 | 内容 |
 |---|---|
-| [worker-lessons.md](worker-lessons.md) | **当前读本**：下一轮 AI 修字要读的候选规律（L023–L048）与自检清单（C001–C014） |
+| [worker-lessons.md](worker-lessons.md) | **当前读本**：下一轮 AI 修字要读的候选规律（L023–L054）与自检清单（C001–C017） |
+| [2026-09-30-phone-review.md](2026-09-30-phone-review.md) | 手机修字 150 字及编辑器修改：L051–L054 |
 | [2026-09-29-phase1-review.md](2026-09-29-phase1-review.md) | 第一期代表字导入后，人工又改了什么：L044–L048 |
 | [2026-09-29-pass2-review.md](2026-09-29-pass2-review.md) | 常用百字二次修字（借鉴圆石）后，人工又改了什么：数字、L037–L043 |
 | `data/2026-09-28-pass2-tumbled.json` | 常用百字 189 个字形的第一轮 AI、二次修字、人工版和圆石点阵 |

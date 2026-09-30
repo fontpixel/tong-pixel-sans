@@ -257,6 +257,8 @@ approved
 ......#......
 ......#......
 #############
+@ whole/0 保 c1ab4f4751b94ef495f2de2288de8d3f
+@ whole/1 土 2f5a0bed093f46f4bfa4132ee8aac76d
 
 U+5823 堣
 ai

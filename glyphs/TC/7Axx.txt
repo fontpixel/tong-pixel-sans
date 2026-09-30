@@ -85,6 +85,7 @@ approved
 ..#.....#....
 ..#.#########
 @ whole/0 禾 0875fa50cad1432f96e788637856ecee
+@ whole/1 呈 81e07e627e0a43249905037bdb6da65c
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：窄禾保留五列，避免和范例寬禾右點與呈首撇相接。
 # 人工: 整字复制自 U+7A0B.SC（1 处关联）
 

@@ -702,6 +702,7 @@ approved
 ..#.......#..
 ..#....###...
 @ whole/1 丂 16b8500ae2b845a39b148f15f0997051
+@ whole/0 木 91a336edcc194663b66cd712de4b5f2a
 
 U+6740 杀
 approved
@@ -718,6 +719,8 @@ approved
 ..#...#...#..
 .#....#....#.
 .....##......
+@ whole/0 㐅 bb70d1e679f8454f9c3f70cfe824f62b
+@ whole/1 木 ff8d8e3a68c54a28aea7eeaddfd87b7c
 
 U+6742 杂
 ai

@@ -653,6 +653,7 @@ approved
 ..#.#########
 ##..#.......#
 @ whole/0 扌 04aa5b7492ad467eb3ccef9b9081bddd
+@ whole/1 困 419cc07e41d0482b96bd0addde64ec44
 # AI: 困内木撇捺末端与外框相邻，保留窄结构。
 
 U+6349 捉

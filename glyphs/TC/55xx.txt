@@ -476,6 +476,7 @@ approved
 ........#....
 ....#########
 @ whole/0 口 4a8f7d8b22ba4ee39f1a9748da1f9974
+@ whole/1 垂 df31d58001d64f1480263102035c1b11
 # 人工: 整字复制自 U+553E.SC（2 处关联）
 
 U+5540 啀
@@ -1661,6 +1662,7 @@ approved
 ......#.#.#..
 ....##..#..##
 @ whole/0 口 4a8f7d8b22ba4ee39f1a9748da1f9974
+@ whole/1 桑 18f23c43bcf042dc8fe269bfa5fcd34e
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：三又采用七行紧凑形，口旁保留三列窄形。
 # 人工: 整字复制自 U+55D3.SC（1 处关联）
 

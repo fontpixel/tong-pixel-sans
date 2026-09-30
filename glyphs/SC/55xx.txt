@@ -2275,6 +2275,7 @@ approved
 ......#.#.#..
 ....##..#..##
 @ whole/0 口 4a8f7d8b22ba4ee39f1a9748da1f9974
+@ whole/1 桑 661c575e6fa24b848f06b15f99ef1396
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）：三又采用七行紧凑形，口旁保留三列窄形。
 
 U+55D4 嗔
@@ -2475,6 +2476,7 @@ edited
 ........#..#.
 ....#######.#
 @ whole/0 口 4a8f7d8b22ba4ee39f1a9748da1f9974
+@ whole/1 蚩 f1f53aa399324a6ca8a873376777f587
 # AI: AI 修字 phase1-representative（gpt-6-astra xhigh，2026-09-29）
 
 U+55E5 嗥
@@ -2784,6 +2786,8 @@ approved
 ....#.#..#.#.
 ......#..#.#.
 ......#.#...#
+@ whole/0 口 4a8f7d8b22ba4ee39f1a9748da1f9974
+@ whole/1 欶 5a72b588c9d347e8a2d052c4f9a10d10
 # AI: 束中竖与左框相邻；欠撇压短，束捺与欠撇仍近。
 
 U+55FE 嗾
