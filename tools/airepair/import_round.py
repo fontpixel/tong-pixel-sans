@@ -41,7 +41,7 @@ def main():
     skip_ids = set(Path(a.skip_ids).read_text().split()) if a.skip_ids else set()
     prefix = f"AI 修字 {info['name']}（{info['model']} {info['effort']}，{info['created_at'][:10]}）"
     s = Store(ROOT)
-    done, skipped, dropped, aliased = [], [], Counter(), []
+    done, skipped, dropped, aliased, done_x = [], [], Counter(), [], []
     for p in sorted((rnd / "results").glob("*.json")):
         for g in read_json(p)["glyphs"]:
             if g["char"] in a.exclude or (only is not None and g["id"] not in only):
@@ -59,8 +59,17 @@ def main():
                 else:
                     done.append(g["id"])
                 continue
+            metrics = None
+            rec = s.records[g["id"]]
+            if "adv=0" in rec["metrics"] and len(g["rows"][0]) != len(g["before"][0]):
+                # a zero-advance mark made wider or narrower: keep its centre where it was
+                x0 = int(next((m[2:] for m in rec["metrics"] if m.startswith("x=")), 0))
+                x1 = x0 + round((len(g["before"][0]) - len(g["rows"][0])) / 2)
+                metrics = [m for m in rec["metrics"] if not m.startswith("x=")] + ([f"x={x1}"] if x1 else [])
+                done_x.append(g["id"])
             try:
-                out = s.import_ai(g["id"], g["rows"], prefix + ("：" + g["note"] if g["note"] else ""), items[g["id"]]["revision"])
+                out = s.import_ai(g["id"], g["rows"], prefix + ("：" + g["note"] if g["note"] else ""), items[g["id"]]["revision"],
+                                  metrics=metrics)
             except Conflict as e:
                 skipped.append((g["id"], str(e))); continue
             done.append(g["id"])
@@ -70,7 +79,8 @@ def main():
                 s.make_alias({"id": g["id"], "target": master, "expected_revision": out["current"]["revision"]})
                 aliased.append(g["id"])
     print(json.dumps({"imported": len(done), "skipped": len(skipped), "skipped_detail": skipped[:50],
-                      "links_removed": sum(dropped.values()), "aliased": len(aliased)}, ensure_ascii=False, indent=1))
+                      "links_removed": sum(dropped.values()), "aliased": len(aliased),
+                      "zero_advance_recentred": len(done_x)}, ensure_ascii=False, indent=1))
 
 
 if __name__ == "__main__":

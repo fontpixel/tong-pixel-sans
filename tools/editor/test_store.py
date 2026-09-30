@@ -136,6 +136,15 @@ class StoreTest(unittest.TestCase):
         with self.assertRaises(Conflict):                               # approved glyphs are never replaced
             self.s.import_ai("U+4E01.SC", TEN, "x", self.s.current("U+4E01.SC")["revision"])
 
+    def test_import_ai_widens_a_zero_advance_mark(self):
+        mark = [".#."] + ["..."] * 13
+        self.s.add_glyphs([{"group": "PR", "cp": 0x0301, "rows": mark, "state": "draft", "metrics": ["adv=0", "x=-3"]}])
+        cur = self.s.current("U+0301.PR")
+        wide = ["#.#.#"] + ["....."] * 13
+        self.s.import_ai("U+0301.PR", wide, "加宽", cur["revision"], metrics=["adv=0", "x=-4"])
+        self.assertIn("U+0301 - adv=0 x=-4\nai\n#.#.#", self.page("glyphs/PR/03xx.txt"))
+        self.assertTrue(self.s.flexible_width("U+0301.PR"))
+
     def test_import_ai_replaces_an_edited_glyph(self):
         cur = self.s.current("U+4E03.SC")
         rows = list(CROSS); rows[0] = "#" + BLANK[1:]

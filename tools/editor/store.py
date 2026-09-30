@@ -408,9 +408,10 @@ class Store(ShapesMixin):
         return tuple(g.get("cell", (self.w, self.h)))
 
     def flexible_width(self, gid):
-        """Proportional glyphs with adv=auto: the build takes the advance from the ink, so the width may
-        change; the height stays 14."""
-        return bool(self.original(gid).get("auto_advance"))
+        """Proportional glyphs with adv=auto (the build takes the advance from the ink) and zero-advance
+        marks (adv=0, drawn at x_offset from the pen): the width may change; the height stays 14."""
+        g = self.original(gid)
+        return bool(g.get("auto_advance")) or (g.get("kind") == "prop" and g.get("advance") == 0)
 
     def rows_fit(self, gid, rows):
         if self.flexible_width(gid):
@@ -577,13 +578,14 @@ class Store(ShapesMixin):
             self._commit_shapes([value])
             return self.current(gid)
 
-    def import_ai(self, gid, rows, ai_note, expected_revision):
+    def import_ai(self, gid, rows, ai_note, expected_revision, metrics=None):
         """Replace an unreviewed glyph (AI version, draft, or one a person changed without approving it: the user
         counts those as unfinished, 2026-09-30) by a new AI version (state becomes `ai`, the `# AI:` note is
         replaced). The first AI version is archived in history/ai-originals. Links whose form pixels
         are no longer all in the new rows are removed from this glyph only (forms are not changed; a
-        form no glyph uses any more leaves the library). Refused if the glyph changed since
-        expected_revision or is not in state `ai`."""
+        form no glyph uses any more leaves the library). `metrics` replaces the header metrics (a
+        zero-advance mark whose width changed gets a new x offset). Refused if the glyph changed since
+        expected_revision or is approved."""
         self.rows_fit(gid, rows)
         with self.lock():
             old = self.current(gid)
@@ -602,8 +604,13 @@ class Store(ShapesMixin):
                 (keep if ok else dropped).append(l)
             value = self._revision(old, rows, keep, "AI 版本导入", approved=False, origin="ai")
             value["ai_note"] = ai_note
-            self._collect(lib, {gid: value})
-            self._commit_shapes([value], lib)
+            if metrics is not None:
+                value["metrics"] = list(metrics)
+            if dropped:                    # only then can a form lose its last user
+                self._collect(lib, {gid: value})
+                self._commit_shapes([value], lib)
+            else:
+                self._commit_shapes([value])
             return {"current": self.current(gid), "kept_links": len(keep), "dropped_links": [l["symbol"] for l in dropped]}
 
     def add_glyphs(self, new):
@@ -744,6 +751,8 @@ class Store(ShapesMixin):
                     links.append(link)
                 rec["links"] = links
                 rec["state"] = r["state"]
+                if "metrics" in r:
+                    rec["metrics"] = list(r["metrics"])
                 rec["human_note"] = [t.strip() for t in (r.get("note") or "").splitlines() if t.strip()]
                 if "ai_note" in r:
                     rec["ai_note"] = [t.strip() for t in r["ai_note"].splitlines() if t.strip()]
