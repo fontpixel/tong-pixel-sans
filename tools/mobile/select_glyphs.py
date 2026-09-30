@@ -5,8 +5,8 @@
 Demand: the components (IDS parts, not single strokes) of the glyphs still to be repaired in the
 given rounds under work/airepair/ (unsubmitted batches only), or with --unapproved of every regional
 glyph (SC TC JP) not approved yet, for a review list. With --unapproved a candidate's value is also
-weighted by how common the character is (×3 for SC 常用 2500 / JP 教育汉字 / TC 常用 4808's first
-half, ×2 for SC 3500 / JP 常用 / the rest of TC 4808). Supply: approved glyphs that serve as
+weighted by how common the character is (×3 for SC 常用 2500 / JP 教育汉字 / TC 常用 4808,
+×2 for SC 常用 3500 / JP 常用 / TC 次常用 6343). Supply: approved glyphs that serve as
 exemplars for a component the way tools/airepair/prepare.py finds them (form links; an approved
 glyph of the component character itself). A component is worth demand × (1, ½, ¼, ⅒ for 0, 1, 2,
 3+ exemplars). Candidates are AI glyphs or drafts of common characters (the tables below); a glyph
@@ -56,6 +56,7 @@ def main():
     ap.add_argument("name")
     ap.add_argument("--rounds", nargs="+", default=[])
     ap.add_argument("--unapproved", action="store_true", help="demand from every unapproved regional glyph")
+    ap.add_argument("--region", choices=("SC", "TC", "JP"), help="pick only glyphs of this region")
     ap.add_argument("--count", type=int, default=150)
     a = ap.parse_args()
     s = Store(ROOT)
@@ -78,14 +79,12 @@ def main():
     weight = {}
     if a.unapproved:
         tiers = {"SC": [("prc-lit/changyong-2500.txt", 3), ("prc-lit/changyong-3500.txt", 2)],
-                 "JP": [("jp/kyoiku.txt", 3), ("jp/joyo.txt", 2)]}
+                 "JP": [("jp/kyoiku.txt", 3), ("jp/joyo.txt", 2)],
+                 "TC": [("tw/tw-changyong-4808.txt", 3), ("tw/tw-cichangyong-6343.txt", 2)]}
         for reg, tl in tiers.items():
             for t, w in reversed(tl):
                 for cp in table_codepoints(ROOT / "build-data/coverage" / t):
                     weight[f"U+{cp:04X}.{reg}"] = w
-        tw = table_codepoints(ROOT / "build-data/coverage/tw/tw-changyong-4808.txt")
-        for i, cp in enumerate(tw):
-            weight[f"U+{cp:04X}.TC"] = 3 if i < len(tw) // 2 else 2
     demand, users = Counter(), defaultdict(list)
     for g in queue:
         reg = key_region(s.records[g]["group"])
@@ -105,7 +104,8 @@ def main():
                 g = f"U+{cp:04X}.{reg}"
                 if g in s.records and "alias" not in s.records[g]:
                     cands.add(g)
-    cands = [g for g in cands if s.records[g].get("state") in ("ai", "draft") and s.records[g]["group"] in ("SC", "TC", "JP")]
+    cands = [g for g in cands if s.records[g].get("state") in ("ai", "draft", "edited") and s.records[g]["group"] in ("SC", "TC", "JP")
+             and (a.region is None or s.records[g]["group"] == a.region)]
 
     def value(g):
         reg = key_region(s.records[g]["group"])

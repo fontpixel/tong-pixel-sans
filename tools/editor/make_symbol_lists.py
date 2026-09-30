@@ -1,9 +1,9 @@
 """Editor lists of the non-Han glyphs: one per category, and one of the glyphs to review first.
 
-    .venv/bin/python tools/editor/make_symbol_lists.py
+    .venv/bin/python tools/editor/make_symbol_lists.py [--first]
 
 Writes tools/editor/data/lists/非汉字·NN 类别.txt (every glyph with its own pixels in that category, all
-groups, in code point order) and 建议先审·非汉字.txt (the glyphs not approved yet, most used first:
+groups, in code point order) and, with --first, 建议先审·非汉字.txt (the glyphs not approved yet, most used first:
 ASCII, full-width forms, CJK punctuation and kana; then Latin-1, general punctuation, common symbols,
 bopomofo and Hangul letters; then basic Greek and Cyrillic). Old 非汉字·* lists are replaced. Changes no
 glyph.
@@ -91,6 +91,8 @@ def main():
                 f"# {name}：{len(ids)} 个字形，已通过 {done}（tools/editor/make_symbol_lists.py）\n" + "\n".join(ids) + "\n",
                 encoding="utf-8")
             print(f"{name}: {len(ids)}（已通过 {done}）")
+    if "--first" not in sys.argv:
+        return
     first.sort()
     (LISTS / "建议先审·非汉字.txt").write_text(
         "# 还没通过的非汉字，最常用的在前：ASCII、全角字符、CJK 标点和假名；然后是 Latin-1、常用标点和符号、注音、韩文字母；"

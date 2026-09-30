@@ -17,7 +17,7 @@
 ## 手机修字
 
 - 手机编辑器：`tools/mobile/`（选字 `select_glyphs.py`、数据 `build_data.py`、页面 `template.html`、导入 `import_edits.py`）。
-- 2026-09-29 的 150 字清单 `tools/editor/data/lists/手机修字150.txt` 已全部通过（2026-09-30）。
+- 2026-09-29 的手机修字 150 字已全部通过（2026-09-30），清单已删除；新的优先审核清单是“优先审核汉字”。
 
 ## 西文
 
