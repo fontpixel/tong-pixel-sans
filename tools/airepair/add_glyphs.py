@@ -58,7 +58,10 @@ REQUESTS = [  # (table under build-data/coverage/, region)
 ORDER = ["SC", "TC", "JP", "KR"]
 COMBINING = {0x3099, 0x309A}
 SYMBOL_FONTS = [("SourceSans3-VF.otf", (320,), "Source Sans 3 w320"), ("NotoSansMath-Regular.ttf", (), "Noto Sans Math")]
-WESTERN_ORDER = [("SourceSans3-VF.otf", (320,), "Source Sans 3 w320"), ("NotoSans-VF.ttf", (320, 100), "Noto Sans w320"),
+WESTERN_ORDER = [("SourceSans3-VF.otf", (320,), "Source Sans 3 w320"),
+                 ("NotoSansHebrew-Regular.ttf", (), "Noto Sans Hebrew"), ("NotoSansGeorgian-Regular.ttf", (), "Noto Sans Georgian"),
+                 ("NotoSansArmenian-Regular.ttf", (), "Noto Sans Armenian"), ("NotoSansLao-Regular.ttf", (), "Noto Sans Lao"),
+                 ("NotoSans-VF.ttf", (320, 100), "Noto Sans w320"),
                  ("NotoSansMath-Regular.ttf", (), "Noto Sans Math"), ("NotoSansSymbols-Regular.ttf", (), "Noto Sans Symbols"),
                  ("NotoSansSymbols2-Regular.ttf", (), "Noto Sans Symbols 2")]
 PUNCTUATION = [(0x3000, 0x303F), (0xFE10, 0xFE1F), (0xFE30, 0xFE4F)]   # drawn per region (、。 differ)
@@ -191,12 +194,16 @@ def symbols(listing, have):
         thin = [r for r in ORDER if adv[r] is not None and adv[r] <= 700]
         west = next(((FONTS / n, c, l) for n, c, l in WESTERN_ORDER if has(n, cp)), None)
         wide = unicodedata.east_asian_width(ch) in ("W", "F")
-        if unicodedata.category(ch) == "Mn" and (thin or full):
-            r = draft.proportional(sh_jp[0], sh_jp[1], ch, tight=False)
+        if unicodedata.category(ch) == "Mn" and (west or thin or full):
+            src = west or sh_jp          # combining marks: a zero-advance proportional glyph (as Thai vowels and tones)
+            r = draft.proportional(src[0], src[1], ch, tight=False)
+            if r is None:
+                report.append(f"{ch} U+{cp:04X}：组合符号画不出，跳过")
+                continue
             new.append({"group": "PR", "cp": cp, "rows": r["rows"], "state": "draft",
                         "metrics": ["adv=0"] + ([f"x={r['x_offset']}"] if r["x_offset"] else []),
-                        "ai_note": f"底稿：思源黑体 JP w320 组合用符号（零步进），字面 {r['face'][0]}×{r['face'][1]}"})
-            refs.append((f"U+{cp:04X}.PR", sh_jp[2], *r["face"], left_column(r["rows"])))
+                        "ai_note": f"底稿：{src[2]} 组合用符号（零步进），字面 {r['face'][0]}×{r['face'][1]}"})
+            refs.append((f"U+{cp:04X}.PR", src[2], *r["face"], left_column(r["rows"])))
             for reg in thin:
                 narrow.setdefault(reg, set()).add(cp)
             report.append(f"{ch} U+{cp:04X}.PR 组合符号（零步进）")
@@ -232,7 +239,8 @@ def symbols(listing, have):
         src = west if west and (not full or west[2].startswith(("Source Sans 3", "Noto Sans w"))) and not (wide and not full) \
             else (sh_jp if thin and not west else None)
         if src:
-            hw = draft.half_width(src[0], src[1], ch)
+            # Lao, like Thai, has proportional glyphs only
+            hw = None if 0x0E80 <= cp <= 0x0EFF else draft.half_width(src[0], src[1], ch)
             pr = draft.proportional(src[0], src[1], ch, tight=True)
             for grp, r, metrics in (("HW", hw, ["adv=7"]), ("PR", pr, ["adv=auto"])):
                 if r is None:

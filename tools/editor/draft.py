@@ -44,6 +44,8 @@ REGIONAL_FACES = [(14, 13), (13, 13), (12, 13), (12, 12), (11, 11), (10, 10)]
 WESTERN_FONTS = {"Source Sans 3": ("SourceSans3-VF.otf", (320,)), "Noto Sans Thai": ("NotoSansThai-VF.ttf", (320, 100)),
                  "Noto Sans Arabic": ("NotoSansArabic-VF.ttf", (320, 100)), "Noto Sans Math": ("NotoSansMath-Regular.ttf", ()),
                  "Noto Sans Symbols 2": ("NotoSansSymbols2-Regular.ttf", ()), "Noto Sans Symbols": ("NotoSansSymbols-Regular.ttf", ()),
+                 "Noto Sans Hebrew": ("NotoSansHebrew-Regular.ttf", ()), "Noto Sans Georgian": ("NotoSansGeorgian-Regular.ttf", ()),
+                 "Noto Sans Armenian": ("NotoSansArmenian-Regular.ttf", ()), "Noto Sans Lao": ("NotoSansLao-Regular.ttf", ()),
                  "Noto Sans": ("NotoSans-VF.ttf", (320, 100)), "思源 JP": ("SourceHanSansJP-VF.otf", (320,))}
 # Han characters beyond Source Han Sans (extension B and later): static, weight 400 only
 EXTENSION = ("PlangothicP1-Regular.ttf", "遍黑体 P1")

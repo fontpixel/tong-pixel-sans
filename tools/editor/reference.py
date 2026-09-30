@@ -27,6 +27,10 @@ WESTERN = {"Source Sans 3": ("SourceSans3-VF.otf", (("wght", 320),)),
            "Noto Sans Math": ("NotoSansMath-Regular.ttf", ()),
            "Noto Sans Symbols 2": ("NotoSansSymbols2-Regular.ttf", ()),
            "Noto Sans Symbols": ("NotoSansSymbols-Regular.ttf", ()),
+           "Noto Sans Hebrew": ("NotoSansHebrew-Regular.ttf", ()),
+           "Noto Sans Georgian": ("NotoSansGeorgian-Regular.ttf", ()),
+           "Noto Sans Armenian": ("NotoSansArmenian-Regular.ttf", ()),
+           "Noto Sans Lao": ("NotoSansLao-Regular.ttf", ()),
            "Noto Sans": ("NotoSans-VF.ttf", (("wdth", 100), ("wght", 320))),
            "思源 JP": ("SourceHanSansJP-VF.otf", (("wght", 320),))}
 _lock = threading.RLock()

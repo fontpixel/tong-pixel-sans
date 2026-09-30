@@ -165,7 +165,7 @@ def bdf(glyphs, family, mono):
              'PIXEL_SIZE 14', 'POINT_SIZE 140', 'RESOLUTION_X 75', 'RESOLUTION_Y 75', 'SPACING "P"',
              f'FONT_ASCENT {ASCENT}', f'FONT_DESCENT {DESCENT}', 'CHARSET_REGISTRY "ISO10646"', 'CHARSET_ENCODING "1"',
              'COPYRIGHT "Derived from Source Han Sans (Adobe), Source Sans 3 (Adobe), Noto Sans, Noto Sans Thai, '
-             'Noto Sans Arabic, Noto Sans Math, Noto Sans Symbols, Noto Sans Symbols 2 (Google), Plangothic P1 (Plangothic Project), '
+             'Noto Sans Arabic, Hebrew, Georgian, Armenian, Lao, Math, Symbols, Symbols 2 (Google), Plangothic P1 (Plangothic Project), '
              'with Han bitmaps drawing on TUMBLED (TsFreddie); '
              'SIL Open Font License 1.1; Reserved Font Names Source, Plangothic"']
     if mono:
