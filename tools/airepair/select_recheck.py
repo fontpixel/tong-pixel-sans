@@ -3,7 +3,8 @@
     .venv/bin/python tools/airepair/select_recheck.py OUT --exclude-rounds R1 R2 … [--ref-round R …]
 
 Pool: regional glyphs (SC TC JP) in state `ai` that are their character's master (prepare.master_of)
-and have a TUMBLED 18 glyph (the user runs only those), minus the glyphs of the given rounds. Each is
+and have a TUMBLED 18 glyph (the user ran only those at first; --all-chars: every character, and KR too),
+minus the glyphs of the given rounds. Each is
 checked in its latest version (the last --ref-round result if any, else the repository):
 - L049: side-by-side components 2+ blank columns apart (common.wide_gaps);
 - L038/L052: ink 11 columns or narrower where the region's Source Han Sans ink is at least 0.86 em
@@ -61,6 +62,7 @@ def main():
     ap.add_argument("out", type=Path)
     ap.add_argument("--exclude-rounds", nargs="*", default=[])
     ap.add_argument("--ref-round", nargs="*", default=[])
+    ap.add_argument("--all-chars", action="store_true", help="also the characters TUMBLED 18 lacks, and Korean (KR) masters")
     a = ap.parse_args()
     s = Store(ROOT)
     tum = tumbled()
@@ -68,7 +70,8 @@ def main():
     skip = {g for r in a.exclude_rounds for g in pending(r)}
     issues, count = {}, Counter()
     for gid, r in s.records.items():
-        if r["group"] not in ("SC", "TC", "JP") or "alias" in r or r["state"] != "ai" or gid in skip or r["cp"] not in tum:
+        regions = ("SC", "TC", "JP", "KR") if a.all_chars else ("SC", "TC", "JP")
+        if r["group"] not in regions or "alias" in r or r["state"] != "ai" or gid in skip or (r["cp"] not in tum and not a.all_chars):
             continue
         if master_of(s, r["cp"]) != gid:
             continue
