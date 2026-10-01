@@ -15,6 +15,7 @@ cd reference-fonts && sha256sum -c ../build-data/reference-fonts.sha256
 | `SourceHanSansJP-VF.otf` | Source Han Sans VF 2.004（日文默认） | 日文字形、半角假名、部分西文 | [同一提交的 `Variable/OTF/SourceHanSans-VF.otf`](https://raw.githubusercontent.com/adobe-fonts/source-han-sans/a8b073bbf80f7226af03abeeb31e27017d5e3f67/Variable/OTF/SourceHanSans-VF.otf)，改名 |
 | `SourceHanSansKR-VF.otf` | Source Han Sans K VF 2.004（韩文默认） | 韩文字形 | [同一提交的 `Variable/OTF/SourceHanSansK-VF.otf`](https://raw.githubusercontent.com/adobe-fonts/source-han-sans/a8b073bbf80f7226af03abeeb31e27017d5e3f67/Variable/OTF/SourceHanSansK-VF.otf)，改名 |
 | `SourceSans3-VF.otf` | Source Sans 3 VF 3.052 | 西文 | Adobe [source-sans](https://github.com/adobe-fonts/source-sans) 3.052 可变字体（直立），改名 |
+| `SourceCodePro-VF.otf` | Source Code Pro VF 1.026（Upright） | 等宽版西文（2026-10-01 起） | Adobe [source-code-pro](https://github.com/adobe-fonts/source-code-pro) 发布 2.042R-u/1.062R-i/1.026R-vf 的 `VF-source-code-VF-1.026R.zip` 里的 `SourceCodeVF-Upright.otf`，改名 |
 | `NotoSans-VF.ttf` | Noto Sans 2.015 | Source Sans 3 没有的西文 | [notofonts](https://github.com/notofonts/latin-greek-cyrillic) / Google Fonts 可变字体，改名 |
 | `NotoSansThai-VF.ttf` | Noto Sans Thai 2.001 | 泰文 | [notofonts/thai](https://github.com/notofonts/thai) 可变字体，改名 |
 | `NotoSansArabic-VF.ttf` | Noto Sans Arabic 2.013 | 阿拉伯文 | [notofonts/arabic](https://github.com/notofonts/arabic) 可变字体，改名 |
@@ -26,7 +27,7 @@ cd reference-fonts && sha256sum -c ../build-data/reference-fonts.sha256
 
 各字体的精确 SHA-256 见 `build-data/reference-fonts.sha256`。表中只有思源黑体 TC / JP / KR 的下载地址有原始记录；其余字体以版本号和校验值为准，重新下载后请核对校验值。
 
-许可原文：`licenses/OFL-SourceHanSans.txt`、`licenses/OFL-SourceSans3.md`、`licenses/OFL-Noto.txt`、`licenses/OFL-Plangothic.txt`。遍黑体的保留字体名是 “Plangothic” 和 “遍黑”，本字体的名字不能含有它们（思源的保留名 “Source” 同理）。
+许可原文：`licenses/OFL-SourceHanSans.txt`、`licenses/OFL-SourceSans3.md`、`licenses/OFL-SourceCodePro.md`、`licenses/OFL-Noto.txt`、`licenses/OFL-Plangothic.txt`。遍黑体的保留字体名是 “Plangothic” 和 “遍黑”，本字体的名字不能含有它们（思源的保留名 “Source” 同理）。
 
 ## 用到的参数
 

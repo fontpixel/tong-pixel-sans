@@ -10,7 +10,7 @@
 - 程序或 AI 写的字形永远不标为 `approved`；只有用户能审核通过。脚本写的像素状态为 `derived`。
 - 不改用户通过的字（状态 `approved`），除非用户明确点名。用户改过但没通过的字（`edited`）算没修完，可以交给 AI 在当前版本上继续修（2026-09-30 用户决定）；用户改过的部分和已关联的部件尽量不动。
 - 修改构建逻辑后，确认 `tools/build.py` 输出与修改前一致，或向用户说明差异。
-- 字形来源只能是 OFL 字体：参考字体（思源黑体、Source Sans 3、Noto，含 Noto Sans Math、Noto Sans Symbols / Symbols 2；思源黑体没有的汉字用遍黑体 Plangothic P1），以及允许借鉴的圆石点阵黑（TUMBLED，见 `docs/design-rules.md`）。GB/T 37023、中易宋体等授权点阵只能参考、绝不能作为基础，不给修字者看它们的同字点阵。
+- 字形来源只能是 OFL 字体：参考字体（思源黑体、Source Sans 3、Source Code Pro（等宽西文）、Noto，含 Noto Sans Math、Noto Sans Symbols / Symbols 2；思源黑体没有的汉字用遍黑体 Plangothic P1），以及允许借鉴的圆石点阵黑（TUMBLED，见 `docs/design-rules.md`）。GB/T 37023、中易宋体等授权点阵只能参考、绝不能作为基础，不给修字者看它们的同字点阵。
 - 不使用图像生成模型；看图用现有工具（编辑器、`tools/preview.py`）生成的真实点阵。
 - 不在用户没有明确要求时启动 AI 批量修字；修字只用用户指定的模型和推理强度，不可用时如实报告，不静默替代。
 - 产物名不含 “Source”（思源的保留字体名），也不含 “Plangothic”“遍黑”（遍黑体的保留字体名）。
