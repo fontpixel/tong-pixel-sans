@@ -5,6 +5,7 @@
 ## 必须遵守
 
 - 用用户最近一条消息的语言回复（用户通常用中文）。
+- git 只放真正的源码：审核用的图、对比图、检查点、修字包、本机清单一律不提交（修字包只在给云端 Codex 用的临时分支上，导入后立即删除分支）。`history/`、`tools/editor/data/lists/` 等本机工作数据已在 `.gitignore`。
 - `glyphs/`、`forms/forms.txt`、`history/` 只通过 `tools/editor/store.py`（编辑器、`tools/western/` 脚本都用它）或保持格式不变的方式修改；改完运行 `python3 tools/verify.py`。不手工打乱排序、状态行和关联行。
 - 部件关联永远不改变像素。拿不准的一律列出来给用户审核，不自动处理。
 - 程序或 AI 写的字形永远不标为 `approved`；只有用户能审核通过。脚本写的像素状态为 `derived`。

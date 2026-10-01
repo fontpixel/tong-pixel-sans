@@ -11,3 +11,9 @@ __pycache__/
 .tmp-*
 /site/downloads/
 /site/gen/
+# local working data, never in git (2026-10-01: git holds only real source)
+/history/
+/tools/editor/data/lists/
+/tools/editor/data/representative.json
+/tools/editor/data/cross-region.json
+/docs/lessons/data/

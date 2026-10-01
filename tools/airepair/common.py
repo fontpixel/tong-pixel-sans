@@ -25,11 +25,13 @@ _tumbled = None
 
 
 def tumbled():
-    """{code point: 14 rows × 13 columns} of TUMBLED 18's glyphs (its Han ink box; ours is 13 × 13)."""
+    """{code point: 14 rows × 13 columns} of TUMBLED 18's glyphs (its Han ink box; ours is 13 × 13), from
+    reference-fonts/tumbled-18.bdf (see docs/reference-fonts.md); empty without it."""
     global _tumbled
     if _tumbled is None:
         out, rows, cur = {}, [], None
-        for line in open(HERE / "data/tumbled-18.bdf", encoding="latin-1"):
+        path = FONTS / "tumbled-18.bdf"
+        for line in (open(path, encoding="latin-1") if path.exists() else []):
             s = line.split()
             if not s:
                 continue

@@ -23,11 +23,12 @@ cd reference-fonts && sha256sum -c ../build-data/reference-fonts.sha256
 | `NotoSansSymbols-Regular.ttf` | Noto Sans Symbols 2.001（静态） | 以上字体都没有的符号（⌘ 类技术符号、罗马数字 Ⅼ–ⅿ、⚙ 等） | [notofonts/symbols](https://github.com/notofonts/symbols)；本机取自 Ubuntu 的 fonts-noto-core |
 | `NotoSansSymbols2-Regular.ttf` | Noto Sans Symbols 2 2.003（静态） | 同上（几何图形、播放键 ⏩ ⏸、☀ ☔ 等） | 同上 |
 | `NotoSansHebrew-Regular.ttf`、`NotoSansGeorgian-Regular.ttf`、`NotoSansArmenian-Regular.ttf`、`NotoSansLao-Regular.ttf` | Noto Sans Hebrew / Georgian / Armenian / Lao（静态常规体） | 希伯来、格鲁吉亚、亚美尼亚、老挝文（2026-09-30） | [notofonts](https://github.com/notofonts)；本机取自 Ubuntu 的 fonts-noto-core |
+| `tumbled-18.bdf` | 圆石点阵黑 TUMBLED v1.11 的 18 号（点阵） | AI 修字的像素范本：汉字为作者手绘，墨迹多为 13 宽 × 14 高（见 `docs/design-rules.md` 第 1 节） | 上游 [TsFreddie/TUMBLED](https://github.com/TsFreddie/TUMBLED)；PBF 由 fontpixel 项目转为 BDF，位图与步进原样保留（fontpixel 仓库 `fonts/tumbled/tumbled-18.bdf`） |
 | `PlangothicP1-Regular.ttf` | 遍黑体 Plangothic P1 6.400（项目版本 V2.9.5795，静态，只有常规体） | 思源黑体各地区都没有的汉字（扩展 B 区及以后） | [Plangothic_Project](https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic_Project/releases/tag/V2.9.5795) 发布附件 `PlangothicP1-Regular.ttf`（2026-09-29 取得） |
 
 各字体的精确 SHA-256 见 `build-data/reference-fonts.sha256`。表中只有思源黑体 TC / JP / KR 的下载地址有原始记录；其余字体以版本号和校验值为准，重新下载后请核对校验值。
 
-许可原文：`licenses/OFL-SourceHanSans.txt`、`licenses/OFL-SourceSans3.md`、`licenses/OFL-SourceCodePro.md`、`licenses/OFL-Noto.txt`、`licenses/OFL-Plangothic.txt`。遍黑体的保留字体名是 “Plangothic” 和 “遍黑”，本字体的名字不能含有它们（思源的保留名 “Source” 同理）。
+许可原文：`licenses/OFL-SourceHanSans.txt`、`licenses/OFL-SourceSans3.md`、`licenses/OFL-SourceCodePro.md`、`licenses/OFL-Noto.txt`、`licenses/OFL-Plangothic.txt`、`licenses/OFL-TUMBLED.txt`。遍黑体的保留字体名是 “Plangothic” 和 “遍黑”，本字体的名字不能含有它们（思源的保留名 “Source” 同理）。
 
 ## 用到的参数
 

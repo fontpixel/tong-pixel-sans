@@ -11,8 +11,8 @@
 | `build-data/narrow-width.txt` | 各地区思源黑体中画成半角 / 比例宽的码位 | 是 |
 | `build-data/constants.txt` | 从参考字体量出的常数 | 是 |
 | `build-data/coverage/` `build-data/coverage-required.txt` | 字表与必须覆盖的字表清单 | 是 |
-| `history/ai-originals/<分组>/<页>xx.txt` | 像素被改过的字的 AI 原稿 | 是 |
-| `tools/editor/data/` | 编辑器用的资料：字母家族、西文参考参数、跨地区部件对照 | 是 |
+| `history/ai-originals/<分组>/<页>xx.txt` | 像素被改过的字的 AI 原稿（编辑器自动维护） | 否，只在本机 |
+| `tools/editor/data/` | 编辑器用的资料：字母家族、西文参考参数 | 是（其中 `lists/`、`representative.json`、`cross-region.json` 是本机工作数据，不入库） |
 | `reference-fonts/` | 参考字体（思源黑体等） | 否，见 [reference-fonts.md](reference-fonts.md) |
 | `build/` | 构建产物 | 否 |
 
@@ -109,7 +109,7 @@ FORM c5114278701d476db67b135184384770 fixed 艹 SC 艹 · 上 12×3 @0,0
 
 ## `history/ai-originals/`
 
-格式与 `glyphs/` 相同，状态都是 `ai`，只收录现在像素已不同于 AI 原稿的字。编辑器第一次改动某个 `ai` / `hangul-ai` 字的像素时，会自动把原稿存进这里。编辑器用它显示“AI 原稿”；`tools/western/` 的脚本用它判断哪些地方被改过。
+只在本机，不入库（2026-10-01 起：git 只放真正的源码；需要时，旧的 AI 版本也能从 git 历史里的 `glyphs/` 找到）。格式与 `glyphs/` 相同，状态都是 `ai`，只收录现在像素已不同于 AI 原稿的字。编辑器第一次改动某个 `ai` / `hangul-ai` 字的像素时，会自动把原稿存进这里。编辑器用它显示“AI 原稿”；`tools/western/` 的脚本用它判断哪些地方被改过。
 
 ## `build-data/`
 
@@ -122,4 +122,4 @@ FORM c5114278701d476db67b135184384770 fixed 艹 SC 艹 · 上 12×3 @0,0
 
 - `families.txt`：HW / PR 字母家族。一个家族是一个基字及以它为基础的所有字母（A À Á Â …），记录基字和可分离的变音符。编辑器据此列出西文字母的部件，`tools/western/` 据此做连带更新。
 - `reference-western.txt`：每个 HW / PR 字形的参考字体、底稿字号和底稿最左墨迹列，用来叠加参考轮廓。
-- `cross-region.json`：思源黑体中各部件在简 / 繁 / 日之间是否写法相同，用于跨地区借用部件时给出提示。
+- 本机工作数据（不入库）：`lists/`（编辑器的审核清单，由 `make_symbol_lists.py`、`tools/mobile/select_glyphs.py` 等生成）、`representative.json`（`rank_representative.py` 生成）、`cross-region.json`（思源黑体中各部件在简 / 繁 / 日之间是否写法相同，用于跨地区借用部件时给出提示；由旧包工具生成，缺少时编辑器不提示）。
