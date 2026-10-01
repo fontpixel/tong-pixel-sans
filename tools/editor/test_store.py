@@ -219,6 +219,27 @@ class StoreTest(unittest.TestCase):
         os.utime(path, None)
         self.assertEqual(self.s.current("U+4E03.SC")["state"], "approved")
 
+    def test_large_group_has_18_rows_and_its_own_baseline(self):
+        rows = ["......."] * 18
+        rows = rows[:4] + ["#######"] * 10 + rows[14:]          # a block from row 4 to the baseline (row 14)
+        self.s.add_glyphs([{"group": "HW-L", "cp": 0x65, "rows": rows, "state": "draft", "metrics": ["adv=7"]}])
+        geo = self.s.geometry_of("U+0065.HW-L")
+        self.assertEqual((geo["cell_width"], geo["cell_height"], geo["baseline_row"]), (7, 18, 14))
+        self.assertEqual(self.s.geometry_of("U+0065.HW")["baseline_row"], 11)
+        with self.assertRaises(ValueError):
+            self.s.rows_fit("U+0065.HW-L", rows[:14])
+        import build
+        (self.root / "build-data").mkdir()
+        (self.root / "build-data/constants.txt").write_text("space_advance_proportional 4\n")
+        (self.root / "build-data/narrow-width.txt").write_text("".join(f"{r} 0020\n" for r in build.REGIONS))
+        self.s.ids_version += 1
+        _, prop, mono = next(build.faces(self.root, "Large"))
+        self.assertEqual(mono[0x65]["src"], "U+0065.HW-L")
+        self.assertEqual((mono[0x65]["y"], len(mono[0x65]["rows"])), (-4, 18))
+        _, prop, mono = next(build.faces(self.root, "Small"))
+        self.assertEqual(mono[0x65]["src"], "U+0065.HW")
+        self.assertIn("Large Mono SC", self.s.usage_of("U+0065.HW-L")["faces"])
+
 
 if __name__ == "__main__":
     unittest.main()

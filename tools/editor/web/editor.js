@@ -126,7 +126,7 @@ function renderQueue() {
     b.setAttribute('aria-label',`${g.char} ${g.id} ${g.batch}`);b.classList.toggle('active',current?.original.id===g.id);b.classList.toggle('approved',g.approved);b.classList.toggle('edited',g.edited);b.classList.toggle('unused',!!g.unused);if(g.unused)b.title+=' · 字体里用不到';
     const mini=document.createElement('canvas');mini.className='mini';mini.dataset.b=g.b||'';mini.dataset.cjk=/^(SC|TC|JP|KR)$/.test(g.locale)?'1':'';
     // real size before it is drawn (a canvas defaults to 300×150)
-    mini.width=mini.dataset.cjk?14:Number((g.b||'0').split(':')[0])||7;mini.height=14;mini.style.width=mini.width+'px';mini.style.height='14px';
+    mini.width=mini.dataset.cjk?14:Number((g.b||'0').split(':')[0])||7;mini.height=/-L$/.test(g.locale)?18:14;mini.style.width=mini.width+'px';mini.style.height=mini.height+'px';
     b.append(mini);miniObserver.observe(mini);
     const detail=document.createElement('small');detail.textContent=g.locale+(g.approved?' ✓':g.edited?' 改':g.concern?' !':'');b.append(detail);b.onclick=guard(()=>show(g.id));$('queue').append(b);
   }

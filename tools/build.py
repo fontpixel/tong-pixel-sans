@@ -2,10 +2,12 @@
 
     python tools/build.py [output-dir]      (default: build/)
 
-Per region (SC, TC, JP, KR) one proportional face (TongPixelSans<R>-14.bdf) and one monospace,
-dual-width face (TongPixelSansMono<R>-14.bdf), 14 px, ascent 11, descent 3; and two faces without
-any East Asian glyph, TongPixelSansLatin-14.bdf and TongPixelSansMonoLatin-14.bdf (latin_faces).
-Needs only the Python standard library.
+Two sizes, the same East Asian glyphs (SIZES): "Tong Pixel Sans 14 Large" (the default; western and
+other non-CJK scripts drawn larger, 18-px cell: ascent 14, descent 4) and "Tong Pixel Sans 14 Small"
+(the compact one, 14-px cell: ascent 11, descent 3). Per size and region (SC, TC, JP, KR) one
+proportional face (TongPixelSans14<Size>-<R>.bdf) and one monospace, dual-width face
+(TongPixelSansMono14<Size>-<R>.bdf); and two faces without any East Asian glyph (…-Latin.bdf,
+latin_faces). Needs only the Python standard library.
 
 Sources (glyphs/<GROUP>/<PAGE>xx.txt, see README.md):
 - SC TC JP KR: 13×13 ink in a 14×14 cell (hanzi, kana, bopomofo, Hangul, full-width symbols).
@@ -14,6 +16,10 @@ Sources (glyphs/<GROUP>/<PAGE>xx.txt, see README.md):
   (western, Thai, Arabic). adv=auto = ink width + 1 (one blank column), ink from column 0.
 - GEOMETRIC-FULL / GEOMETRIC-HALF: box drawing and blocks (full width in the proportional faces),
   braille and Powerline (half width).
+- Large size: HW-L, PR-L, GEOMETRIC-FULL-L, GEOMETRIC-HALF-L, the same with 18-row cells (14 rows
+  above the baseline). A code point without a large glyph uses the small one on the same baseline
+  (half-width kana and Hangul move up with the East Asian glyphs). The 13×13 East Asian ink sits
+  2 px below the baseline in Small and 1 px below in Large (as in Source Han Sans).
 Rules:
 - proportional faces: letters and marks, and punctuation/symbols that the region's Source Han
   Sans draws half-width or proportional (build-data/narrow-width.txt), use the proportional
@@ -33,7 +39,12 @@ ROOT = Path(__file__).resolve().parent.parent
 REGIONS = ["SC", "TC", "JP", "KR"]
 FALLBACK = {"SC": ["SC", "TC", "JP", "KR"], "TC": ["TC", "JP", "SC", "KR"],
             "JP": ["JP", "TC", "SC", "KR"], "KR": ["KR", "TC", "JP", "SC"]}
-ASCENT, DESCENT = 11, 3
+ASCENT, DESCENT = 11, 3          # the Small cell; tools that draw 14-row cells use these
+SIZES = {"Large": {"ascent": 14, "descent": 4, "cjk_below": 1, "suffix": "-L"},
+         "Small": {"ascent": ASCENT, "descent": DESCENT, "cjk_below": 2, "suffix": ""}}
+WESTERN_GROUPS = ["HW", "PR", "GEOMETRIC-FULL", "GEOMETRIC-HALF"]
+LARGE_GROUPS = [g + "-L" for g in WESTERN_GROUPS]
+HALFWIDTH_EAST_ASIAN = (0xFF61, 0xFFDC)   # half-width kana and Hangul: placed like the full-width glyphs
 JOIN_ACROSS = {0x2014, 0x2015}
 
 
@@ -96,28 +107,28 @@ def G(rows, adv, x, y, state):
     return {"rows": rows, "adv": adv, "x": x, "y": y, "state": state}
 
 
-def cjk(rows, state):
+def cjk(rows, state, below=2):
     assert len(rows) == 13 and all(len(r) == 13 for r in rows)
-    return G(rows, 14, 1, 1 - DESCENT, state)
+    return G(rows, 14, 1, -below, state)
 
 
-def joined(rows, state):
+def joined(rows, state, below=2):
     assert len(rows) == 13 and all(len(r) == 13 for r in rows)
-    return G([("#" if r == "#" * 13 else ".") + r for r in rows], 14, 0, 1 - DESCENT, state)
+    return G([("#" if r == "#" * 13 else ".") + r for r in rows], 14, 0, -below, state)
 
 
-def cell(rows, adv, x_offset, state):
-    assert len(rows) == 14 and len({len(r) for r in rows}) == 1
-    return G(rows, adv, x_offset, -DESCENT, state)
+def cell(rows, adv, x_offset, state, descent=DESCENT, height=14):
+    assert len(rows) == height and len({len(r) for r in rows}) == 1
+    return G(rows, adv, x_offset, -descent, state)
 
 
-def western(e):
+def western(e, descent=DESCENT, height=14):
     rows, meta, st = e["rows"], e["meta"], e["state"]
     if meta.get("adv") == "auto":
         cols = [x for r in rows for x, v in enumerate(r) if v == "#"]
         x0, x1 = min(cols), max(cols)
-        return cell([r[x0:x1 + 1] for r in rows], x1 - x0 + 2, 0, st)
-    return cell(rows, int(meta["adv"]), int(meta.get("x", 0)), st)
+        return cell([r[x0:x1 + 1] for r in rows], x1 - x0 + 2, 0, st, descent, height)
+    return cell(rows, int(meta["adv"]), int(meta.get("x", 0)), st, descent, height)
 
 
 def crop(g):
@@ -160,11 +171,11 @@ def letter(cp):
 
 
 # ---------------------------------------------------------------- BDF
-def bdf(glyphs, family, mono):
+def bdf(glyphs, family, mono, size="Small"):
     assert not any(n in family for n in ("Source", "Plangothic", "遍黑"))
     props = [f'FAMILY_NAME "{family}"', 'FOUNDRY "Tong"', 'WEIGHT_NAME "Medium"', 'SLANT "R"', 'SETWIDTH_NAME "Normal"',
              'PIXEL_SIZE 14', 'POINT_SIZE 140', 'RESOLUTION_X 75', 'RESOLUTION_Y 75', 'SPACING "P"',
-             f'FONT_ASCENT {ASCENT}', f'FONT_DESCENT {DESCENT}', 'CHARSET_REGISTRY "ISO10646"', 'CHARSET_ENCODING "1"',
+             f'FONT_ASCENT {SIZES[size]["ascent"]}', f'FONT_DESCENT {SIZES[size]["descent"]}', 'CHARSET_REGISTRY "ISO10646"', 'CHARSET_ENCODING "1"',
              'COPYRIGHT "Derived from Source Han Sans (Adobe), Source Sans 3, Source Code Pro (Adobe), Noto Sans, Noto Sans Thai, '
              'Noto Sans Arabic, Hebrew, Georgian, Armenian, Lao, Math, Symbols, Symbols 2 (Google), Plangothic P1 (Plangothic Project), '
              'with Han bitmaps drawing on TUMBLED (TsFreddie); '
@@ -194,22 +205,44 @@ def bdf(glyphs, family, mono):
 
 
 # ---------------------------------------------------------------- faces
-def faces(root=ROOT):
+def western_groups(groups, size):
+    """(proportional, half-width, full geometric, half geometric) western glyphs of a size: in Large, the
+    -L groups override the small glyphs, which otherwise stay on the same baseline."""
+    pr = {cp: {**western(e), "src": e["id"]} for cp in groups["PR"] for e in [resolve(groups, "PR", cp)]}
+    hw = {cp: {**western(e), "src": e["id"]} for cp in groups["HW"] for e in [resolve(groups, "HW", cp)]}
+    full = {cp: {**cell(e["rows"], 14, 0, "generated"), "src": e["id"]} for cp, e in groups["GEOMETRIC-FULL"].items()}
+    half = {cp: {**cell(e["rows"], 7, 0, "generated"), "src": e["id"]} for cp, e in groups["GEOMETRIC-HALF"].items()}
+    if size == "Large":
+        d, h = SIZES["Large"]["descent"], SIZES["Large"]["ascent"] + SIZES["Large"]["descent"]
+        lo, hi = HALFWIDTH_EAST_ASIAN
+        for cp, g in hw.items():
+            if lo <= cp <= hi:
+                hw[cp] = {**g, "y": g["y"] + SIZES["Small"]["cjk_below"] - SIZES["Large"]["cjk_below"]}
+        for name, face in (("PR-L", pr), ("HW-L", hw)):
+            for cp in groups.get(name, {}):
+                e = resolve(groups, name, cp)
+                face[cp] = {**western(e, d, h), "src": e["id"]}
+        for name, face, w in (("GEOMETRIC-FULL-L", full, 14), ("GEOMETRIC-HALF-L", half, 7)):
+            for cp, e in groups.get(name, {}).items():
+                face[cp] = {**cell(e["rows"], w, 0, "generated", d, h), "src": e["id"]}
+    return pr, hw, full, half
+
+
+def faces(root=ROOT, size="Small"):
     """(region, proportional face, monospace face) for each region; a face maps code point -> glyph,
     and each glyph's "src" names the source glyph it was made from (None for generated blanks)."""
-    groups = {g: read_group(g, root) for g in REGIONS + ["HW", "PR", "GEOMETRIC-FULL", "GEOMETRIC-HALF"]}
+    groups = {g: read_group(g, root) for g in REGIONS + WESTERN_GROUPS + (LARGE_GROUPS if size == "Large" else [])}
+    below = SIZES[size]["cjk_below"]
     by_region = {}
     for r in REGIONS:
         d = {}
         for cp in groups[r]:
             e = resolve(groups, r, cp)
-            d[cp] = {**(joined(e["rows"], e["state"]) if cp in JOIN_ACROSS else cjk(e["rows"], e["state"])), "src": e["id"]}
+            d[cp] = {**(joined(e["rows"], e["state"], below) if cp in JOIN_ACROSS else cjk(e["rows"], e["state"], below)),
+                     "src": e["id"]}
         by_region[r] = d
     union = set().union(*(set(d) for d in by_region.values()))
-    pr = {cp: {**western(e), "src": e["id"]} for cp in groups["PR"] for e in [resolve(groups, "PR", cp)]}
-    hw = {cp: {**western(e), "src": e["id"]} for cp in groups["HW"] for e in [resolve(groups, "HW", cp)]}
-    full = {cp: {**cell(e["rows"], 14, 0, "generated"), "src": e["id"]} for cp, e in groups["GEOMETRIC-FULL"].items()}
-    half = {cp: {**cell(e["rows"], 7, 0, "generated"), "src": e["id"]} for cp, e in groups["GEOMETRIC-HALF"].items()}
+    pr, hw, full, half = western_groups(groups, size)
     geo_prop = {cp: (full[cp] if cp < 0x25A0 else half[cp]) for cp in full}
     blank_prop, blank_mono = blanks(read_constants(root)["space_advance_proportional"])
     narrow = read_narrow(root)
@@ -247,15 +280,15 @@ def east_asian(cp):
                                          (0x1B000, 0x1B16F), (0x1F200, 0x1F2FF), (0x20000, 0x3FFFF)))
 
 
-def latin_faces(root=ROOT):
+def latin_faces(root=ROOT, size="Small"):
     """(proportional face, monospace face) without any East Asian glyph: the western proportional (PR)
     and half-width (HW) glyphs, half-width geometric characters and the non-CJK spaces. Here the
     quotation marks, ellipsis and dashes are always the narrow western ones (in the SC / TC faces they
     follow Source Han Sans and are full-width)."""
-    groups = {g: read_group(g, root) for g in ["HW", "PR", "GEOMETRIC-HALF"]}
-    pr = {cp: {**western(e), "src": e["id"]} for cp in groups["PR"] if not east_asian(cp) for e in [resolve(groups, "PR", cp)]}
-    hw = {cp: {**western(e), "src": e["id"]} for cp in groups["HW"] if not east_asian(cp) for e in [resolve(groups, "HW", cp)]}
-    half = {cp: {**cell(e["rows"], 7, 0, "generated"), "src": e["id"]} for cp, e in groups["GEOMETRIC-HALF"].items()}
+    groups = {g: read_group(g, root) for g in WESTERN_GROUPS + (LARGE_GROUPS if size == "Large" else [])}
+    pr, hw, _, half = western_groups(groups, size)
+    pr = {cp: g for cp, g in pr.items() if not east_asian(cp)}
+    hw = {cp: g for cp, g in hw.items() if not east_asian(cp)}
     blank_prop, blank_mono = blanks(read_constants(root)["space_advance_proportional"])
     prop = {**{cp: g for cp, g in blank_prop.items() if not east_asian(cp) and cp not in (0x3164,)}, **half, **hw, **pr}
     mono = {**{cp: g for cp, g in blank_mono.items() if not east_asian(cp) and cp not in (0x3164,)}, **half, **hw}
@@ -265,21 +298,22 @@ def latin_faces(root=ROOT):
     return prop, mono
 
 
+def face_name(size, region, mono):
+    """(file stem, family name), e.g. ("TongPixelSansMono14Large-SC", "Tong Pixel Sans Mono 14 Large SC")."""
+    kind = "Mono" if mono else ""
+    return (f"TongPixelSans{kind}14{size}-{region}",
+            " ".join(["Tong Pixel Sans"] + ([kind] if kind else []) + ["14", size, region]))
+
+
 def main():
     out = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "build"
     out.mkdir(parents=True, exist_ok=True)
-    for region, prop, mono in faces():
-        for kind, face in (("", prop), ("Mono", mono)):
-            name = f"TongPixelSans{kind}{region}"
-            family = " ".join(["Tong Pixel Sans"] + ([kind] if kind else []) + [region])
-            (out / f"{name}-14.bdf").write_text(bdf(face, family, kind == "Mono"))
-            print(name, len(face))
-    prop, mono = latin_faces()
-    for kind, face in (("", prop), ("Mono", mono)):
-        name = f"TongPixelSans{kind}Latin"
-        family = " ".join(["Tong Pixel Sans"] + ([kind] if kind else []) + ["Latin"])
-        (out / f"{name}-14.bdf").write_text(bdf(face, family, kind == "Mono"))
-        print(name, len(face))
+    for size in SIZES:
+        for region, prop, mono in [*faces(size=size), ("Latin", *latin_faces(size=size))]:
+            for is_mono, face in ((False, prop), (True, mono)):
+                stem, family = face_name(size, region, is_mono)
+                (out / f"{stem}.bdf").write_text(bdf(face, family, is_mono, size))
+                print(stem, len(face))
 
 
 if __name__ == "__main__":

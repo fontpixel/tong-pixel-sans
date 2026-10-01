@@ -5,13 +5,13 @@
 Sources (glyphs/, forms/forms.txt):
 - every block parses; ids are unique, pages sorted, each block on the page of its code point;
 - states are known; cells have the right size (regional 13×13; HW/PR/geometric 14 rows, one width per
-  glyph; HW 7 columns; GEOMETRIC-FULL 14, GEOMETRIC-HALF 7);
+  glyph; HW 7 columns; GEOMETRIC-FULL 14, GEOMETRIC-HALF 7; the large -L groups the same with 18 rows);
 - every alias points at a glyph with its own pixels;
 - every link names a form in forms.txt of the same component (or, for a Greek/Cyrillic letter, of the
   Latin letter it is drawn exactly like), a movable form's position keeps it in
   the cell, and the form's black pixels are all black in the glyph (linking never adds a pixel);
 - every fixed form is 13×13 with at least one black pixel.
-Coverage: the 8 faces tools/build.py makes cover every table in build-data/coverage-required.txt, except the
+Coverage: the 8 regional faces of each size tools/build.py makes cover every table in build-data/coverage-required.txt, except the
 code points listed with a reason in build-data/coverage-exceptions.txt.
 Exits with status 1 and a list of problems if anything fails. Needs only the Python standard library.
 """
@@ -30,7 +30,7 @@ import build  # noqa: E402
 from western import HOMOGLYPHS  # noqa: E402  (Greek/Cyrillic letters that share a Latin letter's form)
 
 STATES = {"approved", "edited", "derived", "ai", "draft", "hangul-ai", "hangul-composed", "generated"}
-GROUPS = ["SC", "TC", "JP", "KR", "HW", "PR", "GEOMETRIC-FULL", "GEOMETRIC-HALF"]
+GROUPS = ["SC", "TC", "JP", "KR"] + build.WESTERN_GROUPS + build.LARGE_GROUPS
 
 
 def table_codepoints(path):
@@ -95,8 +95,10 @@ def check_sources(problems):
                 problems.append(f"{gid}: unknown state {e['state']}")
             rows = e["rows"]
             w, h = (len(rows[0]) if rows else 0), len(rows)
-            want = {"HW": (7, 14), "GEOMETRIC-FULL": (14, 14), "GEOMETRIC-HALF": (7, 14)}.get(g, (13, 13) if g in build.REGIONS else None)
-            if len({len(r) for r in rows}) != 1 or (want and (w, h) != want) or (g == "PR" and h != 14):
+            height = 18 if g.endswith("-L") else 14
+            want = {"HW": 7, "GEOMETRIC-FULL": 14, "GEOMETRIC-HALF": 7}.get(g.removesuffix("-L"))
+            want = (13, 13) if g in build.REGIONS else (want, height) if want else None
+            if len({len(r) for r in rows}) != 1 or (want and (w, h) != want) or (g.startswith("PR") and h != height):
                 problems.append(f"{gid}: cell {w}×{h}")
                 continue
             for l in links_of(g, cp):
@@ -156,14 +158,15 @@ def check_coverage(problems):
             cps = {c for c in cps if unicodedata.category(chr(c)) not in ("Cc", "Cs", "Co", "Cn") and c not in known}
             tables.append((label, cps))
     summary = {}
-    for region, prop, mono in build.faces():
-        for kind, face in (("", prop), ("Mono", mono)):
-            name = f"TongPixelSans{kind}{region}"
-            for label, cps in tables:
-                missing = sorted(cps - set(face))
-                if missing:
-                    problems.append(f"{name}: {label} misses {len(missing)}: " + " ".join(f"U+{c:04X}" for c in missing[:12]))
-            summary[name] = len(face)
+    faces = [(size, region, is_mono, face) for size in build.SIZES for region, prop, mono in build.faces(size=size)
+             for is_mono, face in ((False, prop), (True, mono))]
+    for size, region, is_mono, face in faces:
+        name = build.face_name(size, region, is_mono)[0]
+        for label, cps in tables:
+            missing = sorted(cps - set(face))
+            if missing:
+                problems.append(f"{name}: {label} misses {len(missing)}: " + " ".join(f"U+{c:04X}" for c in missing[:12]))
+        summary[name] = len(face)
     return len(tables), summary
 
 

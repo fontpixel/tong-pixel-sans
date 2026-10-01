@@ -31,18 +31,22 @@ import build  # noqa: E402  (the fonts' assembly rules decide which glyphs are u
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 REGIONAL = ["SC", "TC", "JP", "KR"]
-GROUPS = REGIONAL + ["HW", "PR", "GEOMETRIC-FULL", "GEOMETRIC-HALF"]
+GROUPS = REGIONAL + build.WESTERN_GROUPS + build.LARGE_GROUPS   # -L: the Large size, 18-row cells
 ORDER = {g: i for i, g in enumerate(GROUPS)}
 # 13×13 ink in a 14×14 cell (blank left column and bottom row); as in the source packages' config.json
 GEOMETRY = {"cell_width": 14, "cell_height": 14, "ink_width": 13, "ink_height": 13, "advance": 14, "x_base": 1,
             "ascent": 12, "descent": 2}
-BASELINE_ROW = 11
+BASELINE_ROW = 11                # first row below the baseline: 11 in the 14-row cells, 14 in the 18-row (-L) cells
 MAX_PROPORTIONAL_WIDTH = 24     # wide proportional glyphs such as Ⅷ (four letters)
 STATES = ("approved", "edited", "derived", "ai", "draft", "hangul-ai", "hangul-composed", "generated")
 
 
 class Conflict(ValueError):
     pass
+
+
+def baseline_row(group):
+    return build.SIZES["Large"]["ascent"] if group.endswith("-L") else BASELINE_ROW
 
 
 def digest(value):
@@ -235,9 +239,9 @@ class Store(ShapesMixin):
             return g
         meta = dict(t.split("=", 1) for t in rec["metrics"])
         width = len(rec["rows"][0])
-        kind = "prop" if grp == "PR" else "mono"
-        adv = meta.get("adv", "7" if grp.endswith("HALF") else "14")
-        g.update(kind=kind, cell=(width, len(rec["rows"])), baseline_row=BASELINE_ROW,
+        kind = "prop" if grp.startswith("PR") else "mono"
+        adv = meta.get("adv", "7" if "HALF" in grp else "14")
+        g.update(kind=kind, cell=(width, len(rec["rows"])), baseline_row=baseline_row(grp),
                  advance=width if adv == "auto" else int(adv), auto_advance=adv == "auto",
                  x_offset=int(meta.get("x", 0)))
         if rec["cp"] in self.families and grp in ("HW", "PR"):
@@ -300,13 +304,15 @@ class Store(ShapesMixin):
         key = self.ids_version
         if getattr(self, "_usage_faces_key", None) != key:
             used, served = {}, {}
-            for region, prop, mono in list(build.faces(self.root)) + [("Latin", *build.latin_faces(self.root))]:
-                for kind, face in (("", prop), ("Mono ", mono)):
-                    name = f"{kind}{region}"
-                    for cp, g in face.items():
-                        if g.get("src"):
-                            used.setdefault(g["src"], []).append(name)
-                            served.setdefault(cp, {})[name] = g["src"]
+            faces = [(f"{prefix}{kind}{region}", face)
+                     for size, prefix in (("Small", ""), ("Large", "Large "))
+                     for region, prop, mono in [*build.faces(self.root, size), ("Latin", *build.latin_faces(self.root, size))]
+                     for kind, face in (("", prop), ("Mono ", mono))]
+            for name, face in faces:
+                for cp, g in face.items():
+                    if g.get("src"):
+                        used.setdefault(g["src"], []).append(name)
+                        served.setdefault(cp, {})[name] = g["src"]
             self._usage_faces, self._usage_faces_key = (used, served), key
         return self._usage_faces
 
@@ -328,7 +334,7 @@ class Store(ShapesMixin):
                 out["reason"] = "字母在比例版用西文比例字形，在等宽版用半角字形"
             elif group == "GEOMETRIC-FULL":
                 out["reason"] = "比例版只用全宽的制表符和方块元素，其余用半宽"
-            elif group == "PR":
+            elif group in ("PR", "PR-L"):
                 out["reason"] = "这个码位用地区全角字形或半角字形"
         return out
 
@@ -440,7 +446,7 @@ class Store(ShapesMixin):
         return {"cell_width": w, "cell_height": h, "ink_width": w, "ink_height": h, "x_base": 0,
                 "flexible_width": self.flexible_width(gid),
                 "advance": w if g["auto_advance"] else g["advance"], "x_offset": g["x_offset"],
-                "ascent": BASELINE_ROW, "descent": h - BASELINE_ROW, "baseline_row": BASELINE_ROW,
+                "ascent": g["baseline_row"], "descent": h - g["baseline_row"], "baseline_row": g["baseline_row"],
                 "kind": "mono" if full else g["kind"],
                 "reference_label": reference.label(gid)}
 
