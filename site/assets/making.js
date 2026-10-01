@@ -29,7 +29,7 @@ export function initMaking(site) {
     if (!r) return;
     const form = new Set();
     r.form.forEach((row, y) => [...row].forEach((c, x) => { if (c === "#") form.add(y * 64 + x + 1); }));
-    info.textContent = t("radInfo", { n: fmt(r.count), comp: r.comp, k: r.chars.length });
+    info.textContent = t("js.radInfo", { n: fmt(r.count), comp: r.comp, k: r.chars.length });
     grid.innerHTML = "";
     [...r.chars].forEach((ch, i) => {
       const fig = document.createElement("figure");
@@ -72,8 +72,8 @@ export function initMaking(site) {
         for (const v of a) if (!b.has(v)) ctx.strokeRect((v % 64) * S + 1.5, Math.floor(v / 64) * S + 1.5, S - 2, S - 2);
       }));
       const cap = document.createElement("figcaption");
-      cap.textContent = t("reviewCap", { ch: r.ch, r: t("region." + r.region), d: r.diff });
-      fig.setAttribute("aria-label", `${t("before")} / ${t("after")}: ${cap.textContent}`);
+      cap.textContent = t("js.reviewCap", { ch: r.ch, r: t("region." + r.region), d: r.diff });
+      fig.setAttribute("aria-label", `${t("js.before")} / ${t("js.after")}: ${cap.textContent}`);
       fig.append(pair, cap);
       rg.append(fig);
     });
@@ -124,7 +124,7 @@ export function initMaking(site) {
       const li = document.createElement("li");
       li.style.top = Math.floor(b.start / w) * 2 + "px";
       li.style.height = Math.max(14, Math.ceil(b.count / w) * 2) + "px";
-      li.textContent = `${t("group." + b.group)} ${fmt(b.count)}`;
+      li.textContent = `${t("group." + b.group)}${t("js.gap")}${fmt(b.count)}`;
       if (b.count / w * 2 < 14 && !["GEOMETRIC-FULL", "GEOMETRIC-HALF"].includes(b.group)) li.style.height = "14px";
       bands.append(li);
     });
@@ -133,8 +133,8 @@ export function initMaking(site) {
     if (lis.length === 8) {
       lis[7].remove();
       lis[5].remove();
-      lis[4].textContent = `${lang() === "en" ? "Latin" : "西文"} ${fmt(S.bands[4].count + S.bands[5].count)}`;
-      lis[6].textContent = `${lang() === "en" ? "Geometric" : "几何"} ${fmt(S.bands[6].count + S.bands[7].count)}`;
+      lis[4].textContent = `${t("group.latin")}${t("js.gap")}${fmt(S.bands[4].count + S.bands[5].count)}`;
+      lis[6].textContent = `${t("group.geometric")}${t("js.gap")}${fmt(S.bands[6].count + S.bands[7].count)}`;
     }
     legend.innerHTML = "";
     Object.entries(S.counts).forEach(([st, n]) => {
@@ -151,7 +151,7 @@ export function initMaking(site) {
     });
     const tot = document.createElement("li");
     tot.className = "muted";
-    tot.textContent = t("legendTotal", { n: fmt(S.total) });
+    tot.textContent = t("js.legendTotal", { n: fmt(S.total) });
     legend.append(tot);
   }
 

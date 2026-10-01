@@ -34,6 +34,8 @@ function rgb(color) {
   return m.slice(0, 3).map(Number);
 }
 
+const tableName = tb => t("table." + tb.id) || (lang() === "zh" ? tb.zh : tb.en);
+
 export function initCoverage(site) {
   const map = document.getElementById("cov-map");
   const read = document.getElementById("cov-read");
@@ -75,8 +77,8 @@ export function initCoverage(site) {
   function readTable(i) {
     const tb = site.tables[i];
     const pct = tb.count ? (Math.floor(tb.covered / tb.count * 1000) / 10).toString().replace(/\.0$/, "") + "%" : "—";
-    read.textContent = t("covTable", { name: lang() === "en" ? tb.en : tb.zh, count: fmt(tb.count), pct })
-      + (tb.smp ? " " + t("covSmp", { n: fmt(tb.smp) }) : "");
+    read.textContent = t("js.covTable", { name: tableName(tb), count: fmt(tb.count), pct })
+      + (tb.smp ? " " + t("js.covSmp", { n: fmt(tb.smp) }) : "");
   }
 
   function readCp(cp) {
@@ -89,7 +91,7 @@ export function initCoverage(site) {
       big.textContent = String.fromCodePoint(cp);
       read.append(big);
     }
-    read.append(`U+${hex(cp)}　${lit ? t("covHave") : t("covMissing")}`);
+    read.append(`U+${hex(cp)}${t("js.colon")}${lit ? t("js.covHave") : t("js.covMissing")}`);
   }
 
   function chips() {
@@ -99,7 +101,7 @@ export function initCoverage(site) {
       const g = document.createElement("div");
       g.className = "cov-group";
       const h = document.createElement("h3");
-      h.textContent = t("covGroups." + sec);
+      h.textContent = t("covGroup." + sec);
       const box = document.createElement("div");
       box.className = "cov-chips";
       site.tables.forEach((tb, i) => {
@@ -108,7 +110,7 @@ export function initCoverage(site) {
         b.type = "button";
         b.setAttribute("aria-pressed", String(i === pinned));
         const name = document.createElement("span");
-        name.textContent = lang() === "en" ? tb.en : tb.zh;
+        name.textContent = tableName(tb);
         const n = document.createElement("span");
         n.className = "n";
         n.textContent = fmt(tb.count);
@@ -125,7 +127,7 @@ export function initCoverage(site) {
           b.setAttribute("aria-pressed", String(pinned === i));
           preview = -1;
           drawMap();
-          if (pinned >= 0) readTable(pinned); else read.textContent = t("covHint");
+          if (pinned >= 0) readTable(pinned); else read.textContent = t("js.covHint");
         });
         box.append(b);
       });
@@ -139,7 +141,7 @@ export function initCoverage(site) {
     page = p;
     pageSel = -1;
     pageBox.hidden = false;
-    pageH.textContent = t("covPage", { a: hex(p * 256), b: hex(p * 256 + 255) });
+    pageH.textContent = `U+${hex(p * 256)} – U+${hex(p * 256 + 255)}`;
     let text = "";
     for (let i = 0; i < 256; i++) text += String.fromCodePoint(p * 256 + i);
     await preload(text);
@@ -198,7 +200,7 @@ export function initCoverage(site) {
     if (gs) {
       const p = document.createElement("span");
       p.className = "muted";
-      p.textContent = "　" + stateLine(gs);
+      p.textContent = stateLine(gs);
       read.append(document.createElement("br"), p);
     }
   });
@@ -220,7 +222,7 @@ export function initCoverage(site) {
   map.addEventListener("pointermove", e => { if (cov) readCp(cpAt(e)); });
   map.addEventListener("pointerleave", () => { if (pinned >= 0) readTable(pinned); });
   map.addEventListener("click", e => { const cp = cpAt(e); cursor = cp >> 8; openPage(cp >> 8); });
-  map.addEventListener("focus", () => { drawMap(); read.textContent = t("covHint"); });
+  map.addEventListener("focus", () => { drawMap(); read.textContent = t("js.covHint"); });
   map.addEventListener("blur", drawMap);
   map.addEventListener("keydown", e => {
     const mv = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -16, ArrowDown: 16 }[e.key];
@@ -228,7 +230,7 @@ export function initCoverage(site) {
       e.preventDefault();
       cursor = (cursor + mv + 256) % 256;
       drawMap();
-      read.textContent = t("covPage", { a: hex(cursor * 256), b: hex(cursor * 256 + 255) });
+      read.textContent = `U+${hex(cursor * 256)} – U+${hex(cursor * 256 + 255)}`;
     } else if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       openPage(cursor);
@@ -236,12 +238,12 @@ export function initCoverage(site) {
   });
 
   document.addEventListener("tps-theme", () => { drawMap(); drawPage(); });
-  document.addEventListener("tps-lang", () => { chips(); if (pinned >= 0) readTable(pinned); if (page >= 0) pageH.textContent = t("covPage", { a: hex(page * 256), b: hex(page * 256 + 255) }); });
+  document.addEventListener("tps-lang", () => { chips(); if (pinned >= 0) readTable(pinned); if (page >= 0) pageH.textContent = `U+${hex(page * 256)} – U+${hex(page * 256 + 255)}`; });
   let lastW = 0;
   new ResizeObserver(() => { if (pageBox.clientWidth !== lastW) { lastW = pageBox.clientWidth; drawPage(); } }).observe(pageBox);
 
   chips();
-  read.textContent = t("covHint");
+  read.textContent = t("js.covHint");
   loadMask("gen/coverage.png").then(m => { cov = m; drawMap(); }).catch(() => {});
   loadMask("gen/tables.png").then(m => { tables = m; drawMap(); }).catch(() => {});
 }

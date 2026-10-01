@@ -14,22 +14,20 @@ export function relation(sets) {
     const g = groups.find(g => sameSet(sets[g[0]], sets[i]));
     if (g) g.push(i); else groups.push([i]);
   });
-  if (groups.length === 1) return t("allSame");
-  if (groups.length === 4) return t("allDiffer");
+  if (groups.length === 1) return t("js.allSame");
+  if (groups.length === 4) return t("js.allDiffer");
   const names = g => {
     const n = g.map(i => t("region." + REGIONS[i]));
-    return n.length > 2 ? n.slice(0, -1).join(t("sep") === "；" ? "、" : ", ") + t("joinAnd") + n[n.length - 1] : n.join(t("joinAnd"));
+    return n.length > 2 ? n.slice(0, -1).join(t("js.listSep")) + t("js.and") + n[n.length - 1] : n.join(t("js.and"));
   };
-  const parts = groups.filter(g => g.length > 1).map(g => t("equal", { list: names(g) }));
-  return parts.join(t("sep")) + (t("sep") === "；" ? "。" : ".");
+  return groups.filter(g => g.length > 1).map(g => t("js.equal", { list: names(g) })).join(t("js.sep")) + t("js.end");
 }
 
-/** "审核：简体、日文 已审核；繁体、韩文 AI 修整，待审" */
+/** "简体、日文：已审核；繁体、韩文：AI修整，待审" */
 export function stateLine(gs) {
   const by = new Map();
   gs.forEach((g, i) => { if (g) { const k = g.state; by.set(k, [...(by.get(k) || []), t("region." + REGIONS[i])]); } });
-  const sepList = t("sep") === "；" ? "、" : ", ";
-  return t("review") + [...by].map(([st, rs]) => rs.join(sepList) + " " + t("state." + st)).join(t("sep"));
+  return [...by].map(([st, rs]) => t("js.stateItem", { regions: rs.join(t("js.listSep")), state: t("state." + st) })).join(t("js.sep"));
 }
 
 export function diffCount(sets) {
@@ -85,11 +83,10 @@ export function initPlates(site) {
 
   function labels() {
     plates.forEach(p => {
-      p.tab.textContent = t("region." + p.r) + (t("region." + p.r) === p.r ? "" : " " + p.r);
+      p.tab.textContent = t("region." + p.r) + (t("region." + p.r) === p.r ? "" : p.r);
       p.tb.textContent = t("region." + p.r);
     });
-    btn.querySelector(".zh").textContent = tval > .5 ? "合拢" : "拆开";
-    btn.querySelector(".en").textContent = tval > .5 ? "Stack" : "Separate";
+    btn.textContent = t(tval > .5 ? "plates.stack" : "plates.separate");
   }
 
   function sizeCanvases() {
@@ -177,7 +174,7 @@ export function initPlates(site) {
     big.lang = "zh-Hans";
     big.textContent = ch;
     const p1 = document.createElement("span");
-    p1.textContent = `U+${hex(cp)}　${relation(sets)} ${nVis === 4 ? t("pixelsDiffer", { n: fmt(n) }) : t("pixelsDifferVisible", { n: fmt(n) })}`;
+    p1.textContent = `U+${hex(cp)}${t("js.colon")}${relation(sets)}${t("js.gap")}${nVis === 4 ? t("js.pixelsDiffer", { n: fmt(n) }) : t("js.pixelsDifferVisible", { n: fmt(n) })}`;
     const br = document.createElement("br");
     const p2 = document.createElement("span");
     p2.className = "muted";
@@ -189,7 +186,7 @@ export function initPlates(site) {
     const cp = ch.codePointAt(0);
     const gs = await glyphs(cp);
     if (!gs) {
-      info.textContent = t("notInFont", { ch });
+      info.textContent = t("js.notInFont", { ch });
       return false;
     }
     cur = { ch, cp, gs, sets: gs.map(cellSet) };
@@ -218,22 +215,39 @@ export function initPlates(site) {
   btn.addEventListener("click", () => animateTo(tval > .5 ? 0 : 1));
   range.addEventListener("input", () => { if (anim) cancelAnimationFrame(anim); anim = null; setT(range.value / 100); });
 
-  // drag to turn the stack
-  let drag = null, yaw = 0;
+  // turn the stack: drag sideways to turn (yaw), up and down to tilt (pitch); arrow keys too
+  const PITCH = [18, 84];
+  let drag = null, yaw = 0, pitch = 56;
+  const view = () => {
+    stage.style.setProperty("--yaw", yaw.toFixed(1) + "deg");
+    stage.style.setProperty("--pitch", pitch.toFixed(1) + "deg");
+  };
   stage.addEventListener("pointerdown", e => {
-    if (e.pointerType === "touch") return;          // keep vertical page scrolling on touch
-    drag = { x: e.clientX, yaw };
-    stage.setPointerCapture(e.pointerId);
+    if (e.button && e.button !== 0) return;
+    drag = { x: e.clientX, y: e.clientY, yaw, pitch, touch: e.pointerType === "touch" };
+    if (!drag.touch) stage.setPointerCapture(e.pointerId);
     stage.classList.add("dragging");
   });
   stage.addEventListener("pointermove", e => {
     if (!drag) return;
-    yaw = Math.max(-70, Math.min(70, drag.yaw + (e.clientX - drag.x) * .35));
-    stage.style.setProperty("--yaw", yaw.toFixed(1) + "deg");
+    yaw = Math.max(-80, Math.min(80, drag.yaw + (e.clientX - drag.x) * .35));
+    if (!drag.touch) pitch = Math.max(PITCH[0], Math.min(PITCH[1], drag.pitch - (e.clientY - drag.y) * .3));
+    view();
   });
   const end = () => { drag = null; stage.classList.remove("dragging"); };
   stage.addEventListener("pointerup", end);
   stage.addEventListener("pointercancel", end);
+  stage.addEventListener("keydown", e => {
+    const k = { ArrowLeft: [-6, 0], ArrowRight: [6, 0], ArrowUp: [0, 4], ArrowDown: [0, -4] }[e.key];
+    if (k) {
+      e.preventDefault();
+      yaw = Math.max(-80, Math.min(80, yaw + k[0]));
+      pitch = Math.max(PITCH[0], Math.min(PITCH[1], pitch + k[1]));
+      view();
+    } else if (e.key === "Home") { e.preventDefault(); yaw = 0; pitch = 56; view(); }
+    else if (e.key === " " || e.key === "Enter") { e.preventDefault(); animateTo(tval > .5 ? 0 : 1); }
+  });
+  view();
 
   new ResizeObserver(() => { sizeCanvases(); draw(); }).observe(stack);
   document.addEventListener("tps-theme", draw);

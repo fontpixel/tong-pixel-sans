@@ -16,7 +16,9 @@ fonts are built from) and writes:
   gen/fonts.css       @font-face rules: subset first by unicode-range, the full font in downloads/
                       only for characters outside it (the browser loads it only when needed)
 
-Run it again after changing the page text (index.html, assets/*.js) so the subsets cover it.
+It also writes the Simplified Chinese text of i18n/zh.json into index.html (the text shown before any script
+runs). Run it again after changing the page text (i18n/*.json, assets/*.js) so the font subsets cover it:
+zh and en are in the page subset; zh-Hant, ja, ko and fr each get a small extra subset of their own characters.
 Needs fontTools (with brotli) for the subsets; everything else is the standard library.
 """
 from __future__ import annotations
@@ -316,7 +318,8 @@ def coverage(face_cps):
         have = len(cps & face_cps)
         zh = "GB/T 2312 汉字" if label == "GB/T 2312" else label
         en = "GB/T 2312 hanzi" if label == "GB/T 2312" else TABLE_EN.get(label, label)
-        tables.append({"zh": zh, "en": en, "section": SECTION[path.split("/")[0]],
+        tid = Path(path).stem + ("-symbols" if flt == ["non-hanzi"] else "")
+        tables.append({"id": tid, "zh": zh, "en": en, "section": SECTION[path.split("/")[0]],
                        "count": len(cps), "covered": have, "smp": sum(1 for c in cps if c > 0xFFFF)})
         flags = [cp in cps for cp in range(0x10000)]
         sprite += [pack_bits(flags[y * 256:(y + 1) * 256]) for y in range(256)]
@@ -369,16 +372,145 @@ def og_image(faces):
     im.save(GEN / "og.png", optimize=True)
 
 
+# ---------------------------------------------------------------- page text (i18n/*.json)
+LANG_FILES = ["zh", "en", "zh-Hant", "ja", "ko", "fr"]
+BASE_LANGS = ["zh", "en"]                                   # in the main subset; the others get their own
+CJK_RE = "[⺀-⿟ぁ-ヺヽ-ヿ㄀-ㄯㄱ-ㆎㆠ-ㆿㇰ-ㇿ㐀-䶿一-鿿가-힯ᄀ-ᇿ豈-﫿\U00020000-\U0003FFFF]"
+LAT_RE = "[A-Za-z0-9À-ɏͰ-ϿЀ-ӿḀ-ỿ]"
+THIN = "\u2009"
+
+
+def autospace(html):
+    """Thin space between CJK and Latin letters / digits, looking through inline tags (as assets/autospace.js)."""
+    out, prev, skip = [], "", 0
+    for part in re.split(r"(<[^>]+>)", html):
+        if part.startswith("<"):
+            out.append(part)
+            if 'class="' in part and "no-space" in part:
+                skip += 1
+            elif skip and part.startswith("</"):
+                skip -= 1
+            continue
+        if not part or skip:
+            out.append(part)
+            continue
+        text = re.sub(f"({CJK_RE})(?={LAT_RE})|({LAT_RE})(?={CJK_RE})", lambda m: (m.group(1) or m.group(2)) + THIN, part)
+        if prev and ((re.match(CJK_RE, prev) and re.match(LAT_RE, text[0])) or (re.match(LAT_RE, prev) and re.match(CJK_RE, text[0]))):
+            text = THIN + text
+        out.append(text)
+        prev = text[-1]
+    return "".join(out)
+
+
+def read_lang(code):
+    p = SITE / "i18n" / f"{code}.json"
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+
+
+def lang_text(d):
+    """Every character a language file can put on the page."""
+    out = []
+    for k, v in d.items():
+        if k.startswith("_"):
+            continue
+        out.append("".join(v) if isinstance(v, list) else re.sub(r"<[^>]+>|\{\w+\}", "", v))
+    return "".join(out)
+
+
+def sync_html(stats):
+    """Write the Simplified Chinese text into index.html (the page's text before any script runs)."""
+    from html import escape
+    from html.parser import HTMLParser
+    zh, en = read_lang("zh"), read_lang("en")
+    page = SITE / "index.html"
+    src = page.read_text(encoding="utf-8")
+    starts = [0]
+    for line in src.splitlines(keepends=True):
+        starts.append(starts[-1] + len(line))
+    off = lambda pos: starts[pos[0] - 1] + pos[1]
+    edits = []                       # (start, end, new inner html)
+
+    def val(key):
+        v = zh.get(key, en.get(key, ""))
+        return v
+
+    def stat_fill(html):
+        def rep(m):
+            k = m.group(2)
+            v = stats.get(k)
+            return m.group(1) + (f"{v:,}" if isinstance(v, int) else str(v or "")) + m.group(3)
+        return re.sub(r'(<(?:b|span) data-stat="(\w+)">)[^<]*(</(?:b|span)>)', lambda m: rep(m), html)
+
+    def fp_fill(html):
+        return re.sub(r'<a ([^>]*?)data-fp="([^"]*)"', lambda m: f'<a {m.group(1)}href="https://fontpixel.com/zh{m.group(2)}" data-fp="{m.group(2)}"'
+                      if "href=" not in m.group(1) else m.group(0), html)
+
+    class P(HTMLParser):
+        def __init__(self):
+            super().__init__(convert_charrefs=False)
+            self.stack = []
+
+        def handle_starttag(self, tag, attrs):
+            a = dict(attrs)
+            if tag in ("br", "img", "input", "meta", "link", "hr", "wbr", "source", "col", "area", "base"):
+                return
+            start = off(self.getpos()) + len(self.get_starttag_text())
+            self.stack.append((tag, a, start))
+
+        def handle_startendtag(self, tag, attrs):
+            pass
+
+        def handle_endtag(self, tag):
+            while self.stack:
+                t, a, start = self.stack.pop()
+                if t == tag:
+                    end = off(self.getpos())
+                    new = None
+                    if "data-i18n" in a:
+                        v = val(a["data-i18n"])
+                        new = v if tag == "title" else autospace(stat_fill(fp_fill(v)))
+                    elif "data-i18n-list" in a:
+                        new = "".join(f"<li>{escape(x)}</li>" for x in val(a["data-i18n-list"]))
+                    elif "data-i18n-bi" in a:
+                        k = a["data-i18n-bi"]
+                        new = f"<span>{escape(val(k))}</span>" + (f'<span class="bi" lang="en">{escape(en[k])}</span>' if en.get(k) and en[k] != val(k) else "")
+                    if new is not None:
+                        edits.append((start, end, new))
+                    break
+
+    p = P()
+    p.feed(src)
+    out = src
+    for start, end, new in sorted(edits, reverse=True):
+        out = out[:start] + new + out[end:]
+    # attributes
+    def attr_rep(m):
+        tag = m.group(0)
+        spec = re.search(r'data-i18n-attr="([^"]+)"', tag).group(1)
+        for pair in spec.split(";"):
+            attr, key = pair.split(":")
+            v = escape(val(key), quote=True)
+            if re.search(rf'\s{attr}="[^"]*"', tag):
+                tag = re.sub(rf'(\s{attr}=")[^"]*(")', lambda mm: mm.group(1) + v + mm.group(2), tag)
+        return tag
+    out = re.sub(r"<[^>]*data-i18n-attr=\"[^\"]+\"[^>]*>", attr_rep, out)
+    if out != src:
+        page.write_text(out, encoding="utf-8")
+        print("index.html: Simplified Chinese text updated")
+
+
 # ---------------------------------------------------------------- fonts
 def page_text(extra):
     text = []
     for p in [SITE / "index.html", *sorted((SITE / "assets").glob("*.js"))]:
         if p.exists():
             text.append(p.read_text(encoding="utf-8"))
+    for code in BASE_LANGS:
+        text.append(lang_text(read_lang(code)))
     text.append(extra)
     chars = set("".join(text))
     chars |= {chr(c) for c in range(0x20, 0x7F)}
-    chars |= set("“”‘’…—–·、。，：；！？（）《》〈〉「」『』【】〔〕％＋－×÷°±←→↑↓■□●○◆◇★☆│─┌┐└┘├┤┬┴┼═║╔╗╚╝▀▄█░▒▓ 　")
+    chars |= set("“”‘’…—–·、。，：；！？（）《》〈〉「」『』【】〔〕％＋－×÷°±←→↑↓■□●○◆◇★☆│─┌┐└┘├┤┬┴┼═║╔╗╚╝▀▄█░▒▓▶▼ 　\u2009")
     chars -= {"\n", "\r", "\t"}
     return sorted(c for c in chars if ord(c) >= 0x20)
 
@@ -396,56 +528,91 @@ def ranges(cps):
     return ", ".join(f"U+{a:X}" if a == b else f"U+{a:X}-{b:X}" for a, b in out)
 
 
+def make_subset(src, cps, out):
+    from fontTools import subset
+    from fontTools.ttLib import TTFont
+    font = TTFont(src)
+    opts = subset.Options()
+    opts.flavor = "woff2"
+    opts.layout_features = ["*"]
+    opts.name_IDs = ["*"]
+    opts.notdef_outline = True
+    opts.drop_tables += ["DSIG"]
+    sub = subset.Subsetter(opts)
+    sub.populate(unicodes=cps)
+    sub.subset(font)
+    font.flavor = "woff2"
+    font.save(out)
+    return out.stat().st_size
+
+
 def subset_fonts(chars):
+    """Per vector font: the full font (loaded only for characters nothing else has), the page subset, and for
+    the proportional square font one extra subset per not-yet-base language file (its characters only)."""
     fonts = GEN / "fonts"
     if fonts.exists():
         shutil.rmtree(fonts)
     fonts.mkdir(parents=True)
     css, info = [], {}
     try:
-        from fontTools import subset
         from fontTools.ttLib import TTFont
     except ImportError:
         print("fontTools missing: no font subsets (run with .venv/bin/python)")
         return {}
+    base = {ord(c) for c in chars}
     for key, name in VECTOR.items():
         src = SITE / "downloads/ttf" / f"{name}.ttf"          # faster to read than the woff2
         if not src.exists():
             src = SITE / "downloads/woff2" / f"{name}.woff2"
         full = f"../downloads/woff2/{name}.woff2"
         fam = FAMILY[key]
-        if not src.exists():
-            print(f"missing {name}: page falls back to the full font only")
-            css.append(f'@font-face{{font-family:"{fam}";src:url("{full}") format("woff2");font-display:swap}}')
-            continue
-        font = TTFont(src)
-        cmap = font.getBestCmap()
-        cps = sorted(ord(c) for c in chars if ord(c) in cmap)
-        opts = subset.Options()
-        opts.flavor = "woff2"
-        opts.layout_features = ["*"]
-        opts.name_IDs = ["*"]
-        opts.notdef_outline = True
-        opts.drop_tables += ["DSIG"]
-        sub = subset.Subsetter(opts)
-        sub.populate(unicodes=cps)
-        sub.subset(font)
-        out = fonts / f"{name}-page.woff2"
-        font.flavor = "woff2"
-        font.save(out)
-        full_size = (SITE / "downloads/woff2" / f"{name}.woff2").stat().st_size if (SITE / "downloads/woff2" / f"{name}.woff2").exists() else 0
-        info[key] = {"family": fam, "subset": out.stat().st_size, "full": full_size, "fullUrl": f"downloads/woff2/{name}.woff2"}
-        # The full font first and the subset last: for a character in the subset's range the subset is
+        # The full font first and the subsets after it: for a character in a subset's range the subset is
         # consulted first; any other character falls through to the full font, which loads only then.
         css.append(f'@font-face{{font-family:"{fam}";src:url("{full}") format("woff2");font-display:swap}}')
+        if not src.exists():
+            print(f"missing {name}: page falls back to the full font only")
+            continue
+        try:
+            cmap = TTFont(src, lazy=True).getBestCmap()
+            cps = sorted(c for c in base if c in cmap)
+            out = fonts / f"{name}-page.woff2"
+            n = make_subset(src, cps, out)
+        except Exception as e:                      # e.g. tools/export.py is rewriting the file right now
+            print(f"cannot subset {src.name}: {e}")
+            continue
+        full_size = (SITE / "downloads/woff2" / f"{name}.woff2").stat().st_size if (SITE / "downloads/woff2" / f"{name}.woff2").exists() else 0
+        info[key] = {"family": fam, "subset": n, "full": full_size, "fullUrl": f"downloads/woff2/{name}.woff2", "extra": {}}
         css.append(f'@font-face{{font-family:"{fam}";src:url("fonts/{out.name}") format("woff2");'
                    f'font-display:block;unicode-range:{ranges(cps)}}}')
-        print(f"{name}: subset {len(cps)} chars, {out.stat().st_size:,} bytes")
+        print(f"{name}: subset {len(cps)} chars, {n:,} bytes")
+        if key != "square":
+            continue
+        for code in LANG_FILES:
+            if code in BASE_LANGS:
+                continue
+            extra = sorted({ord(c) for c in lang_text(read_lang(code))} - base & set(cmap))
+            if not extra:
+                continue
+            out = fonts / f"{name}-{code}.woff2"
+            n = make_subset(src, extra, out)
+            info[key]["extra"][code] = n
+            css.append(f'@font-face{{font-family:"{fam}";src:url("fonts/{out.name}") format("woff2");'
+                       f'font-display:block;unicode-range:{ranges(extra)}}}')
+            print(f"{name} [{code}]: {len(extra)} more chars, {n:,} bytes")
     (GEN / "fonts.css").write_text("\n".join(css) + "\n")
     return info
 
 
 # ---------------------------------------------------------------- main
+def manifest_version():
+    p = SITE / "downloads/manifest.json"
+    try:
+        return json.loads(p.read_text())["version"]
+    except (OSError, ValueError, KeyError):
+        return "—"
+
+
+
 def main():
     GEN.mkdir(exist_ok=True)
     region_faces = {r: prop for r, prop, _ in build.faces(ROOT)}
@@ -469,6 +636,8 @@ def main():
         "status": status,
         "tables": tables,
     }
+    sync_html({"approved": status["counts"].get("approved", 0), "perRegion": data["stats"]["perRegion"],
+               "tables": data["stats"]["tables"], "smp": data["stats"]["smp"], "version": manifest_version()})
     extra = "".join(t["zh"] + t["en"] for t in tables) + "".join(r["comp"] + r["chars"] for r in data["radicals"])
     extra += "".join(f["ch"] for f in data["featured"]) + "".join(r["ch"] for r in data["review"])
     chars = page_text(extra)

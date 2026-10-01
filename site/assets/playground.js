@@ -50,10 +50,10 @@ export function initPlayground(site) {
     const info = site.fonts && site.fonts[fontKey()];
     const face = fullFace();
     const full = info && info.full ? size(info.full) : "?";
-    if (face && face.status === "loading") status.textContent = t("fontLoading", { full });
-    else if (face && face.status === "loaded") status.textContent = t("fontLoaded");
-    else if (face && face.status === "error") status.textContent = t("fontFailed");
-    else status.textContent = info ? t("fontSubset", { size: size(info.subset), full }) : "";
+    if (face && face.status === "loading") status.textContent = t("js.fontLoading", { full });
+    else if (face && face.status === "loaded") status.textContent = t("js.fontLoaded");
+    else if (face && face.status === "error") status.textContent = t("js.fontFailed");
+    else status.textContent = info ? t("js.fontSubset", { size: size(info.subset), full }) : "";
   }
 
   function apply() {
@@ -66,7 +66,7 @@ export function initPlayground(site) {
     out.style.setProperty("--s", st.s);
     out.classList.toggle("grid", st.grid);
     for (let i = 1; i <= 8; i++) out.classList.toggle("s" + i, st.s === i);
-    meta.textContent = t("pgMeta", { px: 14 * st.s, s: st.s, lang: LANG[st.region] });
+    meta.textContent = t("js.pgMeta", { px: 14 * st.s, s: st.s, lang: LANG[st.region] });
     fontStatus();
   }
 
@@ -95,7 +95,7 @@ export function initPlayground(site) {
   }
 
   function presetLabels() {
-    presets.querySelectorAll("button").forEach(b => { b.textContent = t("presets." + b.dataset.id); });
+    presets.querySelectorAll("button").forEach(b => { b.textContent = t("preset." + b.dataset.id); });
   }
   PRESETS.forEach(p => {
     const b = document.createElement("button");

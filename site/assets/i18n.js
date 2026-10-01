@@ -1,107 +1,108 @@
-// Strings that the scripts write into the page. Static text lives in index.html as .zh / .en pairs.
+// Page languages. The text lives in i18n/<code>.json (flat keys, the same in every file); English is the
+// fallback for keys a file does not have. Static elements carry data-i18n / data-i18n-attr /
+// data-i18n-list / data-i18n-bi attributes (see index.html); scripts call t().
 
-const T = {
-  zh: {
-    region: { SC: "简体", TC: "繁体", JP: "日文", KR: "韩文" },
-    state: { approved: "已审核", edited: "作者修改中", derived: "脚本连带修改，待审", ai: "AI 修整，待审",
-      "hangul-ai": "AI 修整，待审", "hangul-composed": "由字母拼合，待审", generated: "程序生成", draft: "底稿", blank: "空白" },
-    stateShort: { approved: "已审核", edited: "作者修改中", derived: "脚本连带", ai: "AI 修整", "hangul-ai": "AI 修整（谚文）",
-      "hangul-composed": "字母拼合（谚文）", generated: "程序生成", draft: "底稿" },
-    group: { SC: "简体", TC: "繁体", JP: "日文", KR: "韩文", HW: "半角西文", PR: "比例西文", "GEOMETRIC-FULL": "几何（全宽）", "GEOMETRIC-HALF": "几何（半宽）" },
-    same: "与{r}相同",
-    allSame: "四个地区写法相同。",
-    allDiffer: "四个地区各不相同。",
-    equal: "{list}相同",
-    joinAnd: "与",
-    sep: "；",
-    pixelsDiffer: "{n} 个像素不全相同。",
-    pixelsDifferVisible: "所选地区之间 {n} 个像素不同。",
-    notInFont: "字体里没有“{ch}”。",
-    loading: "载入中……",
-    review: "审核：",
-    diffSum: "{n} 个字里有 {m} 个在四个地区的写法不全相同，共 {p} 个像素。",
-    diffNone: "输入一些文字。",
-    fontSubset: "页面先用 {size} 的字体子集；输入子集之外的字时，自动加载完整字体（{full}）。",
-    fontLoading: "正在加载完整字体（{full}）……",
-    fontLoaded: "完整字体已加载。",
-    fontFailed: "完整字体加载失败，子集之外的字用系统字体显示。",
-    pgMeta: "字号 {px} 像素（{s} 倍），lang=\"{lang}\"",
-    presets: { hello: "四种写法", qianzi: "千字文", tc: "繁體", jp: "日本語", kr: "한국어", latin: "西文", symbols: "符号", box: "制表符" },
-    covGroups: { cn: "中国大陆", tw: "台湾、香港", jp: "日本", kr: "韩国", intl: "国际与符号" },
-    covHave: "字体里有",
-    covMissing: "字体里没有",
-    covUnassigned: "未分配或私用码位",
-    covTable: "{name}：{count} 个字符，覆盖 {pct}。",
-    covSmp: "其中 {n} 个在扩展区，不在图上。",
-    covHint: "把指针移到图上，或者用方向键按页移动。",
-    covPage: "U+{a} – U+{b}",
-    covPageHint: "点一个字符，在试打区里打出来。",
-    radInfo: "简体字体里有 {n} 个字链接到这个“{comp}”部件形态，这里列出 {k} 个。彩色像素来自部件，在每个字里完全相同。",
-    reviewCap: "{ch}（{r}），{d} 个像素",
-    before: "AI 原稿",
-    after: "审核后",
-    legendTotal: "共 {n} 个点阵",
-    theme: { auto: "自动", light: "亮色", dark: "暗色" },
-    langBtn: "Switch to English",
-    size: n => n >= 1048576 ? (n / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(n / 1024)) + " KB",
-    missingFile: "尚未生成",
-    num: n => n.toLocaleString("en-US"),
-  },
-  en: {
-    region: { SC: "SC", TC: "TC", JP: "JP", KR: "KR" },
-    state: { approved: "approved", edited: "being edited", derived: "derived by script, awaiting review", ai: "AI-repaired, awaiting review",
-      "hangul-ai": "AI-repaired, awaiting review", "hangul-composed": "composed from jamo, awaiting review", generated: "generated", draft: "draft", blank: "blank" },
-    stateShort: { approved: "Approved", edited: "Being edited", derived: "Derived by script", ai: "AI-repaired", "hangul-ai": "AI-repaired (Hangul)",
-      "hangul-composed": "Composed (Hangul)", generated: "Generated", draft: "Draft" },
-    group: { SC: "SC", TC: "TC", JP: "JP", KR: "KR", HW: "Half-width Latin", PR: "Proportional Latin", "GEOMETRIC-FULL": "Geometric, full", "GEOMETRIC-HALF": "Geometric, half" },
-    same: "same as {r}",
-    allSame: "All four regions share one form.",
-    allDiffer: "All four regions differ.",
-    equal: "{list} are the same",
-    joinAnd: " and ",
-    sep: "; ",
-    pixelsDiffer: "{n} pixels are not shared by all four.",
-    pixelsDifferVisible: "{n} pixels differ between the regions shown.",
-    notInFont: "“{ch}” is not in the font.",
-    loading: "Loading…",
-    review: "Review: ",
-    diffSum: "{m} of these {n} characters are not written the same in all four regions; {p} pixels in all.",
-    diffNone: "Type some text.",
-    fontSubset: "The page starts with a {size} subset of the font; characters outside it load the full font ({full}).",
-    fontLoading: "Loading the full font ({full})…",
-    fontLoaded: "Full font loaded.",
-    fontFailed: "The full font did not load; characters outside the subset use a system font.",
-    pgMeta: "{px} px ({s}×), lang=\"{lang}\"",
-    presets: { hello: "Four forms", qianzi: "Thousand Character Classic", tc: "繁體", jp: "日本語", kr: "한국어", latin: "Latin", symbols: "Symbols", box: "Box drawing" },
-    covGroups: { cn: "Mainland China", tw: "Taiwan, Hong Kong", jp: "Japan", kr: "Korea", intl: "International and symbols" },
-    covHave: "in the font",
-    covMissing: "not in the font",
-    covUnassigned: "unassigned or private use",
-    covTable: "{name}: {count} characters, {pct} covered.",
-    covSmp: "{n} of them are beyond the BMP and not on the map.",
-    covHint: "Point at the map, or move by page with the arrow keys.",
-    covPage: "U+{a} – U+{b}",
-    covPageHint: "Select a character to type it in the playground.",
-    radInfo: "{n} characters in the Simplified Chinese face link to this “{comp}” component form; {k} are shown. The coloured pixels come from the component and are identical in every character.",
-    reviewCap: "{ch} ({r}), {d} pixels",
-    before: "AI draft",
-    after: "reviewed",
-    legendTotal: "{n} bitmaps in all",
-    theme: { auto: "Auto", light: "Light", dark: "Dark" },
-    langBtn: "切换到中文",
-    size: n => n >= 1048576 ? (n / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(n / 1024)) + " KB",
-    missingFile: "not built yet",
-    num: n => n.toLocaleString("en-US"),
-  },
+export const LANGS = {
+  zh: { tag: "zh-Hans", fp: "zh", name: "简体中文" },
+  en: { tag: "en", fp: "en", name: "English" },
+  "zh-Hant": { tag: "zh-Hant", fp: "zh-Hant", name: "繁體中文" },
+  ja: { tag: "ja", fp: "ja", name: "日本語" },
+  ko: { tag: "ko", fp: "ko", name: "한국어" },
+  fr: { tag: "fr", fp: "fr", name: "Français" },
 };
+const FONTPIXEL = "https://fontpixel.com";
 
-export function lang() { return document.documentElement.classList.contains("ui-en") ? "en" : "zh"; }
+let cur = document.documentElement.getAttribute("data-lang") || "zh";
+let dict = {}, en = {};
+const cache = {};
+let stats = {};
+
+function load(code) {
+  if (!cache[code]) cache[code] = fetch(`i18n/${code}.json`).then(r => (r.ok ? r.json() : {})).catch(() => ({}));
+  return cache[code];
+}
+
+/** Current language code: zh, en, zh-Hant, ja, ko, fr. */
+export function lang() { return cur; }
+export function tag() { return (LANGS[cur] || LANGS.zh).tag; }
+
+export async function setLanguage(code) {
+  if (!LANGS[code]) code = "zh";
+  const [d, e] = await Promise.all([load(code), load("en")]);
+  cur = code;
+  dict = d; en = e;
+  const root = document.documentElement;
+  root.setAttribute("data-lang", code);
+  root.lang = LANGS[code].tag;
+  apply();
+  root.classList.remove("i18n-wait");
+}
 
 export function t(key, vars) {
-  let v = key.split(".").reduce((o, k) => (o == null ? o : o[k]), T[lang()]);
+  let v = dict[key];
+  if (v === undefined || v === "") v = en[key];
+  if (v === undefined) return "";
   if (typeof v === "string" && vars) v = v.replace(/\{(\w+)\}/g, (_, k) => (vars[k] ?? ""));
   return v;
 }
+export function tEn(key) { return en[key]; }
 
-export function fmt(n) { return T[lang()].num(n); }
-export function size(n) { return T[lang()].size(n); }
+export function fmt(n) {
+  try { return n.toLocaleString(tag()); } catch (e) { return String(n); }
+}
+export function size(n) {
+  return n >= 1048576 ? (n / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(n / 1024)) + " KB";
+}
+
+/** Numbers shown in the text: {approved, perRegion, tables, smp, version}. */
+export function setStats(s) { Object.assign(stats, s); fillStats(); }
+export function fillStats(root = document) {
+  root.querySelectorAll("[data-stat]").forEach(el => {
+    const v = stats[el.dataset.stat];
+    if (v !== undefined) el.textContent = typeof v === "number" ? fmt(v) : v;
+  });
+}
+
+function links(root) {
+  const fp = (LANGS[cur] || LANGS.zh).fp;
+  root.querySelectorAll("a[data-fp]").forEach(a => { a.href = `${FONTPIXEL}/${fp}${a.dataset.fp}`; });
+}
+
+export function apply(root = document) {
+  root.querySelectorAll("[data-i18n]").forEach(el => {
+    const v = t(el.dataset.i18n);
+    if (typeof v !== "string" || !v) return;
+    if (el.tagName === "TITLE") el.textContent = v;
+    else el.innerHTML = v;
+  });
+  root.querySelectorAll("[data-i18n-attr]").forEach(el => {
+    el.dataset.i18nAttr.split(";").forEach(pair => {
+      const [attr, key] = pair.split(":");
+      const v = t(key);
+      if (v) el.setAttribute(attr, v);
+    });
+  });
+  root.querySelectorAll("[data-i18n-list]").forEach(el => {
+    const v = t(el.dataset.i18nList);
+    if (!Array.isArray(v)) return;
+    el.innerHTML = "";
+    v.forEach(s => { const li = document.createElement("li"); li.textContent = s; el.append(li); });
+  });
+  root.querySelectorAll("[data-i18n-bi]").forEach(el => {
+    const k = el.dataset.i18nBi, v = t(k), e = en[k];
+    el.innerHTML = "";
+    const a = document.createElement("span");
+    a.textContent = v;
+    el.append(a);
+    if (cur !== "en" && e && e !== v) {
+      const b = document.createElement("span");
+      b.className = "bi";
+      b.lang = "en";
+      b.textContent = e;
+      el.append(b);
+    }
+  });
+  links(root);
+  fillStats(root);
+  document.dispatchEvent(new Event("tps-lang"));
+}

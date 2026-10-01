@@ -34,8 +34,8 @@ export function initDiff() {
     const chars = items.filter(i => !i.br && !/\s/.test(i.ch));
     const differ = chars.filter(i => i.n > 0);
     sum.textContent = chars.length
-      ? t("diffSum", { n: fmt(chars.length), m: fmt(differ.length), p: fmt(differ.reduce((a, i) => a + i.n, 0)) })
-      : t("diffNone");
+      ? t("js.diffSum", { n: fmt(chars.length), m: fmt(differ.length), p: fmt(differ.reduce((a, i) => a + i.n, 0)) })
+      : t("js.diffNone");
     if (sel >= items.length || sel < 0 || items[sel].br) sel = items.findIndex(i => i.n > 0);
     render();
     inspect();
@@ -69,7 +69,8 @@ export function initDiff() {
       const y0 = l * gh;
       REGIONS.forEach((r, k) => {
         ctx.fillStyle = pal[r];
-        const lab = lang() === "en" ? r : t("region." + r)[0];
+        const nm = t("region." + r);
+        const lab = /[\u3400-\u9fff]/.test(nm[0]) ? nm[0] : r;
         ctx.fillText(lab, 0, y0 + k * rh + Math.round((rh - 14) / 2) + 11);
       });
       // key for the overprint row
@@ -158,14 +159,15 @@ export function initDiff() {
     const big = document.createElement("span");
     big.className = "big";
     big.textContent = it.ch;
-    head.append(big, `U+${hex(it.cp)}　${relation(it.sets)} ${t("pixelsDiffer", { n: fmt(it.n) })}`);
+    head.append(big, `U+${hex(it.cp)}${t("js.colon")}${relation(it.sets)}${t("js.gap")}${t("js.pixelsDiffer", { n: fmt(it.n) })}`);
     body.append(head);
     REGIONS.forEach((r, k) => {
       const prev = REGIONS.findIndex((_, j) => j < k && sameSet(it.sets[j], it.sets[k]));
-      const note = (prev >= 0 ? t("same", { r: t("region." + REGIONS[prev]) }) + (lang() === "en" ? ", " : "，") : "") + t("state." + it.gs[k].state);
-      body.append(card(t("region." + r) + (lang() === "en" ? "" : " " + r), `var(--${r.toLowerCase()})`, it.sets[k], it.sets, k, note));
+      const note = (prev >= 0 ? t("js.same", { r: t("region." + REGIONS[prev]) }) + t("js.comma") : "") + t("state." + it.gs[k].state);
+      const nm = t("region." + r);
+      body.append(card(nm + (nm === r ? "" : r), `var(--${r.toLowerCase()})`, it.sets[k], it.sets, k, note));
     });
-    body.append(card(lang() === "en" ? "Overprint" : "叠印", "var(--ink)", null, it.sets, -1, ""));
+    body.append(card(t("js.overprint"), "var(--ink)", null, it.sets, -1, ""));
     const p = document.createElement("p");
     p.className = "muted insp-head";
     p.textContent = stateLine(it.gs);
