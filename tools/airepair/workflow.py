@@ -178,7 +178,7 @@ def cmd_checkpoint(a):
                 raise SystemExit(f"{gid} is not in batch {a.batch}")
             ch = g["changes"]
             base = it[gid]["rows"]
-            h, w, flexible = len(base), len(base[0]), gid.endswith(".PR")
+            h, w, flexible = len(base), len(base[0]), gid.endswith((".PR", ".PR-L"))
             if not isinstance(ch, dict) or any(not k.isdigit() or not 0 <= int(k) < h or not isinstance(v, str)
                                                or not (2 <= len(v) <= 24 if flexible else len(v) == w) or set(v) - {".", "#"}
                                                for k, v in ch.items()):
@@ -214,7 +214,8 @@ def render_pages(b, s, out_dir):
     it = items()
     big, small = font(18), font(13)
     ids = [i for i in batch_ids(b) if i in s["glyphs"]]
-    sc, rowh = 8, 15 * 8 + 34
+    sc = 8
+    rowh = (max(len(it[i]["rows"]) for i in ids) + 1) * sc + 34 if ids else 15 * sc + 34
     W = 20 + 130 + 3 * (15 * sc + 30) + 70
     pages = []
     for k in range(0, len(ids), 12):

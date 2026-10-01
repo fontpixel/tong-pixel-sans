@@ -33,7 +33,8 @@ def sheets(rnd, glyphs, out):
     from PIL import Image, ImageDraw
     big, small = font(18), font(13)
     order = sorted(glyphs, key=lambda g: (-g["changed"], g["id"]))
-    sc, rowh, per = 7, 15 * 7 + 50, 16
+    sc, per = 7, 16
+    rowh = (max(len(g["rows"]) for g in glyphs) + 1) * sc + 50
     W = 10 + 110 + 3 * (15 * sc + 24) + 60
     for k in range(0, len(order), per):
         part = order[k:k + per]
@@ -60,7 +61,7 @@ def sheets(rnd, glyphs, out):
             one_to_one(im, [g["before"], g["rows"]], x, y0 + 30)
             d.text((x, y0 + 48), "1:1", font=small, fill=(90, 90, 90))
             if g["note"]:
-                d.text((x0 + 110, y0 + 18 + 15 * sc + 18), g["note"][:48], font=small, fill=(110, 110, 110))
+                d.text((x0 + 110, y0 + 18 + len(g["rows"]) * sc + 18), g["note"][:48], font=small, fill=(110, 110, 110))
         im.save(out / f"sheet-{k // per + 1:02d}.png")
 
 

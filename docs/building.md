@@ -1,8 +1,8 @@
 # 构建与检查
 
 ```bash
-python3 tools/build.py [输出目录]   # 默认 build/，约 10 秒
-python3 tools/verify.py            # 源文件检查 + 8 个地区字体的字表覆盖
+python3 tools/build.py [输出目录]   # 默认 build/：两个尺寸各 10 个 BDF
+python3 tools/verify.py            # 源文件检查 + 两个尺寸各 8 个地区字体的字表覆盖
 python3 tools/release.py [版本]      # 构建并在 dist/（不入库）放发布文件：10 个 BDF、全部许可证、README.txt，另打 zip；版本默认为当天日期
 python3 tools/preview.py           # 每个字体的样张 build/*-preview.png（需要 Pillow）
 python3 tools/preview.py --readme  # 同时更新 docs/images/sample.png
@@ -12,16 +12,23 @@ python3 tools/preview.py --readme  # 同时更新 docs/images/sample.png
 
 ## 产物
 
-| 文件 | 字体名（FAMILY_NAME） | 本地区缺字时依次借用 |
-|---|---|---|
-| `TongPixelSansSC-14.bdf` / `TongPixelSansMonoSC-14.bdf` | Tong Pixel Sans SC / Tong Pixel Sans Mono SC | SC → TC → JP → KR |
-| `TongPixelSansTC-14.bdf` / `TongPixelSansMonoTC-14.bdf` | … TC | TC → JP → SC → KR |
-| `TongPixelSansJP-14.bdf` / `TongPixelSansMonoJP-14.bdf` | … JP | JP → TC → SC → KR |
-| `TongPixelSansKR-14.bdf` / `TongPixelSansMonoKR-14.bdf` | … KR | KR → TC → JP → SC |
-| `TongPixelSansLatin-14.bdf` / `TongPixelSansMonoLatin-14.bdf` | Tong Pixel Sans Latin / Tong Pixel Sans Mono Latin | 不含东亚字形：只用比例（PR）、等宽（HW）和半宽几何字形；引号、省略号、破折号总是窄的西文版（简、繁字体里这些跟思源为全角）。2026-09-30 |
+两个尺寸（2026-10-01），汉字等东亚字形完全相同，西文和其他非汉字不同：
 
-- 14 像素：PIXEL_SIZE 14，FONT_ASCENT 11，FONT_DESCENT 3，75 dpi，WEIGHT_NAME Medium，FOUNDRY Tong。
-- 汉字 13×13 墨迹放在字格的第 1–13 列、第 0–12 行，底边在基线下 2 像素，接近思源黑体原设计。
+- **Tong Pixel Sans 14 Large**（默认）：西文按 T 比例（大写 10、x 高 7、升部与大写同高、降部 3），变音符不压缩；字格 18 行，FONT_ASCENT 14、FONT_DESCENT 4；汉字底边在基线下 1 像素（同思源黑体）。用 `HW-L`、`PR-L`、`GEOMETRIC-*-L` 分组；没有大号字形的码位用小号字形，放在同一条基线上（半角假名、半角韩文随东亚字形上移 1 行）。
+- **Tong Pixel Sans 14 Small**（紧凑版，原来的字体）：大写 9、x 高 6；字格 14 行，FONT_ASCENT 11、FONT_DESCENT 3；汉字底边在基线下 2 像素。
+
+两者 PIXEL_SIZE 都是 14（按汉字墨迹 13×13 计，同缝合像素 12 号的做法）。字体名总写明尺寸。
+
+| 文件（`<S>` = Large 或 Small） | 字体名（FAMILY_NAME） | 本地区缺字时依次借用 |
+|---|---|---|
+| `TongPixelSans14<S>-SC.bdf` / `TongPixelSansMono14<S>-SC.bdf` | Tong Pixel Sans 14 Large SC / Tong Pixel Sans Mono 14 Large SC 等 | SC → TC → JP → KR |
+| `TongPixelSans14<S>-TC.bdf` / `TongPixelSansMono14<S>-TC.bdf` | … TC | TC → JP → SC → KR |
+| `TongPixelSans14<S>-JP.bdf` / `TongPixelSansMono14<S>-JP.bdf` | … JP | JP → TC → SC → KR |
+| `TongPixelSans14<S>-KR.bdf` / `TongPixelSansMono14<S>-KR.bdf` | … KR | KR → TC → JP → SC |
+| `TongPixelSans14<S>-Latin.bdf` / `TongPixelSansMono14<S>-Latin.bdf` | Tong Pixel Sans 14 Large Latin 等 | 不含东亚字形：只用比例（PR）、等宽（HW）和半宽几何字形；引号、省略号、破折号总是窄的西文版（简、繁字体里这些跟思源为全角）。2026-09-30 |
+
+- 75 dpi，WEIGHT_NAME Medium，FOUNDRY Tong；尺寸见上。
+- 汉字 13×13 墨迹放在字格的第 1–13 列；Small 底边在基线下 2 像素，Large 在基线下 1 像素。
 - 每个字形只写出墨迹外框（BBX），SWIDTH = 步进 × 1000 ÷ 14。
 - 目前每个字体 30,267 个字形。
 - 韩文字体里的汉字借用繁体字形（尚无韩国汉字字形）。

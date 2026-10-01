@@ -226,7 +226,8 @@ class ShapesMixin:
                     sibling.setdefault(l['shape_id'], other.rsplit('.', 1)[-1])
             chosen, totals = [], {}
             for symbol in wanted:
-                family = [f for f in forms if f['symbol'] == symbol]
+                # forms are drawn for one cell height: the Large size (-L) and the Small size never share
+                family = [f for f in forms if f['symbol'] == symbol and f['locale'].endswith('-L') == locale.endswith('-L')]
                 totals[symbol] = len(family)
                 # Every region's forms are offered: same region first, then cross-region forms the
                 # table confirms, then the rest with a caution note (the user decides).

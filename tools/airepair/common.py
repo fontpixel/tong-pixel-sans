@@ -228,6 +228,17 @@ def western_png(gid, char, path):
     import reference
     from fontTools.pens.freetypePen import FreeTypePen
     label = reference.WESTERN_REF[gid][0]
+    if gid.endswith("-L"):              # the Large size: the zone-mapped outline its draft was rendered from
+        import draft_large
+        src = draft_large._source(draft_large.font_key(label), char)
+        fw = reference.WESTERN_REF[gid][1]
+        pen = FreeTypePen(None)
+        src.draw(char, pen, 1.0 if gid.endswith(".HW-L") else draft_large.PX_PER_EM / 14)
+        s = 128 / 18 / src.upm             # 18 rows fill the image
+        sx = s * (fw if gid.endswith(".HW-L") else 14)
+        a = pen.array(width=128, height=128, transform=(sx, 0, 0, s * 14, 20, 128 * 4 / 18))
+        Image.fromarray((255 - np.clip(a, 0, 1) * 255).astype("uint8")).save(path)
+        return
     key = next(k for k in reference.WESTERN if label.startswith(k))
     font, glyphs = reference._face(*reference.WESTERN[key])
     name = font.getBestCmap()[ord(char)]

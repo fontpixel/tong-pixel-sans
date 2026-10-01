@@ -19,7 +19,8 @@ regional glyph in state ai or draft, whose starting point (“当前”) is a pi
 the master's latest result in the --ref-round rounds if it is not reviewed, else its current
 version; the worker changes only the strokes the two regions write differently.
 --symbols prepares a symbol round (with --list): full-width (regional), half-width (HW) and
-proportional (PR) glyphs; the reader is design-rules §1 4 5 7 and docs/lessons/symbols.md, the
+proportional (PR) glyphs, or the Large size's HW-L / PR-L glyphs (a round of Large glyphs only: each with
+its Small version as the letterform to follow, the zone-mapped outline as reference); the reader is design-rules §1 4 5 7 and docs/lessons/symbols.md, the
 examples are existing glyphs of the same group near the code point (the same family: ①–⑮ for ⑯) and
 the same code point's approved glyphs in other groups.
 """
@@ -69,7 +70,7 @@ def select(s, a):
     take, skipped = [], Counter()
     for gid in ids:
         rec = s.records.get(gid)
-        if rec is None or "alias" in rec or rec["group"] not in REGIONS + (("HW", "PR") if a.symbols else ()):
+        if rec is None or "alias" in rec or rec["group"] not in REGIONS + (("HW", "PR", "HW-L", "PR-L") if a.symbols else ()):
             skipped["不是简 / 繁 / 日 / 韩的独立字形"] += 1
         elif rec["state"] not in ("ai", "draft", "edited"):     # edited = changed but not approved: unfinished
             skipped[f"状态 {rec['state']}（不交给 AI）"] += 1
@@ -99,7 +100,8 @@ def ref_results(names):
 def input_page(items, path, title):
     from PIL import Image, ImageDraw
     small, big = font(13), font(18)
-    sc, rowh = 8, 15 * 8 + 34
+    sc = 8
+    rowh = (max(len(it["rows"]) for it in items) + 1) * sc + 34
     W = 20 + 130 + 2 * (15 * sc + 30) + 60
     im = Image.new("RGB", (W * 2, 40 + rowh * ((len(items) + 1) // 2)), "white")
     d = ImageDraw.Draw(im)
@@ -109,12 +111,15 @@ def input_page(items, path, title):
         symbol = it["tumbled_match"] == "符号轮不参考圆石"
         d.text((X, Y), f"{it['char']} {it['id']}" + ("" if symbol else f" · 圆石写法：{it['tumbled_match']}"), font=small, fill=(0, 0, 0))
         im.paste(Image.open(it["_ref"]).convert("RGB").resize((112, 112)), (X, Y + 18))
-        d.text((X, Y + 18 + 114), "参考字体" if it["region"] in ("HW", "PR") else f"思源 {it['region']}", font=small, fill=(90, 90, 90))
+        d.text((X, Y + 18 + 114), "参考字体" if it["region"] in ("HW", "PR", "HW-L", "PR-L") else f"思源 {it['region']}", font=small, fill=(90, 90, 90))
         x = X + 130
         box, xo = cell(it["id"], it["rows"])
         draw_bits(d, it["rows"], x, Y + 18, sc, box=box, x_off=xo, label=f"当前 {len(it['rows'][0])}×{len(it['rows'])}", fnt=small)
         x += 15 * sc + 30
-        if it["tumbled"]:
+        if it.get("small"):
+            box, xo = cell(it["small"]["id"], it["small"]["rows"])
+            draw_bits(d, it["small"]["rows"], x, Y + 18, sc, box=box, x_off=xo, label=f"小号版 {it['small']['mark']}", fnt=small)
+        elif it["tumbled"]:
             draw_bits(d, it["tumbled"], x, Y + 18, sc, label="圆石 13×14", fnt=small)
         elif not symbol:
             d.text((x, Y + 60), "（圆石没有此字）", font=small, fill=(90, 90, 90))
@@ -153,7 +158,7 @@ def examples_page(examples, path, title):
     from PIL import Image, ImageDraw
     small, big = font(13), font(18)
     sc, cols = 6, 6
-    cw, ch = 14 * sc + 44, 14 * sc + 44
+    cw, ch = 14 * sc + 44, max(len(e["rows"]) for e in examples) * sc + 44
     im = Image.new("RGB", (cols * cw + 20, 40 + ch * max(1, -(-len(examples) // cols))), "white")
     d = ImageDraw.Draw(im)
     d.text((10, 8), title, font=big, fill=(0, 0, 0))
@@ -162,7 +167,7 @@ def examples_page(examples, path, title):
         d.text((x, y), f"{e['char']} {e['id'][-2:]}", font=small, fill=(0, 0, 0))
         box, xo = cell(e["id"], e["rows"])
         draw_bits(d, e["rows"], x, y + 18, sc, box=box, x_off=xo)
-        d.text((x, y + 18 + 14 * sc + 2), "、".join(e["for"])[:9], font=small, fill=(90, 90, 90))
+        d.text((x, y + 18 + len(e["rows"]) * sc + 2), "、".join(e["for"])[:9], font=small, fill=(90, 90, 90))
     im.save(path)
 
 
@@ -186,6 +191,15 @@ RECHECK_TASK = ("本批是**按新规则的回头修**：这些字已经由 AI �
 SYMBOL_TASK = ("本批是**符号的底稿**：由参考字体点阵化（相位搜索），还没经 AI 或人工修。全角符号在 13×13 墨迹内，等宽符号 7×14，"
                "比例符号宽度可变、高 14（基线在第 10 行下，第 11–13 行是降部）。请在底稿基础上完整修字：形状清楚、1 像素笔画、对称的要对称，"
                "同族（圈号、括号号、箭头、几何图形、上下标、西里尔字母）与 examples 里已有的同族字形用一样的像素写法。")
+
+
+LARGE_TASK = ("本批是 **14 Large（大号版）的底稿**：由参考字体按大号规格点阵化，还没经 AI 或人工修。大号版规格（用户 2026-10-01 决定，T 比例）："
+              "**大写和数字 10 行（第 4–13 行），小写 x 高 7 行（第 7–13 行），升部（b d f h k l）10 行、与大写同高（第 4–13 行），"
+              "降部 3 行（第 14–16 行）**；g j p q y 的主体与 n o u 同高同位。**变音符不压缩**：大写上的符号放在第 0–3 行、与字母隔 1 行，"
+              "越南文叠两层也照常画；小写上的符号与 x 高隔 1 行。笔画 1 像素；对称的字母左右逐点对称。"
+              "等宽字墨迹最多 6 列（7 列格），比例字墨迹从第 0 列起、宽度按字形需要。"
+              "**写法照同码位的小号版**（inputs.txt 列出，✓ 为用户已通过，改 = 用户改过）：小号版上用户确定的形状要保留，按大号尺寸重画；"
+              "examples 里已通过的大号字（同族、同底字母）是大号写法的范例，变音符、圆弧、斜线的像素写法要和它们一致。")
 
 
 def main():
@@ -251,7 +265,7 @@ def main():
             it["issues"] = issues.get(gid, [])
         it["tumbled_match"] = region_match(it["char"], it["region"], it["tumbled"]) if it["tumbled"] and not a.derive and not a.symbols else "圆石没有此字"
         it["_ref"] = str(out / "refs" / f"{gid}.png")
-        if rec["group"] in ("HW", "PR"):
+        if rec["group"] in ("HW", "PR", "HW-L", "PR-L"):
             western_png(gid, it["char"], it["_ref"])
         else:
             reference_png(it["char"], it["region"], it["_ref"])
@@ -260,6 +274,18 @@ def main():
                            and r["state"] != "draft" and abs(r["cp"] - rec["cp"]) <= 48 and r["cp"] >> 7 == rec["cp"] >> 7),
                           key=lambda o: (s.records[o]["state"] != "approved", abs(s.records[o]["cp"] - rec["cp"])))
             it["family"] = near[:8]
+            if rec["group"].endswith("-L"):
+                import unicodedata
+                small_id = gid.removesuffix("-L")
+                small_id = s.records.get(small_id, {}).get("alias", small_id)        # an alias: the glyph it shares
+                if small_id in s.records and "rows" in s.records[small_id]:
+                    st = s.records[small_id]["state"]
+                    it["small"] = {"id": small_id, "rows": s.records[small_id]["rows"], "state": st,
+                                   "mark": {"approved": "✓", "edited": "改"}.get(st, "")}
+                base = unicodedata.normalize("NFD", it["char"])[0]
+                base_id = f"U+{ord(base):04X}.{rec['group']}"
+                if base != it["char"] and base_id in s.records and "rows" in s.records[base_id] and s.records[base_id]["state"] != "draft":
+                    it["family"] = [base_id] + [x for x in it["family"] if x != base_id][:7]
             if 0x1100 <= rec["cp"] <= 0x11FF:        # conjoining jamo: the compatibility jamo of the same letter
                 import unicodedata
                 name = unicodedata.name(it["char"], "")
@@ -340,7 +366,9 @@ def main():
             if a.derive:
                 derive_page(pg, bdir / f"input-{k:02d}.png", f"{a.name} {bid} 第 {k}/{len(pages)} 页 · 思源：本字地区 | 母版地区 · 母版（改动基准）| 旧版（仅参考）")
             else:
-                input_page(pg, bdir / f"input-{k:02d}.png", f"{a.name} {bid} 第 {k}/{len(pages)} 页 · " + ("参考（写法依据）| 当前版本" if a.symbols else "思源参考（写法依据）| 当前版本 | 圆石 18（像素范本）"))
+                input_page(pg, bdir / f"input-{k:02d}.png", f"{a.name} {bid} 第 {k}/{len(pages)} 页 · " + (
+                    "参考轮廓（大号规格）| 当前版本 | 小号版（写法依据）" if pg[0]["region"].endswith("-L") else
+                    "参考（写法依据）| 当前版本" if a.symbols else "思源参考（写法依据）| 当前版本 | 圆石 18（像素范本）"))
         ex, rex = {}, {}
         if a.symbols:
             for it in batch:
@@ -357,13 +385,18 @@ def main():
             lines = [f"{a.name} {bid}: {len(batch)} glyphs（符号）。每字的“当前”是改动基准，行号从 0 起；宽 × 高见每字标注。"]
             for it in batch:
                 w, h = len(it["rows"][0]), len(it["rows"])
-                kind = {"HW": "等宽 7×14", "PR": "比例（宽度可变，墨迹从第 0 列起，右留 1 列）"}.get(it["region"], "全角 13×13")
+                kind = {"HW": "等宽 7×14", "PR": "比例（宽度可变，墨迹从第 0 列起，右留 1 列）", "HW-L": "大号等宽 7×18",
+                        "PR-L": "大号比例（宽度可变 × 18，墨迹从第 0 列起）"}.get(it["region"], "全角 13×13")
                 lines += ["", f"{it['id']} {it['char']} U+{it['cp']:04X} {kind} 当前 {w}×{h}{' 底稿' if it['state'] == 'draft' else ''}"
                           + (f" 同码位已通过={','.join(it['same_char_approved'])}" if it["same_char_approved"] else "")
                           + (f" 同码位其他版本（未审）={','.join(it['same_char'])}" if it.get("same_char") else "")
                           + (f" 同族={' '.join(s.records[x]['char'] + '(' + x + ')' for x in it['family'][:6])}" if it["family"] else "")]
                 if it["ai_note"]:
                     lines.append(f"  底稿说明：{it['ai_note'].removeprefix('底稿：')}")
+                if it.get("small"):
+                    sm = it["small"]
+                    lines.append(f"  小号版 {sm['id']}（{ {'approved': '已通过', 'edited': '用户改过，未通过'}.get(sm['state'], '未审核') }；写法依据）：")
+                    lines += [f"    {y:2d} {r}" for y, r in enumerate(sm["rows"])]
                 lines.append("  当前：")
                 lines += [f"    {y:2d} {r}" for y, r in enumerate(it["rows"])]
             (bdir / "inputs.txt").write_text("\n".join(lines) + "\n")
@@ -438,7 +471,8 @@ def main():
     (out / "LESSONS.md").write_text("# 本轮读本\n\n以下先是用户确认的规则（必须遵守），再是修字要点与自检清单。\n\n## "
                                     + "\n## ".join(keep) + "\n\n---\n\n" + reader.read_text(encoding="utf-8"))
     drafts = sum(i["state"] == "draft" for i in items)
-    task = DERIVE_TASK if a.derive else SYMBOL_TASK if a.symbols else RECHECK_TASK if issues else EDITED_TASK if all(
+    large = a.symbols and all(i["region"].endswith("-L") for i in items)
+    task = DERIVE_TASK if a.derive else LARGE_TASK if large else SYMBOL_TASK if a.symbols else RECHECK_TASK if issues else EDITED_TASK if all(
         i["state"] == "edited" for i in items) else ("本批的字**是新增字的底稿**：由思源黑体点阵化（WorkBench 渲染加相位搜索），还没经 AI 或人工修。请在底稿基础上完整修字，"
             "像修第一轮那样认真处理每个字（结构、笔画、密处取舍），不要只做微调。" if drafts == len(items) else
             "本批的字**已经由 AI 修过**，你在**当前版本**的基础上继续修整。满意的字可以不改。" if not drafts else
@@ -447,7 +481,8 @@ def main():
             "{MODEL}": a.model, "{EFFORT}": a.effort, "{WORKERS}": str(a.workers), "{N}": str(len(batches)),
             "{BATCH_SIZE}": str(a.batch_size), "{LAST}": batches[-1][0]["batch"]}
     for name in ("PROTOCOL.md", "PROMPT.md"):
-        t = (HERE / "templates" / ("PROTOCOL-symbols.md" if a.symbols and name == "PROTOCOL.md" else name)).read_text(encoding="utf-8")
+        proto = "PROTOCOL-large.md" if large else "PROTOCOL-symbols.md"
+        t = (HERE / "templates" / (proto if a.symbols and name == "PROTOCOL.md" else name)).read_text(encoding="utf-8")
         for k, v in subs.items():
             t = t.replace(k, v)
         (out / name).write_text(t)

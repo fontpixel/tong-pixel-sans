@@ -3,7 +3,9 @@
     .venv/bin/python tools/editor/make_symbol_lists.py [--first]
 
 Writes tools/editor/data/lists/非汉字·NN 类别.txt (every glyph with its own pixels in that category, all
-groups, in code point order) and, with --first, 建议先审·非汉字.txt (the glyphs not approved yet, most used first:
+groups of the Small size, in code point order), 大号·NN 类别.txt (the same for the Large size's -L groups),
+大号·00 先修代表字.txt (the Large glyphs to review first: ASCII, then the basic Greek and Cyrillic
+alphabets and the most used accented Latin letters, proportional before monospace) and, with --first, 建议先审·非汉字.txt (the glyphs not approved yet, most used first:
 ASCII, full-width forms, CJK punctuation and kana; then Latin-1, general punctuation, common symbols,
 bopomofo and Hangul letters; then basic Greek and Cyrillic). Old 非汉字·* lists are replaced. Changes no
 glyph.
@@ -18,7 +20,10 @@ sys.path.insert(0, str(HERE))
 from store import Store  # noqa: E402
 
 LISTS = HERE / "data/lists"
-ORDER = {"SC": 0, "TC": 1, "JP": 2, "KR": 3, "HW": 4, "PR": 5, "GEOMETRIC-FULL": 6, "GEOMETRIC-HALF": 7}
+ORDER = {"SC": 0, "TC": 1, "JP": 2, "KR": 3, "PR": 4, "HW": 5, "GEOMETRIC-FULL": 6, "GEOMETRIC-HALF": 7,
+         "PR-L": 4, "HW-L": 5, "GEOMETRIC-FULL-L": 6, "GEOMETRIC-HALF-L": 7}
+LARGE_FIRST = [(0x21, 0x7E), (0x391, 0x3A9), (0x3B1, 0x3C9), (0x410, 0x44F), (0x401, 0x401), (0x451, 0x451),
+               *[(ord(c), ord(c)) for c in "ÀÁÂÄÇÈÉÊËÍÎÏÑÓÔÖÙÚÛÜàáâäçèéêëíîïñóôöùúûüßÆæŒœØøÅåŁłŠšŽžČčĞğİıŞş"]]
 ASCII_PUNCT = [(0x21, 0x2F), (0x3A, 0x40), (0x5B, 0x60), (0x7B, 0x7E)]
 CATEGORIES = [   # (name, code point ranges); the first category that matches wins
     ("01 全角标点", [(0x3000, 0x303F), (0xFE10, 0xFE1F), (0xFE30, 0xFE6F), (0xFF01, 0xFF0F), (0xFF1A, 0xFF20), (0xFF3B, 0xFF40),
@@ -69,19 +74,25 @@ def category(cp):
 
 def main():
     s = Store(HERE.parent.parent)
-    by_cat = {}
-    first = []
+    by_cat, by_cat_large = {}, {}
+    first, large_first = [], []
     for gid, g in s.glyphs.items():
         cp = s.records[gid]["cp"]
         name = category(cp)
         if name is None:
+            continue
+        if g["group"].endswith("-L"):
+            by_cat_large.setdefault(name, []).append(gid)
+            rank = next((i for i, (a, b) in enumerate(LARGE_FIRST) if a <= cp <= b), None)
+            if rank is not None and s.records[gid]["state"] != "approved":
+                large_first.append((ORDER[g["group"]], rank, cp, gid))
             continue
         by_cat.setdefault(name, []).append(gid)
         tier = next((t for t, ranges in FIRST if any(a <= cp <= b for a, b in ranges)), None)
         if tier is not None and s.records[gid]["state"] != "approved":
             first.append((tier, cp, ORDER.get(g["group"], 9), gid))
     key = lambda gid: (s.records[gid]["cp"], ORDER.get(s.records[gid]["group"], 9))
-    for old in LISTS.glob("非汉字·*.txt"):
+    for old in [*LISTS.glob("非汉字·*.txt"), *LISTS.glob("大号·*.txt")]:
         old.unlink()
     for name, _ in CATEGORIES:
         ids = sorted(by_cat.get(name, []), key=key)
@@ -91,6 +102,17 @@ def main():
                 f"# {name}：{len(ids)} 个字形，已通过 {done}（tools/editor/make_symbol_lists.py）\n" + "\n".join(ids) + "\n",
                 encoding="utf-8")
             print(f"{name}: {len(ids)}（已通过 {done}）")
+        ids = sorted(by_cat_large.get(name, []), key=key)
+        if ids:
+            done = sum(s.records[i]["state"] == "approved" for i in ids)
+            (LISTS / f"大号·{name}.txt").write_text(
+                f"# 大号版 {name}：{len(ids)} 个字形，已通过 {done}（tools/editor/make_symbol_lists.py）\n" + "\n".join(ids) + "\n",
+                encoding="utf-8")
+    large_first.sort()
+    (LISTS / "大号·00 先修代表字.txt").write_text(
+        "# 大号版先修的代表字：ASCII、基本希腊和西里尔字母、常用带符号拉丁字母；先比例版、后等宽版。修好后作为 AI 修其余大号字的范例"
+        "（tools/editor/make_symbol_lists.py）\n" + "\n".join(g for *_, g in large_first) + "\n", encoding="utf-8")
+    print("大号·00 先修代表字:", len(large_first))
     if "--first" not in sys.argv:
         return
     first.sort()
