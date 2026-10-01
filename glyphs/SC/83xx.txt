@@ -157,7 +157,7 @@ ai
 @ whole/1 此 3a39ffd4ba1349b4a8532ada61268f6b
 
 U+8309 茉
-approved
+edited
 ...#.....#...
 #############
 ...#.....#...
@@ -682,7 +682,7 @@ ai
 @ whole/1 江 7eb55e1c0e44460ba84217c166a7384b
 
 U+8334 茴
-approved
+edited
 ...#.....#...
 #############
 ...#.....#...
@@ -1135,7 +1135,7 @@ ai
 # AI: AI 修字 phase2b-v3（gpt-6-astra xhigh，2026-09-30）
 
 U+8352 荒
-approved
+edited
 ...#.....#...
 #############
 ...#.....#...
@@ -1343,7 +1343,7 @@ ai
 # AI: AI 修字 phase2a-common（gpt-6-astra xhigh，2026-09-29）
 
 U+8363 荣
-approved
+edited
 ...#.....#...
 #############
 ...#.....#...
@@ -1978,7 +1978,7 @@ ai
 # AI: AI 修字 derive-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+8392 莒
-approved
+edited
 ...#.....#...
 #############
 ...#.....#...
@@ -2064,7 +2064,7 @@ ai
 # AI: AI 修字 derive-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+8398 莘
-approved
+edited
 ...#.....#...
 #############
 ...#.....#...
@@ -2378,7 +2378,7 @@ ai
 @ whole/1 坎 06a4a06bac894181b209a476d44d9c23
 
 U+83B1 莱
-approved
+edited
 ...#.....#...
 #############
 ...#.....#...
@@ -2693,7 +2693,7 @@ ai
 # AI: AI 修字 derive-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+83C7 菇
-approved
+edited
 ...#.....#...
 #############
 ...#.....#...
@@ -3164,7 +3164,7 @@ ai
 # AI: AI 修字 derive-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+83E9 菩
-approved
+edited
 ...#.....#...
 #############
 ...#.....#...

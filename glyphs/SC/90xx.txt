@@ -367,7 +367,7 @@ ai
 # AI: AI 修字 recheck-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+9019 這
-ai
+approved
 .......#.....
 .#......#....
 ..#.#########
@@ -381,6 +381,7 @@ ai
 ..#..#######.
 .#.#.........
 #...#########
+@ whole/0 辶 a258a1a34f034092b765d631c4aebbf9
 # AI: AI 修字 derive-v1（gpt-6-astra xhigh，2026-09-30）
 
 U+901A 通
