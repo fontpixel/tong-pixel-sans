@@ -10,7 +10,7 @@
 | [2026-09-29-pass2-review.md](2026-09-29-pass2-review.md) | 常用百字二次修字（借鉴圆石）后，人工又改了什么：数字、L037–L043 |
 | `data/2026-09-28-pass2-tumbled.json` | 常用百字 189 个字形的第一轮 AI、二次修字、人工版和圆石点阵 |
 
-更早的分析（2026-09-17 至 2026-09-26，L001–L036）在 `archive/tong-review-v1/knowledge/` 和 `archive/tong-review-v1/data/proposals/`。
+更早的分析（2026-09-17 至 2026-09-26，L001–L036）在旧包存档 `archive/tong-review-v1/knowledge/` 和 `data/proposals/`（不在公开仓库中，由作者另存）。
 
 ## 怎样做一次新的总结
 

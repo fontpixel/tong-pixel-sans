@@ -22,4 +22,4 @@
 - `tools/build.py`：构建；`tools/verify.py`：检查；`tools/preview.py`：样张。
 - `tools/editor/`：修字编辑器（`server.py`、`store.py`、`forms.py`）。
 - `tools/western/`：西文连带更新（`docs/western-tools.md`）。
-- `archive/`：旧修字包的代码、提示词和报告，只读，供参考。
+- 旧修字包的代码、提示词和报告（文档里提到的 `archive/…`）不在公开仓库中，作者本机另存（`../tong-pixel-sans-archive/`），只读，供参考。
