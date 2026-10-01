@@ -128,8 +128,20 @@ def region_match(char, region, tum_rows):
 
 # ---------------------------------------------------------------- drawing
 def font(size):
+    """Label font: Source Han Sans SC from reference-fonts/, else the system's CJK sans (fontconfig), else
+    Pillow's default (where the reference fonts are missing, e.g. a round run in the cloud)."""
     from PIL import ImageFont
-    return ImageFont.truetype(str(FONTS / "SourceHanSansSC-VF.otf"), size)
+    path = FONTS / "SourceHanSansSC-VF.otf"
+    if not path.exists():
+        import subprocess
+        try:
+            path = subprocess.run(["fc-match", "-f", "%{file}", "sans:lang=zh-cn"], capture_output=True, text=True).stdout
+        except OSError:
+            path = ""
+    try:
+        return ImageFont.truetype(str(path), size)
+    except OSError:
+        return ImageFont.load_default(size)
 
 
 def draw_bits(d, rows, x, y, sc, x_off=1, box=(14, 14), label=None, fnt=None, colors=None):

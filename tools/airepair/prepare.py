@@ -220,10 +220,13 @@ def main():
     ap.add_argument("--workers", type=int, default=10)
     ap.add_argument("--model", default="gpt-6-astra")
     ap.add_argument("--effort", default="xhigh")
+    ap.add_argument("--out", type=Path, default=ROUNDS, help="parent directory of the round (default work/airepair/)")
+    ap.add_argument("--portable", action="store_true", help="paths in PROTOCOL.md / PROMPT.md relative to the repository "
+                    "root and `python3`, for a round committed to a branch and run elsewhere (e.g. Codex in the cloud)")
     a = ap.parse_args()
     if not (a.derive or a.representative or a.list or a.ids):
         ap.error("one of --representative, --list, --ids or --derive is required")
-    out = ROUNDS / a.name
+    out = (a.out if a.out.is_absolute() else ROOT / a.out) / a.name
     if out.exists():
         raise SystemExit(f"{out} exists")
     s = Store(ROOT)
@@ -477,7 +480,9 @@ def main():
             "像修第一轮那样认真处理每个字（结构、笔画、密处取舍），不要只做微调。" if drafts == len(items) else
             "本批的字**已经由 AI 修过**，你在**当前版本**的基础上继续修整。满意的字可以不改。" if not drafts else
             "本批大多数字**已经由 AI 修过**，在当前版本上继续修整，满意的可以不改；inputs.txt 标为“底稿”的字是新增字的底稿，要完整修。")
-    subs = {"{KIT}": str(out), "{TASK}": task, "{PY}": str(ROOT / ".venv/bin/python"), "{WF}": str(HERE / "workflow.py"), "{NAME}": a.name,
+    kit, py, wf = (str(out.relative_to(ROOT)), "python3", "tools/airepair/workflow.py") if a.portable else \
+        (str(out), str(ROOT / ".venv/bin/python"), str(HERE / "workflow.py"))
+    subs = {"{KIT}": kit, "{TASK}": task, "{PY}": py, "{WF}": wf, "{NAME}": a.name,
             "{MODEL}": a.model, "{EFFORT}": a.effort, "{WORKERS}": str(a.workers), "{N}": str(len(batches)),
             "{BATCH_SIZE}": str(a.batch_size), "{LAST}": batches[-1][0]["batch"]}
     for name in ("PROTOCOL.md", "PROMPT.md"):
