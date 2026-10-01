@@ -340,4 +340,7 @@ def compute(gid, char, group, label="", script=""):
             return regional(char, group)
         if group in ("HW", "PR"):
             return western(gid, char, label, script)
+        if group in ("HW-L", "PR-L"):
+            import draft_large
+            return draft_large.single(gid, char, label)
     raise ValueError("这个分组没有相位底稿（几何字符由规则生成）")

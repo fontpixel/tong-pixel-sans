@@ -7,7 +7,9 @@ shows no reference.
   box (columns 1–13, rows 0–12); what Source Han
   Sans lacks from Plangothic P1 (遍黑体, weight 400; Han characters) or the Noto symbol fonts;
 - .HW/.PR glyphs: the font and face size of their draft (tools/editor/data/reference-western.txt),
-  on the baseline (row 11), left edge aligned to the draft's leftmost ink column.
+  on the baseline (row 11), left edge aligned to the draft's leftmost ink column;
+- the Large size's .HW-L/.PR-L glyphs: the outline their draft was rendered from (tools/editor/draft_large.py:
+  vertical zones on whole pixels), on the baseline (row 14), left edge aligned the same way.
 """
 from __future__ import annotations
 
@@ -22,7 +24,8 @@ REGIONAL = {r: (f"SourceHanSans{r}-VF.otf", (("wght", 400),)) for r in ("SC", "T
 # what Source Han Sans lacks: Plangothic P1 for Han characters, then Noto symbol fonts (as draft.py)
 REGIONAL_FALLBACK = ["PlangothicP1-Regular.ttf", "NotoSansSymbols2-Regular.ttf", "NotoSansSymbols-Regular.ttf",
                      "NotoSansMath-Regular.ttf"]
-WESTERN = {"Source Sans 3": ("SourceSans3-VF.otf", (("wght", 320),)),
+WESTERN = {"Source Code Pro": ("SourceCodePro-VF.otf", (("wght", 330),)),
+           "Source Sans 3": ("SourceSans3-VF.otf", (("wght", 320),)),
            "Noto Sans Thai": ("NotoSansThai-VF.ttf", (("wdth", 100), ("wght", 320))),
            "Noto Sans Arabic": ("NotoSansArabic-VF.ttf", (("wdth", 100), ("wght", 320))),
            "Noto Sans Math": ("NotoSansMath-Regular.ttf", ()),
@@ -81,6 +84,8 @@ def svg(gid, char, cell_w, cell_h, fill="#009ec0"):
     from fontTools.pens.boundsPen import BoundsPen
     from fontTools.pens.svgPathPen import SVGPathPen
     group = gid.rsplit(".", 1)[-1]
+    if group.endswith("-L"):
+        return _large_svg(gid, char, cell_w, cell_h, fill)
     with _lock:
         if group in REGIONAL:
             font, glyphs = _face(*REGIONAL[group])
@@ -111,4 +116,25 @@ def svg(gid, char, cell_w, cell_h, fill="#009ec0"):
             dx = left - bp.bounds[0] * sx if bp.bounds else 0
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {cell_w} {cell_h}">'
             f'<path fill="{fill}" transform="translate({dx} {base}) scale({sx} {-sy})" '
+            f'd="{escape(pen.getCommands(), quote=True)}"/></svg>').encode()
+
+
+def _large_svg(gid, char, cell_w, cell_h, fill):
+    import draft_large
+    from fontTools.pens.boundsPen import BoundsPen
+    from fontTools.pens.svgPathPen import SVGPathPen
+    lab, fw, fh, left = WESTERN_REF[gid]
+    mono = gid.endswith(".HW-L")
+    with _lock:
+        src = draft_large._source(draft_large.font_key(lab), char)
+        if ord(char) not in src.cmap:
+            raise ValueError("参考字体没有此字")
+        x_scale = 1.0 if mono else draft_large.PX_PER_EM / 14
+        pen, bp = SVGPathPen(None), BoundsPen(None)
+        src.draw(char, pen, x_scale)
+        src.draw(char, bp, x_scale)
+    sx, sy = fw / src.upm, 14 / src.upm
+    dx = left - bp.bounds[0] * sx if bp.bounds else 0
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {cell_w} {cell_h}">'
+            f'<path fill="{fill}" transform="translate({dx} {draft_large.BASE}) scale({sx} {-sy})" '
             f'd="{escape(pen.getCommands(), quote=True)}"/></svg>').encode()

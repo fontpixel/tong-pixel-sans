@@ -49899,7 +49899,7 @@ FORM 95b1d37e6b8644b2bdd725eb5c7d53ef movable ˝ WEST ˝ 双尖音符 · 小写 
 
 FORM 0269fcfd74e9455ca7aeb5d8abd02632 movable ̉ WEST ̉ 上钩 · 大写 · 拉丁/西里尔
 ##
-#.
+.#
 
 FORM 29408d47d5d34a5982ba41043dff7b69 movable ̉ WEST ̉ 上钩 · 小写 · 拉丁/西里尔
 #.
