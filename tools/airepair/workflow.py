@@ -35,7 +35,7 @@ from common import ROUNDS, cell, draw_bits, font, one_to_one, wide_gaps  # noqa:
 
 HERE = STATE = WORK = RESULTS = None   # set from --round in main()
 TUMBLED = {"借鉴", "部分借鉴", "未借鉴"}
-MAX_ROUNDS = 2
+MAX_ROUNDS = 2                         # visual review rounds per glyph; a round may set "max_views" in round.json
 
 
 def now():
@@ -335,6 +335,8 @@ def main():
     if not (HERE / "round.json").exists():
         raise SystemExit(f"no round at {HERE}")
     STATE, WORK, RESULTS = HERE / "state", HERE / "work", HERE / "results"
+    global MAX_ROUNDS
+    MAX_ROUNDS = json.loads((HERE / "round.json").read_text()).get("max_views", MAX_ROUNDS)
     {"status": cmd_status, "claim": cmd_claim, "register-agent": cmd_register, "release": cmd_release,
      "context": cmd_context, "checkpoint": cmd_checkpoint, "render": cmd_render, "viewed": cmd_viewed,
      "submit": cmd_submit}[a.cmd](a)

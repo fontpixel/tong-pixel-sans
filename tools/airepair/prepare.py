@@ -220,6 +220,7 @@ def main():
     ap.add_argument("--workers", type=int, default=10)
     ap.add_argument("--model", default="gpt-6-astra")
     ap.add_argument("--effort", default="xhigh")
+    ap.add_argument("--max-views", type=int, default=2, help="visual review rounds allowed per glyph")
     ap.add_argument("--out", type=Path, default=ROUNDS, help="parent directory of the round (default work/airepair/)")
     ap.add_argument("--portable", action="store_true", help="paths in PROTOCOL.md / PROMPT.md relative to the repository "
                     "root and `python3`, for a round committed to a branch and run elsewhere (e.g. Codex in the cloud)")
@@ -465,7 +466,8 @@ def main():
     (out / "items.json").write_text(json.dumps({"items": items, "skipped": dict(skipped)}, ensure_ascii=False, indent=1))
     (out / "round.json").write_text(json.dumps({"name": a.name, "created_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                                                 "repository_head": head, "model": a.model, "effort": a.effort, "workers": a.workers,
-                                                "batches": [b[0]["batch"] for b in batches], "ref_rounds": a.ref_round},
+                                                "batches": [b[0]["batch"] for b in batches], "ref_rounds": a.ref_round,
+                                                "max_views": a.max_views},
                                                ensure_ascii=False, indent=1))
     # readers and prompts for this round
     rules = (ROOT / "docs/design-rules.md").read_text(encoding="utf-8")
@@ -484,7 +486,8 @@ def main():
         (str(out), str(ROOT / ".venv/bin/python"), str(HERE / "workflow.py"))
     subs = {"{KIT}": kit, "{TASK}": task, "{PY}": py, "{WF}": wf, "{NAME}": a.name,
             "{MODEL}": a.model, "{EFFORT}": a.effort, "{WORKERS}": str(a.workers), "{N}": str(len(batches)),
-            "{BATCH_SIZE}": str(a.batch_size), "{LAST}": batches[-1][0]["batch"]}
+            "{BATCH_SIZE}": str(a.batch_size), "{LAST}": batches[-1][0]["batch"],
+            "{MAX_VIEWS}": {2: "两", 3: "三"}.get(a.max_views, str(a.max_views))}
     for name in ("PROTOCOL.md", "PROMPT.md"):
         proto = "PROTOCOL-large.md" if large else "PROTOCOL-symbols.md"
         t = (HERE / "templates" / (proto if a.symbols and name == "PROTOCOL.md" else name)).read_text(encoding="utf-8")

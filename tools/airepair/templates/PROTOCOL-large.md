@@ -32,7 +32,7 @@ Tong Pixel Sans 有两个尺寸，汉字同为 13×13。本轮修的是 **14 Lar
    - `reuse`：逐像素复用的已通过部件，如 `宀←U+5B87.SC`；没有就省略或写 `[]`。
    - `note`：仍存在的具体问题，或偏离参考 / 范例的原因，一般不超过 60 字；没有就写空字符串。
 4. 全部字保存后运行 `WF render --batch BATCH --token TOKEN`，**实际查看**返回的每一页（参考 | 修前 | 修后，含 1:1）。
-5. 看完运行 `WF viewed --batch BATCH --token TOKEN --render-id 返回的ID --pages 1 2 …`（列出全部页号）。需要时做第二轮：再 checkpoint、render、看图、viewed。每字最多两轮视觉复看。
+5. 看完运行 `WF viewed --batch BATCH --token TOKEN --render-id 返回的ID --pages 1 2 …`（列出全部页号）。需要时再做一轮：再 checkpoint、render、看图、viewed。每字最多{MAX_VIEWS}轮视觉复看。
 6. `WF submit --batch BATCH --token TOKEN`。提交只是模型草稿完成，不代表用户接受；结果不会自动进入字体。
 
 遇到 stale token 立即停止写入并汇报。不读取其他批次或别处的历史答案，不浏览网络，不另写渲染器，不使用图像生成模型，不修改 KIT 以外的任何文件（尤其是仓库的 glyphs/、forms/）。

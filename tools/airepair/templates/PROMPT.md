@@ -22,6 +22,6 @@ TOKEN=…
 OWNER=…
 请先读 KIT/PROTOCOL.md 并严格照做（其中写明本批的任务、写法依据和输出格式）；遵守 KIT/LESSONS.md 的规则与自检清单。
 先运行 `$WF context --batch BATCH --token TOKEN`；读 LESSONS.md、本批 inputs.txt，实际查看 context 列出的全部图片。
-每至多 10 字 checkpoint，全部保存后 render、实际看完每页、viewed，最多两轮，然后 submit。
+每至多 10 字 checkpoint，全部保存后 render、实际看完每页、viewed，最多{MAX_VIEWS}轮，然后 submit。
 不要再开代理，不处理第二批，不读其他批次，不改 KIT 以外的文件。
 ```
