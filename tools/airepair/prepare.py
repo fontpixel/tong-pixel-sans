@@ -48,7 +48,9 @@ def master_of(s, cp):
     if not recs:
         return None
     rank = {"approved": 0, "edited": 1, "draft": 3}
-    return min(recs, key=lambda r: (rank.get(r["state"], 2), REGIONS.index(r["group"])))["id"]
+    # a regional draft that is a pixel copy of another region's glyph (add_regional.py) is never the master
+    copy = lambda r: r["state"] == "draft" and any(n.startswith("底稿：复制自") for n in r.get("ai_note", []))
+    return min(recs, key=lambda r: (rank.get(r["state"], 2) + (2 if copy(r) else 0), REGIONS.index(r["group"])))["id"]
 
 
 def select(s, a):

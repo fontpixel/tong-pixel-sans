@@ -5,11 +5,12 @@
 Checks every glyph with its own pixels in state ai, derived, edited or hangul-ai (not approved, not drafts,
 not generated or composed ones) against the reference the editor overlays (the region's Source Han Sans
 at the 13 × 13 ink box for regional glyphs):
-- 断笔: more 8-connected pieces than the reference rendered at the same size (a stroke broken in two);
-- 多余黑块: a solid 2×2 block where the reference is not solid (coverage under 0.6);
+- 断笔: more 8-connected pieces than the reference outline has (rendered at 104 px, so only the pieces the
+  design really has count); on the approved glyphs this flags 3 %, on the AI glyphs 8 % (2026-10-02);
 - 不对称: the reference outline is mirror-symmetric (draft.Face.symmetry ≥ 0.85) but the glyph differs from
   its mirror image (within its ink box) in more than 2 pixels;
 - 离开基线 (western letters): no ink on the row just above the baseline for a letter that should stand on it.
+(A 2×2 block check was dropped: a fifth of the approved glyphs have one, so it tells too little.)
 Writes OUT (glyph ids) and OUT.json ({id: [issues, in words]}) for prepare.py --issues.
 """
 from __future__ import annotations
@@ -34,17 +35,6 @@ def pieces(b):
     return draft.components(b)
 
 
-def regional_reference(char, region):
-    """Grey coverage (0–1) of the Source Han glyph scaled into a 13×13 box like the drafts (face 14)."""
-    np = draft._np()
-    a = grey(char, region, ppem=14).astype(float) / 255
-    out = np.zeros((13, 13))
-    h, w = min(a.shape[0], 13), min(a.shape[1], 13)
-    y0, x0 = (13 - h) // 2, (13 - w) // 2
-    out[y0:y0 + h, x0:x0 + w] = a[:h, :w]
-    return out
-
-
 _sym = {}
 
 
@@ -59,31 +49,32 @@ def symmetric(char, region):
     return _sym[key]
 
 
+_pieces = {}
+
+
+def outline_pieces(char, region):
+    key = (char, region)
+    if key not in _pieces:
+        try:
+            _pieces[key] = pieces(grey(char, region, ppem=104) > 128)
+        except Exception:      # noqa: BLE001  (no reference)
+            _pieces[key] = 0
+    return _pieces[key]
+
+
 def check_regional(rec):
     np = draft._np()
-    rows = rec["rows"]
-    b = np.array([[v == "#" for v in r] for r in rows], bool)
+    b = np.array([[v == "#" for v in r] for r in rec["rows"]], bool)
     if not b.any():
         return []
     out = []
-    try:
-        ref = regional_reference(rec["char"], rec["group"])
-    except Exception:          # noqa: BLE001
-        ref = None
-    if ref is not None and ref.any():
-        n, m = pieces(b), pieces(ref > 0.5)
-        if n > m and n - m >= 1 and m > 0:
-            out.append(f"断笔：点阵有 {n} 个连通块，思源参考只有 {m} 个，可能有笔画断开")
-        blk = b[:-1, :-1] & b[1:, :-1] & b[:-1, 1:] & b[1:, 1:]
-        cover = (ref[:-1, :-1] + ref[1:, :-1] + ref[:-1, 1:] + ref[1:, 1:]) / 4
-        bad = int((blk & (cover < 0.6)).sum())
-        if bad:
-            ys, xs = np.nonzero(blk & (cover < 0.6))
-            out.append(f"多余黑块：{bad} 处 2×2 实心黑块（如第 {ys[0]} 行第 {xs[0]} 列起），思源参考在那里不是实心")
+    n, m = pieces(b), outline_pieces(rec["char"], rec["group"])
+    if m and n > m:
+        out.append(f"断笔：点阵有 {n} 个连通块，思源字形本身只有 {m} 个，可能有笔画断开（自动推断，请先确认）")
     if symmetric(rec["char"], rec["group"]):
         mm = draft.mirror_mismatch(b)
         if mm > 2:
-            out.append(f"不对称：思源参考左右对称，点阵与其镜像有 {mm} 个像素不同")
+            out.append(f"不对称：思源参考左右对称，点阵与其镜像有 {mm} 个像素不同（自动推断，请先确认）")
     return out
 
 
