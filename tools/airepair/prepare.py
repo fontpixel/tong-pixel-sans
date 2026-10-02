@@ -223,6 +223,7 @@ def main():
     ap.add_argument("--effort", default="xhigh")
     ap.add_argument("--max-views", type=int, default=2, help="visual review rounds allowed per glyph")
     ap.add_argument("--out", type=Path, default=ROUNDS, help="parent directory of the round (default work/airepair/)")
+    ap.add_argument("--kit-path", help="with --portable: the round's path as the worker will see it (default: its path under the repository)")
     ap.add_argument("--portable", action="store_true", help="paths in PROTOCOL.md / PROMPT.md relative to the repository "
                     "root and `python3`, for a round committed to a branch and run elsewhere (e.g. Codex in the cloud)")
     a = ap.parse_args()
@@ -483,7 +484,7 @@ def main():
             "像修第一轮那样认真处理每个字（结构、笔画、密处取舍），不要只做微调。" if drafts == len(items) else
             "本批的字**已经由 AI 修过**，你在**当前版本**的基础上继续修整。满意的字可以不改。" if not drafts else
             "本批大多数字**已经由 AI 修过**，在当前版本上继续修整，满意的可以不改；inputs.txt 标为“底稿”的字是新增字的底稿，要完整修。")
-    kit, py, wf = (str(out.relative_to(ROOT)), "python3", "tools/airepair/workflow.py") if a.portable else \
+    kit, py, wf = (a.kit_path or str(out.relative_to(ROOT)), "python3", "tools/airepair/workflow.py") if a.portable else \
         (str(out), str(ROOT / ".venv/bin/python"), str(HERE / "workflow.py"))
     subs = {"{KIT}": kit, "{TASK}": task, "{PY}": py, "{WF}": wf, "{NAME}": a.name,
             "{MODEL}": a.model, "{EFFORT}": a.effort, "{WORKERS}": str(a.workers), "{N}": str(len(batches)),
