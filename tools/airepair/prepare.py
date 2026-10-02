@@ -74,7 +74,7 @@ def select(s, a):
         rec = s.records.get(gid)
         if rec is None or "alias" in rec or rec["group"] not in REGIONS + (("HW", "PR", "HW-L", "PR-L") if a.symbols else ()):
             skipped["不是简 / 繁 / 日 / 韩的独立字形"] += 1
-        elif rec["state"] not in ("ai", "draft", "edited"):     # edited = changed but not approved: unfinished
+        elif rec["state"] not in (a.states or ("ai", "draft", "edited")):     # edited = changed but not approved: unfinished
             skipped[f"状态 {rec['state']}（不交给 AI）"] += 1
         elif a.masters_only and master_of(s, rec["cp"]) != gid:
             skipped["不是母版（之后从母版派生）"] += 1
@@ -224,6 +224,8 @@ def main():
     ap.add_argument("--model", default="gpt-6-astra")
     ap.add_argument("--effort", default="xhigh")
     ap.add_argument("--max-views", type=int, default=2, help="visual review rounds allowed per glyph")
+    ap.add_argument("--states", nargs="*", help="glyph states to take (default ai draft edited), e.g. hangul-composed")
+    ap.add_argument("--task-text", type=Path, help="a file with the round's task paragraph, instead of the one chosen automatically")
     ap.add_argument("--out", type=Path, default=ROUNDS, help="parent directory of the round (default work/airepair/)")
     ap.add_argument("--kit-path", help="with --portable: the round's path as the worker will see it (default: its path under the repository)")
     ap.add_argument("--portable", action="store_true", help="paths in PROTOCOL.md / PROMPT.md relative to the repository "
@@ -481,7 +483,8 @@ def main():
                                     + "\n## ".join(keep) + "\n\n---\n\n" + reader.read_text(encoding="utf-8"))
     drafts = sum(i["state"] == "draft" for i in items)
     large = a.symbols and all(i["region"].endswith("-L") for i in items)
-    task = DERIVE_TASK if a.derive else LARGE_TASK if large else SYMBOL_TASK if a.symbols else RECHECK_TASK if issues else EDITED_TASK if all(
+    custom = a.task_text.read_text(encoding="utf-8").strip() if a.task_text else None
+    task = custom or DERIVE_TASK if a.derive else custom or LARGE_TASK if large else SYMBOL_TASK if a.symbols else RECHECK_TASK if issues else EDITED_TASK if all(
         i["state"] == "edited" for i in items) else ("本批的字**是新增字的底稿**：由思源黑体点阵化（WorkBench 渲染加相位搜索），还没经 AI 或人工修。请在底稿基础上完整修字，"
             "像修第一轮那样认真处理每个字（结构、笔画、密处取舍），不要只做微调。" if drafts == len(items) else
             "本批的字**已经由 AI 修过**，你在**当前版本**的基础上继续修整。满意的字可以不改。" if not drafts else
