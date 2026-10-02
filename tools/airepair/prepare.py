@@ -484,7 +484,7 @@ def main():
     drafts = sum(i["state"] == "draft" for i in items)
     large = a.symbols and all(i["region"].endswith("-L") for i in items)
     custom = a.task_text.read_text(encoding="utf-8").strip() if a.task_text else None
-    task = custom or DERIVE_TASK if a.derive else custom or LARGE_TASK if large else SYMBOL_TASK if a.symbols else RECHECK_TASK if issues else EDITED_TASK if all(
+    task = custom if custom else DERIVE_TASK if a.derive else LARGE_TASK if large else SYMBOL_TASK if a.symbols else RECHECK_TASK if issues else EDITED_TASK if all(
         i["state"] == "edited" for i in items) else ("本批的字**是新增字的底稿**：由思源黑体点阵化（WorkBench 渲染加相位搜索），还没经 AI 或人工修。请在底稿基础上完整修字，"
             "像修第一轮那样认真处理每个字（结构、笔画、密处取舍），不要只做微调。" if drafts == len(items) else
             "本批的字**已经由 AI 修过**，你在**当前版本**的基础上继续修整。满意的字可以不改。" if not drafts else
