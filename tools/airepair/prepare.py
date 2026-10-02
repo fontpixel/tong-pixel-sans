@@ -383,7 +383,7 @@ def main():
                 for x in it["family"]:
                     ex.setdefault(x, set()).add("同族")
             exl = [{"id": x, "char": s.records[x]["char"] + ("✓" if s.records[x]["state"] == "approved" else ""), "rows": s.records[x]["rows"],
-                    "for": sorted(v)} for x, v in sorted(ex.items())][:72]
+                    "for": sorted(v)} for x, v in sorted(ex.items())]
             for k in range(0, len(exl), 36):
                 examples_page(exl[k:k + 36], bdir / f"examples-{k // 36 + 1:02d}.png", f"{bid} · 同族已有字形（✓ 为已通过；族内圆圈、括号、箭头头部等像素要一致）")
             lines = [f"{a.name} {bid}: {len(batch)} glyphs（符号）。每字的“当前”是改动基准，行号从 0 起；宽 × 高见每字标注。"]
@@ -414,12 +414,12 @@ def main():
                     ex.setdefault(x, set()).add(f"{it['char']}的{c['symbol']}")
                 for x in c["earlier_rounds"]:
                     rex.setdefault(x, set()).add(f"{it['char']}的{c['symbol']}")
-        exl = [{"id": x, "char": approved[x]["char"], "rows": approved[x]["rows"], "for": sorted(v)} for x, v in sorted(ex.items())][:72]
+        exl = [{"id": x, "char": approved[x]["char"], "rows": approved[x]["rows"], "for": sorted(v)} for x, v in sorted(ex.items())]
         for k in range(0, len(exl), 36):
             examples_page(exl[k:k + 36], bdir / f"examples-{k // 36 + 1:02d}.png", f"{bid} · 已审核通过的相关字（部件可逐像素复用）")
-        rexl = [{"id": x, "char": refs[x]["char"], "rows": refs[x]["rows"], "for": sorted(v)} for x, v in sorted(rex.items())][:36]
-        if rexl:
-            examples_page(rexl, bdir / "earlier-01.png", f"{bid} · 前几轮已修的同部件字（待审核，写法保持一致）")
+        rexl = [{"id": x, "char": refs[x]["char"], "rows": refs[x]["rows"], "for": sorted(v)} for x, v in sorted(rex.items())]
+        for k in range(0, len(rexl), 36):
+            examples_page(rexl[k:k + 36], bdir / f"earlier-{k // 36 + 1:02d}.png", f"{bid} · 前几轮已修的同部件字（待审核，写法保持一致）")
         lines = [f"{a.name} {bid}: {len(batch)} glyphs. 每字：当前 13×13（改动基准，行号 0–12）与圆石 18 的 13×14。"]
         if a.derive:
             lines = [f"{a.name} {bid}: {len(batch)} glyphs. 地区派生：每字的“当前”是母版（同一个字另一地区的版本）的逐像素副本，行号 0–12；"
