@@ -1,17 +1,19 @@
 """Export the download formats: BDF and PCF per face, and vector OpenType fonts with every region in one font.
 
-    python3 tools/export.py [out-dir] [--only square|dot] [--skip-otf]      (default: site/downloads/)
+    python3 tools/export.py [out-dir] [--sizes Large Small] [--only square|dot] [--skip-otf]   (default: site/downloads/)
 
-Writes (out-dir is not in git):
-  bdf/  the ten BDFs (as tools/build.py makes them)
-  pcf/  the same ten as PCF (bdftopcf; PCF has no room for code points above U+FFFF, so those are left out)
+Writes (out-dir is not in git), for each size (Large, the default one, and Small):
+  bdf/  the ten BDFs of the size (as tools/build.py makes them, e.g. TongPixelSans14Large-SC.bdf)
+  pcf/  the same as PCF (bdftopcf; PCF has no room for code points above U+FFFF, so those are left out)
   ttf/ otf/ woff2/  vector fonts, one per shape and spacing:
-        TongPixelSans-Square, TongPixelSansMono-Square    every pixel a square; touching pixels merged
-        TongPixelSans-Dot, TongPixelSansMono-Dot          every pixel a round dot
+        TongPixelSans14<Size>-Square, TongPixelSansMono14<Size>-Square    every pixel a square; touching pixels merged
+        TongPixelSans14<Size>-Dot, TongPixelSansMono14<Size>-Dot          every pixel a round dot
+        (the Square WOFF2 is made from the CFF font, a fifth smaller; the Dot one from the TrueType font)
   manifest.json  file sizes and glyph counts, for the download table
+A full run (no --only, every size) removes files of earlier names from out-dir.
 
-Vector fonts: 100 units per pixel (1,400 per em), ascent 1,100, descent 300, so 14 px and its
-multiples land on whole pixels. The default glyphs are the Simplified Chinese face; the OpenType
+Vector fonts: 100 units per pixel (1,400 per em); ascent and descent are those of the size (Small 1,100 and
+300, Large 1,400 and 400), so 14 px and its multiples land on whole pixels. The default glyphs are the Simplified Chinese face; the OpenType
 `locl` feature switches to the Traditional (ZHT, ZHH), Japanese (JAN) and Korean (KOR) glyphs,
 and in Latin, Greek and Cyrillic runs to the western glyphs of the Latin faces (narrow quotation
 marks and ellipsis), so one font serves every region. Square outlines trace the boundary of each
@@ -41,6 +43,15 @@ LANGS = {"TC": ["ZHT ", "ZHH "], "JP": ["JAN "], "KR": ["KOR "]}
 CJK_SCRIPTS = ["DFLT", "hani", "kana", "hang", "bopo"]
 WESTERN_SCRIPTS = ["latn", "grek", "cyrl"]
 FAMILY = {"prop": "Tong Pixel Sans", "mono": "Tong Pixel Sans Mono"}
+
+
+def family_of(spacing, size):
+    return f"{FAMILY[spacing]} 14 {size}"
+
+
+def set_size(size):
+    global ASCENT, DESCENT
+    ASCENT, DESCENT = build.SIZES[size]["ascent"], build.SIZES[size]["descent"]
 
 
 # ---------------------------------------------------------------- outlines
@@ -126,10 +137,10 @@ def gname(cp):
     return f"uni{cp:04X}" if cp <= 0xFFFF else f"u{cp:05X}"
 
 
-def plan(spacing):
+def plan(spacing, size="Small"):
     """(glyph order, {name: record}, cmap, {region: {default name: variant name}})."""
-    faces = {r: (p if spacing == "prop" else m) for r, p, m in build.faces(ROOT)}
-    lp, lm = build.latin_faces(ROOT)
+    faces = {r: (p if spacing == "prop" else m) for r, p, m in build.faces(ROOT, size)}
+    lp, lm = build.latin_faces(ROOT, size)
     faces["Latin"] = lp if spacing == "prop" else lm
     base = faces["SC"]
     glyphs, cmap = {}, {}
@@ -190,7 +201,7 @@ def feature_text(subs):
 def names(family, style, version):
     return {"familyName": family, "styleName": "Regular", "uniqueFontIdentifier": f"{family} {style} {version}",
             "fullName": f"{family} {style}", "psName": f"{family.replace(' ', '')}-{style}",
-            "version": f"Version {version}", "copyright": "Tong Pixel Sans. Derived from Source Han Sans (Adobe), Source Sans 3 "
+            "version": f"Version {version}", "copyright": "Tong Pixel Sans. Derived from Source Han Sans, Source Sans 3, Source Code Pro "
             "(Adobe), the Noto fonts (Google), Plangothic P1; Han bitmaps partly after TUMBLED (TsFreddie).",
             "licenseDescription": "This Font Software is licensed under the SIL Open Font License, Version 1.1.",
             "licenseInfoURL": "https://openfontlicense.org", "typographicFamily": family,
@@ -244,11 +255,11 @@ def notdef_pen(pen):
         pen.closePath()
 
 
-def build_ttf(spacing, shape, version, plan_):
+def build_ttf(spacing, shape, version, plan_, size="Small"):
     from fontTools.pens.ttGlyphPen import TTGlyphPen
     order, glyph_records, cmap, subs = plan_
     order = order + (["dot"] if shape == "dot" else [])
-    family, style = FAMILY[spacing], shape.capitalize()
+    family, style = family_of(spacing, size), shape.capitalize()
     fb = font_builder(order, cmap, glyph_records, family, style, version, True)
     glyf = {}
     pen = TTGlyphPen(None)
@@ -285,11 +296,11 @@ def build_ttf(spacing, shape, version, plan_):
     return finish(fb, order, glyph_records, subs, family, style, version, dot=shape == "dot")
 
 
-def build_otf(spacing, shape, version, plan_):
+def build_otf(spacing, shape, version, plan_, size="Small"):
     from fontTools.misc.psCharStrings import T2CharString
     from fontTools.pens.t2CharStringPen import T2CharStringPen
     order, glyph_records, cmap, subs = plan_
-    family, style = FAMILY[spacing], shape.capitalize()
+    family, style = family_of(spacing, size), shape.capitalize()
     fb = font_builder(order, cmap, glyph_records, family, style, version, False)
     charstrings = {}
     pen = T2CharStringPen(UPM // 2, None)
@@ -319,7 +330,7 @@ def build_otf(spacing, shape, version, plan_):
                 cx, cy = tx, ty
             prog.append("endchar")
             charstrings[n] = T2CharString(program=prog)
-    fb.setupCFF(FAMILY[spacing].replace(" ", "") + "-" + style, {"FullName": f"{family} {style}"}, charstrings,
+    fb.setupCFF(family.replace(" ", "") + "-" + style, {"FullName": f"{family} {style}"}, charstrings,
                 {"defaultWidthX": 0, "nominalWidthX": 0})
     cff = fb.font["CFF "].cff
     if shape == "dot":
@@ -335,6 +346,7 @@ def main():
     import argparse
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("out", nargs="?", type=Path, default=ROOT / "site/downloads")
+    ap.add_argument("--sizes", nargs="+", choices=list(build.SIZES), default=list(build.SIZES))
     ap.add_argument("--only", choices=("square", "dot"))
     ap.add_argument("--skip-otf", action="store_true")
     a = ap.parse_args()
@@ -346,37 +358,50 @@ def main():
     manifest = json.loads(old.read_text()) if old.exists() else {}
     manifest.update(version=version)
     manifest.setdefault("files", {})
+    full = not only and set(a.sizes) == set(build.SIZES)
+    made = set()
     tmp = ROOT / "build"
     subprocess.run([sys.executable, str(HERE / "build.py"), str(tmp)], check=True, stdout=subprocess.DEVNULL)
-    faces = [f"TongPixelSans{k}{r}-14" for r in REGIONS + ["Latin"] for k in ("", "Mono")]
-    for f in faces:
-        shutil.copy2(tmp / f"{f}.bdf", out / "bdf" / f"{f}.bdf")
-        # PCF encodes 16-bit code points only: bdftopcf skips the supplementary-plane glyphs (extension B …)
-        r = subprocess.run(["bdftopcf", "-o", str(out / "pcf" / f"{f}.pcf"), str(tmp / f"{f}.bdf")],
-                           check=True, capture_output=True, text=True)
-        manifest.setdefault("pcf_skipped", {})[f] = r.stderr.count("encoding too large")
-        for kind in ("bdf", "pcf"):
-            p = out / kind / f"{f}.{kind}"
-            manifest["files"][f"{kind}/{p.name}"] = p.stat().st_size
-    print("bdf, pcf:", len(faces), "each")
-    for spacing in ("prop", "mono"):
-        plan_ = plan(spacing)
-        print(spacing, "glyphs", len(plan_[0]), "locl", {r: len(t) for r, t in plan_[3].items()})
-        for shape in ("square", "dot"):
-            if only and shape != only:
-                continue
-            stem = f"{FAMILY[spacing].replace(' ', '')}-{shape.capitalize()}"
-            tt = build_ttf(spacing, shape, version, plan_)
-            tt.save(out / "ttf" / f"{stem}.ttf")
-            tt.flavor = "woff2"
-            tt.save(out / "woff2" / f"{stem}.woff2")
-            if not a.skip_otf:
-                build_otf(spacing, shape, version, plan_).save(out / "otf" / f"{stem}.otf")
-            for kind in ("ttf", "woff2", "otf"):
-                p = out / kind / f"{stem}.{kind}"
-                if p.exists():
-                    manifest["files"][f"{kind}/{p.name}"] = p.stat().st_size
-            print(stem, {k: manifest["files"].get(f"{k}/{stem}.{k}") for k in ("ttf", "woff2", "otf")})
+    for size in a.sizes:
+        set_size(size)
+        faces = [build.face_name(size, r, m)[0] for r in REGIONS + ["Latin"] for m in (False, True)]
+        for f in faces:
+            shutil.copy2(tmp / f"{f}.bdf", out / "bdf" / f"{f}.bdf")
+            # PCF encodes 16-bit code points only: bdftopcf skips the supplementary-plane glyphs (extension B …)
+            r = subprocess.run(["bdftopcf", "-o", str(out / "pcf" / f"{f}.pcf"), str(tmp / f"{f}.bdf")],
+                               check=True, capture_output=True, text=True)
+            manifest.setdefault("pcf_skipped", {})[f] = r.stderr.count("encoding too large")
+            for kind in ("bdf", "pcf"):
+                made.add(f"{kind}/{f}.{kind}")
+        print(size, "bdf, pcf:", len(faces), "each", flush=True)
+        for spacing in ("prop", "mono"):
+            plan_ = plan(spacing, size)
+            print(size, spacing, "glyphs", len(plan_[0]), "locl", {r: len(t) for r, t in plan_[3].items()}, flush=True)
+            for shape in ("square", "dot"):
+                if only and shape != only:
+                    continue
+                stem = f"{family_of(spacing, size).replace(' ', '')}-{shape.capitalize()}"
+                tt = build_ttf(spacing, shape, version, plan_, size)
+                tt.save(out / "ttf" / f"{stem}.ttf")
+                otf = None if a.skip_otf else build_otf(spacing, shape, version, plan_, size)
+                if otf is not None:
+                    otf.save(out / "otf" / f"{stem}.otf")
+                # WOFF2: a square font compresses better from its CFF outlines, a dot font from its composites
+                w = otf if (shape == "square" and otf is not None) else tt
+                w.flavor = "woff2"
+                w.save(out / "woff2" / f"{stem}.woff2")
+                made.update(f"{k}/{stem}.{k}" for k in ("ttf", "woff2", "otf") if (out / k / f"{stem}.{k}").exists())
+                print(stem, {k: (out / k / f"{stem}.{k}").stat().st_size for k in ("ttf", "woff2", "otf")
+                             if (out / k / f"{stem}.{k}").exists()}, flush=True)
+    for f in made:
+        manifest["files"][f] = (out / f).stat().st_size
+    if full:                                    # names of earlier exports: gone
+        for f in list(manifest["files"]):
+            if f not in made:
+                del manifest["files"][f]
+                (out / f).unlink(missing_ok=True)
+        manifest["pcf_skipped"] = {k: v for k, v in manifest.get("pcf_skipped", {}).items()
+                                   if any(m.startswith(f"pcf/{k}.") for m in made)}
     (out / "manifest.json").write_text(json.dumps(manifest, indent=1), encoding="utf-8")
 
 
