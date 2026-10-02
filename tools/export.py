@@ -342,6 +342,25 @@ def build_otf(spacing, shape, version, plan_, size="Small"):
 
 
 # ---------------------------------------------------------------- main
+def vector_job(job):
+    """One vector font in its own process: (stem, [files written])."""
+    size, spacing, shape, out, version, skip_otf = job
+    out = Path(out)
+    set_size(size)
+    plan_ = plan(spacing, size)
+    stem = f"{family_of(spacing, size).replace(' ', '')}-{shape.capitalize()}"
+    tt = build_ttf(spacing, shape, version, plan_, size)
+    tt.save(out / "ttf" / f"{stem}.ttf")
+    otf = None if skip_otf else build_otf(spacing, shape, version, plan_, size)
+    if otf is not None:
+        otf.save(out / "otf" / f"{stem}.otf")
+    # WOFF2: a square font compresses better from its CFF outlines, a dot font from its composites
+    w = otf if (shape == "square" and otf is not None) else tt
+    w.flavor = "woff2"
+    w.save(out / "woff2" / f"{stem}.woff2")
+    return stem, [f"{k}/{stem}.{k}" for k in ("ttf", "woff2", "otf") if (out / k / f"{stem}.{k}").exists()]
+
+
 def main():
     import argparse
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -374,25 +393,13 @@ def main():
             for kind in ("bdf", "pcf"):
                 made.add(f"{kind}/{f}.{kind}")
         print(size, "bdf, pcf:", len(faces), "each", flush=True)
-        for spacing in ("prop", "mono"):
-            plan_ = plan(spacing, size)
-            print(size, spacing, "glyphs", len(plan_[0]), "locl", {r: len(t) for r, t in plan_[3].items()}, flush=True)
-            for shape in ("square", "dot"):
-                if only and shape != only:
-                    continue
-                stem = f"{family_of(spacing, size).replace(' ', '')}-{shape.capitalize()}"
-                tt = build_ttf(spacing, shape, version, plan_, size)
-                tt.save(out / "ttf" / f"{stem}.ttf")
-                otf = None if a.skip_otf else build_otf(spacing, shape, version, plan_, size)
-                if otf is not None:
-                    otf.save(out / "otf" / f"{stem}.otf")
-                # WOFF2: a square font compresses better from its CFF outlines, a dot font from its composites
-                w = otf if (shape == "square" and otf is not None) else tt
-                w.flavor = "woff2"
-                w.save(out / "woff2" / f"{stem}.woff2")
-                made.update(f"{k}/{stem}.{k}" for k in ("ttf", "woff2", "otf") if (out / k / f"{stem}.{k}").exists())
-                print(stem, {k: (out / k / f"{stem}.{k}").stat().st_size for k in ("ttf", "woff2", "otf")
-                             if (out / k / f"{stem}.{k}").exists()}, flush=True)
+    jobs = [(size, spacing, shape, str(out), version, a.skip_otf) for size in a.sizes for spacing in ("prop", "mono")
+            for shape in ("square", "dot") if not (only and shape != only)]
+    from concurrent.futures import ProcessPoolExecutor
+    with ProcessPoolExecutor(max_workers=len(jobs)) as ex:      # the eight vector fonts are independent
+        for stem, files in ex.map(vector_job, jobs):
+            made.update(files)
+            print(stem, {f.split("/")[0]: (out / f).stat().st_size for f in files}, flush=True)
     for f in made:
         manifest["files"][f] = (out / f).stat().st_size
     if full:                                    # names of earlier exports: gone
