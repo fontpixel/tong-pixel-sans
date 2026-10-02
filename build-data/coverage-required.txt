@@ -45,3 +45,6 @@ GB/T 12345	gb/gb12345.txt
 日本人名用漢字	jp/jinmeiyo.txt
 IICore	intl/iicore.txt
 韩文组合字母	kr/hangul-jamo.txt
+GBK 汉字	gb/gbk-hanzi.txt
+JIS X 0213 第三水準	jp/jisx0213-l3.txt
+JIS X 0213 第四水準	jp/jisx0213-l4.txt

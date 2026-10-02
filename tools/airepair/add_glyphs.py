@@ -59,6 +59,7 @@ REQUESTS = [  # (table under build-data/coverage/, region)
     ("prc-lit/kangxi-radicals.txt", "SC"), ("prc-lit/radicals-supplement.txt", "SC"),
     ("prc-lit/tongyong-7000.txt", "SC"), ("prc-lit/hanyi-jianfan.txt", "SC"),
     ("prc-lit/fangzheng-jianfan.txt", "SC"), ("gb/gb12345.txt", "SC"),
+    ("gb/gbk-hanzi.txt", "SC"), ("jp/jisx0213-l3.txt", "JP"), ("jp/jisx0213-l4.txt", "JP"),   # 2026-10-02
 ]
 ORDER = ["SC", "TC", "JP", "KR"]
 COMBINING = {0x3099, 0x309A}

@@ -25,17 +25,25 @@ from verify import table_codepoints  # noqa: E402
 from store import Store  # noqa: E402
 from add_glyphs import outline  # noqa: E402
 
-REQUESTS = [("jp/jisx0208-l2.txt", "JP"), ("gb/gbk-hanzi.txt", "SC")]
+REQUESTS = [("jp/jisx0208-l2.txt", "JP"), ("gb/gbk-hanzi.txt", "SC"),
+            # 2026-10-02: the GBK and JIS X 0213 level 3/4 characters, in every region that borrows them
+            ("gb/gbk-hanzi.txt", "TC"), ("gb/gbk-hanzi.txt", "JP"), ("gb/gbk-hanzi.txt", "KR"),
+            ("jp/jisx0213-l3.txt", "SC"), ("jp/jisx0213-l3.txt", "TC"), ("jp/jisx0213-l3.txt", "KR"),
+            ("jp/jisx0213-l4.txt", "SC"), ("jp/jisx0213-l4.txt", "TC"), ("jp/jisx0213-l4.txt", "KR")]
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--only", type=Path, help="a file of glyph ids or U+XXXX lines: only these code points")
     a = ap.parse_args()
+    only = {int(l.split()[0][2:].split(".")[0], 16) for l in a.only.read_text().splitlines() if l.startswith("U+")} if a.only else None
     s = Store(ROOT)
     new, report, count = [], [], Counter()
     for table, region in REQUESTS:
         for cp in table_codepoints(ROOT / "build-data/coverage" / table):
+            if only is not None and cp not in only:
+                continue
             if f"U+{cp:04X}.{region}" in s.records or any(n["cp"] == cp and n["group"] == region for n in new):
                 continue
             src = next((r for r in build.FALLBACK[region] if f"U+{cp:04X}.{r}" in s.records), None)
